@@ -1,0 +1,92 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public abstract class BaseSpellDamage : MonoBehaviour
+{
+    //Damage Stats/types
+    [HideInInspector]
+    public float spellSpeed;       //How fast projectile travels 
+    [HideInInspector]
+    public float spellDamage;      //Damage of spell
+    [HideInInspector]
+    public Vector2 effectArea;     //Area the spell will hit
+    [HideInInspector]
+    public BoxCollider2D col;      //Collider used for area collision
+    [HideInInspector]
+    public float spellLength;      //Range of spell
+    [HideInInspector]
+    public Vector2 spellDirection; //Direction of spell 
+    [HideInInspector]
+    public bool spellHit;          //Check for spell hitting enemy
+    [HideInInspector]
+    public float xSpawn;           //Spell spawn x coordindate
+
+
+    public virtual void Initialize(float spellDamage, Vector2 effectArea, BoxCollider2D col, float spellLength, float spellSpeed, 
+        Vector2 spellDirection, bool spellHit, float xSpawn)
+    {
+        this.spellDamage = spellDamage;
+        this.effectArea = effectArea;
+        this.col = col;
+        this.spellLength = spellLength;
+        this.spellSpeed = spellSpeed;
+        this.spellDirection = spellDirection;
+        this.xSpawn = xSpawn;
+        this.spellHit = spellHit;
+    }
+
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    {   
+        if (col != null)
+        {
+            col.size = effectArea;
+        }
+        if (collision.gameObject.tag == "Enemy")
+        {
+            onSpellHit();
+            collision.gameObject.GetComponent<EnemyHealthScript>().takeDamage(spellDamage);
+        }
+    }
+
+    public virtual void Update()
+    {
+        if (spellHit)
+        {
+            Invoke("turnOff", 1f);
+            Invoke("killObject", 2f);
+        }
+        else if (gameObject.transform.position.x >= (xSpawn + spellLength) || gameObject.transform.position.x
+            <= (xSpawn - spellLength))
+        {
+            turnOff();
+            Invoke("killObject", 2f);
+        }
+        else
+        {
+            transform.Translate(spellDirection * spellSpeed * Time.deltaTime);
+        }
+
+    }
+
+    protected virtual void turnOff()
+    {
+        gameObject.SetActive(false);
+    }
+
+    protected virtual void killObject()
+    {
+        Destroy(gameObject);
+    }
+
+    protected virtual void onSpellHit()
+    {
+        spellHit = true;
+    }
+
+    public virtual void setDirection(Vector2 direction)
+    {
+        spellDirection = direction;
+    }
+}
