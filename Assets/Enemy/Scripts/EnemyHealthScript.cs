@@ -15,7 +15,7 @@ public class EnemyHealthScript : MonoBehaviour
         }
     }
 
-    private void dyingSucks()
+    public void dyingSucks()
     {
         gameObject.SetActive(false);
     }

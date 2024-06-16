@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class MeleeEnemy : BaseEnemyMovement
 {
@@ -10,12 +11,6 @@ public class MeleeEnemy : BaseEnemyMovement
     private Transform rightPatrolPoint;
     private bool isRight = true;
     private bool attacking = false;
-
-    protected override void Start()
-    {
-        base.Start();
-
-    }
 
     protected void Awake()
     {
@@ -60,6 +55,7 @@ public class MeleeEnemy : BaseEnemyMovement
                 StartCoroutine(stabAttack());
             }
         }
+
     }
 
     private IEnumerator stabAttack()
@@ -83,14 +79,16 @@ public class MeleeEnemy : BaseEnemyMovement
 
     protected void patrolState()
     {   
-        if (isRight)
+        if (isRight && transform.position.x <= rightPatrolPoint.position.x)
         {
             transform.Translate(Vector2.right * EnemyPatrolSpeed * Time.deltaTime);
         }
-        else if (!isRight)
+
+        else if (!isRight && transform.position.x >= leftPatrolPoint.position.x)
         {
             transform.Translate(Vector2.left * EnemyPatrolSpeed * Time.deltaTime);
         }
+
     }
 
     protected void engageState()
@@ -113,4 +111,5 @@ public class MeleeEnemy : BaseEnemyMovement
         }
 
     }
+
 }
