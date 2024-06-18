@@ -7,7 +7,7 @@ public class FlyingEnemy : BaseEnemyMovement
 {
     protected void Awake()
     {
-        Initialize(0, 0.8f, 3, true, 1, 1);
+        Initialize(0, 2, 3, true, 1, 1);
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -16,7 +16,7 @@ public class FlyingEnemy : BaseEnemyMovement
         if (player != null)
         {
             Vector2 chaseDirection = player.transform.position - transform.position;
-            transform.Translate(chaseDirection * EnemyChaseSpeed * Time.deltaTime);
+            transform.Translate(chaseDirection.normalized * EnemyChaseSpeed * Time.deltaTime);
         }
     }
 

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6728834133747233146}
   - component: {fileID: 8055444592337819811}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: ArcaneVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 6023215414430234709}
   - component: {fileID: 8121404213291494242}
   - component: {fileID: 4611378680669415424}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: BasicArcanePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}

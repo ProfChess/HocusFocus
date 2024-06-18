@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8375417673563223773}
   - component: {fileID: 8380030116971112403}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: IcicleVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 4162742887441510693}
   - component: {fileID: 5786828352008659181}
   - component: {fileID: 8697291458169757610}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: BasicIcePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}

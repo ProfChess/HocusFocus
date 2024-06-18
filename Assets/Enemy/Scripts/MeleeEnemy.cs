@@ -14,7 +14,7 @@ public class MeleeEnemy : BaseEnemyMovement
 
     protected void Awake()
     {
-        Initialize(2, 4, 2, false, 200, 1);
+        Initialize(2, 4, 2, false, 10, 1);
         player = GameObject.FindGameObjectWithTag("Player");
 
     }
@@ -93,11 +93,13 @@ public class MeleeEnemy : BaseEnemyMovement
 
     protected void engageState()
     {
-        if (player.transform.position.x > transform.position.x)
+        if (player.transform.position.x > transform.position.x && 
+            transform.position.x <= rightPatrolPoint.transform.position.x)
         {
             transform.Translate(Vector2.right * EnemyChaseSpeed * Time.deltaTime);
         }
-        if (player.transform.position.x < transform.position.x)
+        if (player.transform.position.x < transform.position.x &&
+            transform.position.x >= leftPatrolPoint.transform.position.x)
         {
             transform.Translate(Vector2.left * EnemyChaseSpeed * Time.deltaTime);
         }

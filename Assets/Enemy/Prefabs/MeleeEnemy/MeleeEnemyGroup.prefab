@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1604412102669580754}
   - component: {fileID: 7896779938723054146}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RightPatrol
   m_TagString: PatrolPoint
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5470703836203181117}
   - component: {fileID: 7817980744487290112}
-  m_Layer: 2
+  m_Layer: 7
   m_Name: MeleeEnemyVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,7 +204,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3653938869849362201}
-  m_Layer: 2
+  m_Layer: 7
   m_Name: EnemyAttackRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 8492390187058883218}
   - component: {fileID: 3588435204950501600}
   - component: {fileID: 6295271814260801759}
-  m_Layer: 2
+  m_Layer: 7
   m_Name: MeleeEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -382,7 +382,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1269675689584569277}
   - component: {fileID: 7628914281094644944}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: LeftPatrol
   m_TagString: PatrolPoint
   m_Icon: {fileID: 0}

@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public bool onGround;
     private GameObject playerVisuals;
+    private int playerLayer;
+    private int playerImmuneLayer;
 
     [Header("Player Movement/Stats")]
     public float playerSpeed = 5f;
@@ -52,6 +54,8 @@ public class PlayerController : MonoBehaviour
         groundTransform = transform.Find("GroundCheck");
         playerVisuals = GameObject.Find("PlayerVisual");
         groundLayer = LayerMask.GetMask("Ground");
+        playerLayer = LayerMask.NameToLayer("Player");
+        playerImmuneLayer = LayerMask.NameToLayer("PlayerImmuneLayer");
     }
 
     private void OnEnable()
@@ -119,6 +123,8 @@ public class PlayerController : MonoBehaviour
             moveDirection = Vector2.zero;
         }
     }
+
+    //Look
 
     private void OnLookUpPerformed(InputAction.CallbackContext context)
     {
@@ -231,6 +237,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator Dash()
     {
         dashed = true;
+        playerImmune();
         Vector2 dashDir;
         if (moveDirection == Vector2.zero)
         {
@@ -251,12 +258,13 @@ public class PlayerController : MonoBehaviour
 
         dashed = false;
         dashCooldownTimer = playerDashCooldown;
+        playerVuln();
     }
 
     private IEnumerator Teleport(Vector2 teleportDirection)
     {
         teleported = true;
-
+        playerImmune();
         float startTime = Time.time;
         playerVisuals.SetActive(false);
         while (Time.time < startTime + playerTeleportDuration)
@@ -268,8 +276,10 @@ public class PlayerController : MonoBehaviour
         teleported = false; 
         teleportCooldownTimer = playerTeleportCooldown;
         playerVisuals.SetActive(true);
+        playerVuln();
     }
 
+    //Player stop/start casting
     public void playerStartCast()
     {
         isCasting = true;
@@ -281,8 +291,20 @@ public class PlayerController : MonoBehaviour
         isCasting = false;
     }
 
+    //Flips player direction
     private void flipPlayer()
     {
         lookingRight = !lookingRight;
+    }
+
+    //Player Immunity / Not immunity
+    private void playerImmune()
+    {
+        gameObject.layer = playerImmuneLayer;
+    }
+
+    private void playerVuln()
+    {
+        gameObject.layer = playerLayer;
     }
 }
