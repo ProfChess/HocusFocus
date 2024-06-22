@@ -18,6 +18,12 @@ public class EnemyHealthScript : MonoBehaviour
     public void dyingSucks()
     {
         gameObject.SetActive(false);
+        Invoke("killSelf", 1);
+    }
+
+    private void killSelf()
+    {
+        Destroy(gameObject);
     }
 
 }

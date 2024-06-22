@@ -16,11 +16,13 @@ public class SummonerEnemy : BaseEnemyMovement
     private float runCDTimer = 0f;
     private bool canRun = false;
     private Vector2 dashTarget;
+    private bool runTriggered = false;
 
     //Summoning
     public GameObject flyingEnemyPrefab;
     private bool summoning = false;
-    private bool playerRight = false;
+    private bool canSummon = true;
+    bool hasSummoned = false;
 
     //Wondering Variables
     private int wonderFreq = 3;
@@ -44,8 +46,6 @@ public class SummonerEnemy : BaseEnemyMovement
     {
         //Player gets too close -> summoner will run away
         run = Vector3.Distance(transform.position, player.transform.position) <= EnemyAttackRange;
-        //Player Direction
-        playerRight = transform.position.x <= player.transform.position.x;
 
         if (canWonder && !canSeePlayer)
         {
@@ -61,24 +61,28 @@ public class SummonerEnemy : BaseEnemyMovement
             }
         }
 
-        else if (canSeePlayer && !summoning && !run)
+        else if (canSeePlayer && !summoning && !run && canSummon)
         {
             enemySummonState();
         }
 
-        else if (canSeePlayer && !summoning && run && canRun)
+        else if ((canSeePlayer && !summoning && run && canRun) || runTriggered)
         {
+            runTriggered = true;
             enemyRunAwayState();
         }
         else if (!canRun)
         {
             runCDTimer -= Time.deltaTime;
+            canSummon = true;
             if(runCDTimer < 0f)
             {
                 findDashTarget();
                 canRun = true;
             }
         }
+
+
     }
 
     protected void enemyWonderState()
@@ -106,6 +110,16 @@ public class SummonerEnemy : BaseEnemyMovement
             targetToWalk = transform.position;
             targetToWalk.x -= wonderDistance;
         }
+
+        //Does not let summmoner walk out of bounds
+        if (targetToWalk.x >= rightLeash.position.x)
+        {
+            targetToWalk.x = rightLeash.position.x;
+        }
+        if (targetToWalk.x <= leftLeash.position.x)
+        {
+            targetToWalk.x = leftLeash.position.x;
+        }
     }
 
     protected void findDashTarget()
@@ -125,16 +139,27 @@ public class SummonerEnemy : BaseEnemyMovement
 
     }
     protected void enemyRunAwayState()
-    {
-        transform.position = Vector2.MoveTowards(transform.position, dashTarget, EnemyChaseSpeed * Time.deltaTime);
-
-        if (Vector2.Distance(transform.position, leftLeash.position) <= 0.1f ||
-            Vector2.Distance(transform.position, rightLeash.position) <= 0.1f)
+    {   
+        if (!hasSummoned)
         {
-            canRun = false;
-            runCDTimer = runningFreq;
-            findDashTarget();
+            StartCoroutine(runSummon());
+            hasSummoned = true;
         }
+        else
+        {
+            transform.position = Vector2.MoveTowards(transform.position, dashTarget, EnemyChaseSpeed * Time.deltaTime);
+            canSummon = false;
+            if (Vector2.Distance(transform.position, leftLeash.position) <= 0.1f ||
+                Vector2.Distance(transform.position, rightLeash.position) <= 0.1f)
+            {
+                canRun = false;
+                runCDTimer = runningFreq;
+                hasSummoned = false;
+                runTriggered = false;
+                findDashTarget();
+            }
+        }
+
     }
 
     protected void enemySummonState()
@@ -146,6 +171,7 @@ public class SummonerEnemy : BaseEnemyMovement
         }
     }
 
+    //Summons a flying enemy
     private IEnumerator summonFlyingEnemy()
     {
         summoning = true;
@@ -161,6 +187,29 @@ public class SummonerEnemy : BaseEnemyMovement
 
         yield return new WaitForSeconds(1f); //Summoning cooldown
         summoning = false;
+    }
+
+    //Summons two flying enemies before running away
+    private IEnumerator runSummon()
+    {
+        summoning = true;
+        //animation
+
+        yield return new WaitForSeconds(0.2f);
+
+        //summoning
+        Vector3 summonPositionA = transform.position;
+        Vector3 summonPositionB = transform.position;
+        summonPositionA.x += 1;
+        summonPositionA.y += 2;
+
+        summonPositionB.x -= 1;
+        summonPositionB.y += 2;
+        Instantiate(flyingEnemyPrefab, summonPositionA, Quaternion.identity);
+        Instantiate(flyingEnemyPrefab, summonPositionB, Quaternion.identity);
+
+        summoning = false;
+
     }
 
 }
