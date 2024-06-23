@@ -351,9 +351,9 @@ MonoBehaviour:
   playerDashSpeed: 10
   playerTeleportSpeed: 30
   lookingRight: 1
-  playerDash: 1
-  playerDoubleJump: 1
-  playerTeleport: 1
+  playerDash: 0
+  playerDoubleJump: 0
+  playerTeleport: 0
 --- !u!50 &1110253534
 Rigidbody2D:
   serializedVersion: 4
