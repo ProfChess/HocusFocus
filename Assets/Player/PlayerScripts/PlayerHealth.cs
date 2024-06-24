@@ -22,6 +22,12 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    public void increaseHealth(float amount)
+    {
+        maxHealth += amount;
+        pHealth = maxHealth;
+    }
+
 
 
 }

@@ -1312,7 +1312,7 @@ GameObject:
   - component: {fileID: 632094723}
   - component: {fileID: 632094724}
   m_Layer: 0
-  m_Name: Sprites_8
+  m_Name: Tree9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1327,11 +1327,11 @@ Transform:
   m_GameObject: {fileID: 632094722}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.6244033, y: -2.5861144, z: 0}
-  m_LocalScale: {x: 1.4285715, y: 1.4285715, z: 1}
+  m_LocalPosition: {x: 7.1779203, y: 1.178405, z: 1.0133563}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1732933248}
+  m_Father: {fileID: 647614233}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &632094724
 SpriteRenderer:
@@ -1417,6 +1417,12 @@ Transform:
   - {fileID: 210446437}
   - {fileID: 2112167668}
   - {fileID: 1999378991}
+  - {fileID: 872001583}
+  - {fileID: 998653840}
+  - {fileID: 1994820674}
+  - {fileID: 1732933248}
+  - {fileID: 2022580031}
+  - {fileID: 632094723}
   m_Father: {fileID: 524799127}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &717861045
@@ -1817,7 +1823,7 @@ GameObject:
   - component: {fileID: 872001583}
   - component: {fileID: 872001584}
   m_Layer: 0
-  m_Name: Wall2Visual2 (1)
+  m_Name: Tree4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1832,13 +1838,11 @@ Transform:
   m_GameObject: {fileID: 872001582}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.018798828, y: 1.82, z: 0}
+  m_LocalPosition: {x: -21.703796, y: 3.088685, z: 1.0133563}
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 998653840}
-  - {fileID: 1994820674}
-  m_Father: {fileID: 1349256955}
+  m_Children: []
+  m_Father: {fileID: 647614233}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &872001584
 SpriteRenderer:
@@ -2023,7 +2027,7 @@ GameObject:
   - component: {fileID: 998653840}
   - component: {fileID: 998653841}
   m_Layer: 0
-  m_Name: Sprites_5
+  m_Name: Tree5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2038,11 +2042,11 @@ Transform:
   m_GameObject: {fileID: 998653839}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.5978023, y: 0.34832734, z: 0}
-  m_LocalScale: {x: 1.4285715, y: 1.4285715, z: 1}
+  m_LocalPosition: {x: -20.585335, y: 3.3325143, z: 1.0133563}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 872001583}
+  m_Father: {fileID: 647614233}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &998653841
 SpriteRenderer:
@@ -3085,7 +3089,6 @@ Transform:
   m_Children:
   - {fileID: 1173537156}
   - {fileID: 120902049}
-  - {fileID: 872001583}
   m_Father: {fileID: 1353589430}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1349256956
@@ -3716,7 +3719,7 @@ GameObject:
   - component: {fileID: 1732933248}
   - component: {fileID: 1732933249}
   m_Layer: 0
-  m_Name: Wall2Visual2
+  m_Name: Tree7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3730,14 +3733,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1732933247}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.72, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 7.6150026, y: 2.9886851, z: 1.0133563}
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2022580031}
-  - {fileID: 632094723}
-  m_Father: {fileID: 1911958012}
+  m_Children: []
+  m_Father: {fileID: 647614233}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1732933249
 SpriteRenderer:
@@ -4137,8 +4138,7 @@ Transform:
   m_LocalPosition: {x: 13.08, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1732933248}
+  m_Children: []
   m_Father: {fileID: 1353589430}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1911958013
@@ -4197,7 +4197,7 @@ GameObject:
   - component: {fileID: 1994820674}
   - component: {fileID: 1994820675}
   m_Layer: 0
-  m_Name: Sprites_8
+  m_Name: Tree6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4212,11 +4212,11 @@ Transform:
   m_GameObject: {fileID: 1994820673}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.6244033, y: -2.5861144, z: 0}
-  m_LocalScale: {x: 1.4285715, y: 1.4285715, z: 1}
+  m_LocalPosition: {x: -22.140877, y: 1.278405, z: 1.0133563}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 872001583}
+  m_Father: {fileID: 647614233}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1994820675
 SpriteRenderer:
@@ -4533,7 +4533,7 @@ GameObject:
   - component: {fileID: 2022580031}
   - component: {fileID: 2022580032}
   m_Layer: 0
-  m_Name: Sprites_5
+  m_Name: Tree8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4548,11 +4548,11 @@ Transform:
   m_GameObject: {fileID: 2022580030}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.5978023, y: 0.34832734, z: 0}
-  m_LocalScale: {x: 1.4285715, y: 1.4285715, z: 1}
+  m_LocalPosition: {x: 8.733464, y: 3.2325144, z: 1.0133563}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1732933248}
+  m_Father: {fileID: 647614233}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2022580032
 SpriteRenderer:
