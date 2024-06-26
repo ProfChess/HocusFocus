@@ -131,7 +131,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_1
+      name: Tree1
       rect:
         serializedVersion: 2
         x: 22
@@ -152,7 +152,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_2
+      name: Tree2
       rect:
         serializedVersion: 2
         x: 114
@@ -173,7 +173,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_3
+      name: Tree3
       rect:
         serializedVersion: 2
         x: 199
@@ -194,7 +194,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_4
+      name: Tree4
       rect:
         serializedVersion: 2
         x: 281
@@ -215,7 +215,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_5
+      name: Tree5
       rect:
         serializedVersion: 2
         x: 346
@@ -236,7 +236,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_6
+      name: Tree6
       rect:
         serializedVersion: 2
         x: 421
@@ -257,7 +257,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_7
+      name: Tree7
       rect:
         serializedVersion: 2
         x: 502
@@ -278,7 +278,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_8
+      name: Tree8
       rect:
         serializedVersion: 2
         x: 550
@@ -362,7 +362,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_12
+      name: Rock6
       rect:
         serializedVersion: 2
         x: 309
@@ -383,7 +383,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_13
+      name: Plant2
       rect:
         serializedVersion: 2
         x: 369
@@ -404,7 +404,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_14
+      name: Plant4
       rect:
         serializedVersion: 2
         x: 432
@@ -425,7 +425,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_15
+      name: Plant5
       rect:
         serializedVersion: 2
         x: 448
@@ -446,7 +446,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_16
+      name: Sign1
       rect:
         serializedVersion: 2
         x: 472
@@ -467,7 +467,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_17
+      name: Sign2
       rect:
         serializedVersion: 2
         x: 502
@@ -488,7 +488,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_18
+      name: Rock1
       rect:
         serializedVersion: 2
         x: 148
@@ -509,7 +509,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_19
+      name: Rock2
       rect:
         serializedVersion: 2
         x: 179
@@ -530,7 +530,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_20
+      name: Rock3
       rect:
         serializedVersion: 2
         x: 211
@@ -551,7 +551,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_21
+      name: Rock4
       rect:
         serializedVersion: 2
         x: 248
@@ -572,7 +572,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_22
+      name: Rock5
       rect:
         serializedVersion: 2
         x: 274
@@ -593,7 +593,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_23
+      name: Plant1
       rect:
         serializedVersion: 2
         x: 339
@@ -614,7 +614,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_24
+      name: Plant3
       rect:
         serializedVersion: 2
         x: 401
@@ -740,7 +740,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_30
+      name: Leaves1
       rect:
         serializedVersion: 2
         x: 274
@@ -761,7 +761,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_31
+      name: Leaves2
       rect:
         serializedVersion: 2
         x: 296
@@ -845,7 +845,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_35
+      name: Grass1
       rect:
         serializedVersion: 2
         x: 275
@@ -866,7 +866,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_36
+      name: Grass2
       rect:
         serializedVersion: 2
         x: 280
@@ -887,7 +887,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_37
+      name: Grass3
       rect:
         serializedVersion: 2
         x: 290
@@ -908,7 +908,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_38
+      name: Grass4
       rect:
         serializedVersion: 2
         x: 306
@@ -992,7 +992,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_42
+      name: Flower1
       rect:
         serializedVersion: 2
         x: 274
@@ -1097,7 +1097,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_47
+      name: Fence
       rect:
         serializedVersion: 2
         x: 274
@@ -1336,7 +1336,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1359,52 +1359,47 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Fence: 11881124
+      Flower1: -1265804142
+      Grass1: 1085069330
+      Grass2: 1963152624
+      Grass3: -1243635228
+      Grass4: -766197850
+      Leaves1: 1308388283
+      Leaves2: -405031598
+      Plant1: -1287491953
+      Plant2: -624989119
+      Plant3: 350335443
+      Plant4: -1776149337
+      Plant5: -102411763
+      Rock1: -492158437
+      Rock2: -1461535579
+      Rock3: -525391156
+      Rock4: -1793072918
+      Rock5: -725900979
+      Rock6: 1449434868
+      Sign1: 1106348436
+      Sign2: -2091821360
       Sprites_0: -1842419969
-      Sprites_1: 142653245
       Sprites_10: -763424054
       Sprites_11: -1557892300
-      Sprites_12: 1449434868
-      Sprites_13: -624989119
-      Sprites_14: -1776149337
-      Sprites_15: -102411763
-      Sprites_16: 1106348436
-      Sprites_17: -2091821360
-      Sprites_18: -492158437
-      Sprites_19: -1461535579
-      Sprites_2: 1156733922
-      Sprites_20: -525391156
-      Sprites_21: -1793072918
-      Sprites_22: -725900979
-      Sprites_23: -1287491953
-      Sprites_24: 350335443
       Sprites_25: -777054990
       Sprites_26: -1737256354
       Sprites_27: 199115964
       Sprites_28: 685298336
       Sprites_29: -834987176
-      Sprites_3: -1054864137
-      Sprites_30: 1308388283
-      Sprites_31: -405031598
       Sprites_32: 58596488
       Sprites_33: -1213728447
       Sprites_34: -1561509724
-      Sprites_35: 1085069330
-      Sprites_36: 1963152624
-      Sprites_37: -1243635228
-      Sprites_38: -766197850
       Sprites_39: 1131466604
-      Sprites_4: 883410377
       Sprites_40: 646569157
       Sprites_41: -2053221113
-      Sprites_42: -1265804142
       Sprites_43: 1816088328
       Sprites_44: -530949113
       Sprites_45: -208424749
       Sprites_46: -2039895678
-      Sprites_47: 11881124
       Sprites_48: 1356038417
       Sprites_49: -1068193587
-      Sprites_5: -2119998073
       Sprites_50: -1824770697
       Sprites_51: 1491458554
       Sprites_52: -938776353
@@ -1414,10 +1409,15 @@ TextureImporter:
       Sprites_56: 429560072
       Sprites_57: -218767752
       Sprites_58: -352817171
-      Sprites_6: -878476532
-      Sprites_7: -8563018
-      Sprites_8: 1763342811
       Sprites_9: 587319642
+      Tree1: 142653245
+      Tree2: 1156733922
+      Tree3: -1054864137
+      Tree4: 883410377
+      Tree5: -2119998073
+      Tree6: -878476532
+      Tree7: -8563018
+      Tree8: 1763342811
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

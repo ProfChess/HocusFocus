@@ -6,7 +6,7 @@ public class PlayerCamera : MonoBehaviour
 {
     private Transform playerLocation;
     public Vector3 offset;
-    public float followSpeed = 2;
+    public float followSpeed = 5;
 
     //Camera Bounds
     public float yMax;
