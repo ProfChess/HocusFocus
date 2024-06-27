@@ -107,6 +107,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ToggleCombineCast"",
+                    ""type"": ""Button"",
+                    ""id"": ""41629ade-5c99-41b6-8ddb-d8eb11b795e6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -230,6 +239,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""ArcaneSpell"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0a4b22e7-c3c5-4c97-9a9f-cb5e81676654"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleCombineCast"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -247,6 +267,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Player_FireSpell = m_Player.FindAction("FireSpell", throwIfNotFound: true);
         m_Player_IceSpell = m_Player.FindAction("IceSpell", throwIfNotFound: true);
         m_Player_ArcaneSpell = m_Player.FindAction("ArcaneSpell", throwIfNotFound: true);
+        m_Player_ToggleCombineCast = m_Player.FindAction("ToggleCombineCast", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -317,6 +338,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_FireSpell;
     private readonly InputAction m_Player_IceSpell;
     private readonly InputAction m_Player_ArcaneSpell;
+    private readonly InputAction m_Player_ToggleCombineCast;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
@@ -330,6 +352,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @FireSpell => m_Wrapper.m_Player_FireSpell;
         public InputAction @IceSpell => m_Wrapper.m_Player_IceSpell;
         public InputAction @ArcaneSpell => m_Wrapper.m_Player_ArcaneSpell;
+        public InputAction @ToggleCombineCast => m_Wrapper.m_Player_ToggleCombineCast;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -366,6 +389,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @ArcaneSpell.started += instance.OnArcaneSpell;
             @ArcaneSpell.performed += instance.OnArcaneSpell;
             @ArcaneSpell.canceled += instance.OnArcaneSpell;
+            @ToggleCombineCast.started += instance.OnToggleCombineCast;
+            @ToggleCombineCast.performed += instance.OnToggleCombineCast;
+            @ToggleCombineCast.canceled += instance.OnToggleCombineCast;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -397,6 +423,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @ArcaneSpell.started -= instance.OnArcaneSpell;
             @ArcaneSpell.performed -= instance.OnArcaneSpell;
             @ArcaneSpell.canceled -= instance.OnArcaneSpell;
+            @ToggleCombineCast.started -= instance.OnToggleCombineCast;
+            @ToggleCombineCast.performed -= instance.OnToggleCombineCast;
+            @ToggleCombineCast.canceled -= instance.OnToggleCombineCast;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -425,5 +454,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnFireSpell(InputAction.CallbackContext context);
         void OnIceSpell(InputAction.CallbackContext context);
         void OnArcaneSpell(InputAction.CallbackContext context);
+        void OnToggleCombineCast(InputAction.CallbackContext context);
     }
 }

@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
     private float dashCooldownTimer;
     private float groundDetectRadius = 0.2f;
-    private Vector2 moveDirection;
+    public Vector2 moveDirection;
     private Vector2 lastMoveDirection;
     private float teleportCooldownTimer;
     private bool lookUp;

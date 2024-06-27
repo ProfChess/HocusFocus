@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
 public abstract class BaseEnemyMovement : MonoBehaviour
 {
-    [HideInInspector]
+
     public float EnemyPatrolSpeed;
     [HideInInspector]
     public float EnemyChaseSpeed;
@@ -17,6 +18,10 @@ public abstract class BaseEnemyMovement : MonoBehaviour
     public GameObject player;
     [HideInInspector]
     public bool canSeePlayer;
+    [HideInInspector]
+    public float tempSpeedNerf = 0f;
+    [HideInInspector]
+    private bool underStatus = false;
 
     public LayerMask playerLayer;
 
@@ -53,5 +58,26 @@ public abstract class BaseEnemyMovement : MonoBehaviour
             }
         }
     }
+
+    public virtual void slowDown(float amount, float duration)
+    {
+        tempSpeedNerf = amount;
+        if (!underStatus)
+        {
+            EnemyPatrolSpeed -= tempSpeedNerf;
+            EnemyChaseSpeed -= tempSpeedNerf;
+            underStatus = true;
+        }
+        Invoke("restoreSpeed", duration);
+    }
+
+    public virtual void restoreSpeed()
+    {
+        EnemyPatrolSpeed += tempSpeedNerf;
+        EnemyChaseSpeed += tempSpeedNerf;
+        tempSpeedNerf = 0f;
+        underStatus = false;
+    }
+
 
 }

@@ -17,6 +17,10 @@ public class IceSpellDamage : BaseSpellDamage
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);
+        if (collision.CompareTag("Enemy"))
+        {
+            collision.GetComponent<BaseEnemyMovement>().slowDown(1f, 2f);
+        }
     }
 
 
