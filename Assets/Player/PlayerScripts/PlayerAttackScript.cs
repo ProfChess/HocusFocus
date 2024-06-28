@@ -12,6 +12,7 @@ public class PlayerAttackScript : MonoBehaviour
     public BaseSpellCast FireBallCast;
     public BaseSpellCast IceSpellCast;
     public BaseSpellCast ArcaneSpellCast;
+    public BaseSpellCast FireIceCast;
 
     //Combo variables
     private bool comboStarted = false;
@@ -34,6 +35,9 @@ public class PlayerAttackScript : MonoBehaviour
             if (firstComboSpell == "Fire" && secondComboSpell == "Ice" ||
                 firstComboSpell == "Ice" && secondComboSpell == "Fire")
             {
+                playerController.playerStartCast();
+                FireIceCast.Cast(playerController.lookingRight);
+                playerController.playerStopCast();
                 Debug.Log("Fire and Ice");
             }
             if (firstComboSpell == "Fire" && secondComboSpell == "Arcane" ||

@@ -24,7 +24,6 @@ public class CasterEnemy : BaseEnemyMovement
     protected void Awake()
     {
         Initialize(0, 0, 0, false, 50, 50);
-        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     protected void Update()

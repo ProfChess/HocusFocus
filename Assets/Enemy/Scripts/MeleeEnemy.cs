@@ -14,9 +14,7 @@ public class MeleeEnemy : BaseEnemyMovement
 
     protected void Awake()
     {
-        Initialize(2, 4, 2, false, 10, 1);
-        player = GameObject.FindGameObjectWithTag("Player");
-
+        Initialize(2, 4, 2, false, 5, 1);
     }
 
     protected override void FixedUpdate()
@@ -27,11 +25,11 @@ public class MeleeEnemy : BaseEnemyMovement
     private void Update()
     {
         //Has Line of Sight
-        if (canSeePlayer && !attacking)
+        if (canSeePlayer && !attacking && !enemyBlind)
         {
             engageState();
         }
-        else if (!canSeePlayer && !attacking) 
+        else if (!canSeePlayer && !attacking || enemyBlind) 
         {
             patrolState();
         }

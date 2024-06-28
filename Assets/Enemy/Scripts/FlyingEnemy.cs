@@ -16,7 +16,13 @@ public class FlyingEnemy : BaseEnemyMovement
         if (player != null)
         {
             Vector2 chaseDirection = player.transform.position - transform.position;
+
+            if (enemyBlind)
+            {
+                chaseDirection = -chaseDirection;
+            }
             transform.Translate(chaseDirection.normalized * EnemyChaseSpeed * Time.deltaTime);
+
         }
     }
 
@@ -28,6 +34,8 @@ public class FlyingEnemy : BaseEnemyMovement
             collision.gameObject.GetComponent<PlayerHealth>().takeDamage(EnemyAttackDamage);
         }
     }
+
+
 
     protected override void FixedUpdate()
     {

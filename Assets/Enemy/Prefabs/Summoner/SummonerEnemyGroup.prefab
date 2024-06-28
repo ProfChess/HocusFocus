@@ -147,7 +147,7 @@ Transform:
   m_GameObject: {fileID: 4419390085150092164}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.47, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -245,6 +245,8 @@ MonoBehaviour:
   EnemyAttackRange: 0
   player: {fileID: 0}
   canSeePlayer: 0
+  tempSpeedNerf: 0
+  enemyBlind: 0
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -291,7 +293,7 @@ Transform:
   m_GameObject: {fileID: 7322659777794622627}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5, y: -3.47, z: 0}
+  m_LocalPosition: {x: 5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -322,7 +324,7 @@ Transform:
   m_GameObject: {fileID: 8825389234647535000}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5, y: -3.47, z: 0}
+  m_LocalPosition: {x: -5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

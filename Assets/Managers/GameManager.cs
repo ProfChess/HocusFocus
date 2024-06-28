@@ -22,11 +22,13 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        player = GameObject.FindGameObjectWithTag("Player");
+
     }
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     public void SetSpawnPoint(string spawnPoint)
@@ -57,6 +59,10 @@ public class GameManager : MonoBehaviour
                 player.transform.position = spawnPoint.transform.position;
             }
         }
+    }
+    public GameObject returnPlayer()
+    {
+        return player;
     }
 
 }

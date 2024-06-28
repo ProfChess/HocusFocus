@@ -22,9 +22,11 @@ public abstract class BaseEnemyMovement : MonoBehaviour
     public float tempSpeedNerf = 0f;
     [HideInInspector]
     private bool underStatus = false;
+    [HideInInspector]
+    public bool enemyBlind = false;
 
     public LayerMask playerLayer;
-
+    private int visionLayerMask;
     public virtual void Initialize(float EnemyPatrolSpeed, float EnemyChaseSpeed, float EnemyAttackDamage, bool canSeePlayer, float EnemyDetectRange,
         float EnemyAttackRange)
     {
@@ -38,12 +40,19 @@ public abstract class BaseEnemyMovement : MonoBehaviour
 
     protected virtual void Start()
     {
-
+        player = GameManager.Instance.returnPlayer();
     }
 
     protected virtual void FixedUpdate()
     {
-        int visionLayerMask = LayerMask.GetMask("Ground","Player");
+        if (!enemyBlind)
+        {
+            visionLayerMask = LayerMask.GetMask("Ground", "Player");
+        }
+        else if (enemyBlind)
+        {
+            visionLayerMask = LayerMask.GetMask("Ground");
+        }
         RaycastHit2D enemyVision = Physics2D.Raycast(transform.position, player.transform.position - transform.position, EnemyDetectRange, visionLayerMask); 
         if (enemyVision.collider != null)
         {
@@ -78,6 +87,17 @@ public abstract class BaseEnemyMovement : MonoBehaviour
         tempSpeedNerf = 0f;
         underStatus = false;
     }
+
+    public virtual void blindness(float duration)
+    {
+        enemyBlind = true;
+        Invoke("restoreSight", duration);
+    }
+
+    public virtual void restoreSight()
+    {
+        enemyBlind = false;
+    } 
 
 
 }

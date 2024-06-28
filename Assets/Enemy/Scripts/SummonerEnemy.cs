@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEditor.XR;
 using UnityEngine;
 
@@ -35,11 +36,11 @@ public class SummonerEnemy : BaseEnemyMovement
     protected void Awake()
     {
         Initialize(2, 4, 0, false, 10, 4);
-        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     protected override void Start()
     {
+        base.Start();
         calculateTargetPosition();
     }
     protected void Update()
@@ -47,11 +48,11 @@ public class SummonerEnemy : BaseEnemyMovement
         //Player gets too close -> summoner will run away
         run = Vector3.Distance(transform.position, player.transform.position) <= EnemyAttackRange;
 
-        if (canWonder && !canSeePlayer)
+        if (canWonder && !canSeePlayer || enemyBlind)
         {
             enemyWonderState();
         }
-        else if (!canSeePlayer) 
+        else if (!canSeePlayer || enemyBlind) 
         {
             idleTimer -= Time.deltaTime;
             if(idleTimer < 0f)
@@ -61,12 +62,12 @@ public class SummonerEnemy : BaseEnemyMovement
             }
         }
 
-        else if (canSeePlayer && !summoning && !run && canSummon)
+        else if (canSeePlayer && !summoning && !run && canSummon && !enemyBlind)
         {
             enemySummonState();
         }
 
-        else if ((canSeePlayer && !summoning && run && canRun) || runTriggered)
+        else if ((canSeePlayer && !summoning && run && canRun && !enemyBlind) || runTriggered)
         {
             runTriggered = true;
             enemyRunAwayState();

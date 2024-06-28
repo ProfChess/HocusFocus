@@ -24,19 +24,6 @@ public abstract class BaseSpellDamage : MonoBehaviour
     public float xSpawn;           //Spell spawn x coordindate
 
 
-    public virtual void Initialize(float spellDamage, Vector2 effectArea, BoxCollider2D col, float spellLength, float spellSpeed, 
-        Vector2 spellDirection, bool spellHit, float xSpawn)
-    {
-        this.spellDamage = spellDamage;
-        this.effectArea = effectArea;
-        this.col = col;
-        this.spellLength = spellLength;
-        this.spellSpeed = spellSpeed;
-        this.spellDirection = spellDirection;
-        this.xSpawn = xSpawn;
-        this.spellHit = spellHit;
-    }
-
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {   
         if (col != null)

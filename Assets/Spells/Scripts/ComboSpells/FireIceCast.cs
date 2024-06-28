@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArcaneSpellCast : BaseSpellCast
+public class FireIceCast : BaseSpellCast
 {
     protected override IEnumerator CastSpellRoutine(bool lookingRight)
     {
@@ -15,7 +15,8 @@ public class ArcaneSpellCast : BaseSpellCast
         {
             spellPrefab.transform.localScale = new Vector3(1, 1, 1);
         }
-        GameObject arcaneStorm = Instantiate(spellPrefab, spawnPoint.position, Quaternion.identity);
-        arcaneStorm.GetComponent<ArcaneSpellDamage>().arcaneAttack();
+        GameObject comboSpell = Instantiate(spellPrefab, spawnPoint.position, Quaternion.identity);
+        comboSpell.GetComponent<FireIceDamage>().AOEBlind();
     }
+
 }
