@@ -80,6 +80,7 @@ MonoBehaviour:
   IceSpellCast: {fileID: 5318198831456897357}
   ArcaneSpellCast: {fileID: 6608046967319791163}
   FireIceCast: {fileID: 77894176378688004}
+  FireArcaneCast: {fileID: 1208426980997948155}
 --- !u!114 &3927550950879835382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,6 +192,7 @@ GameObject:
   - component: {fileID: 5318198831456897357}
   - component: {fileID: 6608046967319791163}
   - component: {fileID: 77894176378688004}
+  - component: {fileID: 1208426980997948155}
   m_Layer: 0
   m_Name: PlayerSpellBook
   m_TagString: Untagged
@@ -282,6 +284,24 @@ MonoBehaviour:
   cooldownTime: 3
   castTime: 0.2
   spellPrefab: {fileID: 8167724216180319409, guid: 5b8616581c106c146916be686b10b774, type: 3}
+  rightSpellSpawn: {fileID: 1042008692738672578}
+  leftSpellSpawn: {fileID: 6352206687587204674}
+  direction: {x: 0, y: 0}
+--- !u!114 &1208426980997948155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3406929988364336159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e2a7a82c1d3de74fb6fa84f939b5f64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldownTime: 0
+  castTime: 0
+  spellPrefab: {fileID: 8384808933466695075, guid: 6994961d207b4754889cd52c8c2456da, type: 3}
   rightSpellSpawn: {fileID: 1042008692738672578}
   leftSpellSpawn: {fileID: 6352206687587204674}
   direction: {x: 0, y: 0}

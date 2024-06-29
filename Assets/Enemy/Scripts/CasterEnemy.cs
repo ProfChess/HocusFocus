@@ -28,7 +28,7 @@ public class CasterEnemy : BaseEnemyMovement
 
     protected void Update()
     {
-        if (canSeePlayer && isWithinYRange)
+        if (canSeePlayer && isWithinYRange && !enemyBlind)
         {
             casterAttackState();
         }
