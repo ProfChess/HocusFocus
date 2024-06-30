@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     private string currentSpawnPoint;
-    private GameObject player;
+    public GameObject player;
 
 
     private void Awake()

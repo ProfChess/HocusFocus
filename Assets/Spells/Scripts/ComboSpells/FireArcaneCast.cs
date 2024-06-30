@@ -9,5 +9,6 @@ public class FireArcaneCast : BaseSpellCast
         yield return base.CastSpellRoutine(lookingRight);
         GameObject comboSpell = Instantiate(spellPrefab, spawnPoint.position, Quaternion.identity);
         comboSpell.GetComponent<FireArcaneDamage>().setDirection(direction);
+        
     }
 }

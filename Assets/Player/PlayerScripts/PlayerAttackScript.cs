@@ -14,18 +14,20 @@ public class PlayerAttackScript : MonoBehaviour
     public BaseSpellCast ArcaneSpellCast;
     public BaseSpellCast FireIceCast;
     public BaseSpellCast FireArcaneCast;
+    public BaseSpellCast ArcaneIceCast;
 
     //Combo variables
     private bool comboStarted = false;
     private string firstComboSpell;
     private string secondComboSpell;
     private float comboCount = 0f;
-
+    
 
     private void Awake()
     {
         spellControls = new PlayerInput();
         playerController = GetComponent<PlayerController>();
+        
     }
 
     private void Update()
@@ -52,6 +54,9 @@ public class PlayerAttackScript : MonoBehaviour
             if (firstComboSpell == "Ice" && secondComboSpell == "Arcane" || 
                 firstComboSpell == "Arcane" && secondComboSpell == "Ice")
             {
+                playerController.playerStartCast();
+                ArcaneIceCast.Cast(playerController.lookingRight);
+                playerController.playerStopCast();
                 Debug.Log("Arcane and Ice");
             }
             comboCount = 0;

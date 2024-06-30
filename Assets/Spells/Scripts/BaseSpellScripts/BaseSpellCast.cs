@@ -18,12 +18,20 @@ public abstract class BaseSpellCast : MonoBehaviour
 
     public Vector2 direction;
 
+    public float manaCost;
+
     public virtual void Cast(bool lookingRight)
     {
         if (casting || cooldownTimer > 0f)
         {
             return;
         }
+        if (GameManager.Instance.player.GetComponent<PlayerMana>().returnCurrentMana() < manaCost)
+        {
+            Debug.Log("Not Enough Mana");
+            return;
+        }
+        GameManager.Instance.player.GetComponent<PlayerMana>().decreaseMana(manaCost);
         StartCoroutine(CastSpellRoutine(lookingRight));
     }
 
@@ -31,7 +39,6 @@ public abstract class BaseSpellCast : MonoBehaviour
     {
         casting = true;
         yield return new WaitForSeconds(castTime);
-
         if (lookingRight)
         {
             spawnPoint = rightSpellSpawn;

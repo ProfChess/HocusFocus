@@ -81,6 +81,7 @@ MonoBehaviour:
   ArcaneSpellCast: {fileID: 6608046967319791163}
   FireIceCast: {fileID: 77894176378688004}
   FireArcaneCast: {fileID: 1208426980997948155}
+  ArcaneIceCast: {fileID: 2252832739110898521}
 --- !u!114 &3927550950879835382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,6 +194,7 @@ GameObject:
   - component: {fileID: 6608046967319791163}
   - component: {fileID: 77894176378688004}
   - component: {fileID: 1208426980997948155}
+  - component: {fileID: 2252832739110898521}
   m_Layer: 0
   m_Name: PlayerSpellBook
   m_TagString: Untagged
@@ -233,6 +235,7 @@ MonoBehaviour:
   rightSpellSpawn: {fileID: 1042008692738672578}
   leftSpellSpawn: {fileID: 6352206687587204674}
   direction: {x: 0, y: 0}
+  manaCost: 1
 --- !u!114 &5318198831456897357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,6 +254,7 @@ MonoBehaviour:
   rightSpellSpawn: {fileID: 1042008692738672578}
   leftSpellSpawn: {fileID: 6352206687587204674}
   direction: {x: 0, y: 0}
+  manaCost: 1
 --- !u!114 &6608046967319791163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,6 +273,7 @@ MonoBehaviour:
   rightSpellSpawn: {fileID: 1042008692738672578}
   leftSpellSpawn: {fileID: 6352206687587204674}
   direction: {x: 0, y: 0}
+  manaCost: 3
 --- !u!114 &77894176378688004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,6 +292,7 @@ MonoBehaviour:
   rightSpellSpawn: {fileID: 1042008692738672578}
   leftSpellSpawn: {fileID: 6352206687587204674}
   direction: {x: 0, y: 0}
+  manaCost: 5
 --- !u!114 &1208426980997948155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,12 +305,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e2a7a82c1d3de74fb6fa84f939b5f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownTime: 0
-  castTime: 0
+  cooldownTime: 4
+  castTime: 0.2
   spellPrefab: {fileID: 8384808933466695075, guid: 6994961d207b4754889cd52c8c2456da, type: 3}
   rightSpellSpawn: {fileID: 1042008692738672578}
   leftSpellSpawn: {fileID: 6352206687587204674}
   direction: {x: 0, y: 0}
+  manaCost: 10
+--- !u!114 &2252832739110898521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3406929988364336159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e2afd2d6d0fa064fad5484fba594d19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldownTime: 0
+  castTime: 0
+  spellPrefab: {fileID: 2110706126932779493, guid: a04afd5f592857b4aa53a5f65a3b400c, type: 3}
+  rightSpellSpawn: {fileID: 1042008692738672578}
+  leftSpellSpawn: {fileID: 6352206687587204674}
+  direction: {x: 0, y: 0}
+  manaCost: 5
 --- !u!1 &3802322154511798357
 GameObject:
   m_ObjectHideFlags: 0

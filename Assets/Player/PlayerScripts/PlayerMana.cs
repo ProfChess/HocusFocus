@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMana : MonoBehaviour
 {
     public float maxMana = 20;
-    private float pMana;
+    public float pMana;
     private float manaRegenRate = 2;
 
     private void Start()
@@ -36,4 +36,10 @@ public class PlayerMana : MonoBehaviour
         maxMana += amount;
         pMana = maxMana;
     }
+
+    public float returnCurrentMana()
+    {
+        return pMana;
+    }
+
 }

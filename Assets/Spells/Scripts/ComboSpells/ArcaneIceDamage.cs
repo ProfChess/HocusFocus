@@ -1,24 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class FireIceDamage : BaseSpellDamage
+public class ArcaneIceDamage : BaseSpellDamage
 {
     public LayerMask enemyLayer;
     private float spellCooldown;
-    private float damageIncreaseMod = 1.25f;
+    private float dotDamage = 2f;
+    private float dotDuration = 4f;
+    private float dotInterval = 1f;
     protected void Awake()
     {
-        spellLength = 3f;
+        spellLength = 1f;
         col = GetComponent<BoxCollider2D>();
     }
 
-    public void AOEBlind()
+    public void AOEFreeze()
     {
         Vector2 boxPointA = col.bounds.min;
         Vector2 boxPointB = col.bounds.max;
         Collider2D[] enemyList = Physics2D.OverlapAreaAll(boxPointA, boxPointB, enemyLayer);
-
 
         foreach (Collider2D enemy in enemyList)
         {
@@ -26,23 +28,11 @@ public class FireIceDamage : BaseSpellDamage
             EnemyHealthScript enemyHealth = enemy.GetComponent<EnemyHealthScript>();
             if (enemyControl != null)
             {
-                enemyControl.blindness(spellLength);
-                enemyHealth.applyDamageMod(damageIncreaseMod, spellLength);
+                enemyControl.slowDown(0f, spellLength);
+                enemyHealth.applyDot(dotDamage, dotDuration, dotInterval);
             }
         }
         beginCooldown();
-    }
-
-    protected override void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision != null)
-        {
-            if (collision.CompareTag("Enemy"))
-            {
-                collision.GetComponent<BaseEnemyMovement>().blindness(spellLength);
-            }
-        }
-
     }
 
     public override void Update()
