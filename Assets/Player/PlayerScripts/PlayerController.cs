@@ -44,8 +44,14 @@ public class PlayerController : MonoBehaviour
     private bool dashed = false;
     private bool singleDash = true;
 
+    //Animation Variables
+    [Header("Player Animation")]
+    public Animator playerAnim;
+    public GameObject playerVisual;
+
     //player freeze variable
     private bool isCasting = false;
+
 
     private void Awake()
     {
@@ -113,6 +119,8 @@ public class PlayerController : MonoBehaviour
                     flipPlayer();
                 }
             }
+            //animation 
+            playerAnim.SetBool("PlayerMoving", true);
         }
     }
 
@@ -121,6 +129,7 @@ public class PlayerController : MonoBehaviour
         if (!isCasting)
         {
             moveDirection = Vector2.zero;
+            playerAnim.SetBool("PlayerMoving", false);
         }
     }
 
@@ -153,18 +162,21 @@ public class PlayerController : MonoBehaviour
                 if (onGround)
                 {
                     rb.AddForce(Vector2.up * playerJumpforce, ForceMode2D.Impulse);
+                    playerAnim.SetBool("PlayerJump", true);
                 }
                 if (!onGround && !doubleJumped)
                 {
                     rb.velocity = new Vector2(rb.velocity.x, 0);
                     rb.AddForce(Vector2.up * playerJumpforce, ForceMode2D.Impulse);
                     doubleJumped = true;
+                    playerAnim.SetBool("PlayerJump", true);
                 }
             }
 
             if (!playerDoubleJump && onGround)
             {
                 rb.AddForce(Vector2.up * playerJumpforce, ForceMode2D.Impulse);
+                playerAnim.SetBool("PlayerJump", true);
             }
         }
         
@@ -215,6 +227,12 @@ public class PlayerController : MonoBehaviour
         {
             doubleJumped = false;
             singleDash = true;
+            playerAnim.SetBool("PlayerJump", false);
+        }
+
+        if (!onGround)
+        {
+            playerAnim.SetBool("PlayerJump", true);
         }
 
         if (!dashed && !isCasting)
@@ -295,6 +313,7 @@ public class PlayerController : MonoBehaviour
     private void flipPlayer()
     {
         lookingRight = !lookingRight;
+        playerVisual.GetComponent<SpriteRenderer>().flipX = !lookingRight;
     }
 
     //Player Immunity / Not immunity

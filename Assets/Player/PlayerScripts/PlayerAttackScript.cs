@@ -21,7 +21,9 @@ public class PlayerAttackScript : MonoBehaviour
     private string firstComboSpell;
     private string secondComboSpell;
     private float comboCount = 0f;
-    
+
+    //Anim
+    public Animator playerAnim;
 
     private void Awake()
     {
@@ -40,6 +42,7 @@ public class PlayerAttackScript : MonoBehaviour
             {
                 playerController.playerStartCast();
                 FireIceCast.Cast(playerController.lookingRight);
+                playerAnim.SetTrigger("PlayerCast"); //Cast Animation
                 playerController.playerStopCast();
                 Debug.Log("Fire and Ice");
             }
@@ -48,6 +51,7 @@ public class PlayerAttackScript : MonoBehaviour
             {
                 playerController.playerStartCast();
                 FireArcaneCast.Cast(playerController.lookingRight);
+                playerAnim.SetTrigger("PlayerCast"); //Cast Animation
                 playerController.playerStopCast();
                 Debug.Log("Fire and Arcane");
             }
@@ -56,6 +60,7 @@ public class PlayerAttackScript : MonoBehaviour
             {
                 playerController.playerStartCast();
                 ArcaneIceCast.Cast(playerController.lookingRight);
+                playerAnim.SetTrigger("PlayerCast"); //Cast Animation
                 playerController.playerStopCast();
                 Debug.Log("Arcane and Ice");
             }
@@ -128,6 +133,7 @@ public class PlayerAttackScript : MonoBehaviour
                 playerController.playerStartCast();
                 Debug.Log("Fire Spell");
                 FireBallCast.Cast(playerController.lookingRight);
+                playerAnim.SetTrigger("PlayerCast"); //Cast Animation
                 playerController.playerStopCast();
             }
         }
@@ -156,6 +162,7 @@ public class PlayerAttackScript : MonoBehaviour
                 playerController.playerStartCast();
                 Debug.Log("Ice Spell");
                 IceSpellCast.Cast(playerController.lookingRight);
+                playerAnim.SetTrigger("PlayerCast"); //Cast Animation
                 playerController.playerStopCast();
             }
         }
@@ -185,6 +192,7 @@ public class PlayerAttackScript : MonoBehaviour
                 playerController.playerStartCast();
                 Debug.Log("Arcane Spell");
                 ArcaneSpellCast.Cast(playerController.lookingRight);
+                playerAnim.SetTrigger("PlayerCast"); //Cast Animation
                 playerController.playerStopCast();
             }
         }
