@@ -60,9 +60,11 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    public GameObject returnPlayer()
+
+    //End of Game
+    public void playerDeath()
     {
-        return player;
+        Time.timeScale = 0;
     }
 
 }

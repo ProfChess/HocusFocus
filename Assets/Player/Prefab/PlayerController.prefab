@@ -84,7 +84,6 @@ MonoBehaviour:
   FireIceCast: {fileID: 77894176378688004}
   FireArcaneCast: {fileID: 1208426980997948155}
   ArcaneIceCast: {fileID: 2252832739110898521}
-  playerAnim: {fileID: 6318073296587202217}
 --- !u!114 &3927550950879835382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,7 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownTime: 0.25
-  castTime: 0.5
+  castTime: 0.4
   spellPrefab: {fileID: 6216688724626356879, guid: b577a4e9846107540aad793bdb8f925b, type: 3}
   rightSpellSpawn: {fileID: 1042008692738672578}
   leftSpellSpawn: {fileID: 6352206687587204674}
@@ -254,7 +253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownTime: 0.1
-  castTime: 0.1
+  castTime: 0.2
   spellPrefab: {fileID: 8520802366858434131, guid: e119adb335f33e14c9001be8c374a865, type: 3}
   rightSpellSpawn: {fileID: 1042008692738672578}
   leftSpellSpawn: {fileID: 6352206687587204674}
@@ -273,7 +272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownTime: 0.4
-  castTime: 0.7
+  castTime: 0.8
   spellPrefab: {fileID: 2342955644684660059, guid: 39c1c9d1ce0e71749942dadcc82e435e, type: 3}
   rightSpellSpawn: {fileID: 1042008692738672578}
   leftSpellSpawn: {fileID: 6352206687587204674}
@@ -292,7 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownTime: 3
-  castTime: 0.2
+  castTime: 0.4
   spellPrefab: {fileID: 8167724216180319409, guid: 5b8616581c106c146916be686b10b774, type: 3}
   rightSpellSpawn: {fileID: 1042008692738672578}
   leftSpellSpawn: {fileID: 6352206687587204674}
@@ -311,7 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownTime: 4
-  castTime: 0.2
+  castTime: 0.8
   spellPrefab: {fileID: 8384808933466695075, guid: 6994961d207b4754889cd52c8c2456da, type: 3}
   rightSpellSpawn: {fileID: 1042008692738672578}
   leftSpellSpawn: {fileID: 6352206687587204674}
@@ -330,7 +329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownTime: 0
-  castTime: 0
+  castTime: 0.4
   spellPrefab: {fileID: 2110706126932779493, guid: a04afd5f592857b4aa53a5f65a3b400c, type: 3}
   rightSpellSpawn: {fileID: 1042008692738672578}
   leftSpellSpawn: {fileID: 6352206687587204674}
@@ -440,6 +439,7 @@ GameObject:
   - component: {fileID: 1144355047883053733}
   - component: {fileID: 9038589337689697972}
   - component: {fileID: 6318073296587202217}
+  - component: {fileID: 419281332414436723}
   m_Layer: 0
   m_Name: PlayerVisual
   m_TagString: Untagged
@@ -535,3 +535,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &419281332414436723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7032429241216833845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22aaa7a31c0ddba41ba025c7ec74bd53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

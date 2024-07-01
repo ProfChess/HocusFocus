@@ -25,6 +25,7 @@ public class PlayerHealth : MonoBehaviour
             //Anim
             playerAnim.SetTrigger("PlayerDeath");
             //Death Logic 
+            
         }
     }
 

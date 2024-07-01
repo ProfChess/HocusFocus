@@ -40,7 +40,7 @@ public abstract class BaseEnemyMovement : MonoBehaviour
 
     protected virtual void Start()
     {
-        player = GameManager.Instance.returnPlayer();
+        player = GameManager.Instance.player;
     }
 
     protected virtual void FixedUpdate()

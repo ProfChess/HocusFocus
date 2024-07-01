@@ -188,6 +188,7 @@ public class PlayerController : MonoBehaviour
         if (!dashed && dashCooldownTimer <= 0f && playerDash && singleDash && !isCasting)
         {   
             singleDash = false;
+            playerAnim.SetTrigger("PlayerDash");
             StartCoroutine(Dash());
         }
     }
