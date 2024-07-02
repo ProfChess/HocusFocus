@@ -12,9 +12,9 @@ public class PlayerController : MonoBehaviour
     private Transform groundTransform;
     [HideInInspector]
     public bool onGround;
-    private GameObject playerVisuals;
     private int playerLayer;
-    private int playerImmuneLayer;
+    private int pDashLayer;
+    private int pTeleportLayer;
 
     [Header("Player Movement/Stats")]
     public float playerSpeed = 5f;
@@ -58,10 +58,10 @@ public class PlayerController : MonoBehaviour
         inputActions = new PlayerInput();
         rb = GetComponent<Rigidbody2D>();
         groundTransform = transform.Find("GroundCheck");
-        playerVisuals = GameObject.Find("PlayerVisual");
         groundLayer = LayerMask.GetMask("Ground");
         playerLayer = LayerMask.NameToLayer("Player");
-        playerImmuneLayer = LayerMask.NameToLayer("PlayerImmuneLayer");
+        pDashLayer = LayerMask.NameToLayer("PlayerDashLayer");
+        pTeleportLayer = LayerMask.NameToLayer("PlayerTeleportLayer");
     }
 
     private void OnEnable()
@@ -198,28 +198,36 @@ public class PlayerController : MonoBehaviour
     {
         if (!isCasting)
         {
-            Vector2 teleportDirection = Vector2.zero;
-            if (lookUp)
-            {
-                teleportDirection = Vector2.up;
-            }
-            else if (lookDown)
-            {
-                teleportDirection = Vector2.down;
-            }
-
-            if (teleportDirection == Vector2.zero)
-            {
-                teleportDirection = lastMoveDirection;
-            }
-
             if (!teleported && teleportCooldownTimer <= 0f && playerTeleport)
             {
-                StartCoroutine(Teleport(teleportDirection));
+                playerAnim.Play("PlayerTeleport");
             }
+
         }
     }
 
+    public void teleportPlayer()
+    {
+        Vector2 teleportDirection = lastMoveDirection;
+        if (lookUp)
+        {
+            teleportDirection = Vector2.up;
+        }
+        else if (lookDown)
+        {
+            teleportDirection = Vector2.down;
+        }
+
+        if (teleportDirection == Vector2.zero)
+        {
+            teleportDirection = Vector2.right;
+        }
+
+        if (!teleported && teleportCooldownTimer <= 0f && playerTeleport)
+        {
+            StartCoroutine(Teleport(teleportDirection));
+        }
+    }
     private void Update()
     {
         onGround = Physics2D.OverlapCircle(groundTransform.position, groundDetectRadius, groundLayer);
@@ -256,7 +264,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator Dash()
     {
         dashed = true;
-        playerImmune();
+        playerDashLayer();
         Vector2 dashDir;
         if (moveDirection == Vector2.zero)
         {
@@ -277,15 +285,15 @@ public class PlayerController : MonoBehaviour
 
         dashed = false;
         dashCooldownTimer = playerDashCooldown;
-        playerVuln();
+        playerBasicLayer();
     }
 
     private IEnumerator Teleport(Vector2 teleportDirection)
     {
         teleported = true;
-        playerImmune();
+        playerTeleportLayer();
         float startTime = Time.time;
-        playerVisuals.SetActive(false);
+        playerVisual.GetComponent<SpriteRenderer>().sortingOrder = -16;
         while (Time.time < startTime + playerTeleportDuration)
         {
             transform.Translate(teleportDirection * playerTeleportSpeed *  Time.deltaTime);
@@ -294,8 +302,9 @@ public class PlayerController : MonoBehaviour
 
         teleported = false; 
         teleportCooldownTimer = playerTeleportCooldown;
-        playerVisuals.SetActive(true);
-        playerVuln();
+        rb.velocity = Vector2.zero;
+        playerVisual.GetComponent<SpriteRenderer>().sortingOrder = 1;
+        playerBasicLayer();
     }
 
     //Player stop/start casting
@@ -318,13 +327,19 @@ public class PlayerController : MonoBehaviour
     }
 
     //Player Immunity / Not immunity
-    private void playerImmune()
+    private void playerDashLayer()
     {
-        gameObject.layer = playerImmuneLayer;
+        gameObject.layer = pDashLayer;
     }
 
-    private void playerVuln()
+    private void playerBasicLayer()
     {
         gameObject.layer = playerLayer;
     }
+
+    private void playerTeleportLayer()
+    {
+        gameObject.layer = pTeleportLayer;
+    }
+
 }
