@@ -15,6 +15,11 @@ public class ArcaneIceCast : BaseSpellCast
         {
             spellPrefab.transform.localScale = new Vector3(1, 1, 1);
         }
+
+    }
+
+    public override void spawnSpell()
+    {
         GameObject comboSpell = Instantiate(spellPrefab, spawnPoint.position, Quaternion.identity);
         comboSpell.GetComponent<ArcaneIceDamage>().AOEFreeze();
     }

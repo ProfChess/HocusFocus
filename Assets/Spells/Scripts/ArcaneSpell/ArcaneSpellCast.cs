@@ -15,6 +15,11 @@ public class ArcaneSpellCast : BaseSpellCast
         {
             spellPrefab.transform.localScale = new Vector3(1, 1, 1);
         }
+
+    }
+
+    public override void spawnSpell()
+    {
         GameObject arcaneStorm = Instantiate(spellPrefab, spawnPoint.position, Quaternion.identity);
         arcaneStorm.GetComponent<ArcaneSpellDamage>().arcaneAttack();
     }

@@ -15,6 +15,7 @@ public class PlayerAttackScript : MonoBehaviour
     public BaseSpellCast FireIceCast;
     public BaseSpellCast FireArcaneCast;
     public BaseSpellCast ArcaneIceCast;
+    private string spellBeingCast;
 
     //Combo variables
     private bool comboStarted = false;
@@ -22,7 +23,7 @@ public class PlayerAttackScript : MonoBehaviour
     private string secondComboSpell;
     private float comboCount = 0f;
 
-
+    private bool isCastingSpell = false;
     private void Awake()
     {
         spellControls = new PlayerInput();
@@ -31,6 +32,16 @@ public class PlayerAttackScript : MonoBehaviour
 
     private void Update()
     {
+        if (FireBallCast.casting || IceSpellCast.casting || ArcaneSpellCast.casting ||
+            FireIceCast.casting || FireArcaneCast.casting || ArcaneIceCast.casting)
+        {
+            isCastingSpell = true;
+        }
+        else
+        {
+            isCastingSpell = false;
+        }
+
         if (comboCount == 2)
         {
             //Perform Combo
@@ -38,6 +49,7 @@ public class PlayerAttackScript : MonoBehaviour
                 firstComboSpell == "Ice" && secondComboSpell == "Fire")
             {
                 playerController.playerStartCast();
+                spellBeingCast = "FireIce";
                 FireIceCast.Cast(playerController.lookingRight);
                 playerController.playerStopCast();
                 Debug.Log("Fire and Ice");
@@ -46,6 +58,7 @@ public class PlayerAttackScript : MonoBehaviour
                 firstComboSpell == "Arcane" && secondComboSpell == "Fire")
             {
                 playerController.playerStartCast();
+                spellBeingCast = "FireArcane";
                 FireArcaneCast.Cast(playerController.lookingRight);
                 playerController.playerStopCast();
                 Debug.Log("Fire and Arcane");
@@ -54,6 +67,7 @@ public class PlayerAttackScript : MonoBehaviour
                 firstComboSpell == "Arcane" && secondComboSpell == "Ice")
             {
                 playerController.playerStartCast();
+                spellBeingCast = "ArcaneIce";
                 ArcaneIceCast.Cast(playerController.lookingRight);
                 playerController.playerStopCast();
                 Debug.Log("Arcane and Ice");
@@ -67,6 +81,8 @@ public class PlayerAttackScript : MonoBehaviour
             comboCount = 0;
             comboStarted = false;
         }
+
+
     }
 
     private void OnEnable()
@@ -106,7 +122,11 @@ public class PlayerAttackScript : MonoBehaviour
 
     //FireSpell
     private void OnFireSpellCast(InputAction.CallbackContext obj)
-    {   
+    {
+        if (isCastingSpell)
+        {
+            return;
+        }
         if (comboStarted)
         {
             if(comboCount == 0)
@@ -126,6 +146,7 @@ public class PlayerAttackScript : MonoBehaviour
             {
                 playerController.playerStartCast();
                 Debug.Log("Fire Spell");
+                spellBeingCast = "Fire";
                 FireBallCast.Cast(playerController.lookingRight);
                 playerController.playerStopCast();
             }
@@ -135,6 +156,10 @@ public class PlayerAttackScript : MonoBehaviour
     //IceSpell
     private void OnIceSpellCast(InputAction.CallbackContext obj)
     {
+        if (isCastingSpell)
+        {
+            return;
+        }
         if (comboStarted)
         {
             if (comboCount == 0)
@@ -154,6 +179,7 @@ public class PlayerAttackScript : MonoBehaviour
             {
                 playerController.playerStartCast();
                 Debug.Log("Ice Spell");
+                spellBeingCast = "Ice";
                 IceSpellCast.Cast(playerController.lookingRight);
                 playerController.playerStopCast();
             }
@@ -164,6 +190,10 @@ public class PlayerAttackScript : MonoBehaviour
     //ArcaneSpell
     private void OnArcaneSpellCast(InputAction.CallbackContext obj)
     {
+        if (isCastingSpell)
+        {
+            return;
+        }
         if (comboStarted)
         {
             if (comboCount == 0)
@@ -183,6 +213,7 @@ public class PlayerAttackScript : MonoBehaviour
             {
                 playerController.playerStartCast();
                 Debug.Log("Arcane Spell");
+                spellBeingCast = "Arcane";
                 ArcaneSpellCast.Cast(playerController.lookingRight);
                 playerController.playerStopCast();
             }
@@ -207,6 +238,9 @@ public class PlayerAttackScript : MonoBehaviour
 
     }
 
-
+    public string getSpellBeingCast()
+    {
+        return spellBeingCast;
+    }
 
 }

@@ -8,7 +8,7 @@ public abstract class BaseSpellCast : MonoBehaviour
     // Spell Casting Stats
     public float cooldownTime;
     public float castTime;
-    protected bool casting;
+    public bool casting;
     protected float cooldownTimer;
 
     public GameObject spellPrefab;
@@ -103,5 +103,8 @@ public abstract class BaseSpellCast : MonoBehaviour
         }
     }
 
+    public virtual void spawnSpell()
+    {
 
+    }
 }

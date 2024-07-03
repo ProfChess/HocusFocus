@@ -235,6 +235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldownTime: 0.25
   castTime: 0.4
+  casting: 0
   spellPrefab: {fileID: 6216688724626356879, guid: b577a4e9846107540aad793bdb8f925b, type: 3}
   rightSpellSpawn: {fileID: 1042008692738672578}
   leftSpellSpawn: {fileID: 6352206687587204674}
@@ -254,6 +255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldownTime: 0.1
   castTime: 0.2
+  casting: 0
   spellPrefab: {fileID: 8520802366858434131, guid: e119adb335f33e14c9001be8c374a865, type: 3}
   rightSpellSpawn: {fileID: 1042008692738672578}
   leftSpellSpawn: {fileID: 6352206687587204674}
@@ -273,6 +275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldownTime: 0.4
   castTime: 0.8
+  casting: 0
   spellPrefab: {fileID: 2342955644684660059, guid: 39c1c9d1ce0e71749942dadcc82e435e, type: 3}
   rightSpellSpawn: {fileID: 1042008692738672578}
   leftSpellSpawn: {fileID: 6352206687587204674}
@@ -292,6 +295,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldownTime: 3
   castTime: 0.4
+  casting: 0
   spellPrefab: {fileID: 8167724216180319409, guid: 5b8616581c106c146916be686b10b774, type: 3}
   rightSpellSpawn: {fileID: 1042008692738672578}
   leftSpellSpawn: {fileID: 6352206687587204674}
@@ -311,6 +315,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldownTime: 4
   castTime: 0.8
+  casting: 0
   spellPrefab: {fileID: 8384808933466695075, guid: 6994961d207b4754889cd52c8c2456da, type: 3}
   rightSpellSpawn: {fileID: 1042008692738672578}
   leftSpellSpawn: {fileID: 6352206687587204674}
@@ -330,6 +335,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldownTime: 0
   castTime: 0.4
+  casting: 0
   spellPrefab: {fileID: 2110706126932779493, guid: a04afd5f592857b4aa53a5f65a3b400c, type: 3}
   rightSpellSpawn: {fileID: 1042008692738672578}
   leftSpellSpawn: {fileID: 6352206687587204674}
@@ -547,3 +553,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22aaa7a31c0ddba41ba025c7ec74bd53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerAttacks: {fileID: 4374012070836542875}
