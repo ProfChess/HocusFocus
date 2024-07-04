@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class FireArcaneCast : BaseSpellCast
 {
-    protected override IEnumerator CastSpellRoutine(bool lookingRight)
+    protected override IEnumerator CastSpellRoutine()
     {
-        yield return base.CastSpellRoutine(lookingRight);
+        yield return base.CastSpellRoutine();
     }
 
     public override void spawnSpell()
     {
+        base.spawnSpell();
         GameObject comboSpell = Instantiate(spellPrefab, spawnPoint.position, Quaternion.identity);
         comboSpell.GetComponent<FireArcaneDamage>().setDirection(direction);
     }

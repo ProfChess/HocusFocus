@@ -9,7 +9,7 @@ public class MeleeEnemy : BaseEnemyMovement
     private Transform leftPatrolPoint;
     [SerializeField]
     private Transform rightPatrolPoint;
-    private bool isRight = true;
+    private Vector2 moveDir = Vector2.right;
     private bool attacking = false;
 
     protected void Awake()
@@ -32,6 +32,16 @@ public class MeleeEnemy : BaseEnemyMovement
         else if (!canSeePlayer && !attacking || enemyBlind) 
         {
             patrolState();
+        }
+
+        //Patrol Direction
+        if (transform.position.x >= rightPatrolPoint.position.x)
+        {
+            moveDir = Vector2.left;
+        }
+        if (transform.position.x <= leftPatrolPoint.position.x)
+        {
+            moveDir = Vector2.right;
         }
 
         Vector2 lookPlayer = player.transform.position - transform.position;
@@ -77,16 +87,7 @@ public class MeleeEnemy : BaseEnemyMovement
 
     protected void patrolState()
     {   
-        if (isRight && transform.position.x <= rightPatrolPoint.position.x)
-        {
-            transform.Translate(Vector2.right * EnemyPatrolSpeed * Time.deltaTime);
-        }
-
-        else if (!isRight && transform.position.x >= leftPatrolPoint.position.x)
-        {
-            transform.Translate(Vector2.left * EnemyPatrolSpeed * Time.deltaTime);
-        }
-
+        transform.Translate(moveDir * EnemyPatrolSpeed * Time.deltaTime);
     }
 
     protected void engageState()
@@ -103,13 +104,6 @@ public class MeleeEnemy : BaseEnemyMovement
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("PatrolPoint"))
-        {
-            isRight = !isRight;
-        }
 
-    }
 
 }

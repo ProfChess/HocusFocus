@@ -50,7 +50,7 @@ public class PlayerAttackScript : MonoBehaviour
             {
                 playerController.playerStartCast();
                 spellBeingCast = "FireIce";
-                FireIceCast.Cast(playerController.lookingRight);
+                FireIceCast.Cast();
                 playerController.playerStopCast();
                 Debug.Log("Fire and Ice");
             }
@@ -59,7 +59,7 @@ public class PlayerAttackScript : MonoBehaviour
             {
                 playerController.playerStartCast();
                 spellBeingCast = "FireArcane";
-                FireArcaneCast.Cast(playerController.lookingRight);
+                FireArcaneCast.Cast();
                 playerController.playerStopCast();
                 Debug.Log("Fire and Arcane");
             }
@@ -68,7 +68,7 @@ public class PlayerAttackScript : MonoBehaviour
             {
                 playerController.playerStartCast();
                 spellBeingCast = "ArcaneIce";
-                ArcaneIceCast.Cast(playerController.lookingRight);
+                ArcaneIceCast.Cast();
                 playerController.playerStopCast();
                 Debug.Log("Arcane and Ice");
             }
@@ -147,7 +147,7 @@ public class PlayerAttackScript : MonoBehaviour
                 playerController.playerStartCast();
                 Debug.Log("Fire Spell");
                 spellBeingCast = "Fire";
-                FireBallCast.Cast(playerController.lookingRight);
+                FireBallCast.Cast();
                 playerController.playerStopCast();
             }
         }
@@ -180,7 +180,7 @@ public class PlayerAttackScript : MonoBehaviour
                 playerController.playerStartCast();
                 Debug.Log("Ice Spell");
                 spellBeingCast = "Ice";
-                IceSpellCast.Cast(playerController.lookingRight);
+                IceSpellCast.Cast();
                 playerController.playerStopCast();
             }
         }
@@ -214,7 +214,7 @@ public class PlayerAttackScript : MonoBehaviour
                 playerController.playerStartCast();
                 Debug.Log("Arcane Spell");
                 spellBeingCast = "Arcane";
-                ArcaneSpellCast.Cast(playerController.lookingRight);
+                ArcaneSpellCast.Cast();
                 playerController.playerStopCast();
             }
         }

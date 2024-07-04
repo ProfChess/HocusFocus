@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class ArcaneIceCast : BaseSpellCast
 {
-    protected override IEnumerator CastSpellRoutine(bool lookingRight)
+    protected override IEnumerator CastSpellRoutine()
     {
-        yield return base.CastSpellRoutine(lookingRight);
+        yield return base.CastSpellRoutine();
+    }
+
+    public override void spawnSpell()
+    {
+        base.spawnSpell();
         if (!lookingRight)
         {
             spellPrefab.transform.localScale = new Vector3(-1, 1, 1);
@@ -15,11 +20,6 @@ public class ArcaneIceCast : BaseSpellCast
         {
             spellPrefab.transform.localScale = new Vector3(1, 1, 1);
         }
-
-    }
-
-    public override void spawnSpell()
-    {
         GameObject comboSpell = Instantiate(spellPrefab, spawnPoint.position, Quaternion.identity);
         comboSpell.GetComponent<ArcaneIceDamage>().AOEFreeze();
     }

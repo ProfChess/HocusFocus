@@ -13,6 +13,11 @@ public class EnemyHealthScript : MonoBehaviour
     private float dotDamage = 0f;
     private float dotDuration = 0f;
     private float dotInterval = 1f;
+
+    private void Start()
+    {
+        gameObject.SetActive(true);
+    }
     public void takeDamage(float damage)
     {
         enemyHealth -= damage * enemyDamageMod;
@@ -25,13 +30,10 @@ public class EnemyHealthScript : MonoBehaviour
     public void dyingSucks()
     {
         gameObject.SetActive(false);
-        Invoke("killSelf", 1);
+        gameObject.GetComponent<BaseEnemyMovement>().returnToStart();
     }
 
-    private void killSelf()
-    {
-        Destroy(gameObject);
-    }
+
 
     public void applyDamageMod(float amount, float duration)
     {

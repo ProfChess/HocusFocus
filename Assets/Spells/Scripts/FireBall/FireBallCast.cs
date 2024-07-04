@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class FireBallCast : BaseSpellCast
 {
-    protected override IEnumerator CastSpellRoutine(bool lookingRight)
+    protected override IEnumerator CastSpellRoutine()
     {
-        yield return base.CastSpellRoutine(lookingRight);
+        yield return base.CastSpellRoutine();
     }
 
     public override void spawnSpell()
     {
+        base.spawnSpell();
         GameObject fireball = Instantiate(spellPrefab, spawnPoint.position, Quaternion.identity);
         fireball.GetComponent<FireBallDamage>().setDirection(direction);
     }

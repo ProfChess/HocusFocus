@@ -16,6 +16,7 @@ public abstract class BaseEnemyMovement : MonoBehaviour
     [HideInInspector]
     public float EnemyAttackRange;
     public GameObject player;
+    private Transform startLocation;
     [HideInInspector]
     public bool canSeePlayer;
     [HideInInspector]
@@ -41,6 +42,7 @@ public abstract class BaseEnemyMovement : MonoBehaviour
     protected virtual void Start()
     {
         player = GameManager.Instance.player;
+        startLocation = transform;
     }
 
     protected virtual void FixedUpdate()
@@ -98,6 +100,11 @@ public abstract class BaseEnemyMovement : MonoBehaviour
     {
         enemyBlind = false;
     } 
+
+    public void returnToStart()
+    {
+        transform.position = startLocation.position;
+    }
 
 
 }

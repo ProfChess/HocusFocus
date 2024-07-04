@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     private float playerTeleportCooldown = 3f;
 
     private float dashCooldownTimer;
-    private float groundDetectRadius = 0.2f;
+    private Vector2 groundDetectRange = new (2f, 0.2f);
     public Vector2 moveDirection;
     private Vector2 lastMoveDirection;
     private float teleportCooldownTimer;
@@ -230,7 +230,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-        onGround = Physics2D.OverlapCircle(groundTransform.position, groundDetectRadius, groundLayer);
+        onGround = Physics2D.OverlapBox(groundTransform.position, groundDetectRange, 0, groundLayer);
 
         if (onGround)
         {
@@ -340,6 +340,12 @@ public class PlayerController : MonoBehaviour
     private void playerTeleportLayer()
     {
         gameObject.layer = pTeleportLayer;
+    }
+
+    //Gets
+    public bool getLookingRight()
+    {
+        return lookingRight;
     }
 
 }

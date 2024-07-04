@@ -10,6 +10,7 @@ public abstract class BaseSpellCast : MonoBehaviour
     public float castTime;
     public bool casting;
     protected float cooldownTimer;
+    protected bool lookingRight;
 
     public GameObject spellPrefab;
     public Transform rightSpellSpawn;
@@ -23,7 +24,7 @@ public abstract class BaseSpellCast : MonoBehaviour
     //Animation
     private Animator playerAnim;
 
-    public virtual void Cast(bool lookingRight)
+    public virtual void Cast()
     {
         if (casting)
         {
@@ -41,23 +42,14 @@ public abstract class BaseSpellCast : MonoBehaviour
         }
         GameManager.Instance.player.GetComponent<PlayerMana>().decreaseMana(manaCost);
         playerAnim.SetTrigger(castAnim());
-        StartCoroutine(CastSpellRoutine(lookingRight));
+        StartCoroutine(CastSpellRoutine());
     }
 
-    protected virtual IEnumerator CastSpellRoutine(bool lookingRight)
+    protected virtual IEnumerator CastSpellRoutine()
     {
         casting = true;
         yield return new WaitForSeconds(castTime);
-        if (lookingRight)
-        {
-            spawnPoint = rightSpellSpawn;
-            direction = Vector2.right;
-        }
-        else
-        {
-            spawnPoint = leftSpellSpawn;
-            direction = Vector2.left;
-        }
+
         casting = false;
         cooldownTimer = cooldownTime;
     }
@@ -105,6 +97,16 @@ public abstract class BaseSpellCast : MonoBehaviour
 
     public virtual void spawnSpell()
     {
-
+        lookingRight = GameManager.Instance.player.GetComponent<PlayerController>().getLookingRight();
+        if (lookingRight)
+        {
+            spawnPoint = rightSpellSpawn;
+            direction = Vector2.right;
+        }
+        else
+        {
+            spawnPoint = leftSpellSpawn;
+            direction = Vector2.left;
+        }
     }
 }
