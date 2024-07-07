@@ -482,7 +482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: Room_1
-  spawnPointName: LeftEntranceSpawn
+  spawnPointName: LeftDoorSpawn
 --- !u!61 &155327585
 BoxCollider2D:
   m_ObjectHideFlags: 0
