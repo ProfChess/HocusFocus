@@ -24,6 +24,10 @@ public class FlyingEnemy : BaseEnemyMovement
             transform.Translate(chaseDirection.normalized * EnemyChaseSpeed * Time.deltaTime);
 
         }
+        if (gameObject.GetComponent<EnemyHealthScript>().enemyHealth == 0)
+        {
+            Invoke("deleteEnemy", 1);
+        }
     }
 
     protected void OnTriggerEnter2D(Collider2D collision)
@@ -35,10 +39,13 @@ public class FlyingEnemy : BaseEnemyMovement
         }
     }
 
-
-
     protected override void FixedUpdate()
     {
         
+    }
+
+    private void deleteEnemy()
+    {
+        Destroy(gameObject);
     }
 }

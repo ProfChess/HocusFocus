@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class PlayerAnimationEvents : MonoBehaviour
 {
     public PlayerAttackScript playerAttacks;
-
+    private string spellDecision; 
     public void endGame()
     {
         GameManager.Instance.playerDeath();
@@ -18,8 +19,14 @@ public class PlayerAnimationEvents : MonoBehaviour
 
     public void spellCreator()
     {
-        spellSpawner(playerAttacks.getSpellBeingCast());
+        spellSpawner(spellDecision);
     }
+
+    public void spellDecide()
+    {
+        spellDecision = playerAttacks.getSpellBeingCast();
+    }
+
     private void spellSpawner(string spellName)
     {
         if (spellName == "Fire")

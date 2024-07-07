@@ -169,7 +169,7 @@ public class PlayerController : MonoBehaviour
                     rb.velocity = new Vector2(rb.velocity.x, 0);
                     rb.AddForce(Vector2.up * playerJumpforce, ForceMode2D.Impulse);
                     doubleJumped = true;
-                    playerAnim.SetBool("PlayerJump", true);
+                    playerAnim.Play("PlayerJump", 0, 0f);
                 }
             }
 

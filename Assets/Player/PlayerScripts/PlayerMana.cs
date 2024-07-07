@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMana : MonoBehaviour
 {
@@ -8,9 +9,11 @@ public class PlayerMana : MonoBehaviour
     public float pMana;
     private float manaRegenRate = 2;
 
+
     private void Start()
     {
         pMana = maxMana;
+        UIManager.Instance.updateManaBar(pMana, maxMana);
     }
 
     private void Update()
@@ -24,6 +27,7 @@ public class PlayerMana : MonoBehaviour
                 pMana = maxMana;
             }
         }
+        UIManager.Instance.updateManaBar(pMana, maxMana);
     }
 
     public void decreaseMana(float amount)
@@ -41,5 +45,7 @@ public class PlayerMana : MonoBehaviour
     {
         return pMana;
     }
+
+
 
 }

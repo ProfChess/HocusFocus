@@ -30,6 +30,7 @@ public class EnemyHealthScript : MonoBehaviour
     public void dyingSucks()
     {
         gameObject.SetActive(false);
+        StopCoroutine(DOT());
         gameObject.GetComponent<BaseEnemyMovement>().returnToStart();
     }
 
