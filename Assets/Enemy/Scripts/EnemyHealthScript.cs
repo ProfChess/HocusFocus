@@ -14,17 +14,18 @@ public class EnemyHealthScript : MonoBehaviour
     private float dotDuration = 0f;
     private float dotInterval = 1f;
 
+    //Anim
+    public Animator enemyAnim;
+
     private void Start()
     {
         gameObject.SetActive(true);
+        enemyAnim = gameObject.GetComponentInChildren<Animator>();
     }
     public void takeDamage(float damage)
     {
         enemyHealth -= damage * enemyDamageMod;
-        if (enemyHealth <= 0)
-        {
-            dyingSucks();
-        }
+        enemyAnim.SetTrigger("Hurt");
     }
 
     public void dyingSucks()

@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
     //End of Game
     public void playerDeath()
     {
+        player.GetComponent<PlayerController>().playerSpeed = 0;
         Time.timeScale = 0;
     }
 
