@@ -101,7 +101,7 @@ public abstract class BaseEnemyMovement : MonoBehaviour
         enemyBlind = false;
     } 
 
-    public void returnToStart()
+    public virtual void returnToStart()
     {
         transform.position = startLocation.position;
     }

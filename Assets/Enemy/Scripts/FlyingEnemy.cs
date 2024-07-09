@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class FlyingEnemy : BaseEnemyMovement
 {
@@ -13,20 +12,20 @@ public class FlyingEnemy : BaseEnemyMovement
 
     private void Update()
     {
-        if (player != null)
+        if (player)
         {
             Vector2 chaseDirection = player.transform.position - transform.position;
-
+            gameObject.GetComponentInChildren<SpriteRenderer>().flipX = player.transform.position.x < transform.position.x;
             if (enemyBlind)
             {
                 chaseDirection = -chaseDirection;
+                transform.Translate(chaseDirection.normalized * EnemyChaseSpeed * Time.deltaTime);
             }
-            transform.Translate(chaseDirection.normalized * EnemyChaseSpeed * Time.deltaTime);
+            else
+            {
+                transform.Translate(chaseDirection.normalized * EnemyChaseSpeed * Time.deltaTime);
+            }
 
-        }
-        if (gameObject.GetComponent<EnemyHealthScript>().enemyHealth == 0)
-        {
-            Invoke("deleteEnemy", 1);
         }
     }
 
@@ -44,8 +43,9 @@ public class FlyingEnemy : BaseEnemyMovement
         
     }
 
-    private void deleteEnemy()
+
+    public override void returnToStart()
     {
-        Destroy(gameObject);
+
     }
 }

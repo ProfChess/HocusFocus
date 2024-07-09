@@ -20,12 +20,22 @@ public class EnemyHealthScript : MonoBehaviour
     private void Start()
     {
         gameObject.SetActive(true);
-        enemyAnim = gameObject.GetComponentInChildren<Animator>();
     }
     public void takeDamage(float damage)
     {
         enemyHealth -= damage * enemyDamageMod;
-        enemyAnim.SetTrigger("Hurt");
+        if (enemyAnim)
+        {
+            enemyAnim.SetTrigger("Hurt");
+        }
+        else
+        {
+            if (enemyHealth <= 0f)
+            {
+                dyingSucks();
+                Invoke("die", 1);
+            }
+        }
     }
 
     public void dyingSucks()
@@ -76,4 +86,8 @@ public class EnemyHealthScript : MonoBehaviour
         isDotActive = false;
     }
 
+    private void die()
+    {
+        Destroy(gameObject);
+    }
 }
