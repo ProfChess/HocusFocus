@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
-using UnityEditor.XR;
 using UnityEngine;
 
 public class SummonerEnemy : BaseEnemyMovement
@@ -24,6 +22,8 @@ public class SummonerEnemy : BaseEnemyMovement
     private bool summoning = false;
     private bool canSummon = true;
     bool hasSummoned = false;
+    [HideInInspector]
+    public string summonType;
 
     //Wondering Variables
     private int wonderFreq = 3;
@@ -33,6 +33,9 @@ public class SummonerEnemy : BaseEnemyMovement
     private bool canWonder = false;
     private float idleTimer = 0f;
 
+    //Animation Variables
+    public Animator enemyAnim;
+    private SpriteRenderer sr;
     protected void Awake()
     {
         Initialize(2, 4, 0, false, 10, 4);
@@ -41,12 +44,15 @@ public class SummonerEnemy : BaseEnemyMovement
     protected override void Start()
     {
         base.Start();
+        sr = GetComponentInChildren<SpriteRenderer>();
         calculateTargetPosition();
     }
     protected void Update()
     {
         //Player gets too close -> summoner will run away
         run = Vector3.Distance(transform.position, player.transform.position) <= EnemyAttackRange;
+
+        
 
         if (canWonder && !canSeePlayer || enemyBlind)
         {
@@ -64,18 +70,21 @@ public class SummonerEnemy : BaseEnemyMovement
 
         else if (canSeePlayer && !summoning && !run && canSummon && !enemyBlind)
         {
+            summonType = "Single";
             enemySummonState();
         }
 
         else if ((canSeePlayer && !summoning && run && canRun && !enemyBlind) || runTriggered)
         {
             runTriggered = true;
+            summonType = "Double";
             enemyRunAwayState();
         }
         else if (!canRun)
         {
             runCDTimer -= Time.deltaTime;
             canSummon = true;
+            enemyAnim.SetBool("Running", false);
             if(runCDTimer < 0f)
             {
                 findDashTarget();
@@ -94,6 +103,11 @@ public class SummonerEnemy : BaseEnemyMovement
         {
             canWonder = false;
             idleTimer = wonderFreq;
+            enemyAnim.SetBool("Moving", false);
+        }
+        else
+        {
+            enemyAnim.SetBool("Moving", true);
         }
     }
 
@@ -101,15 +115,17 @@ public class SummonerEnemy : BaseEnemyMovement
     {
         float wonderDir = Random.Range(1, 3);
         float wonderDistance = Random.Range(wonderMinDistance, wonderMaxDistance);
-        if (wonderDir == 1)
+        if (wonderDir == 1) //Right
         {
             targetToWalk = transform.position;
             targetToWalk.x += wonderDistance;
+            sr.flipX = false;
         }
-        else if (wonderDir == 2)
+        else if (wonderDir == 2) //Left
         {
             targetToWalk = transform.position;
             targetToWalk.x -= wonderDistance;
+            sr.flipX = true;
         }
 
         //Does not let summmoner walk out of bounds
@@ -158,6 +174,7 @@ public class SummonerEnemy : BaseEnemyMovement
                 hasSummoned = false;
                 runTriggered = false;
                 findDashTarget();
+                enemyAnim.SetBool("Running", false);
             }
         }
 
@@ -177,17 +194,18 @@ public class SummonerEnemy : BaseEnemyMovement
     {
         summoning = true;
         //Animation trigger
+        enemyAnim.SetTrigger("Summoning");
 
-        yield return new WaitForSeconds(0.5f); //Length of summoning anim
-
-        //Summoning Logic
-        Vector3 summonPosition = transform.position;
-        summonPosition.x += 1;
-        summonPosition.y += 1;
-        Instantiate(flyingEnemyPrefab, summonPosition, Quaternion.identity);
 
         yield return new WaitForSeconds(1f); //Summoning cooldown
         summoning = false;
+    }
+
+    public void basicSummonAbility() //Called by animation event 
+    {
+        //Summoning Logic
+        Vector3 summonPosition = transform.position;
+        Instantiate(flyingEnemyPrefab, summonPosition, Quaternion.identity);
     }
 
     //Summons two flying enemies before running away
@@ -195,22 +213,23 @@ public class SummonerEnemy : BaseEnemyMovement
     {
         summoning = true;
         //animation
-
+        enemyAnim.SetTrigger("Summoning");
+        enemyAnim.SetBool("Running", true);
         yield return new WaitForSeconds(0.2f);
-
-        //summoning
-        Vector3 summonPositionA = transform.position;
-        Vector3 summonPositionB = transform.position;
-        summonPositionA.x += 1;
-        summonPositionA.y += 2;
-
-        summonPositionB.x -= 1;
-        summonPositionB.y += 2;
-        Instantiate(flyingEnemyPrefab, summonPositionA, Quaternion.identity);
-        Instantiate(flyingEnemyPrefab, summonPositionB, Quaternion.identity);
 
         summoning = false;
 
+    }
+
+    public void runSummonAbility() //Called by animation
+    {
+        //summoning
+        Vector3 summonPositionA = transform.position;
+        Vector3 summonPositionB = transform.position;
+        summonPositionA.y += 0.5f;
+        summonPositionB.y -= 0.5f;
+        Instantiate(flyingEnemyPrefab, summonPositionA, Quaternion.identity);
+        Instantiate(flyingEnemyPrefab, summonPositionB, Quaternion.identity);
     }
 
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class BaseEnemyMovement : MonoBehaviour
 {
-
+    [HideInInspector]
     public float EnemyPatrolSpeed;
     [HideInInspector]
     public float EnemyChaseSpeed;
