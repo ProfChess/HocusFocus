@@ -22,7 +22,7 @@ TagManager:
   - ProjectileLayer
   - ItemLayer
   - PlayerTeleportLayer
-  - 
+  - EnemySpellLayer
   - 
   - 
   - 

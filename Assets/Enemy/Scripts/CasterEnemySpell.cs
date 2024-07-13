@@ -4,55 +4,40 @@ using UnityEngine;
 
 public class CasterEnemySpell : MonoBehaviour
 {
+    //Spell Stats
+    private float spellDamage = 2f;
     private float spellSpeed = 5f;
-    public Vector2 baseSize = new Vector2(1f, 1f);
-    public Vector2 maxSize = new Vector2(10f, 1f);
+    private float spellLength = 10f;
+    private float xSpawn;
     public Vector2 spellDirection = Vector2.right;
 
-    private BoxCollider2D spellArea;
-    private Vector2 currentSize;
-    private Vector3 initialPosition;
-
-    //Spell Damage
-    private float spellDamage = 2f;
+    //Collision
     private bool wasHit = false;
 
+    //Animation
+    public SpriteRenderer sr;
+    private Animator spellAnim;
     private void Start()
     {
-        spellArea = GetComponent<BoxCollider2D>();
-        currentSize = baseSize;
-        initialPosition = transform.position;
-        transform.localScale = new Vector3(currentSize.x, currentSize.y, 1f);
-        spellArea.size = currentSize;
-
-        if (spellDirection == Vector2.left)
-        {
-            transform.localScale = new Vector3(-currentSize.x, currentSize.y, 1f);
-        }
+        xSpawn = transform.position.x;
+        spellAnim = GetComponentInChildren<Animator>();
     }
 
     private void Update()
     {
-        //Increase in size over time
-        if (currentSize.x < maxSize.x)
+        //Move over time
+        if (wasHit)
         {
-            float growth = spellSpeed * Time.deltaTime;
-            currentSize.x += growth;
-            if (spellDirection == Vector2.right)
-            {
-                transform.position = initialPosition + new Vector3(currentSize.x / 2, 0, 0);
-            }
-            else if (spellDirection == Vector2.left)
-            {
-                transform.position = initialPosition - new Vector3(currentSize.x / 2, 0, 0);
-            }
-            transform.localScale = new Vector3(currentSize.x, currentSize.y, 1f);
-            spellArea.size = new Vector2(currentSize.x, currentSize.y); 
+            spellHit();
         }
-
-        if(currentSize.x >= maxSize.x)
+        else if (gameObject.transform.position.x >= (xSpawn + spellLength) || gameObject.transform.position.x
+            <= (xSpawn - spellLength))
         {
             deactivateSpell();
+        }
+        else
+        {
+            transform.Translate(spellDirection * spellSpeed * Time.deltaTime);
         }
     }
 
@@ -71,6 +56,20 @@ public class CasterEnemySpell : MonoBehaviour
     public void setSpellDirection(Vector2 spellCast)
     {
         spellDirection = spellCast;
+        if (spellDirection == Vector2.right)
+        {
+            sr.flipX = true;
+        }
+        else
+        {
+            sr.flipX = false;
+        }
+    }
+
+    private void spellHit()
+    {
+        spellAnim.SetTrigger("Hit");
+        Invoke("deactivateSpell", 1);
     }
 
     private void deactivateSpell()

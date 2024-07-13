@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8158449726667666710}
   - component: {fileID: 7360665606583411691}
   - component: {fileID: 5930144728155313260}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: CasterEnemySpell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,7 +77,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.5, y: 0.6}
   m_EdgeRadius: 0
 --- !u!114 &5930144728155313260
 MonoBehaviour:
@@ -91,10 +91,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26da82281b2022244bc2a6e9e2943793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellSpeed: 1
-  baseSize: {x: 1, y: 1}
-  maxSize: {x: 10, y: 1}
-  spellDirection: {x: 1, y: 0}
+  spellDirection: {x: -1, y: 0}
+  sr: {fileID: 7359800974107660571}
 --- !u!1 &5772038157931515468
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,7 +103,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3685388022507568093}
   - component: {fileID: 7359800974107660571}
-  m_Layer: 0
+  - component: {fileID: 3422442746866156540}
+  m_Layer: 13
   m_Name: CasterEnemySpellVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,9 +166,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 1, g: 0.52376145, b: 0.43921566, a: 1}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 9146580734943654226, guid: 22edb9c1d6f2807409ea83b6f893b2c0, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -179,3 +178,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &3422442746866156540
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5772038157931515468}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3ce7260b867054d4e9d16568dad09265, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

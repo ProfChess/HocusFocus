@@ -20,10 +20,20 @@ public class CasterEnemy : BaseEnemyMovement
     //References
     public GameObject spellPrefab;
 
+    //Amimation
+    public Animator enemyAnim;
+    private SpriteRenderer enemyVisual;
+
     //Assign
     protected void Awake()
     {
         Initialize(0, 0, 0, false, 50, 50);
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+        enemyVisual = GetComponentInChildren<SpriteRenderer>();
     }
 
     protected void Update()
@@ -41,6 +51,11 @@ public class CasterEnemy : BaseEnemyMovement
         lookRight = transform.position.x < player.transform.position.x;
         isWithinYRange = player.transform.position.y <= transform.position.y + yRange &&
             player.transform.position.y >= transform.position.y - yRange;
+
+        if (canSeePlayer)
+        {
+            enemyVisual.flipX = lookRight;
+        }
 
     }
 
@@ -61,22 +76,8 @@ public class CasterEnemy : BaseEnemyMovement
     {   
         isCasting = true;
         //Animation Trigger
-        yield return new WaitForSeconds(0.5f); //Enemy charge attack time
+        enemyAnim.SetTrigger("Attack");
 
-        Vector3 castLocation = transform.position;
-        spellPrefab.GetComponent<CasterEnemySpell>().setSpellDirection(getCastDirection());
-        //Blasts box left/right that gradually gets bigger
-        if (lookRight)
-        {
-            castLocation.x++;
-            Instantiate(spellPrefab, castLocation, Quaternion.identity);
-        }
-
-        else if(!lookRight)
-        {
-            castLocation.x --;
-            Instantiate(spellPrefab, castLocation, Quaternion.identity);
-        }
 
         yield return new WaitForSeconds(enemyAttackCooldown); //attack cooldown
         isCasting = false;
@@ -91,6 +92,24 @@ public class CasterEnemy : BaseEnemyMovement
         else
         {
             return Vector2.left;
+        }
+    }
+
+    public void cultistSpellLogic()
+    {
+        Vector3 castLocation = transform.position;
+        spellPrefab.GetComponent<CasterEnemySpell>().setSpellDirection(getCastDirection());
+        //Blasts box left/right that gradually gets bigger
+        if (lookRight)
+        {
+            castLocation.x++;
+            Instantiate(spellPrefab, castLocation, Quaternion.identity);
+        }
+
+        else if (!lookRight)
+        {
+            castLocation.x--;
+            Instantiate(spellPrefab, castLocation, Quaternion.identity);
         }
     }
 }
