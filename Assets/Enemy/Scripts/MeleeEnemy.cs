@@ -12,11 +12,17 @@ public class MeleeEnemy : BaseEnemyMovement
     private Vector2 moveDir = Vector2.left;
     private bool attacking = false;
     private Vector3 attackLocation;
+    private bool playerPastBounds = false;
 
     //Anim
     public Animator enemyAnim;
     public SpriteRenderer enemyVisual;
 
+    //Player Location
+    private Vector2 playerPos;
+    private Vector2 enemyPos;
+    private float yRange = 1.5f;
+    private bool isWithinYRange = false;
 
     protected void Awake()
     {
@@ -30,15 +36,25 @@ public class MeleeEnemy : BaseEnemyMovement
 
     private void Update()
     {
+        //Range Calc
+        playerPos = player.transform.position;
+        enemyPos = transform.position;
+        isWithinYRange = playerPos.y <= enemyPos.y + yRange && playerPos.y >= enemyPos.y - yRange;
+
+        playerPastBounds = playerPos.x > rightPatrolPoint.position.x || 
+            playerPos.x < leftPatrolPoint.position.x;
+
         //Has Line of Sight
-        if (canSeePlayer && !attacking && !enemyBlind)
+        if (canSeePlayer && !attacking && !enemyBlind && !playerPastBounds && isWithinYRange)
         {
             engageState();
         }
-        else if (!canSeePlayer && !attacking || enemyBlind) 
+        else if (!attacking)
         {
             patrolState();
         }
+
+
 
         //Patrol Direction
         if (transform.position.x >= rightPatrolPoint.position.x)
@@ -55,13 +71,11 @@ public class MeleeEnemy : BaseEnemyMovement
         //Direction of attack towards player
         if (lookPlayer.x > 0)
         {
-            //transform.localScale = new Vector3(1, 1, 1);
             attackLocation = transform.position;
             attackLocation.x += 1;
         }
         else
         {
-            //transform.localScale = new Vector3(-1, 1, 1);
             attackLocation = transform.position;
             attackLocation.x -= 1;
         }
@@ -81,6 +95,7 @@ public class MeleeEnemy : BaseEnemyMovement
 
     }
 
+    //Attacks
     private IEnumerator stabAttack()
     {
         attacking = true;
@@ -92,6 +107,7 @@ public class MeleeEnemy : BaseEnemyMovement
         attacking = false;
     }
 
+    //States
     protected void patrolState()
     {   
         transform.Translate(moveDir * EnemyPatrolSpeed * Time.deltaTime);

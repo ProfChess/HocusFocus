@@ -11,11 +11,13 @@ public class CasterEnemy : BaseEnemyMovement
     //Spell can be blocked by platforms/by breaking los
 
     //State variables
-    private float enemyAttackCooldown = 5f;
+    private float enemyAttackCooldown = 1.5f;
     private bool isCasting = false;
     private bool lookRight = true;
-    private float yRange = 1f;
+    private float yRange = 0.7f;
     private bool isWithinYRange = false;
+    private Vector3 playerPos;
+    private Vector3 enemyPos;
 
     //References
     public GameObject spellPrefab;
@@ -27,7 +29,7 @@ public class CasterEnemy : BaseEnemyMovement
     //Assign
     protected void Awake()
     {
-        Initialize(0, 0, 0, false, 50, 50);
+        Initialize(0, 0, 0, false, 5f, 50);
     }
 
     protected override void Start()
@@ -38,6 +40,11 @@ public class CasterEnemy : BaseEnemyMovement
 
     protected void Update()
     {
+        //Range Calc
+        playerPos = player.transform.position;
+        enemyPos = transform.position;
+        isWithinYRange = playerPos.y <= enemyPos.y + yRange && playerPos.y >= enemyPos.y - yRange;
+
         if (canSeePlayer && isWithinYRange && !enemyBlind)
         {
             casterAttackState();
@@ -49,8 +56,9 @@ public class CasterEnemy : BaseEnemyMovement
 
         //Face left or right
         lookRight = transform.position.x < player.transform.position.x;
-        isWithinYRange = player.transform.position.y <= transform.position.y + yRange &&
-            player.transform.position.y >= transform.position.y - yRange;
+
+
+            
 
         if (canSeePlayer)
         {
