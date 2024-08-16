@@ -6,18 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TestingScene.unity
+    path: Assets/Map/Scenes/TestingScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/FirstArea/StartingRoom.unity
+    path: Assets/Map/Scenes/FirstArea/StartingRoom.unity
     guid: 2a6119ef72cc0844eb38b08ed085315a
   - enabled: 1
-    path: Assets/Scenes/FirstArea/Room_1.unity
+    path: Assets/Map/Scenes/FirstArea/Room_1.unity
     guid: f4754550e895be7469d47d09d6a17468
   - enabled: 1
-    path: Assets/Scenes/FirstArea/HealthRoom.unity
+    path: Assets/Map/Scenes/FirstArea/HealthRoom.unity
     guid: 1023188eae425a041a1a01556534a718
   - enabled: 1
-    path: Assets/Scenes/FirstArea/Room_2.unity
+    path: Assets/Map/Scenes/FirstArea/Room_2.unity
     guid: a11ec4bfe8d3f5246b5f338c3446b8a8
   m_configObjects: {}
