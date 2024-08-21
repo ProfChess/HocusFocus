@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Map/Scenes/FirstArea/Room_2.unity
     guid: a11ec4bfe8d3f5246b5f338c3446b8a8
+  - enabled: 1
+    path: Assets/Map/Scenes/FirstArea/Room_3.unity
+    guid: 095f0f2acf286c94eb12a7ee47eb128c
   m_configObjects: {}
