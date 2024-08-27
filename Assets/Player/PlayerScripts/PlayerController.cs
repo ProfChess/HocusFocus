@@ -18,7 +18,11 @@ public class PlayerController : MonoBehaviour
 
     [Header("Player Movement/Stats")]
     public float playerSpeed = 5f;
-    public float playerJumpforce = 8f;
+    private float playerJumpforce = 9f;
+    private float maxJumpTime = 0.3f;
+    private float jumpTimer;
+    private float gravityMulti = 1.5f;
+    private bool isJumping = false;
     public float playerDashSpeed = 10f;
     private float playerDashDuration = 0.3f;
     private float playerDashCooldown = 1f;
@@ -71,7 +75,8 @@ public class PlayerController : MonoBehaviour
         inputActions.Player.Move.performed += OnMovePerformed;
         inputActions.Player.Move.canceled += OnMoveCanceled;
         //Jump
-        inputActions.Player.Jump.performed += OnJumpPerformed;
+        inputActions.Player.Jump.started += OnJumpPressed;
+        inputActions.Player.Jump.canceled += OnJumpReleased;
         //Dash
         inputActions.Player.Dash.performed += OnDashPerformed;
         //Teleport/look
@@ -87,7 +92,8 @@ public class PlayerController : MonoBehaviour
         inputActions.Player.Move.performed -= OnMovePerformed;
         inputActions.Player.Move.canceled -= OnMoveCanceled;
         //Jump
-        inputActions.Player.Jump.performed -= OnJumpPerformed;
+        inputActions.Player.Jump.started -= OnJumpPressed;
+        inputActions.Player.Jump.canceled -= OnJumpReleased;
         //Dash
         inputActions.Player.Dash.performed -= OnDashPerformed;
         //Teleport/look
@@ -153,18 +159,21 @@ public class PlayerController : MonoBehaviour
     }
 
     //Jump
-    private void OnJumpPerformed(InputAction.CallbackContext context)
+    private void OnJumpPressed(InputAction.CallbackContext context)
     {   
         if (!isCasting)
         {
             if (playerDoubleJump)
             {
-                if (onGround)
+                if (onGround) //Jump Calc
                 {
+                    rb.velocity = new Vector2(rb.velocity.x, 0f);
                     rb.AddForce(Vector2.up * playerJumpforce, ForceMode2D.Impulse);
+                    isJumping = true;
+                    jumpTimer = maxJumpTime;
                     playerAnim.SetBool("PlayerJump", true);
                 }
-                if (!onGround && !doubleJumped)
+                if (!onGround && !doubleJumped) //Double Jump Calc
                 {
                     rb.velocity = new Vector2(rb.velocity.x, 0);
                     rb.AddForce(Vector2.up * playerJumpforce, ForceMode2D.Impulse);
@@ -173,13 +182,23 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            if (!playerDoubleJump && onGround)
+            else if (onGround) //No Double Jump Unlocked
             {
+                rb.velocity = new Vector2(rb.velocity.x, 0f);
                 rb.AddForce(Vector2.up * playerJumpforce, ForceMode2D.Impulse);
+                isJumping = true;
+                jumpTimer = maxJumpTime;
                 playerAnim.SetBool("PlayerJump", true);
             }
+
+
         }
         
+    }
+
+    private void OnJumpReleased(InputAction.CallbackContext context)
+    {
+        isJumping = false;
     }
 
     //Dash
@@ -228,10 +247,33 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(Teleport(teleportDirection));
         }
     }
+
+    private void FixedUpdate()
+    {
+        //Jumping Detection
+        if (isJumping)
+        {
+            if (jumpTimer > 0f)
+            {
+                rb.AddForce(Vector2.up * 14f, ForceMode2D.Force);
+                jumpTimer -= Time.fixedDeltaTime;
+            }
+            else
+            {
+                isJumping = false;
+            }
+        }
+
+        if (!isJumping)
+        {
+            rb.gravityScale = gravityMulti;
+        }
+    }
     private void Update()
     {
         onGround = Physics2D.OverlapBox(groundTransform.position, groundDetectRange, 0, groundLayer);
 
+        //Ground Detection
         if (onGround)
         {
             doubleJumped = false;
@@ -243,6 +285,8 @@ public class PlayerController : MonoBehaviour
         {
             playerAnim.SetBool("PlayerJump", true);
         }
+
+
 
         if (!dashed && !isCasting)
         {   

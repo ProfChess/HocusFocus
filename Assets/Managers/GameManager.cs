@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,7 +11,9 @@ public class GameManager : MonoBehaviour
     private string currentSpawnPoint;
     public GameObject player;
 
-
+    //Scene Change
+    public Image blackFade;
+    private float fadeDuration = 1f;
     private void Awake()
     {
         if (Instance == null)
@@ -29,6 +33,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        StartCoroutine(FadeIn());
     }
 
     public void SetSpawnPoint(string spawnPoint)
@@ -45,6 +50,7 @@ public class GameManager : MonoBehaviour
     private void onSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         SceneManager.sceneLoaded -= onSceneLoaded;
+        StartCoroutine(FadeIn());
 
         if (player == null)
         {
@@ -59,6 +65,8 @@ public class GameManager : MonoBehaviour
                 player.transform.position = spawnPoint.transform.position;
             }
         }
+
+        
     }
 
     //End of Game
@@ -68,6 +76,46 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    
+    //Fade to Black
+    public void FadeToBlack()
+    {
+        StartCoroutine(FadeIn());
+    }
+
+    private IEnumerator FadeIn()
+    {
+        float timePassed = 0f;
+        while (timePassed < fadeDuration)
+        {
+            timePassed += Time.deltaTime;
+            float alphaValue = Mathf.Clamp01(timePassed / fadeDuration);
+            SetAlpha(1f - alphaValue);
+            yield return null;
+        }
+
+        SetAlpha(0f);
+    }
+
+    private IEnumerator FadeOut()
+    {
+        float timePassed = 0f;
+        while (timePassed < fadeDuration)
+        {
+            timePassed += Time.deltaTime;
+            float alphaValue = Mathf.Clamp01(timePassed / fadeDuration);
+            SetAlpha(alphaValue);
+            yield return null;
+        }
+
+        SetAlpha(1f);
+
+    }
+
+    private void SetAlpha(float alphaValue)
+    {
+        Color color = blackFade.color;
+        color.a = alphaValue;
+        blackFade.color = color;
+    }
 
 }
