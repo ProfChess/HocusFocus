@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Map/Scenes/TestingScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
@@ -23,4 +23,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Map/Scenes/FirstArea/Room_3.unity
     guid: 095f0f2acf286c94eb12a7ee47eb128c
+  - enabled: 1
+    path: Assets/Map/Scenes/FirstArea/Room_4.unity
+    guid: 39fdbd5cd15ec34438cd9d2a2739d405
+  - enabled: 1
+    path: Assets/Map/Scenes/FirstArea/Room_5.unity
+    guid: d20f9db18d204734095bfd6b3822323b
   m_configObjects: {}
