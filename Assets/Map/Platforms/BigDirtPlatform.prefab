@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2712799414935182638
 Transform:
@@ -95,11 +95,11 @@ GameObject:
   - component: {fileID: 1272105392638140956}
   - component: {fileID: 5366067151017723589}
   m_Layer: 6
-  m_Name: DirtPlatform1
+  m_Name: BigDirtPlatform
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1272105392638140956
 Transform:
