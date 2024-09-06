@@ -10,6 +10,7 @@ public class ArcaneCloak : BaseItem
         if (collision.CompareTag("Player"))
         {
             collision.GetComponent<PlayerController>().playerDash = true;
+            GameManager.Instance.setDashBool();
         }
     }
 }

@@ -13,7 +13,19 @@ public class GameManager : MonoBehaviour
 
     //Scene Change
     public Image blackFade;
-    private float fadeDuration = 1f;
+    private float fadeDuration = 0.5f;
+
+    //CheckPoints and Saving
+    //Stats
+    private float healthUpgrades = 0f;
+    private float manaUpgrades = 0f;
+    private float savedHealth = 10f;
+    private float savedMana = 20f;
+    //Items
+    private bool dashUpgrade = false;
+    private bool jumpUpgrade = false;
+    private bool teleportUpgrade = false;
+    
     private void Awake()
     {
         if (Instance == null)
@@ -34,6 +46,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         StartCoroutine(FadeIn());
+        transferPlayerStats();
     }
 
     public void SetSpawnPoint(string spawnPoint)
@@ -41,11 +54,6 @@ public class GameManager : MonoBehaviour
         currentSpawnPoint = spawnPoint;
     }
 
-    public void loadScene(string sceneName)
-    {
-        SceneManager.sceneLoaded += onSceneLoaded;
-        SceneManager.LoadScene(sceneName);
-    }
 
     private void onSceneLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -66,7 +74,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        
+        transferPlayerStats();
     }
 
     //End of Game
@@ -77,9 +85,9 @@ public class GameManager : MonoBehaviour
     }
 
     //Fade to Black
-    public void FadeToBlack()
+    public void FadeToBlack(string sceneName)
     {
-        StartCoroutine(FadeIn());
+        StartCoroutine(FadeOutAndLoad(sceneName));
     }
 
     private IEnumerator FadeIn()
@@ -96,8 +104,9 @@ public class GameManager : MonoBehaviour
         SetAlpha(0f);
     }
 
-    private IEnumerator FadeOut()
+    private IEnumerator FadeOutAndLoad(string sceneName)
     {
+        saveHealthAndMana();
         float timePassed = 0f;
         while (timePassed < fadeDuration)
         {
@@ -108,7 +117,8 @@ public class GameManager : MonoBehaviour
         }
 
         SetAlpha(1f);
-
+        SceneManager.sceneLoaded += onSceneLoaded;
+        SceneManager.LoadScene(sceneName);
     }
 
     private void SetAlpha(float alphaValue)
@@ -117,5 +127,65 @@ public class GameManager : MonoBehaviour
         color.a = alphaValue;
         blackFade.color = color;
     }
+
+
+    //Item Collection
+    public void itemCollected(string itemName)
+    {
+        //Stats
+        if (itemName == "HealthUpgrade")
+        {
+            healthUpgrades += 1;
+        }
+        if (itemName == "ManaUpgrade")
+        {
+            manaUpgrades += 1;
+        }
+
+        //Items
+        if (itemName == "Dash")
+        {
+            dashUpgrade = true;
+        }
+        if (itemName == "Jump")
+        {
+            jumpUpgrade = true;
+        }
+        if (itemName == "Teleport")
+        {
+            teleportUpgrade = true;
+        }
+
+    }
+
+    //Get/Save Health/Mana
+    //Get
+    public float getHealthUpgrades() {  return healthUpgrades; }
+    public float getManaUpgrades() {  return manaUpgrades; }
+
+    //Save
+    public void saveHealthAndMana() 
+    {
+        savedHealth = player.GetComponent<PlayerHealth>().getHealth();
+        savedMana = player.GetComponent<PlayerMana>().getMana();
+    }
+
+    private void transferPlayerStats()
+    {
+        player.GetComponent<PlayerHealth>().setHealth(savedHealth);
+        player.GetComponent<PlayerMana>().setMana(savedMana);
+    }
+
+    //Get/Set Item
+    public bool getDashBool() { return dashUpgrade; }
+    public bool getJumpBool() { return jumpUpgrade; }
+    public bool getTeleportBool() { return teleportUpgrade; }
+
+    public void setDashBool() { dashUpgrade = true; player.GetComponent<PlayerController>().playerDash = true; }
+    public void setJumpBool() {  jumpUpgrade = true; player.GetComponent<PlayerController>().playerDoubleJump = true; }
+    public void setTeleportBool() {  teleportUpgrade = true; player.GetComponent<PlayerController>().playerTeleport = true; }
+
+
+
 
 }

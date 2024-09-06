@@ -68,6 +68,13 @@ public class PlayerController : MonoBehaviour
         pTeleportLayer = LayerMask.NameToLayer("PlayerTeleportLayer");
     }
 
+    private void Start()
+    {
+        playerDash = GameManager.Instance.getDashBool();
+        playerDoubleJump = GameManager.Instance.getJumpBool();
+        playerTeleport = GameManager.Instance.getTeleportBool();
+    }
+
     private void OnEnable()
     {
         inputActions.Enable();

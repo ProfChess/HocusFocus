@@ -5,15 +5,15 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public float pHealth;
-    private float maxHealth = 10;
+    private float pHealth = 10f;
+    public float maxHealth = 10f;
     public Animator playerAnim;
 
     
 
     private void Start()
     {
-        pHealth = maxHealth;
+        setMaxHealth();
         UIManager.Instance.updateHealthBar(pHealth, maxHealth);
     }
 
@@ -35,11 +35,24 @@ public class PlayerHealth : MonoBehaviour
         UIManager.Instance.updateHealthBar(pHealth, maxHealth);
     }
 
-    public void increaseHealth(float amount)
+    private void setMaxHealth()
     {
-        maxHealth += amount;
+        maxHealth = 10 + (GameManager.Instance.getHealthUpgrades() * 10);
+    }
+
+    public void pickupHealth()
+    {
+        setMaxHealth();
         pHealth = maxHealth;
     }
 
+    public float getHealth()
+    {
+        return pHealth;
+    }
 
+    public void setHealth(float amount)
+    {
+        pHealth = amount;
+    }
 }

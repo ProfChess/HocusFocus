@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb4220551092564a9089eafeff1f5fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemName: HealthUpgrade
   healthIncrease: 10
 --- !u!1 &4921312489825133294
 GameObject:

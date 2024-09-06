@@ -56,14 +56,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onGround: 0
   playerSpeed: 4
-  playerJumpforce: 7
   playerDashSpeed: 10
   playerTeleportSpeed: 30
   moveDirection: {x: 0, y: 0}
   lookingRight: 1
-  playerDash: 1
-  playerDoubleJump: 1
-  playerTeleport: 1
+  playerDash: 0
+  playerDoubleJump: 0
+  playerTeleport: 0
   playerAnim: {fileID: 6318073296587202217}
   playerVisual: {fileID: 7032429241216833845}
 --- !u!114 &4374012070836542875
@@ -96,7 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3d1409949d400645af2dc25c2ecee97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pHealth: 20
+  pHealth: 10
+  maxHealth: 10
   playerAnim: {fileID: 6318073296587202217}
 --- !u!114 &6123800979285560759
 MonoBehaviour:
@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxMana: 20
-  pMana: 0
+  pMana: 20
 --- !u!50 &4613104121359352607
 Rigidbody2D:
   serializedVersion: 4

@@ -7,7 +7,7 @@ public abstract class BaseItem : MonoBehaviour
 {
 
     private BoxCollider2D hitBox;
-
+    public string itemName;
     protected virtual void Start()
     {
         hitBox = GetComponent<BoxCollider2D>();
@@ -18,6 +18,7 @@ public abstract class BaseItem : MonoBehaviour
         {
             if (collision.CompareTag("Player"))
             {
+                GameManager.Instance.itemCollected(itemName);
                 gameObject.SetActive(false);
                 Invoke("destroyItem", 1);
             }

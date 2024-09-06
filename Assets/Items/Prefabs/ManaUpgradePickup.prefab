@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaf90b8def0168f41b28e7a53e6b4c77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemName: ManaUpgrade
   manaIncrease: 10
 --- !u!1 &6389316055988290567
 GameObject:

@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb11f77d2f8e63c4d945306e0ff6cf00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemName: Dash
 --- !u!1 &3086196205265749360
 GameObject:
   m_ObjectHideFlags: 0

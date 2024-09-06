@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 public class PlayerMana : MonoBehaviour
 {
-    public float maxMana = 20;
-    public float pMana;
+    public float maxMana = 20f;
+    private float pMana = 20f;
     private float manaRegenRate = 2;
 
 
     private void Start()
     {
-        pMana = maxMana;
+        setMaxMana();
         UIManager.Instance.updateManaBar(pMana, maxMana);
     }
 
@@ -30,14 +30,19 @@ public class PlayerMana : MonoBehaviour
         UIManager.Instance.updateManaBar(pMana, maxMana);
     }
 
+    private void setMaxMana()
+    {
+        maxMana = 20 + (GameManager.Instance.getManaUpgrades() * 10);
+    }
+
     public void decreaseMana(float amount)
     {
         pMana -= amount;
     }
 
-    public void increaseMana(float amount)
+    public void pickupMana()
     {
-        maxMana += amount;
+        setMaxMana();
         pMana = maxMana;
     }
 
@@ -46,6 +51,14 @@ public class PlayerMana : MonoBehaviour
         return pMana;
     }
 
+    public float getMana()
+    {
+        return pMana;
+    }
 
+    public void setMana(float amount)
+    {
+        pMana = amount;
+    }
 
 }
