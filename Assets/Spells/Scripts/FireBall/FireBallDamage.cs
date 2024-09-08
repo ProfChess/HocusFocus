@@ -20,7 +20,9 @@ public class FireBallDamage : BaseSpellDamage
     {
         base.OnTriggerEnter2D(collision);
         gameObject.GetComponentInChildren<Transform>().localScale = effectArea;
-        
+        BoxCollider2D box = gameObject.GetComponent<BoxCollider2D>();
+        box.size = new Vector2(0.8f, 0.8f);
+        box.offset = new Vector2(0.5f, 0f);
     }
 
 

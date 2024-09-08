@@ -23,6 +23,9 @@ public abstract class BaseSpellDamage : MonoBehaviour
     [HideInInspector]
     public float xSpawn;           //Spell spawn x coordindate
 
+    //Animation
+    public Animator spellAnim;
+    
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {   
@@ -33,15 +36,27 @@ public abstract class BaseSpellDamage : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             onSpellHit();
+            spellDeathAnimation();
             collision.gameObject.GetComponent<EnemyHealthScript>().takeDamage(spellDamage);
         }
     }
 
+    public virtual void Start()
+    {
+        if (spellDirection == Vector2.right)
+        {
+            gameObject.GetComponentInChildren<SpriteRenderer>().flipX = false;
+        }
+        else if (spellDirection == Vector2.left)
+        {
+            gameObject.GetComponentInChildren<SpriteRenderer>().flipX = true;
+        }
+    }
     public virtual void Update()
     {
         if (spellHit)
         {
-            Invoke("turnOff", 1f);
+            spellDeathAnimation();
             Invoke("killObject", 2f);
         }
         else if (gameObject.transform.position.x >= (xSpawn + spellLength) || gameObject.transform.position.x
@@ -57,7 +72,7 @@ public abstract class BaseSpellDamage : MonoBehaviour
 
     }
 
-    protected virtual void turnOff()
+    public virtual void turnOff()
     {
         gameObject.SetActive(false);
     }
@@ -75,5 +90,13 @@ public abstract class BaseSpellDamage : MonoBehaviour
     public virtual void setDirection(Vector2 direction)
     {
         spellDirection = direction;
+    }
+
+    public virtual void spellDeathAnimation()
+    {
+        if (spellAnim != null)
+        {
+            spellAnim.SetTrigger("Death");
+        }
     }
 }

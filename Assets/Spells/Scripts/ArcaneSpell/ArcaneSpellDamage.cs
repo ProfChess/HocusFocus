@@ -8,16 +8,31 @@ public class ArcaneSpellDamage : BaseSpellDamage
 {
     public LayerMask enemyLayer;
     private float spellCooldown;
+    private float damageTick = 0.8f;
+    private float damageClock = 0f;
+
+    //Animation Managment
+    public Animator Bolt1;
+    public Animator Bolt2;
+    public Animator Bolt3;
+    private bool bolt1played = false;
+    private bool bolt2played = false;
     protected void Awake()
     {
         spellDamage = 2f;
         spellSpeed = 0f;
-        spellLength = 2f;
+        spellLength = 3f;
         effectArea = new Vector2(spellLength, 2);
         col = GetComponent<BoxCollider2D>();
     }
     public void arcaneAttack()
-    {   
+    {
+        arcaneAOE();
+        beginCooldown();
+    }
+
+    private void arcaneAOE()
+    {
         //Bounds of AOE
         Vector2 spellTopLeftCorner = col.bounds.min;
         Vector2 spellBottomRightCorner = col.bounds.max;
@@ -36,9 +51,6 @@ public class ArcaneSpellDamage : BaseSpellDamage
                 enemyHealth.takeDamage(totalDamage);
             }
         }
-
-        beginCooldown();
-
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)
@@ -51,6 +63,12 @@ public class ArcaneSpellDamage : BaseSpellDamage
         if (spellCooldown >= 0)
         {
             spellCooldown -= Time.deltaTime;
+            damageClock += Time.deltaTime;
+            if (damageClock > damageTick) 
+            {
+                damageClock = 0;
+                arcaneAOE();
+            }
         }
         else
         {
@@ -64,5 +82,31 @@ public class ArcaneSpellDamage : BaseSpellDamage
         spellCooldown = spellLength;
     }
 
+    //Animation Manager
+    public void playNextBolt()
+    {
+        if (!bolt1played)
+        {
+            bolt1played = true;
+            Bolt1.SetTrigger("BoltStart");
+        }
+        else if (bolt1played && !bolt2played)
+        {
+            bolt2played = true;
+            Bolt2.SetTrigger("BoltStart");
+        }
+        else
+        {
+            Bolt3.SetTrigger("BoltStart");
+        }
+    }
 
+    public void playFirstBolt()
+    {
+        if(!bolt1played)
+        {
+            Bolt1.SetTrigger("BoltStart");
+            bolt1played = true;
+        }
+    }
 }
