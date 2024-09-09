@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7b143258c9e52b948b9b644d5318592b
+guid: c5ce18640984bda449edcf0c0ad5c9a0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 8
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -136,253 +136,358 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Thunderstrike wo blur_0
+      name: FireIceStart1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 64
-        height: 64
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 1
+        y: 1
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 462b8e139eb272143bc6cb3825328b6a
-      internalID: -656459856
+      spriteID: 18b60b1d2e91ffd4f8a3c37c01e1c0a6
+      internalID: -1297805268
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Thunderstrike wo blur_1
+      name: FireIceStart2
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 64
-        height: 64
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 49
+        y: 2
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 46c8acaa3ab366e4695ebf4faca4f9ce
-      internalID: -2072940301
+      spriteID: 2696393ed3af52b4f8a8e8afa6e49555
+      internalID: 749459822
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Thunderstrike wo blur_2
+      name: FireIceStart3
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 64
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 97
+        y: 2
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c442470c6735d8e4f86e86d65380baad
-      internalID: -1961529092
+      spriteID: 4a0bc60edc7154748be4df848e24fc73
+      internalID: -132024655
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Thunderstrike wo blur_3
+      name: FireIceStart4
       rect:
         serializedVersion: 2
-        x: 192
-        y: 0
-        width: 64
-        height: 64
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 145
+        y: 1
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 411e72b78ad3cef4a9681aea11476c55
-      internalID: -467782657
+      spriteID: 80d21dcb34db1234c8af40a892374175
+      internalID: 2111673710
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Thunderstrike wo blur_4
+      name: FireIceStart5
       rect:
         serializedVersion: 2
-        x: 256
-        y: 0
-        width: 64
-        height: 64
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 193
+        y: 1
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d79287cd82a45044a85b8e356a22a376
-      internalID: 1192344557
+      spriteID: fe6d6a4619da4b24eaf0c02387af06f2
+      internalID: -457066836
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Thunderstrike wo blur_5
+      name: FireIceStart6
       rect:
         serializedVersion: 2
-        x: 320
+        x: 290
         y: 0
-        width: 64
-        height: 64
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d988953608a372479303e7244f26558
-      internalID: -578776473
+      spriteID: 07be36a81536aff47ad4e9d8546736ce
+      internalID: -232850809
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Thunderstrike wo blur_6
+      name: FireIceStart7
       rect:
         serializedVersion: 2
-        x: 384
+        x: 337
         y: 0
-        width: 64
-        height: 64
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1446eb301659d5944beb11b6419c2a77
-      internalID: 1301027964
+      spriteID: ca60b6110158c7c4ba9ca3720ed74e6a
+      internalID: -743581621
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Thunderstrike wo blur_7
+      name: FireIceNormal1
       rect:
         serializedVersion: 2
-        x: 448
+        x: 387
         y: 0
-        width: 64
-        height: 64
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        width: 44
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 848939fb5942d594ba84fa2833af3336
-      internalID: -6796103
+      spriteID: 5bd228f18200fc44d93192cbe74d33b5
+      internalID: 289265542
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Thunderstrike wo blur_8
+      name: FireIceNormal2
       rect:
         serializedVersion: 2
-        x: 512
+        x: 435
         y: 0
-        width: 64
-        height: 64
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba2ff74a8a2919547b36a935edeb1aaf
-      internalID: -459868126
+      spriteID: c0757afb70039134bbf38da25659b622
+      internalID: -237528335
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Thunderstrike wo blur_9
+      name: FireIceNormal3
       rect:
         serializedVersion: 2
-        x: 576
+        x: 481
         y: 0
-        width: 64
-        height: 64
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        width: 47
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b9fc5acd96a19914fb251f2607798c9b
-      internalID: -33544963
+      spriteID: a8ac6461d2b9c574d9bf8450dd7ae14b
+      internalID: -1830821701
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Thunderstrike wo blur_10
+      name: FireIceNormal4
       rect:
         serializedVersion: 2
-        x: 640
+        x: 531
         y: 0
-        width: 64
-        height: 64
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7fd88b0e208086e4889ce950542ee498
-      internalID: 785135516
+      spriteID: 0decfa35f292c34448d907811c302379
+      internalID: -1046491126
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Thunderstrike wo blur_11
+      name: FireIceNormal5
       rect:
         serializedVersion: 2
-        x: 704
+        x: 577
         y: 0
-        width: 64
-        height: 64
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b6b9c8eb742d35d46be6209da36174bb
-      internalID: 1106143772
+      spriteID: 5f568d6279c038e439e0bb98bb6e30b5
+      internalID: 1542513570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireIceNormal6
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 0
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97483c60ca3928a4f8a6869b1f3133de
+      internalID: 870401987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireIceNormal7
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 0
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de0f9b5ac9ce6d1419d1c4a97c1b9304
+      internalID: -1324887097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireIceNormal8
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 0
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 066dda568cd11eb4c8a0176ca5e42eca
+      internalID: 2020734446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireIceNormal9
+      rect:
+        serializedVersion: 2
+        x: 767
+        y: 0
+        width: 48
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb159d2cc624cd041a334b75219abd90
+      internalID: 1658050636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireIceNormal10
+      rect:
+        serializedVersion: 2
+        x: 821
+        y: 0
+        width: 43
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 857cf7ebacb73834f9feab273bddecf8
+      internalID: -2038778974
       vertices: []
       indices: 
       edges: []
@@ -398,18 +503,24 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Thunderstrike wo blur_0: -656459856
-      Thunderstrike wo blur_1: -2072940301
-      Thunderstrike wo blur_10: 785135516
-      Thunderstrike wo blur_11: 1106143772
-      Thunderstrike wo blur_2: -1961529092
-      Thunderstrike wo blur_3: -467782657
-      Thunderstrike wo blur_4: 1192344557
-      Thunderstrike wo blur_5: -578776473
-      Thunderstrike wo blur_6: 1301027964
-      Thunderstrike wo blur_7: -6796103
-      Thunderstrike wo blur_8: -459868126
-      Thunderstrike wo blur_9: -33544963
+      Explosion 2 SpriteSheet_6: 1246383404
+      FireIceNormal1: 289265542
+      FireIceNormal10: -2038778974
+      FireIceNormal2: -237528335
+      FireIceNormal3: -1830821701
+      FireIceNormal4: -1046491126
+      FireIceNormal5: 1542513570
+      FireIceNormal6: 870401987
+      FireIceNormal7: -1324887097
+      FireIceNormal8: 2020734446
+      FireIceNormal9: 1658050636
+      FireIceStart1: -1297805268
+      FireIceStart2: 749459822
+      FireIceStart3: -132024655
+      FireIceStart4: 2111673710
+      FireIceStart5: -457066836
+      FireIceStart6: -232850809
+      FireIceStart7: -743581621
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

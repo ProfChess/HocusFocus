@@ -12,11 +12,12 @@ public class ArcaneIceDamage : BaseSpellDamage
     private float dotInterval = 1f;
     protected void Awake()
     {
-        spellLength = 1f;
+        spellLength = 2f;
         col = GetComponent<BoxCollider2D>();
+        col.enabled = false;
     }
 
-    public void AOEFreeze()
+    private void AOEFreeze()
     {
         Vector2 boxPointA = col.bounds.min;
         Vector2 boxPointB = col.bounds.max;
@@ -41,15 +42,16 @@ public class ArcaneIceDamage : BaseSpellDamage
         {
             spellCooldown -= Time.deltaTime;
         }
-        else
-        {
-            turnOff();
-            Invoke("killObject", 1);
-        }
     }
 
     private void beginCooldown()
     {
         spellCooldown = spellLength;
+    }
+
+    public void activateCollider()
+    {
+        col.enabled = true;
+        AOEFreeze();
     }
 }

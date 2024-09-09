@@ -20,7 +20,7 @@ public class FireIceCast : BaseSpellCast
         {
             spellPrefab.transform.localScale = new Vector3(1, 1, 1);
         }
-        GameObject comboSpell = Instantiate(spellPrefab, spawnPoint.position, Quaternion.identity);
+        GameObject comboSpell = Instantiate(spellPrefab, gameObject.transform.position, Quaternion.identity);
         comboSpell.GetComponent<FireIceDamage>().AOEBlind();
     }
 

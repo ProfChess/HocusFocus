@@ -75,6 +75,7 @@ public abstract class BaseSpellDamage : MonoBehaviour
     public virtual void turnOff()
     {
         gameObject.SetActive(false);
+        Invoke("killObject", 1);
     }
 
     protected virtual void killObject()
