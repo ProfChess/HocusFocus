@@ -29,4 +29,9 @@ public class SpellAnim : MonoBehaviour
     {
         gameObject.GetComponentInParent<ArcaneIceDamage>().activateCollider();
     }
+
+    public void activateFire()
+    {
+        gameObject.GetComponentInParent<FireArcaneDamage>().activateFire();
+    }
 }

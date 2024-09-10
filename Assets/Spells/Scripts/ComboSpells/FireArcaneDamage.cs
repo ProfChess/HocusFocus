@@ -5,13 +5,12 @@ using UnityEngine;
 
 public class FireArcaneDamage : BaseSpellDamage
 {
+
     protected void Awake()
     {
         spellDamage = 15f;
-        spellSpeed = 5f;
-        spellLength = 15f;
         col = GetComponent<BoxCollider2D>();
-        xSpawn = gameObject.transform.position.x;
+        col.enabled = false;
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)
@@ -27,16 +26,12 @@ public class FireArcaneDamage : BaseSpellDamage
 
     public override void Update()
     {
-        if (gameObject.transform.position.x >= (xSpawn + spellLength) || gameObject.transform.position.x
-           <= (xSpawn - spellLength))
-        {
-            turnOff();
-            Invoke("killObject", 2f);
-        }
-        else
-        {
-            transform.Translate(spellDirection * spellSpeed * Time.deltaTime);
-        }
+
     }
-    
+
+
+    public void activateFire()
+    {
+        col.enabled = true;
+    }
 }

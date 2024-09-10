@@ -12,7 +12,14 @@ public class FireArcaneCast : BaseSpellCast
     public override void spawnSpell()
     {
         base.spawnSpell();
+        if (!lookingRight)
+        {
+            spellPrefab.transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else if (lookingRight)
+        {
+            spellPrefab.transform.localScale = new Vector3(1, 1, 1);
+        }
         GameObject comboSpell = Instantiate(spellPrefab, spawnPoint.position, Quaternion.identity);
-        comboSpell.GetComponent<FireArcaneDamage>().setDirection(direction);
     }
 }
