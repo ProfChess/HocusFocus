@@ -108,5 +108,18 @@ public abstract class BaseSpellCast : MonoBehaviour
             spawnPoint = leftSpellSpawn;
             direction = Vector2.left;
         }
+        spellPlacement();
+    }
+
+    protected virtual void spellPlacement()
+    {
+        if (!lookingRight)
+        {
+            spellPrefab.transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else if (lookingRight)
+        {
+            spellPrefab.transform.localScale = new Vector3(1, 1, 1);
+        }
     }
 }

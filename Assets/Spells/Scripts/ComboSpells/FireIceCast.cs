@@ -12,14 +12,6 @@ public class FireIceCast : BaseSpellCast
     public override void spawnSpell()
     {
         base.spawnSpell();
-        if (!lookingRight)
-        {
-            spellPrefab.transform.localScale = new Vector3(-1, 1, 1);
-        }
-        else if (lookingRight)
-        {
-            spellPrefab.transform.localScale = new Vector3(1, 1, 1);
-        }
         GameObject comboSpell = Instantiate(spellPrefab, gameObject.transform.position, Quaternion.identity);
         comboSpell.GetComponent<FireIceDamage>().AOEBlind();
     }

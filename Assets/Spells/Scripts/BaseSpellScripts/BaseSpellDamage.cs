@@ -41,17 +41,6 @@ public abstract class BaseSpellDamage : MonoBehaviour
         }
     }
 
-    public virtual void Start()
-    {
-        if (spellDirection == Vector2.right)
-        {
-            gameObject.GetComponentInChildren<SpriteRenderer>().flipX = false;
-        }
-        else if (spellDirection == Vector2.left)
-        {
-            gameObject.GetComponentInChildren<SpriteRenderer>().flipX = true;
-        }
-    }
     public virtual void Update()
     {
         if (spellHit)

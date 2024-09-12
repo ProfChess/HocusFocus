@@ -26,11 +26,17 @@ public class UIManager : MonoBehaviour
 
     public void updateHealthBar(float currentHealth, float maxHealth)
     {
-        healthBar.fillAmount = currentHealth/maxHealth;
+        if (healthBar != null)
+        {
+            healthBar.fillAmount = currentHealth / maxHealth;
+        }
     }
     public void updateManaBar(float currentMana, float maxMana)
     {
-        manaBar.fillAmount = currentMana / maxMana;
+        if (manaBar != null)
+        {
+            manaBar.fillAmount = currentMana / maxMana;
+        }
     }
 
 }

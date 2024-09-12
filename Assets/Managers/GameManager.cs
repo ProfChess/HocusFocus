@@ -123,9 +123,12 @@ public class GameManager : MonoBehaviour
 
     private void SetAlpha(float alphaValue)
     {
-        Color color = blackFade.color;
-        color.a = alphaValue;
-        blackFade.color = color;
+        if(blackFade != null)
+        {
+            Color color = blackFade.color;
+            color.a = alphaValue;
+            blackFade.color = color;
+        }
     }
 
 
