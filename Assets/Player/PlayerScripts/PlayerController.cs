@@ -257,6 +257,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+
         //Jumping Detection
         if (isJumping)
         {
@@ -275,12 +276,20 @@ public class PlayerController : MonoBehaviour
         {
             rb.gravityScale = gravityMulti;
         }
+
+
+
     }
     private void Update()
     {
+        //Ground Detection
         onGround = Physics2D.OverlapBox(groundTransform.position, groundDetectRange, 0, groundLayer);
 
-        //Ground Detection
+        if (!dashed && !isCasting)
+        {
+            transform.Translate(moveDirection * playerSpeed * Time.deltaTime);
+        }
+
         if (onGround)
         {
             doubleJumped = false;
@@ -291,13 +300,6 @@ public class PlayerController : MonoBehaviour
         if (!onGround)
         {
             playerAnim.SetBool("PlayerJump", true);
-        }
-
-
-
-        if (!dashed && !isCasting)
-        {   
-            transform.Translate(moveDirection * playerSpeed * Time.deltaTime);
         }
 
         if (dashCooldownTimer > 0f)
