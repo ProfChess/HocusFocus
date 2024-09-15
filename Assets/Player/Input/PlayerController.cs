@@ -1,16 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-public class TestPlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [Header("References")]
     private PlayerInput inputActions;
     private Rigidbody2D rb;
     private LayerMask groundLayer;
+    private Transform groundTransform;
     [HideInInspector]
     public bool onGround;
     private int playerLayer;
@@ -30,7 +33,7 @@ public class TestPlayerController : MonoBehaviour
     private bool isJumping = false;                 //Tracks if player performes jump from ground
     private bool jumpHeld = false;                  //Tracks if player is holding jump button
     private bool canDoubleJump = false;             //Tracks if player has double jumped -- resets upon touching ground
-    private float groundDetectRange = 1f;
+    private Vector2 groundDetectRange;
     //Dashing
     public float playerDashSpeed = 10f;             //Movement speed during dash
     private float playerDashDuration = 0.3f;        //Duration of dash
@@ -50,7 +53,6 @@ public class TestPlayerController : MonoBehaviour
     //Physics
     private bool reVel = false;                     //Resets player velocity
 
-
     [Header("Player bool Abilites")]
     public bool playerDash = false;
     public bool playerDoubleJump = false;
@@ -62,6 +64,8 @@ public class TestPlayerController : MonoBehaviour
 
     //Animation/Visual Components
     public SpriteRenderer playerVisual;
+    public Animator playerAnim;
+
     private void OnEnable()
     {
         inputActions.Enable();
@@ -104,18 +108,22 @@ public class TestPlayerController : MonoBehaviour
     {
         inputActions = new PlayerInput();                   //Input Settings for Movement/Abilities
         rb = GetComponent<Rigidbody2D>();                   //Rigidbody for moving
+        groundTransform = transform.Find("GroundCheck");
         groundLayer = LayerMask.GetMask("Ground");          //Layer that triggers GroundCheck
+        playerLayer = LayerMask.NameToLayer("Player");
+        pDashLayer = LayerMask.NameToLayer("PlayerDashLayer");
+        pTeleportLayer = LayerMask.NameToLayer("PlayerTeleportLayer");
     }
     private void Start()
     {
-        
+        groundDetectRange = new(0.809f, 0.1f);
     }
 
     //Physics Calculations
     private void FixedUpdate()
     {
         //Ground Detection
-        onGround = Physics2D.Raycast(transform.position, Vector2.down, groundDetectRange, groundLayer);
+        onGround = Physics2D.OverlapBox(groundTransform.position, groundDetectRange, 0, groundLayer);
 
         //Reset Velocity if Needed
         if (reVel)
@@ -134,6 +142,7 @@ public class TestPlayerController : MonoBehaviour
         if (dashed)
         {
             vel.x = dashDir.x * playerDashSpeed;
+            vel.y = 0f;
         }
         //Teleport
         if (teleported)
@@ -141,10 +150,12 @@ public class TestPlayerController : MonoBehaviour
             if (teleDir == Vector2.up || teleDir == Vector2.down)
             {
                 vel.y = teleDir.y * playerTeleportSpeed;
+                vel.x = 0f;
             }
             else
             {
                 vel.x = teleDir.x * playerTeleportSpeed;
+                vel.y = 0f;
             }
         }
         rb.velocity = vel;
@@ -172,7 +183,12 @@ public class TestPlayerController : MonoBehaviour
             doubleJumped = false;
         }
 
-        if (!onGround) //Changes gravity on player to fall faster
+        //Disable Gravity if Dashing or Teleporting
+        if (dashed || teleported)
+        {
+            rb.gravityScale = 0f;
+        }
+        else if (!onGround) //Changes gravity on player to fall faster
         {
             rb.gravityScale = gravityMulti;
         }
@@ -181,9 +197,15 @@ public class TestPlayerController : MonoBehaviour
 
     private void Update()
     {
+        //Ground Detection -> Animation Triggers
         if (onGround)
         {
             canDoubleJump = true;
+            playerAnim.SetBool("PlayerJump", false);
+        }
+        if (!onGround)
+        {
+            playerAnim.SetBool("PlayerJump", true);
         }
 
         //Cooldowns
@@ -208,6 +230,24 @@ public class TestPlayerController : MonoBehaviour
         {
             lastMoveDirection = moveDirection;
         }
+
+        //Animation Changes
+        if (moveDirection ==  Vector2.zero)
+        {
+            playerAnim.SetBool("PlayerMoving", false);
+        }
+        else
+        {
+            playerAnim.SetBool("PlayerMoving", true);
+            if (moveDirection.x > 0f)
+            {
+                playerVisual.flipX = false;
+            }
+            else
+            {
+                playerVisual.flipX = true;
+            }
+        }
     }
 
     //Jump
@@ -221,6 +261,7 @@ public class TestPlayerController : MonoBehaviour
         if (context.performed && !onGround && playerDoubleJump && !doubleJumped && canDoubleJump) //performed mid air with double jump unlocked
         {
             doubleJumped = true;
+            playerAnim.Play("PlayerJump", 0, 0f);
         }
         if (context.canceled) //player stops holding jump
         {
@@ -237,6 +278,7 @@ public class TestPlayerController : MonoBehaviour
         if (playerDash && !dashed && dashCooldownTimer <= 0f)
         {
             StartCoroutine(Dash());
+            playerAnim.SetTrigger("PlayerDash");
         }
         else
         {
@@ -275,12 +317,16 @@ public class TestPlayerController : MonoBehaviour
         //teleport not on cooldown
         if (playerTeleport && !teleported && teleportCooldownTimer <= 0f)
         {
-            StartCoroutine(Teleport());
+            playerAnim.Play("PlayerTeleport");
         }
         else
         {
 
         }
+    }
+    public void playerTeleportTrigger() //Used to trigger teleport at specific anim frame
+    {
+        StartCoroutine (Teleport());
     }
     private IEnumerator Teleport()
     {
@@ -363,4 +409,15 @@ public class TestPlayerController : MonoBehaviour
         gameObject.layer = pTeleportLayer;
     }
 
+    public bool getLookingRight() //used for spawning spell in correct direction/location in BaseSpellCast
+    {
+        if (lastMoveDirection == Vector2.right)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

@@ -14,7 +14,7 @@ public class PlayerAnimationEvents : MonoBehaviour
 
     public void teleportEvent()
     {
-        GameManager.Instance.player.GetComponent<PlayerController>().teleportPlayer();
+        GameManager.Instance.player.GetComponent<PlayerController>().playerTeleportTrigger();
     }
 
     public void spellCreator()

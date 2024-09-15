@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1783894992876656495}
-  - component: {fileID: 3790327743434978050}
+  - component: {fileID: 7009323804195321393}
   - component: {fileID: 4374012070836542875}
   - component: {fileID: 3927550950879835382}
   - component: {fileID: 6123800979285560759}
@@ -42,7 +42,7 @@ Transform:
   - {fileID: 8630375884623129968}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3790327743434978050
+--- !u!114 &7009323804195321393
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -51,20 +51,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1084127740771589548}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 565f415fdf9d7bd4086018112b747e35, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f387b387e124f84a9f52ab8a6b20abe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onGround: 0
-  playerSpeed: 4
+  playerSpeed: 5
+  moveDirection: {x: 0, y: 0}
   playerDashSpeed: 10
   playerTeleportSpeed: 30
-  moveDirection: {x: 0, y: 0}
   lookingRight: 1
   playerDash: 0
   playerDoubleJump: 0
   playerTeleport: 0
+  playerVisual: {fileID: 9038589337689697972}
   playerAnim: {fileID: 6318073296587202217}
-  playerVisual: {fileID: 7032429241216833845}
 --- !u!114 &4374012070836542875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,7 +124,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -132,8 +132,8 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 516
-  m_Interpolate: 0
+    m_Bits: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
@@ -146,7 +146,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1084127740771589548}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: a76b9c535b977f343a31aa8828a2f345, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

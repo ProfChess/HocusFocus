@@ -48,28 +48,22 @@ public class PlayerAttackScript : MonoBehaviour
             if (firstComboSpell == "Fire" && secondComboSpell == "Ice" ||
                 firstComboSpell == "Ice" && secondComboSpell == "Fire")
             {
-                playerController.playerStartCast();
                 spellBeingCast = "FireIce";
                 FireIceCast.Cast();
-                playerController.playerStopCast();
                 Debug.Log("Fire and Ice");
             }
             if (firstComboSpell == "Fire" && secondComboSpell == "Arcane" ||
                 firstComboSpell == "Arcane" && secondComboSpell == "Fire")
             {
-                playerController.playerStartCast();
                 spellBeingCast = "FireArcane";
                 FireArcaneCast.Cast();
-                playerController.playerStopCast();
                 Debug.Log("Fire and Arcane");
             }
             if (firstComboSpell == "Ice" && secondComboSpell == "Arcane" || 
                 firstComboSpell == "Arcane" && secondComboSpell == "Ice")
             {
-                playerController.playerStartCast();
                 spellBeingCast = "ArcaneIce";
                 ArcaneIceCast.Cast();
-                playerController.playerStopCast();
                 Debug.Log("Arcane and Ice");
             }
             comboCount = 0;
@@ -144,11 +138,9 @@ public class PlayerAttackScript : MonoBehaviour
         {
             if (playerController.onGround && playerController.moveDirection == Vector2.zero)
             {
-                playerController.playerStartCast();
                 Debug.Log("Fire Spell");
                 spellBeingCast = "Fire";
                 FireBallCast.Cast();
-                playerController.playerStopCast();
             }
         }
     }
@@ -177,11 +169,9 @@ public class PlayerAttackScript : MonoBehaviour
         {
             if (playerController.onGround && playerController.moveDirection == Vector2.zero)
             {
-                playerController.playerStartCast();
                 Debug.Log("Ice Spell");
                 spellBeingCast = "Ice";
                 IceSpellCast.Cast();
-                playerController.playerStopCast();
             }
         }
 
@@ -211,11 +201,9 @@ public class PlayerAttackScript : MonoBehaviour
         {
             if (playerController.onGround && playerController.moveDirection == Vector2.zero)
             {
-                playerController.playerStartCast();
                 Debug.Log("Arcane Spell");
                 spellBeingCast = "Arcane";
                 ArcaneSpellCast.Cast();
-                playerController.playerStopCast();
             }
         }
 
