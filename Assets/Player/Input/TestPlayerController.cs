@@ -11,7 +11,6 @@ public class TestPlayerController : MonoBehaviour
     private PlayerInput inputActions;
     private Rigidbody2D rb;
     private LayerMask groundLayer;
-    private Transform groundTransform;
     [HideInInspector]
     public bool onGround;
     private int playerLayer;
@@ -31,23 +30,26 @@ public class TestPlayerController : MonoBehaviour
     private bool isJumping = false;                 //Tracks if player performes jump from ground
     private bool jumpHeld = false;                  //Tracks if player is holding jump button
     private bool canDoubleJump = false;             //Tracks if player has double jumped -- resets upon touching ground
+    private float groundDetectRange = 1f;
     //Dashing
     public float playerDashSpeed = 10f;             //Movement speed during dash
     private float playerDashDuration = 0.3f;        //Duration of dash
     private float playerDashCooldown = 1f;          //Cooldown of dash
     private float dashCooldownTimer;                //Tracks cooldown for dash 
-    private bool canDash = true;
-    private Vector2 dashDir;
+    private Vector2 dashDir;                        //Direction of dash
     //Teleporting
-    public float playerTeleportSpeed = 30f;
-    private float playerTeleportDuration = 0.15f;
-    private float playerTeleportCooldown = 3f;
-
-    private float groundDetectRange = 1f;
-    private float teleportCooldownTimer;
-    private bool lookUp;
-    private bool lookDown;
+    public float playerTeleportSpeed = 30f;         //Movement speed during teleport
+    private float playerTeleportDuration = 0.15f;   //Duration of teleport
+    private float playerTeleportCooldown = 3f;      //Cooldown of teleport
+    private float teleportCooldownTimer;            //Tracks cooldown for teleport
+    private Vector2 teleDir;                        //Direction of teleport
+    //Looking
+    private bool lookUp;                            //Player is looking up (Holding W)
+    private bool lookDown;                          //Player is looking down (Holding S)
     public bool lookingRight = true;
+    //Physics
+    private bool reVel = false;                     //Resets player velocity
+
 
     [Header("Player bool Abilites")]
     public bool playerDash = false;
@@ -56,8 +58,10 @@ public class TestPlayerController : MonoBehaviour
     private bool teleported = false;
     private bool doubleJumped = false;
     private bool dashed = false;
-    private bool singleDash = true;
 
+
+    //Animation/Visual Components
+    public SpriteRenderer playerVisual;
     private void OnEnable()
     {
         inputActions.Enable();
@@ -70,11 +74,11 @@ public class TestPlayerController : MonoBehaviour
         //Dash
         inputActions.Player.Dash.performed += OnDash;
         //Teleport/look
-        //inputActions.Player.Teleport.performed += OnTeleport;
-        //inputActions.Player.LookUp.performed += OnLookUpPerformed;
-        //inputActions.Player.LookUp.canceled += OnLookUpCanceled;
-        //inputActions.Player.LookDown.performed += OnLookDownPerformed;
-        //inputActions.Player.LookDown.canceled += OnLookDownCanceled;
+        inputActions.Player.Teleport.performed += OnTeleport;
+        inputActions.Player.LookUp.performed += OnLookUp;
+        inputActions.Player.LookUp.canceled += OnLookUp;
+        inputActions.Player.LookDown.performed += OnLookDown;
+        inputActions.Player.LookDown.canceled += OnLookDown;
     }
 
     private void OnDisable()
@@ -87,11 +91,11 @@ public class TestPlayerController : MonoBehaviour
         //Dash
         inputActions.Player.Dash.performed -= OnDash;
         //Teleport/look
-        //inputActions.Player.Teleport.performed -= OnTeleport;
-        //inputActions.Player.LookUp.performed -= OnLookUpPerformed;
-        //inputActions.Player.LookUp.canceled -= OnLookUpCanceled;
-        //inputActions.Player.LookDown.performed -= OnLookDownPerformed;
-        //inputActions.Player.LookDown.canceled -= OnLookDownCanceled;
+        inputActions.Player.Teleport.performed -= OnTeleport;
+        inputActions.Player.LookUp.performed -= OnLookUp;
+        inputActions.Player.LookUp.canceled -= OnLookUp;
+        inputActions.Player.LookDown.performed -= OnLookDown;
+        inputActions.Player.LookDown.canceled -= OnLookDown;
         inputActions.Disable();
 
     }
@@ -100,7 +104,6 @@ public class TestPlayerController : MonoBehaviour
     {
         inputActions = new PlayerInput();                   //Input Settings for Movement/Abilities
         rb = GetComponent<Rigidbody2D>();                   //Rigidbody for moving
-        groundTransform = transform.Find("GroundCheck");    //Gets the GroundCheck Component
         groundLayer = LayerMask.GetMask("Ground");          //Layer that triggers GroundCheck
     }
     private void Start()
@@ -114,9 +117,16 @@ public class TestPlayerController : MonoBehaviour
         //Ground Detection
         onGround = Physics2D.Raycast(transform.position, Vector2.down, groundDetectRange, groundLayer);
 
+        //Reset Velocity if Needed
+        if (reVel)
+        {
+            reVel = false;
+            rb.velocity = Vector2.zero;
+        }
+
         //Left and Right Movement
         Vector2 vel = rb.velocity;
-        if (!dashed)
+        if (!dashed && !teleported)
         {
             vel.x = moveDirection.x * playerSpeed;
         }
@@ -124,6 +134,18 @@ public class TestPlayerController : MonoBehaviour
         if (dashed)
         {
             vel.x = dashDir.x * playerDashSpeed;
+        }
+        //Teleport
+        if (teleported)
+        {
+            if (teleDir == Vector2.up || teleDir == Vector2.down)
+            {
+                vel.y = teleDir.y * playerTeleportSpeed;
+            }
+            else
+            {
+                vel.x = teleDir.x * playerTeleportSpeed;
+            }
         }
         rb.velocity = vel;
 
@@ -145,20 +167,15 @@ public class TestPlayerController : MonoBehaviour
         if (doubleJumped && canDoubleJump)
         {
             canDoubleJump = false;
-            Vector2 x = new Vector2(rb.velocity.x, 0f);
-            rb.velocity = x;
+            rb.velocity = new Vector2(rb.velocity.x, 0f);
             rb.AddForce(Vector2.up * playerJumpforce, ForceMode2D.Impulse);
             doubleJumped = false;
         }
 
-        if (!isJumping) //Changes gravity on player to fall faster
+        if (!onGround) //Changes gravity on player to fall faster
         {
             rb.gravityScale = gravityMulti;
         }
-
-
-
-
 
     }
 
@@ -170,9 +187,15 @@ public class TestPlayerController : MonoBehaviour
         }
 
         //Cooldowns
+        //Dash
         if (dashCooldownTimer > 0f)
         {
             dashCooldownTimer -= Time.deltaTime;
+        }
+        //Teleport
+        if (teleportCooldownTimer > 0f)
+        {
+            teleportCooldownTimer -= Time.deltaTime;
         }
     }
 
@@ -208,9 +231,11 @@ public class TestPlayerController : MonoBehaviour
     //Dash
     public void OnDash(InputAction.CallbackContext context)
     {
-        if (canDash && playerDash && !dashed && dashCooldownTimer <= 0f && singleDash)
+        //Dash must be unlocked
+        //Not currently dashing
+        //Dash not on cooldown
+        if (playerDash && !dashed && dashCooldownTimer <= 0f)
         {
-            singleDash = false;
             StartCoroutine(Dash());
         }
         else
@@ -218,7 +243,6 @@ public class TestPlayerController : MonoBehaviour
 
         }
     }
-
     private IEnumerator Dash()
     {
         playerDashLayer();
@@ -240,10 +264,89 @@ public class TestPlayerController : MonoBehaviour
 
         dashed = false;
         dashCooldownTimer = playerDashCooldown;
-        singleDash = true;
         playerBasicLayer();
     }
 
+    //Teleport
+    public void OnTeleport(InputAction.CallbackContext context)
+    {
+        //Teleport must be unlocked
+        //Not currently teleporting
+        //teleport not on cooldown
+        if (playerTeleport && !teleported && teleportCooldownTimer <= 0f)
+        {
+            StartCoroutine(Teleport());
+        }
+        else
+        {
+
+        }
+    }
+    private IEnumerator Teleport()
+    {
+        playerTeleportLayer();
+        setTeleportDirection();
+        float startTime = Time.time;
+        teleported = true;
+        playerVisual.sortingOrder = -16;
+        while (Time.time < startTime + playerTeleportDuration)
+        {
+            yield return null;
+        }
+        teleported = false;
+        reVel = true;
+        teleportCooldownTimer = playerTeleportCooldown;
+        playerVisual.sortingOrder = 1;
+        playerBasicLayer();
+    }
+    //Set direction of teleport based on if player is looking up/down/left/right
+    private void setTeleportDirection()
+    {
+        if (lookUp)
+        {
+            teleDir = Vector2.up;
+        }
+        else if (lookDown)
+        {
+            teleDir = Vector2.down;
+        }
+        else if (moveDirection == Vector2.zero)
+        {
+            teleDir = lastMoveDirection;
+        }
+        else
+        {
+            teleDir = moveDirection;
+        }
+    } 
+
+
+    //Looking Direction (Used to teleport up/down)
+    //Look Up
+    private void OnLookUp(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            lookUp = true;
+        }
+        if (context.canceled)
+        {
+            lookUp = false;
+        }
+    }
+    //Look Down
+    private void OnLookDown(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            lookDown = true;
+        }
+        if (context.canceled)
+        {
+            lookDown = false;
+        }
+    }
+    
     //Player Layers
     private void playerDashLayer() //Moves to Dash layer 
     {
@@ -255,6 +358,9 @@ public class TestPlayerController : MonoBehaviour
         gameObject.layer = playerLayer;
     }
 
-
+    private void playerTeleportLayer() //Moves to teleport layer
+    {
+        gameObject.layer = pTeleportLayer;
+    }
 
 }
