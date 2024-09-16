@@ -1068,26 +1068,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform1 (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 825692725367999556, guid: ef6afd73cc819284bad39ed9f6c09fd4, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 2257106648606370487, guid: ef6afd73cc819284bad39ed9f6c09fd4, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 2705761121894121599, guid: ef6afd73cc819284bad39ed9f6c09fd4, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 5482520229160099001, guid: ef6afd73cc819284bad39ed9f6c09fd4, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 6172826518485230229, guid: ef6afd73cc819284bad39ed9f6c09fd4, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 9196077637687727645, guid: ef6afd73cc819284bad39ed9f6c09fd4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.33
@@ -2688,7 +2668,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -102411763, guid: 5fe5454ec8605de43809133b020d1b69, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4048,7 +4028,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 1
   m_Sprite: {fileID: -1287491953, guid: 5fe5454ec8605de43809133b020d1b69, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5885,26 +5865,6 @@ PrefabInstance:
     - target: {fileID: 825692725367999556, guid: ef6afd73cc819284bad39ed9f6c09fd4, type: 3}
       propertyPath: m_Name
       value: Platform1
-      objectReference: {fileID: 0}
-    - target: {fileID: 825692725367999556, guid: ef6afd73cc819284bad39ed9f6c09fd4, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 2257106648606370487, guid: ef6afd73cc819284bad39ed9f6c09fd4, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 2705761121894121599, guid: ef6afd73cc819284bad39ed9f6c09fd4, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 5482520229160099001, guid: ef6afd73cc819284bad39ed9f6c09fd4, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 6172826518485230229, guid: ef6afd73cc819284bad39ed9f6c09fd4, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 9196077637687727645, guid: ef6afd73cc819284bad39ed9f6c09fd4, type: 3}
       propertyPath: m_LocalPosition.x

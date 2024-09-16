@@ -1,8 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,7 +10,6 @@ public class PlayerController : MonoBehaviour
     private PlayerInput inputActions;
     private Rigidbody2D rb;
     private LayerMask groundLayer;
-    private Transform groundTransform;
     [HideInInspector]
     public bool onGround;
     private int playerLayer;
@@ -33,7 +29,8 @@ public class PlayerController : MonoBehaviour
     private bool isJumping = false;                 //Tracks if player performes jump from ground
     private bool jumpHeld = false;                  //Tracks if player is holding jump button
     private bool canDoubleJump = false;             //Tracks if player has double jumped -- resets upon touching ground
-    private Vector2 groundDetectRange;
+    public Vector2 groundDetectBox;
+    private float groundDetectDistance = 0.7f;
     //Dashing
     public float playerDashSpeed = 10f;             //Movement speed during dash
     private float playerDashDuration = 0.3f;        //Duration of dash
@@ -46,6 +43,9 @@ public class PlayerController : MonoBehaviour
     private float playerTeleportCooldown = 3f;      //Cooldown of teleport
     private float teleportCooldownTimer;            //Tracks cooldown for teleport
     private Vector2 teleDir;                        //Direction of teleport
+    private bool revealPlayer = true;
+    public Vector2 revealSize;
+    private bool teleportHide = false;
     //Looking
     private bool lookUp;                            //Player is looking up (Holding W)
     private bool lookDown;                          //Player is looking down (Holding S)
@@ -108,7 +108,6 @@ public class PlayerController : MonoBehaviour
     {
         inputActions = new PlayerInput();                   //Input Settings for Movement/Abilities
         rb = GetComponent<Rigidbody2D>();                   //Rigidbody for moving
-        groundTransform = transform.Find("GroundCheck");
         groundLayer = LayerMask.GetMask("Ground");          //Layer that triggers GroundCheck
         playerLayer = LayerMask.NameToLayer("Player");
         pDashLayer = LayerMask.NameToLayer("PlayerDashLayer");
@@ -116,14 +115,17 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
-        groundDetectRange = new(0.809f, 0.1f);
+        revealSize = new Vector2(0.72f, 1.33f);
     }
 
     //Physics Calculations
     private void FixedUpdate()
     {
         //Ground Detection
-        onGround = Physics2D.OverlapBox(groundTransform.position, groundDetectRange, 0, groundLayer);
+        onGround = Physics2D.BoxCast(transform.position, groundDetectBox, 0, -transform.up, groundDetectDistance, groundLayer);
+
+        //Overlap Detection
+        revealPlayer = Physics2D.OverlapBox(transform.position, revealSize, 0, groundLayer);
 
         //Reset Velocity if Needed
         if (reVel)
@@ -197,6 +199,20 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        //Collision Detection for Teleport 
+        if (teleportHide)
+        {
+            if (revealPlayer) 
+            {
+                playerVisual.sortingOrder = -16;
+            }
+            else if (!revealPlayer && !teleported)//Hide player until teleport is finished and not inside a collider
+            {
+                playerVisual.sortingOrder = 3;
+                teleportHide = false;
+            }
+        }
+
         //Ground Detection -> Animation Triggers
         if (onGround)
         {
@@ -269,6 +285,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
     //Dash
     public void OnDash(InputAction.CallbackContext context)
     {
@@ -335,6 +352,7 @@ public class PlayerController : MonoBehaviour
         float startTime = Time.time;
         teleported = true;
         playerVisual.sortingOrder = -16;
+        teleportHide = true;
         while (Time.time < startTime + playerTeleportDuration)
         {
             yield return null;
@@ -342,7 +360,6 @@ public class PlayerController : MonoBehaviour
         teleported = false;
         reVel = true;
         teleportCooldownTimer = playerTeleportCooldown;
-        playerVisual.sortingOrder = 1;
         playerBasicLayer();
     }
     //Set direction of teleport based on if player is looking up/down/left/right
