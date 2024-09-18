@@ -22,7 +22,8 @@ public abstract class BaseSpellCast : MonoBehaviour
     public float manaCost;
 
     //Animation
-    private Animator playerAnim;
+    public Animator playerAnim;
+    public PlayerMana player;
 
     public virtual void Cast()
     {
@@ -35,12 +36,12 @@ public abstract class BaseSpellCast : MonoBehaviour
             Debug.Log("Spell on Cooldown");
             return;
         }
-        else if (GameManager.Instance.player.GetComponent<PlayerMana>().returnCurrentMana() < manaCost)
+        else if (player.returnCurrentMana() < manaCost)
         {
             Debug.Log("Not Enough Mana");
             return;
         }
-        GameManager.Instance.player.GetComponent<PlayerMana>().decreaseMana(manaCost);
+        player.decreaseMana(manaCost);
         playerAnim.SetTrigger(castAnim());
         StartCoroutine(CastSpellRoutine());
     }
@@ -64,7 +65,7 @@ public abstract class BaseSpellCast : MonoBehaviour
 
     protected virtual void Start()
     {
-        playerAnim = GameManager.Instance.player.GetComponentInChildren<Animator>();
+        player = GetComponentInParent<PlayerMana>();
     }
 
     //Animation

@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: ManaUpgrade
-  manaIncrease: 10
+  itemID: ManaUpgrade01
 --- !u!1 &6389316055988290567
 GameObject:
   m_ObjectHideFlags: 0

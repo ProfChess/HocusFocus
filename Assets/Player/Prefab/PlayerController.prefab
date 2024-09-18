@@ -240,6 +240,8 @@ MonoBehaviour:
   leftSpellSpawn: {fileID: 6352206687587204674}
   direction: {x: 0, y: 0}
   manaCost: 1
+  playerAnim: {fileID: 6318073296587202217}
+  player: {fileID: 6123800979285560759}
 --- !u!114 &5318198831456897357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,6 +262,8 @@ MonoBehaviour:
   leftSpellSpawn: {fileID: 6352206687587204674}
   direction: {x: 0, y: 0}
   manaCost: 1
+  playerAnim: {fileID: 6318073296587202217}
+  player: {fileID: 0}
 --- !u!114 &6608046967319791163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,6 +284,8 @@ MonoBehaviour:
   leftSpellSpawn: {fileID: 6352206687587204674}
   direction: {x: 0, y: 0}
   manaCost: 3
+  playerAnim: {fileID: 6318073296587202217}
+  player: {fileID: 0}
 --- !u!114 &77894176378688004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,6 +306,8 @@ MonoBehaviour:
   leftSpellSpawn: {fileID: 6352206687587204674}
   direction: {x: 0, y: 0}
   manaCost: 5
+  playerAnim: {fileID: 6318073296587202217}
+  player: {fileID: 0}
 --- !u!114 &1208426980997948155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,6 +328,8 @@ MonoBehaviour:
   leftSpellSpawn: {fileID: 6352206687587204674}
   direction: {x: 0, y: 0}
   manaCost: 10
+  playerAnim: {fileID: 6318073296587202217}
+  player: {fileID: 0}
 --- !u!114 &2252832739110898521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,6 +350,8 @@ MonoBehaviour:
   leftSpellSpawn: {fileID: 6352206687587204674}
   direction: {x: 0, y: 0}
   manaCost: 5
+  playerAnim: {fileID: 6318073296587202217}
+  player: {fileID: 0}
 --- !u!1 &4525292916954131162
 GameObject:
   m_ObjectHideFlags: 0

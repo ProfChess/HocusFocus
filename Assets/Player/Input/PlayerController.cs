@@ -115,7 +115,15 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
+        GameManager.Instance.player = gameObject;
+        if (GameManager.Instance.respawn)
+        {
+            transform.position = GameManager.Instance.respawnLocation;
+        }
         revealSize = new Vector2(0.72f, 1.33f);
+        playerDash = GameManager.Instance.getDashBool();
+        playerDoubleJump = GameManager.Instance.getJumpBool();
+        playerTeleport = GameManager.Instance.getTeleportBool();
     }
 
     //Physics Calculations

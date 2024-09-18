@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: HealthUpgrade
-  healthIncrease: 10
+  itemID: HealthUpgrade01
 --- !u!1 &4921312489825133294
 GameObject:
   m_ObjectHideFlags: 0

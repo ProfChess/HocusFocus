@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,8 +9,6 @@ public class PlayerHealth : MonoBehaviour
     private float pHealth = 10f;
     public float maxHealth = 10f;
     public Animator playerAnim;
-
-    
 
     private void Start()
     {
@@ -28,7 +27,7 @@ public class PlayerHealth : MonoBehaviour
             Debug.Log("Player is Dead");
             //Anim
             playerAnim.SetTrigger("PlayerDeath");
-            
+            GameManager.Instance.respawn = true;
             //Death Logic 
             
         }
@@ -55,4 +54,5 @@ public class PlayerHealth : MonoBehaviour
     {
         pHealth = amount;
     }
+
 }

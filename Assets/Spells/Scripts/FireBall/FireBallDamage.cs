@@ -5,24 +5,26 @@ using UnityEngine;
 
 public class FireBallDamage : BaseSpellDamage
 {
-    
+    private float areaIncrease; //Gets bigger by this many times on contact
+    public Transform visualArea;
     protected void Awake()
     {
         xSpawn = gameObject.transform.position.x;
         spellLength = 10f;
         spellSpeed = 10f;
         spellDamage = 5f;
-        effectArea = new Vector2(2.0f, 2.0f);
+        areaIncrease = 1.75f;
         col = GetComponent<BoxCollider2D>();
         spellHit = false;
     }
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);
-        gameObject.GetComponentInChildren<Transform>().localScale = effectArea;
         BoxCollider2D box = gameObject.GetComponent<BoxCollider2D>();
-        box.size = new Vector2(0.8f, 0.8f);
-        box.offset = new Vector2(0.5f, 0f);
+        visualArea = gameObject.GetComponentInChildren<Transform>();
+        visualArea.localScale *= areaIncrease;
+        box.size = new Vector2(0.6f, 0.6f);
+        box.offset = new Vector2(-0.3f, 0f);
     }
 
 

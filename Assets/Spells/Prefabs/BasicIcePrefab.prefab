@@ -212,7 +212,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellSpeed: 0
   spellDamage: 0
-  effectArea: {x: 0, y: 0}
   col: {fileID: 0}
   spellLength: 0
   spellDirection: {x: 0, y: 0}

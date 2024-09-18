@@ -22,7 +22,6 @@ public class ArcaneSpellDamage : BaseSpellDamage
         spellDamage = 2f;
         spellSpeed = 0f;
         spellLength = 3f;
-        effectArea = new Vector2(spellLength, 2);
         col = GetComponent<BoxCollider2D>();
     }
     public void arcaneAttack()

@@ -11,8 +11,6 @@ public abstract class BaseSpellDamage : MonoBehaviour
     [HideInInspector]
     public float spellDamage;      //Damage of spell
     [HideInInspector]
-    public Vector2 effectArea;     //Area the spell will hit
-    [HideInInspector]
     public BoxCollider2D col;      //Collider used for area collision
     [HideInInspector]
     public float spellLength;      //Range of spell
@@ -29,10 +27,6 @@ public abstract class BaseSpellDamage : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {   
-        if (col != null)
-        {
-            col.size = effectArea;
-        }
         if (collision.gameObject.tag == "Enemy")
         {
             onSpellHit();

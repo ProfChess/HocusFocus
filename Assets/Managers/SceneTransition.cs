@@ -12,6 +12,7 @@ public class SceneTransition : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             //Fade In
+            GameManager.Instance.respawn = false;
             GameManager.Instance.SetSpawnPoint(spawnPointName);
             GameManager.Instance.FadeToBlack(sceneToLoad);
         }

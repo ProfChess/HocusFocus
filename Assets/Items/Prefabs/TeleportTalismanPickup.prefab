@@ -92,6 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Teleport
+  itemID: TeleportUpgrade
 --- !u!1 &7180017274222258787
 GameObject:
   m_ObjectHideFlags: 0

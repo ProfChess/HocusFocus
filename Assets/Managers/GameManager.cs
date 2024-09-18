@@ -5,11 +5,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     private string currentSpawnPoint;
     public GameObject player;
+    public GameObject playerPrefab;
 
     //Scene Change
     public Image blackFade;
@@ -25,6 +27,13 @@ public class GameManager : MonoBehaviour
     private bool dashUpgrade = false;
     private bool jumpUpgrade = false;
     private bool teleportUpgrade = false;
+    //Save Locations
+    private string sceneDeath = "StartingRoom";
+    public Vector3 respawnLocation = new Vector3(7.75f, -0.75f, 1);
+    public bool respawn = false;
+
+    //Item Storage
+    private List<string> itemsCollected;
     
     private void Awake()
     {
@@ -40,7 +49,7 @@ public class GameManager : MonoBehaviour
         }
 
         player = GameObject.FindGameObjectWithTag("Player");
-
+        itemsCollected = new List<string>();
     }
 
     private void Start()
@@ -73,15 +82,15 @@ public class GameManager : MonoBehaviour
                 player.transform.position = spawnPoint.transform.position;
             }
         }
-
         transferPlayerStats();
     }
 
     //End of Game
     public void playerDeath()
     {
-        player.GetComponent<PlayerController>().playerSpeed = 0;
+        player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         Time.timeScale = 0;
+        respawnLogic();
     }
 
     //Fade to Black
@@ -132,6 +141,71 @@ public class GameManager : MonoBehaviour
     }
 
 
+    //Get/Save Health/Mana
+    //Get
+    public float getHealthUpgrades() {  return healthUpgrades; }
+    public float getManaUpgrades() {  return manaUpgrades; }
+
+    //Save Stats
+    public void saveHealthAndMana() 
+    {
+        savedHealth = player.GetComponent<PlayerHealth>().getHealth();
+        savedMana = player.GetComponent<PlayerMana>().getMana();
+    }
+    //Set player stats on entering new room
+    private void transferPlayerStats()
+    {
+        player.GetComponent<PlayerHealth>().setHealth(savedHealth);
+        player.GetComponent<PlayerMana>().setMana(savedMana);
+    }
+    //Save Scene/Location For respawning after death
+    public void saveSceneAndLocation(string sceneName)
+    {
+        sceneDeath = sceneName;
+    }
+    private void respawnLogic()
+    {
+        SceneManager.LoadScene(sceneDeath);
+        
+        if (player == null)
+        {
+            player = Instantiate(playerPrefab, respawnLocation, Quaternion.identity);
+        }
+        else
+        {
+            Destroy(player);
+            player = Instantiate(playerPrefab, respawnLocation, Quaternion.identity);
+        }
+        Time.timeScale = 1;
+    }
+
+
+
+    //Get/Set Item
+    public bool getDashBool() { return dashUpgrade; }
+    public bool getJumpBool() { return jumpUpgrade; }
+    public bool getTeleportBool() { return teleportUpgrade; }
+
+    public void setDashBool() { dashUpgrade = true; player.GetComponent<PlayerController>().playerDash = true; }
+    public void setJumpBool() {  jumpUpgrade = true; player.GetComponent<PlayerController>().playerDoubleJump = true; }
+    public void setTeleportBool() {  teleportUpgrade = true; player.GetComponent<PlayerController>().playerTeleport = true; }
+
+
+    //Item Storage
+    //Add Item
+    public void AddItem(string item)
+    {
+        if (item != null && !itemsCollected.Contains(item))
+        {
+            itemsCollected.Add(item);
+        }
+    }
+
+    public bool isCollected(string item)
+    {
+        return itemsCollected.Contains(item);
+    }
+
     //Item Collection
     public void itemCollected(string itemName)
     {
@@ -160,35 +234,5 @@ public class GameManager : MonoBehaviour
         }
 
     }
-
-    //Get/Save Health/Mana
-    //Get
-    public float getHealthUpgrades() {  return healthUpgrades; }
-    public float getManaUpgrades() {  return manaUpgrades; }
-
-    //Save
-    public void saveHealthAndMana() 
-    {
-        savedHealth = player.GetComponent<PlayerHealth>().getHealth();
-        savedMana = player.GetComponent<PlayerMana>().getMana();
-    }
-
-    private void transferPlayerStats()
-    {
-        player.GetComponent<PlayerHealth>().setHealth(savedHealth);
-        player.GetComponent<PlayerMana>().setMana(savedMana);
-    }
-
-    //Get/Set Item
-    public bool getDashBool() { return dashUpgrade; }
-    public bool getJumpBool() { return jumpUpgrade; }
-    public bool getTeleportBool() { return teleportUpgrade; }
-
-    public void setDashBool() { dashUpgrade = true; player.GetComponent<PlayerController>().playerDash = true; }
-    public void setJumpBool() {  jumpUpgrade = true; player.GetComponent<PlayerController>().playerDoubleJump = true; }
-    public void setTeleportBool() {  teleportUpgrade = true; player.GetComponent<PlayerController>().playerTeleport = true; }
-
-
-
 
 }
