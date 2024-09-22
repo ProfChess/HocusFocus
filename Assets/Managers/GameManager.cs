@@ -28,8 +28,8 @@ public class GameManager : MonoBehaviour
     private bool jumpUpgrade = false;
     private bool teleportUpgrade = false;
     //Save Locations
-    private string sceneDeath = "StartingRoom";
-    public Vector3 respawnLocation = new Vector3(7.75f, -0.75f, 1);
+    public string sceneDeath = "StartingRoom";
+    public Vector2 respawnLocation = new Vector2(7.75f, -0.75f);
     public bool respawn = false;
 
     //Item Storage
@@ -159,9 +159,10 @@ public class GameManager : MonoBehaviour
         player.GetComponent<PlayerMana>().setMana(savedMana);
     }
     //Save Scene/Location For respawning after death
-    public void saveSceneAndLocation(string sceneName)
+    public void saveSceneAndLocation(string sceneName, Vector2 location)
     {
         sceneDeath = sceneName;
+        respawnLocation = location;
     }
     private void respawnLogic()
     {

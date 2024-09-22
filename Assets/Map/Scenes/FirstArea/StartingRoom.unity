@@ -3735,7 +3735,8 @@ MonoBehaviour:
   player: {fileID: 0}
   playerPrefab: {fileID: 1084127740771589548, guid: 166cd064b884d044f89e6791b274c5a5, type: 3}
   blackFade: {fileID: 2000912265}
-  respawnLocation: {x: 7.75, y: -0.75, z: 1}
+  sceneDeath: StartingRoom
+  respawnLocation: {x: 7.75, y: -0.75}
   respawn: 0
 --- !u!4 &1369065635
 Transform:
@@ -4469,7 +4470,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1783894992876656495, guid: 166cd064b884d044f89e6791b274c5a5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.06
+      value: -4.61
       objectReference: {fileID: 0}
     - target: {fileID: 1783894992876656495, guid: 166cd064b884d044f89e6791b274c5a5, type: 3}
       propertyPath: m_LocalPosition.y

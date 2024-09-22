@@ -12,8 +12,8 @@ public class PlayerHealth : MonoBehaviour
 
     private void Start()
     {
-        setMaxHealth();
-        UIManager.Instance.updateHealthBar(pHealth, maxHealth);
+        setMaxHealth(); //Sets health to max upon beginning game/respawn
+        UIChange();     //Changes UI to match health %
     }
 
     public void takeDamage(float damage)
@@ -31,7 +31,7 @@ public class PlayerHealth : MonoBehaviour
             //Death Logic 
             
         }
-        UIManager.Instance.updateHealthBar(pHealth, maxHealth);
+        UIChange();
     }
 
     private void setMaxHealth()
@@ -43,6 +43,7 @@ public class PlayerHealth : MonoBehaviour
     {
         setMaxHealth();
         pHealth = maxHealth;
+        UIChange();
     }
 
     public float getHealth()
@@ -53,6 +54,12 @@ public class PlayerHealth : MonoBehaviour
     public void setHealth(float amount)
     {
         pHealth = amount;
+    }
+
+    //Update UI 
+    public void UIChange()
+    {
+        UIManager.Instance.updateHealthBar(pHealth, maxHealth);
     }
 
 }

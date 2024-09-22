@@ -16,6 +16,7 @@ public class CasterEnemy : BaseEnemyMovement
     private bool lookRight = true;
     private float yRange = 0.7f;
     private bool isWithinYRange = false;
+    private bool isWithinXRange = false;
     private Vector3 playerPos;
     private Vector3 enemyPos;
 
@@ -29,7 +30,7 @@ public class CasterEnemy : BaseEnemyMovement
     //Assign
     protected void Awake()
     {
-        Initialize(0, 0, 0, false, 5f, 50);
+        Initialize(0, 0, 0, false, 8f, 50);
     }
 
     protected override void Start()
@@ -44,8 +45,8 @@ public class CasterEnemy : BaseEnemyMovement
         playerPos = player.transform.position;
         enemyPos = transform.position;
         isWithinYRange = playerPos.y <= enemyPos.y + yRange && playerPos.y >= enemyPos.y - yRange;
-
-        if (canSeePlayer && isWithinYRange && !enemyBlind)
+        isWithinXRange = playerPos.x >= enemyPos.x - 12f && playerPos.x <= enemyPos.x + 12f;
+        if (canSeePlayer && isWithinYRange && isWithinXRange && !enemyBlind)
         {
             casterAttackState();
         }
@@ -56,9 +57,6 @@ public class CasterEnemy : BaseEnemyMovement
 
         //Face left or right
         lookRight = transform.position.x < player.transform.position.x;
-
-
-            
 
         if (canSeePlayer)
         {
