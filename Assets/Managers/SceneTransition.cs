@@ -5,11 +5,17 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class SceneTransition : MonoBehaviour
 {
-    public string sceneToLoad;
-    public string spawnPointName;
+    public string sceneToLoad = "Null";
+    public string spawnPointName = "Null";
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        //If Scene or spawn is set to null -> do nothing
+        if (sceneToLoad == "Null" || spawnPointName == "Null")
+        {
+            Debug.Log("Scene is Null");
+        }
+
+        else if (collision.CompareTag("Player"))
         {
             //Fade In
             GameManager.Instance.respawn = false;
