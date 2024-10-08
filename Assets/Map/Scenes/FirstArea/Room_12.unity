@@ -5363,8 +5363,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d45761f45423ce74fbc49e7a95591605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: Null
-  spawnPointName: Null
+  sceneToLoad: Room_13
+  spawnPointName: RightDoorSpawn
 --- !u!61 &2106696471
 BoxCollider2D:
   m_ObjectHideFlags: 0

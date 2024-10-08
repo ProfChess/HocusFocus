@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     private string currentSpawnPoint;
+    private string currentSpawnDirection;
     public GameObject player;
     public GameObject playerPrefab;
 
@@ -61,6 +62,31 @@ public class GameManager : MonoBehaviour
     public void SetSpawnPoint(string spawnPoint)
     {
         currentSpawnPoint = spawnPoint;
+        if (spawnPoint.Length >= 5)
+        {
+            string spawnDirection = spawnPoint.Substring(0, 5);
+            if (spawnDirection == "Right")
+            {
+                currentSpawnDirection = spawnDirection;
+            }
+            else
+            {
+                spawnDirection = spawnPoint.Substring(0, 4);
+                if (spawnDirection == "Left")
+                {
+                    currentSpawnDirection = spawnDirection;
+                }
+                else
+                {
+                    Debug.Log("SpawnPointName Incorrect (Must start with 'Right' or 'Left'");
+                }
+            }
+        }
+        else
+        {
+            Debug.Log("SpawnPointName too short");
+        }
+
     }
 
 
@@ -80,6 +106,10 @@ public class GameManager : MonoBehaviour
             if (spawnPoint != null)
             {
                 player.transform.position = spawnPoint.transform.position;
+                if (currentSpawnDirection == "Right") //If spawnPointname starts with 'Right' (meaning we are entering from the right) -> flip to the left
+                {
+                    player.GetComponentInChildren<SpriteRenderer>().flipX = true;
+                }
             }
         }
         transferPlayerStats();
@@ -236,4 +266,6 @@ public class GameManager : MonoBehaviour
 
     }
 
+
+    //Player Direction upon entering room
 }

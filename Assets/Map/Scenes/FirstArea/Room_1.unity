@@ -298,6 +298,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneToLoad: HealthRoom
   spawnPointName: EntranceSpawn
+  spawnDirection: Null
 --- !u!61 &59145968
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4556,6 +4557,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneToLoad: StartingRoom
   spawnPointName: RightExitSpawn
+  spawnDirection: Left
 --- !u!61 &1373958875
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5528,6 +5530,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneToLoad: Room_2
   spawnPointName: LeftDoorSpawn
+  spawnDirection: Null
 --- !u!61 &1759740452
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6812,7 +6815,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 386406981}
-  - {fileID: 1530635816}
   - {fileID: 352777860}
   - {fileID: 1557377027}
   - {fileID: 750286858}
@@ -6820,3 +6822,4 @@ SceneRoots:
   - {fileID: 445264083}
   - {fileID: 2120848790}
   - {fileID: 1776768187}
+  - {fileID: 1530635816}
