@@ -10,7 +10,7 @@ public abstract class BaseSpellCast : MonoBehaviour
     public float castTime;
     public bool casting;
     protected float cooldownTimer;
-    protected bool lookingRight;
+    protected bool lookingRight = true;
 
     public GameObject spellPrefab;
     public Transform rightSpellSpawn;

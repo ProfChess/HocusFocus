@@ -1383,7 +1383,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1391,6 +1391,27 @@ TextureImporter:
       bones: []
       spriteID: 3809364a92decdc458802028d413ddef
       internalID: 1770757978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrassPlatformSprite
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 112
+        width: 48
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37bc25b545727a147b602c3e90dd098c
+      internalID: -1075306023
       vertices: []
       indices: 
       edges: []
@@ -1412,6 +1433,7 @@ TextureImporter:
       Grass2: 1963152624
       Grass3: -1243635228
       Grass4: -766197850
+      GrassPlatformSprite: -1075306023
       Leaves1: 1308388283
       Leaves2: -405031598
       Plant1: -1287491953

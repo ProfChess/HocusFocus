@@ -40,9 +40,8 @@ public class MeleeEnemy : BaseEnemyMovement
         playerPos = player.transform.position;
         enemyPos = transform.position;
         isWithinYRange = playerPos.y <= enemyPos.y + yRange && playerPos.y >= enemyPos.y - yRange;
-
-        playerPastBounds = playerPos.x > rightPatrolPoint.position.x || 
-            playerPos.x < leftPatrolPoint.position.x;
+        playerPastBounds = playerPos.x > rightPatrolPoint.position.x + 1f || 
+            playerPos.x < leftPatrolPoint.position.x - 1f;
 
         //Has Line of Sight
         if (canSeePlayer && !attacking && !enemyBlind && !playerPastBounds && isWithinYRange)

@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     //Left/Right
     public float playerSpeed = 5f;                  //Movement speed of player
     public Vector2 moveDirection;                   //Direction player moves in
-    private Vector2 lastMoveDirection;
+    private Vector2 lastMoveDirection = Vector2.right;
     //Jumping
     private float playerJumpforce = 9f;             //Force for initial jump of player
     private float maxJumpTime = 0.3f;               //Length of time the jump height can be increased
@@ -445,5 +445,11 @@ public class PlayerController : MonoBehaviour
         {
             return false;
         }
+    }
+
+    //Setter for lastmovedirection -> used by game manager to set upon entering room and switching direction at spawn
+    public void setMoveDirection(Vector2 move)
+    {
+        lastMoveDirection = move;
     }
 }

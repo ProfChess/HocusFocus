@@ -109,6 +109,7 @@ public class GameManager : MonoBehaviour
                 if (currentSpawnDirection == "Right") //If spawnPointname starts with 'Right' (meaning we are entering from the right) -> flip to the left
                 {
                     player.GetComponentInChildren<SpriteRenderer>().flipX = true;
+                    player.GetComponent<PlayerController>().setMoveDirection(Vector2.left);
                 }
             }
         }

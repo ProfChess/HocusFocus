@@ -56,4 +56,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Map/Scenes/FirstArea/Room_14.unity
     guid: 28c3b55f5c0f0fe45ae216ee4a5edb76
+  - enabled: 1
+    path: Assets/Map/Scenes/FirstArea/Room_15.unity
+    guid: c3b8e403ffafd63439e367d434e7dc4c
   m_configObjects: {}

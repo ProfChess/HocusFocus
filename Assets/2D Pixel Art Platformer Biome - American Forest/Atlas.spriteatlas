@@ -50,6 +50,7 @@ SpriteAtlas:
     isAtlasV2: 0
     cachedData: {fileID: 0}
     packedSpriteRenderDataKeys:
+    - 5fe5454ec8605de43809133b020d1b69: -1075306023
     - 5fe5454ec8605de43809133b020d1b69: 1106348436
     - 5fe5454ec8605de43809133b020d1b69: -2091821360
     - 5fe5454ec8605de43809133b020d1b69: -2039895678
@@ -112,6 +113,7 @@ SpriteAtlas:
     - 5fe5454ec8605de43809133b020d1b69: 11881124
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: -1075306023, guid: 5fe5454ec8605de43809133b020d1b69, type: 3}
   - {fileID: 1106348436, guid: 5fe5454ec8605de43809133b020d1b69, type: 3}
   - {fileID: -2091821360, guid: 5fe5454ec8605de43809133b020d1b69, type: 3}
   - {fileID: -2039895678, guid: 5fe5454ec8605de43809133b020d1b69, type: 3}
@@ -173,6 +175,7 @@ SpriteAtlas:
   - {fileID: 587319642, guid: 5fe5454ec8605de43809133b020d1b69, type: 3}
   - {fileID: 11881124, guid: 5fe5454ec8605de43809133b020d1b69, type: 3}
   m_PackedSpriteNamesToIndex:
+  - GrassPlatformSprite
   - Sign1
   - Sign2
   - Sprites_46
