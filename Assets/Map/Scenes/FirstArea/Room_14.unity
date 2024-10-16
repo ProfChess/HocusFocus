@@ -5753,7 +5753,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1245625073}
   m_Layer: 0
-  m_Name: TopDoorSpawn
+  m_Name: LeftTopDoorSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5768,7 +5768,7 @@ Transform:
   m_GameObject: {fileID: 1245625072}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.61, y: -3.78, z: 1}
+  m_LocalPosition: {x: -0.60999966, y: -4.3199997, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7087,6 +7087,56 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1613999295
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1613999297}
+  - component: {fileID: 1613999296}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1613999296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613999295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc3b21aa602c3784aadb00043867acb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  playerPrefab: {fileID: 0}
+  blackFade: {fileID: 0}
+  sceneDeath: StartingRoom
+  respawnLocation: {x: 7.75, y: -0.75}
+  respawn: 0
+--- !u!4 &1613999297
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613999295}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.1166785, y: 4.449732, z: -0.022862272}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1651205104
 GameObject:
   m_ObjectHideFlags: 0
@@ -8338,7 +8388,7 @@ Transform:
   m_GameObject: {fileID: 1902610603}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.99, y: 11.56, z: 0}
+  m_LocalPosition: {x: -7.99, y: 12.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13063,3 +13113,4 @@ SceneRoots:
   - {fileID: 995660680}
   - {fileID: 1766604889}
   - {fileID: 1935690409}
+  - {fileID: 1613999297}
