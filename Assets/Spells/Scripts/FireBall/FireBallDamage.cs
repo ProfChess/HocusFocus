@@ -19,12 +19,15 @@ public class FireBallDamage : BaseSpellDamage
     }
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        base.OnTriggerEnter2D(collision);
-        BoxCollider2D box = gameObject.GetComponent<BoxCollider2D>();
-        visualArea = gameObject.GetComponentInChildren<Transform>();
-        visualArea.localScale *= areaIncrease;
-        box.size = new Vector2(0.6f, 0.6f);
-        box.offset = new Vector2(-0.3f, 0f);
+        if (!spellHit)
+        {
+            base.OnTriggerEnter2D(collision);
+            BoxCollider2D box = gameObject.GetComponent<BoxCollider2D>();
+            visualArea = gameObject.GetComponentInChildren<Transform>();
+            visualArea.localScale *= areaIncrease;
+            box.size = new Vector2(0.6f, 0.6f);
+            box.offset = new Vector2(-0.3f, 0f);
+        }
     }
 
 

@@ -17,6 +17,7 @@ public class MeleeEnemy : BaseEnemyMovement
     //Anim
     public Animator enemyAnim;
     public SpriteRenderer enemyVisual;
+    private EnemyHealthScript HPScript;
 
     //Player Location
     private Vector2 playerPos;
@@ -29,6 +30,12 @@ public class MeleeEnemy : BaseEnemyMovement
         Initialize(2, 4, 2, false, 5, 1);
     }
 
+    protected override void Start()
+    {
+        base.Start();
+        HPScript = GetComponent<EnemyHealthScript>();
+    }
+
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
@@ -36,6 +43,13 @@ public class MeleeEnemy : BaseEnemyMovement
 
     private void Update()
     {
+        //Death Stop
+        if (HPScript.enemyHealth <= 0)
+        {
+            EnemyPatrolSpeed = 0;
+            EnemyChaseSpeed = 0;
+        }
+
         //Range Calc
         playerPos = player.transform.position;
         enemyPos = transform.position;
