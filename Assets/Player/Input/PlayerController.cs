@@ -179,7 +179,7 @@ public class PlayerController : MonoBehaviour
             isJumping = false;
             jumpTimer = 0f;
         }
-        if (jumpHeld && jumpTimer < maxJumpTime)
+        if (jumpHeld && jumpTimer < maxJumpTime && rb.velocity.y >= 0)
         {
             rb.AddForce(Vector2.up * 14, ForceMode2D.Force);
             jumpTimer += Time.fixedDeltaTime;
