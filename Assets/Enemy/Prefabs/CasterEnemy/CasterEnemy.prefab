@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 241cc299a3e75cc4b949dbc11921f8e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 5
+  enemyMaxHealth: 5
   enemyAnim: {fileID: 7939157849516036493}
 --- !u!1 &6848943507927114412
 GameObject:
@@ -267,6 +267,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce378f69313ab1f4abd2b051a9fa06d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHP: {fileID: 8380164288671000502}
   enemyAnim: {fileID: 7939157849516036493}
   enemy: {fileID: 2197763873065876941}

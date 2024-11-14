@@ -2,27 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class AnimSummoner : MonoBehaviour
 {
-    public EnemyHealthScript enemyHP;
+    private EnemyHealthScript enemyHP;
     public Animator enemyAnim;
     public SummonerEnemy enemy;
 
+    void Start()
+    {
+        enemyHP = GetComponentInParent<EnemyHealthScript>();
+        enemyHP.onHealthChanged += enemyHPCheck;
+    }
     public void enemyDeath()
     {
         enemyHP.dyingSucks();
     }
 
-    public void enemyHPCheck()
+    public void enemyHPCheck(float health)
     {
-        if (enemyHP)
+        if (health <= 0)
         {
-            if (enemyHP.enemyHealth <= 0)
-            {
-                enemyAnim.SetTrigger("Death");
-            }
+            enemyAnim.SetTrigger("Death");
         }
-
     }
 
     public void summonCall()
@@ -36,5 +38,10 @@ public class AnimSummoner : MonoBehaviour
         {
             enemy.runSummonAbility();
         }
+    }
+
+    private void OnDestroy()
+    {
+        enemyHP.onHealthChanged -= enemyHPCheck;
     }
 }

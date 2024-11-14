@@ -4,25 +4,26 @@ using UnityEngine;
 
 public class CasterEnemyAnim : MonoBehaviour
 {
-    public EnemyHealthScript enemyHP;
+    private EnemyHealthScript enemyHP;
     public Animator enemyAnim;
     public CasterEnemy enemy;
 
+    private void Start()
+    {
+        enemyHP = GetComponentInParent<EnemyHealthScript>();
+        enemyHP.onHealthChanged += enemyHPCheck;
+    }
     public void enemyDeath()
     {
         enemyHP.dyingSucks();
     }
 
-    public void enemyHPCheck()
+    public void enemyHPCheck(float health)
     {
-        if (enemyHP)
+        if (health <= 0)
         {
-            if (enemyHP.enemyHealth <= 0)
-            {
-                enemyAnim.SetTrigger("Death");
-            }
+            enemyAnim.SetTrigger("Death");
         }
-
     }
 
     public void spellCall()

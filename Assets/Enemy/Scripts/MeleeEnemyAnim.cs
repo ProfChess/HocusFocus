@@ -6,10 +6,12 @@ public class MeleeEnemyAnim : MonoBehaviour
 {
     public MeleeEnemy enemy;
     public Animator enemyAnim;
-    public EnemyHealthScript enemyHP;
+    private EnemyHealthScript enemyHP;
     public void callAttack()
     {
         enemy.enemyAttackNumbers();
+        enemyHP = GetComponentInParent<EnemyHealthScript>();
+        enemyHP.onHealthChanged += enemyHPCheck;
     }
 
     public void enemyDeath()
@@ -17,15 +19,11 @@ public class MeleeEnemyAnim : MonoBehaviour
         enemyHP.dyingSucks();
     }
 
-    public void enemyHPCheck()
+    public void enemyHPCheck(float health)
     {
-        if (enemyHP)
+        if (health <= 0)
         {
-            if (enemyHP.enemyHealth <= 0)
-            {
-                enemyAnim.SetTrigger("Death");
-            }
+            enemyAnim.SetTrigger("Death");
         }
-
     }
 }

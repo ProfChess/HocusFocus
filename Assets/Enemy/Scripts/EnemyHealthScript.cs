@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -5,7 +6,8 @@ using UnityEngine;
 
 public class EnemyHealthScript : MonoBehaviour
 {
-    public float enemyHealth = 5f;
+    public float enemyMaxHealth = 5f;
+    private float enemyHealth;
     private float enemyDamageMod = 1f;
 
     //dot variables
@@ -17,13 +19,26 @@ public class EnemyHealthScript : MonoBehaviour
     //Anim
     public Animator enemyAnim;
 
+    //Getter 
+    public float getEnemyCurrentHealth()
+    {
+        return enemyHealth;
+    }
+
+    //Events
+    public event Action<float> onHealthChanged;
     private void Start()
     {
+        enemyHealth = enemyMaxHealth;
         gameObject.SetActive(true);
     }
     public void takeDamage(float damage)
     {
         enemyHealth -= damage * enemyDamageMod;
+        if (onHealthChanged != null)
+        {
+            onHealthChanged.Invoke(enemyHealth);
+        }
         if (enemyAnim)
         {
             enemyAnim.SetTrigger("Hurt");
@@ -42,7 +57,10 @@ public class EnemyHealthScript : MonoBehaviour
     {
         gameObject.SetActive(false);
         StopCoroutine(DOT());
-        gameObject.GetComponent<BaseEnemyMovement>().returnToStart();
+        if (gameObject.GetComponent<BaseEnemyMovement>() != null)
+        {
+            gameObject.GetComponent<BaseEnemyMovement>().returnToStart();
+        }
     }
 
 

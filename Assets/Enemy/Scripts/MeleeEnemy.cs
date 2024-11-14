@@ -44,7 +44,7 @@ public class MeleeEnemy : BaseEnemyMovement
     private void Update()
     {
         //Death Stop
-        if (HPScript.enemyHealth <= 0)
+        if (HPScript.getEnemyCurrentHealth() <= 0)
         {
             EnemyPatrolSpeed = 0;
             EnemyChaseSpeed = 0;
