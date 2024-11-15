@@ -118,6 +118,7 @@ public class PlayerController : MonoBehaviour
         if (GameManager.Instance.respawn)
         {
             transform.position = GameManager.Instance.respawnLocation;
+            GameManager.Instance.savedHealth = gameObject.GetComponent<PlayerHealth>().maxHealth;
             gameObject.GetComponent<PlayerHealth>().pickupHealth();
         }
         revealSize = new Vector2(0.72f, 1.33f);
