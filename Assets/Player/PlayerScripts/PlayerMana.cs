@@ -13,6 +13,7 @@ public class PlayerMana : MonoBehaviour
     private void Start()
     {
         setMaxMana();
+        pMana = GameManager.Instance.savedMana;
         UIManager.Instance.updateManaBar(pMana, maxMana);
     }
 
@@ -22,6 +23,7 @@ public class PlayerMana : MonoBehaviour
         if (pMana < maxMana)
         {
             pMana += manaRegenRate * Time.deltaTime;
+            GameManager.Instance.savedMana = pMana; 
             if (pMana > maxMana)
             {
                 pMana = maxMana;

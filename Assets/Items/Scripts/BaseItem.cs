@@ -9,8 +9,8 @@ public abstract class BaseItem : MonoBehaviour
 
     private BoxCollider2D hitBox;
     private Vector2 location;
-    public string itemName;
-    public string itemID;
+    public string itemName; //Determines what item does on pickup
+    public string itemID;   //Determines if item will spawn or not
 
     protected virtual void Start()
     {

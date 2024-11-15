@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -12,6 +11,9 @@ public class GameManager : MonoBehaviour
     private string currentSpawnPoint;
     private string currentSpawnDirection;
     public GameObject player;
+
+
+    //Respawning
     public GameObject playerPrefab;
 
     //Scene Change
@@ -20,10 +22,10 @@ public class GameManager : MonoBehaviour
 
     //CheckPoints and Saving
     //Stats
-    private float healthUpgrades = 0f;
+    public float healthUpgrades = 0f;
     private float manaUpgrades = 0f;
-    private float savedHealth = 10f;
-    private float savedMana = 20f;
+    public float savedHealth;
+    public float savedMana;
     //Items
     private bool dashUpgrade = false;
     private bool jumpUpgrade = false;
@@ -35,6 +37,9 @@ public class GameManager : MonoBehaviour
 
     //Item Storage
     private List<string> itemsCollected;
+
+    //Saving Between Sessions
+    private SaveData saveData;
     
     private void Awake()
     {
@@ -42,6 +47,19 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            itemsCollected = new List<string>();
+            saveData = SaveManager.LoadGame() ?? new SaveData
+            {
+                startingScene = "StartingRoom",
+                spawnLocation = new Vector2(7.75f, -0.75f),
+                HpUpgrades = 0,
+                ManaUpgrades = 0,
+                playerItems = itemsCollected,
+                dashFound = false,
+                jumpFound = false,
+                teleFound = false,
+            };
+            loadProgress(); //Loads all saved variables to game manager
         }
 
         else
@@ -49,14 +67,14 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        player = GameObject.FindGameObjectWithTag("Player");
-        itemsCollected = new List<string>();
     }
 
     private void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+        player.transform.position = saveData.spawnLocation;
         StartCoroutine(FadeIn());
-        transferPlayerStats();
+        loadPlayerStart();
     }
 
     public void SetSpawnPoint(string spawnPoint)
@@ -113,7 +131,6 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        transferPlayerStats();
     }
 
     //End of Game
@@ -146,7 +163,6 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator FadeOutAndLoad(string sceneName)
     {
-        saveHealthAndMana();
         float timePassed = 0f;
         while (timePassed < fadeDuration)
         {
@@ -178,17 +194,22 @@ public class GameManager : MonoBehaviour
     public float getManaUpgrades() {  return manaUpgrades; }
 
     //Save Stats
-    public void saveHealthAndMana() 
+    public void saveHealth(float hp) 
     {
-        savedHealth = player.GetComponent<PlayerHealth>().getHealth();
-        savedMana = player.GetComponent<PlayerMana>().getMana();
+        savedHealth = hp;
     }
-    //Set player stats on entering new room
-    private void transferPlayerStats()
+    public void saveMana(float mana)
     {
-        player.GetComponent<PlayerHealth>().setHealth(savedHealth);
-        player.GetComponent<PlayerMana>().setMana(savedMana);
+        savedMana = mana;
     }
+    private void loadPlayerStart()
+    {
+        savedHealth = 10 + (healthUpgrades * 10);
+        savedMana = 20 + (manaUpgrades * 10);
+        player.GetComponent<PlayerHealth>().pickupHealth();
+        player.GetComponent<PlayerMana>().pickupMana();
+    }
+
     //Save Scene/Location For respawning after death
     public void saveSceneAndLocation(string sceneName, Vector2 location)
     {
@@ -235,38 +256,85 @@ public class GameManager : MonoBehaviour
 
     public bool isCollected(string item)
     {
-        return itemsCollected.Contains(item);
+        if (itemsCollected != null)
+        {
+            return itemsCollected.Contains(item);
+        }
+        else
+        {
+            return false;
+        }
     }
 
     //Item Collection
     public void itemCollected(string itemName)
     {
         //Stats
-        if (itemName == "HealthUpgrade")
+        switch (itemName)
         {
-            healthUpgrades += 1;
-        }
-        if (itemName == "ManaUpgrade")
-        {
-            manaUpgrades += 1;
-        }
+            case "HealthUpgrade":
+                healthUpgrades += 1;
+                break;
 
-        //Items
-        if (itemName == "Dash")
-        {
-            dashUpgrade = true;
-        }
-        if (itemName == "Jump")
-        {
-            jumpUpgrade = true;
-        }
-        if (itemName == "Teleport")
-        {
-            teleportUpgrade = true;
+            case "ManaUpgrade":
+                manaUpgrades += 1;
+                break;
+
+            case "Dash":
+                dashUpgrade = true;
+                saveData.dashFound = true;
+                break;
+
+            case "Jump":
+                jumpUpgrade = true;
+                saveData.jumpFound = true;
+                break;
+
+            case "Teleport":
+                teleportUpgrade = true;
+                saveData.teleFound = true;
+                break;
+
+            default:
+                Debug.Log("Invalid Item");
+                break;
         }
 
     }
 
 
-    //Player Direction upon entering room
+    //Save and Load Game session
+    private void saveProgress()
+    {
+        saveData.startingScene = sceneDeath;
+        saveData.spawnLocation = respawnLocation;
+        saveData.HpUpgrades = healthUpgrades;
+        saveData.ManaUpgrades = manaUpgrades;
+        SaveManager.SaveGame(saveData);
+    }
+
+    private void loadProgress()
+    {
+        sceneDeath = saveData.startingScene;
+        respawnLocation = saveData.spawnLocation;
+        healthUpgrades = saveData.HpUpgrades;
+        manaUpgrades = saveData.ManaUpgrades;
+        dashUpgrade = saveData.dashFound;
+        jumpUpgrade = saveData.jumpFound;
+        teleportUpgrade = saveData.teleFound;
+        itemsCollected = saveData.playerItems;
+        SceneManager.LoadScene(sceneDeath);
+    }
+
+    //Starting Place
+    public void startingSceneLoad()
+    {
+        SceneManager.LoadScene(sceneDeath);    }
+
+    //Quit Game
+    private void OnApplicationQuit()
+    {
+        saveProgress();
+    }
+
 }

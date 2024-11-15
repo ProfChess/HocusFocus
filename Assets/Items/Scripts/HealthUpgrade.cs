@@ -11,6 +11,7 @@ public class HealthUpgrade : BaseItem
         {
             PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
             playerHealth.pickupHealth();
+            GameManager.Instance.savedHealth = playerHealth.getHealth();
         }
     }
 }

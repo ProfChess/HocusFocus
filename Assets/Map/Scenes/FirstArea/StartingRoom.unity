@@ -276,7 +276,7 @@ Camera:
   m_GameObject: {fileID: 112223814}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 4
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -3796,6 +3796,9 @@ MonoBehaviour:
   player: {fileID: 0}
   playerPrefab: {fileID: 1084127740771589548, guid: 166cd064b884d044f89e6791b274c5a5, type: 3}
   blackFade: {fileID: 2000912265}
+  healthUpgrades: 0
+  savedHealth: 10
+  savedMana: 20
   sceneDeath: StartingRoom
   respawnLocation: {x: 7.75, y: -0.75}
   respawn: 0

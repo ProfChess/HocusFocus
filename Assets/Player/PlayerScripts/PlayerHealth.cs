@@ -6,13 +6,14 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    private float pHealth = 10f;
+    public float pHealth = 10f;
     public float maxHealth = 10f;
     public Animator playerAnim;
 
     private void Start()
     {
-        setMaxHealth(); //Sets health to max upon beginning game/respawn
+        setMaxHealth();
+        pHealth = GameManager.Instance.savedHealth;
         UIChange();     //Changes UI to match health %
     }
 
@@ -22,6 +23,7 @@ public class PlayerHealth : MonoBehaviour
         playerAnim.SetTrigger("PlayerHit");
         //Damage Logic
         pHealth -= damage;
+        GameManager.Instance.saveHealth(pHealth);
         if (pHealth <= 0)
         {
             Debug.Log("Player is Dead");

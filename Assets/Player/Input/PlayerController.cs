@@ -115,7 +115,6 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
-        GameManager.Instance.player = gameObject;
         if (GameManager.Instance.respawn)
         {
             transform.position = GameManager.Instance.respawnLocation;
@@ -452,4 +451,5 @@ public class PlayerController : MonoBehaviour
     {
         lastMoveDirection = move;
     }
+
 }
