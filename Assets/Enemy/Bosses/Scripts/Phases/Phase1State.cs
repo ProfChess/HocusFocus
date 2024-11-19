@@ -1,14 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
-public class Phase1State : MonoBehaviour, IBossPhase
+public class Phase1State : BaseState, IBossPhase
 {
-    //List of attacks boss can use in phase 1
-    public List<BaseAttackSpawn> attackList;
-
-    private float attackCooldown = 1f; //Time inbetween each attack
     public void EnterPhase(BossController boss)     //Enters phase 
     {
         Debug.Log("Phase 1");
@@ -19,9 +12,7 @@ public class Phase1State : MonoBehaviour, IBossPhase
         attackCooldown -= Time.deltaTime;
         if (attackCooldown <= 0f)
         {
-            BaseAttackSpawn attack = attackList[Random.Range(0, attackList.Count)];
-            attack.executeAttack(boss);
-            attackCooldown = 1f;
+            getRandomAttack(boss);
         }
     }
     public void ExitPhase(BossController boss)      //Final part before leaving phase

@@ -5,17 +5,28 @@ using UnityEngine;
 public abstract class BaseAttackSpawn : MonoBehaviour, IBossAttack
 {
     [SerializeField] protected GameObject prefab;
+    protected float cooldown;
     protected PoolManager poolManager;
     private Transform playerLocation;
     private void Start()
     {
         poolManager = FindObjectOfType<PoolManager>();
+        cooldown = prefab.GetComponent<BaseBossAttack>().getAttackFrequency();
+    }
+
+    public float getCooldown()
+    {
+        return cooldown;
     }
 
     protected void findPlayer()
     {
         playerLocation = GameManager.Instance.player.transform;
-        Debug.Log(playerLocation);
+    }
+    
+    protected GameObject getPlayer()
+    {
+        return GameManager.Instance.player;
     }
 
     protected Vector2 getPlayerDirection()

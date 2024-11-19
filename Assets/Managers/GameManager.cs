@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
                 jumpFound = false,
                 teleFound = false,
             };
-            loadProgress(); //Loads all saved variables to game manager
+            //loadProgress(); //Loads all saved variables to game manager
         }
 
         else
@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        player.transform.position = saveData.spawnLocation;
+        //player.transform.position = saveData.spawnLocation;
         StartCoroutine(FadeIn());
         loadPlayerStart();
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class PoolManager : MonoBehaviour
 {
     public ObjectPool fireballPool;
-    //public ObjectPool explosionPool;
+    public ObjectPool explosionPool;
     //public ObjectPool lightningPool;
 
     //List of different pools and associated numbers 
@@ -15,6 +15,8 @@ public class PoolManager : MonoBehaviour
         switch (num) { 
             case 0:
                 return fireballPool.getObject();
+            case 1:
+                return explosionPool.getObject();
             default:
                 Debug.Log("No pool found for id:" + num);
                 return null;
@@ -29,6 +31,9 @@ public class PoolManager : MonoBehaviour
         {
             case 0:
                 fireballPool.returnObject(obj);
+                break;
+            case 1:
+                explosionPool.returnObject(obj);
                 break;
             default:
                 Debug.Log("No pool found for id:" + num);

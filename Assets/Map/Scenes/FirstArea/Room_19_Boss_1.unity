@@ -760,6 +760,7 @@ GameObject:
   m_Component:
   - component: {fileID: 129038399}
   - component: {fileID: 129038398}
+  - component: {fileID: 129038400}
   m_Layer: 7
   m_Name: SpellHolder
   m_TagString: Untagged
@@ -795,6 +796,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1680516701}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &129038400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129038397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9398e092bc2e0f428ce9faa956651a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 386822610903416987, guid: c59295ae5beb2c4489ab4124bda7d2b1, type: 3}
 --- !u!1 &131800364
 GameObject:
   m_ObjectHideFlags: 0
@@ -2171,6 +2185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireballPool: {fileID: 377370082}
+  explosionPool: {fileID: 1939340470}
 --- !u!1 &469558371
 GameObject:
   m_ObjectHideFlags: 0
@@ -6213,6 +6228,9 @@ MonoBehaviour:
   player: {fileID: 0}
   playerPrefab: {fileID: 0}
   blackFade: {fileID: 0}
+  healthUpgrades: 0
+  savedHealth: 0
+  savedMana: 0
   sceneDeath: StartingRoom
   respawnLocation: {x: 7.75, y: -0.75}
   respawn: 0
@@ -7260,6 +7278,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackList:
   - {fileID: 129038398}
+  - {fileID: 129038400}
+  attackCooldown: 0
 --- !u!114 &1870068057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7272,6 +7292,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0bc37774b0feac439fdb563c6d4dc6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackList: []
+  attackCooldown: 0
 --- !u!114 &1870068058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7284,6 +7306,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 697799494a2877741ad87081520fec8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackList: []
+  attackCooldown: 0
 --- !u!4 &1870068059
 Transform:
   m_ObjectHideFlags: 0
@@ -7383,6 +7407,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1939340469}
+  - component: {fileID: 1939340470}
   m_Layer: 0
   m_Name: ExplosionPool
   m_TagString: Untagged
@@ -7405,6 +7430,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 448900222}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1939340470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939340468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e8c14479ed7ca44da9f2cc2b1ca82a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 386822610903416987, guid: c59295ae5beb2c4489ab4124bda7d2b1, type: 3}
+  baseSize: 3
 --- !u!1 &1988432236
 GameObject:
   m_ObjectHideFlags: 0

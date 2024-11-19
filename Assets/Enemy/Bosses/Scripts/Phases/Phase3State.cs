@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Phase3State : MonoBehaviour, IBossPhase
+public class Phase3State : BaseState, IBossPhase
 {
     public void EnterPhase(BossController boss)
     {

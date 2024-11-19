@@ -7,8 +7,6 @@ public class BA_FireBall : BaseBossAttack
     {
         moveDirection = direction;
         poolManager = pm;
-
-        Debug.Log("FireBall Spawned");
     }
 
     private void Update()

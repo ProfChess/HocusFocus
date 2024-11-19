@@ -27,5 +27,9 @@ public abstract class BaseBossAttack : MonoBehaviour
 
     }
 
+    public float getAttackFrequency()
+    {
+        return attackFrequency;
+    }
 
 }
