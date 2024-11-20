@@ -6,7 +6,7 @@ public class Phase2State : BaseState, IBossPhase
     public void EnterPhase(BossController boss)
     {
         Debug.Log("Phase 2");
-        attackCooldown = 0;
+        attackCooldown = 4;
     }
     public void UpdatePhase(BossController boss)
     {

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Phase1State : BaseState, IBossPhase
 {
+    [SerializeField] private BaseAttackSpawn endPhaseAttack;
     public void EnterPhase(BossController boss)     //Enters phase 
     {
         Debug.Log("Phase 1");
@@ -18,6 +19,7 @@ public class Phase1State : BaseState, IBossPhase
     }
     public void ExitPhase(BossController boss)      //Final part before leaving phase
     {
+        endPhaseAttack.executeAttack(boss);
         Debug.Log("Leaving Phase 1");
     }
 }

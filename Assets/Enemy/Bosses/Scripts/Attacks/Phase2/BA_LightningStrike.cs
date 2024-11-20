@@ -5,15 +5,15 @@ using UnityEngine;
 public class BA_LightningStrike : BaseBossAttack
 {
     //Variables 
-    Vector2 location;             //Place to strike
-    private float timer;            //How long to last after strike
-    private bool stopAttack = false;//Controls when to return to pool
+    protected Vector2 location;       //Place to strike
+    protected float timer;            //How long to last after strike
+    protected bool stopAttack = false;//Controls when to return to pool
 
     //References
-    BoxCollider2D hitbox;
-    SpriteRenderer sr;
+    protected BoxCollider2D hitbox;
+    protected SpriteRenderer sr;
 
-    private void Awake() //assign references
+    protected virtual void Awake() //assign references
     {
         hitbox = GetComponent<BoxCollider2D>();
         sr = GetComponentInChildren<SpriteRenderer>();
@@ -23,7 +23,6 @@ public class BA_LightningStrike : BaseBossAttack
     {
         if (stopAttack)
         {
-            hitbox.enabled = false;
             returnLightning(); //returns to pool
         }
         else
@@ -31,7 +30,7 @@ public class BA_LightningStrike : BaseBossAttack
 
         }
     }
-    public void Initialize(PoolManager pm, Vector2 place, float duration)
+    public virtual void Initialize(PoolManager pm, Vector2 place, float duration)
     {
         //Reset Variables
         hitbox.enabled = false;
@@ -67,6 +66,7 @@ public class BA_LightningStrike : BaseBossAttack
     //Specifics for returning to correct pool
     protected override void returnGameObject()
     {
+        hitbox.enabled = false;
         returnLightning();
     }
 

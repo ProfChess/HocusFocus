@@ -1182,6 +1182,7 @@ GameObject:
   - component: {fileID: 209350418}
   - component: {fileID: 209350420}
   - component: {fileID: 209350419}
+  - component: {fileID: 209350421}
   m_Layer: 7
   m_Name: Phase1
   m_TagString: Untagged
@@ -1232,6 +1233,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 4228487266374789831, guid: 7b1e402ff1a526348be68f12de7ab826, type: 3}
   weight: 8
+--- !u!114 &209350421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209350417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb6dcb21ae50d644eb411cb0f5f609a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 3009724606014404952, guid: 106c3a9a5f0655c4aa318c95878c0c4c, type: 3}
+  weight: 0
+  platforms:
+  - {fileID: 9196077636913141429}
+  - {fileID: 9196077635970497121}
+  - {fileID: 9196077635901034074}
+  - {fileID: 9196077636528228700}
 --- !u!1 &232718287
 GameObject:
   m_ObjectHideFlags: 0
@@ -5339,10 +5359,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7009323804195321393, guid: 166cd064b884d044f89e6791b274c5a5, type: 3}
-      propertyPath: playerDash
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7399,6 +7415,7 @@ MonoBehaviour:
   - {fileID: 209350420}
   - {fileID: 209350419}
   attackCooldown: 0
+  endPhaseAttack: {fileID: 209350421}
 --- !u!114 &1870068057
 MonoBehaviour:
   m_ObjectHideFlags: 0
