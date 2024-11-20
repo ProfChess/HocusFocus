@@ -19,7 +19,11 @@ public class IceSpellDamage : BaseSpellDamage
         base.OnTriggerEnter2D(collision);
         if (collision.CompareTag("Enemy"))
         {
-            collision.GetComponent<BaseEnemyMovement>().slowDown(1f, 2f);
+            BaseEnemyMovement Enemy = collision.GetComponent<BaseEnemyMovement>();
+            if (Enemy != null)
+            {
+                collision.GetComponent<BaseEnemyMovement>().slowDown(1f, 2f);
+            }
         }
     }
 

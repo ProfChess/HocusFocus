@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDamage: 2
-  attackFrequency: 2
+  attackFrequency: 4
   attackSpeed: 2
 --- !u!1 &4863482439657787168
 GameObject:
