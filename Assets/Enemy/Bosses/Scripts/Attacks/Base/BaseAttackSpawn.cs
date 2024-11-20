@@ -5,9 +5,10 @@ using UnityEngine;
 public abstract class BaseAttackSpawn : MonoBehaviour, IBossAttack
 {
     [SerializeField] protected GameObject prefab;
+    [SerializeField] protected float weight;
     protected float cooldown;
     protected PoolManager poolManager;
-    private Transform playerLocation;
+    protected Transform playerLocation;
     private void Start()
     {
         poolManager = FindObjectOfType<PoolManager>();
@@ -18,6 +19,12 @@ public abstract class BaseAttackSpawn : MonoBehaviour, IBossAttack
     {
         return cooldown;
     }
+
+    public float getWeight()
+    {
+        return weight;
+    }
+   
 
     protected void findPlayer()
     {

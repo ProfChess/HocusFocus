@@ -27,9 +27,39 @@ public abstract class BaseBossAttack : MonoBehaviour
 
     }
 
+
+    //Warning Logic
+    protected void boomComing(int num, Color normColor, Color warnColor, SpriteRenderer sr)
+    {
+        //0 = reset warning, 1 = change to warning, 2 = damage signal
+        if (num == 0)
+        {
+            Color color = normColor;
+            color.a = 0.2f;
+            sr.color = color;
+        }
+        else if (num == 1)
+        {
+            Color color = warnColor;
+            color.a = 0.2f;
+            sr.color = color;
+        }
+        else if (num == 2)
+        {
+            Color color = sr.color;
+            color.a = 1f;
+            sr.color = color;
+        }
+    }
+
+    //Get and Set
+    public float getAttackSpeed()
+    {
+        return attackSpeed;
+    }
+
     public float getAttackFrequency()
     {
         return attackFrequency;
     }
-
 }

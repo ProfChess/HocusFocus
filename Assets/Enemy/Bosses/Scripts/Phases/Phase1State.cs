@@ -14,6 +14,7 @@ public class Phase1State : BaseState, IBossPhase
         {
             getRandomAttack(boss);
         }
+
     }
     public void ExitPhase(BossController boss)      //Final part before leaving phase
     {

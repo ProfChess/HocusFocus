@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,8 +10,29 @@ public abstract class BaseState : MonoBehaviour
 
     protected virtual void getRandomAttack(BossController boss)
     {
-        BaseAttackSpawn attack = attackList[Random.Range(0, attackList.Count)];
-        attack.executeAttack(boss);
-        attackCooldown = attack.getCooldown();
+        //Add Weight from each attack of phase to total weight
+        float totalWeight = 0;
+        foreach (var choice in attackList)
+        {
+            totalWeight += choice.getWeight();
+        }
+
+        //Choose random number for range 
+        float ran = Random.Range(0, totalWeight);
+
+        //Pick attack based on weight
+        float weightcheck = 0f;
+        bool oneChoice = false;
+        foreach (BaseAttackSpawn choice in attackList)
+        {
+            weightcheck += choice.getWeight();
+            if (ran <= weightcheck && oneChoice == false)
+            {
+                //If attack is chosen, execute attack and start small cooldown (for animation later)
+                choice.executeAttack(boss);
+                attackCooldown = choice.getCooldown();
+                oneChoice = true;
+            }
+        }
     }
 }

@@ -18,10 +18,9 @@ public class BA_Explosion : BaseBossAttack
         poolManager = pm;
         player = pl;
         endAttack = false;
-        boomComing(0);
+        explosionWarning(0);
         col.enabled = false;
         StartCoroutine(explodeDelay());
-        Debug.Log("Explosion Spawned");
     }
 
     private void Awake()
@@ -52,11 +51,11 @@ public class BA_Explosion : BaseBossAttack
             yield return null;
         }
         //Signal Explosion Logic
-        boomComing(1);
+        explosionWarning(1);
         yield return new WaitForSeconds(0.4f);
 
         //Damage Activate
-        boomComing(2);
+        explosionWarning(2);
         col.enabled = true;
 
         yield return new WaitForSeconds(1);
@@ -73,30 +72,10 @@ public class BA_Explosion : BaseBossAttack
         returnExplosion();
     }
 
-    //Explosion and Signal Logic
-    private void boomComing(int num)
+    private void explosionWarning(int num)
     {
-        
-        if (num == 0)
-        {
-            Color color = Color.white;
-            color.a = 0.2f;
-            sr.color = color;
-        }
-        else if (num == 1)
-        {
-            Color color = Color.red;
-            color.a = 0.2f;
-            sr.color = color;
-        }
-        else if (num == 2)
-        {
-            Color color = sr.color;
-            color.a = 1f;
-            sr.color = color;
-        }
+        boomComing(num, Color.white, Color.red, sr);
     }
-
     
     
 }
