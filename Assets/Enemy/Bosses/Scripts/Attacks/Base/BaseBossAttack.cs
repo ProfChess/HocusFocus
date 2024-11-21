@@ -4,7 +4,6 @@ using UnityEngine;
 public abstract class BaseBossAttack : MonoBehaviour
 {
     [SerializeField] protected float attackDamage;
-    [SerializeField] protected float attackFrequency;
     [SerializeField] protected float attackSpeed;
     protected PoolManager poolManager;
 
@@ -58,8 +57,4 @@ public abstract class BaseBossAttack : MonoBehaviour
         return attackSpeed;
     }
 
-    public float getAttackFrequency()
-    {
-        return attackFrequency;
-    }
 }

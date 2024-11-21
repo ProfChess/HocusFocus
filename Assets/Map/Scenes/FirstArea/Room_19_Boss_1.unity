@@ -1217,8 +1217,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9398e092bc2e0f428ce9faa956651a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 386822610903416987, guid: c59295ae5beb2c4489ab4124bda7d2b1, type: 3}
   weight: 1
+  duration: 1
+  prefab: {fileID: 386822610903416987, guid: c59295ae5beb2c4489ab4124bda7d2b1, type: 3}
 --- !u!114 &209350420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1231,8 +1232,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2137b3a679690514296a0d48c5549f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 4228487266374789831, guid: 7b1e402ff1a526348be68f12de7ab826, type: 3}
   weight: 8
+  duration: 1
+  prefab: {fileID: 4228487266374789831, guid: 7b1e402ff1a526348be68f12de7ab826, type: 3}
 --- !u!114 &209350421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1245,8 +1247,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb6dcb21ae50d644eb411cb0f5f609a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3009724606014404952, guid: 106c3a9a5f0655c4aa318c95878c0c4c, type: 3}
   weight: 0
+  duration: 2
+  prefab: {fileID: 3009724606014404952, guid: 106c3a9a5f0655c4aa318c95878c0c4c, type: 3}
   platforms:
   - {fileID: 9196077636913141429}
   - {fileID: 9196077635970497121}
@@ -6923,9 +6926,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1680516701}
   - component: {fileID: 1680516702}
+  - component: {fileID: 1680516705}
   - component: {fileID: 1680516704}
   - component: {fileID: 1680516703}
-  - component: {fileID: 1680516705}
   m_Layer: 7
   m_Name: Boss1_Lich
   m_TagString: Enemy
@@ -7225,6 +7228,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1794125818}
   - component: {fileID: 1794125819}
+  - component: {fileID: 1794125820}
   m_Layer: 7
   m_Name: Phase2
   m_TagString: Untagged
@@ -7259,9 +7263,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ff98395ddc24214786e6ceb9489f892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3009724606014404952, guid: 106c3a9a5f0655c4aa318c95878c0c4c, type: 3}
   weight: 1
+  duration: 4
+  prefab: {fileID: 3009724606014404952, guid: 106c3a9a5f0655c4aa318c95878c0c4c, type: 3}
   extraLightningNumber: 2
+--- !u!114 &1794125820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794125817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7264433acb04244bceca120dd2f52b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  duration: 7
+  prefab: {fileID: 3009724606014404952, guid: 106c3a9a5f0655c4aa318c95878c0c4c, type: 3}
+  strikeInterval: 1
+  stalkDuration: 5
 --- !u!1 &1814300290
 GameObject:
   m_ObjectHideFlags: 0
@@ -7414,7 +7436,7 @@ MonoBehaviour:
   attackList:
   - {fileID: 209350420}
   - {fileID: 209350419}
-  attackCooldown: 0
+  attackCooldown: 1
   endPhaseAttack: {fileID: 209350421}
 --- !u!114 &1870068057
 MonoBehaviour:
@@ -7444,7 +7466,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackList:
   - {fileID: 1794125819}
-  attackCooldown: 0
+  - {fileID: 1794125820}
+  attackCooldown: 1
 --- !u!4 &1870068059
 Transform:
   m_ObjectHideFlags: 0

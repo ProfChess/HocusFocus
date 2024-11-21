@@ -4,20 +4,22 @@ using UnityEngine;
 
 public abstract class BaseAttackSpawn : MonoBehaviour, IBossAttack
 {
-    [SerializeField] protected GameObject prefab;
-    [SerializeField] protected float weight;
-    protected float cooldown;
-    protected PoolManager poolManager;
-    protected Transform playerLocation;
+    //Variables
+    [SerializeField] protected float weight;            //Likely to be chosen -> Bigger number = More likely
+    [SerializeField] protected float duration;          //Duration of ability including gap between next cast
+
+    //References
+    [SerializeField] protected GameObject prefab;       //Prefab to use
+    protected PoolManager poolManager;                  //Pool manager
+    protected Transform playerLocation;                 //Player transform
     private void Start()
     {
         poolManager = FindObjectOfType<PoolManager>();
-        cooldown = prefab.GetComponent<BaseBossAttack>().getAttackFrequency();
     }
 
     public float getCooldown()
     {
-        return cooldown;
+        return duration;
     }
 
     public float getWeight()
