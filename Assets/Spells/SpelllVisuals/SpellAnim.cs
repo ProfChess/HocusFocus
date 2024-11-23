@@ -17,6 +17,7 @@ public class SpellAnim : MonoBehaviour
     public void playBolt()
     {
         gameObject.GetComponentInParent<ArcaneSpellDamage>().playNextBolt();
+        AudioManager.Instance.playSound(13);
     }
 
     public void firstBolt()

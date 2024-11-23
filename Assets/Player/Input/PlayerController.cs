@@ -62,6 +62,8 @@ public class PlayerController : MonoBehaviour
     private bool dashed = false;
 
 
+    //Sounds
+
     //Animation/Visual Components
     public SpriteRenderer playerVisual;
     public Animator playerAnim;
@@ -222,7 +224,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        //Ground Detection -> Animation Triggers
+        //Ground Detection -> Animation/Sound Triggers
         if (onGround)
         {
             canDoubleJump = true;
@@ -244,6 +246,16 @@ public class PlayerController : MonoBehaviour
         {
             teleportCooldownTimer -= Time.deltaTime;
         }
+
+        //Sounds
+        if (onGround && moveDirection.magnitude > 0 && !AudioManager.Instance.checkSoundPlaying(0))
+        {
+            AudioManager.Instance.playSound(0);
+        }
+        else if (!onGround || moveDirection.magnitude == 0)
+        {
+            AudioManager.Instance.stopMovingSound();
+        }
     }
 
     //Movement
@@ -257,7 +269,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //Animation Changes
-        if (moveDirection ==  Vector2.zero)
+        if (moveDirection == Vector2.zero)
         {
             playerAnim.SetBool("PlayerMoving", false);
         }
@@ -282,11 +294,13 @@ public class PlayerController : MonoBehaviour
         {
             isJumping = true;
             jumpHeld = true;
+            AudioManager.Instance.playSound(1);
         }
         if (context.performed && !onGround && playerDoubleJump && !doubleJumped && canDoubleJump) //performed mid air with double jump unlocked
         {
             doubleJumped = true;
             playerAnim.Play("PlayerJump", 0, 0f);
+            AudioManager.Instance.playSound(1);
         }
         if (context.canceled) //player stops holding jump
         {
@@ -304,7 +318,8 @@ public class PlayerController : MonoBehaviour
         if (playerDash && !dashed && dashCooldownTimer <= 0f)
         {
             StartCoroutine(Dash());
-            playerAnim.SetTrigger("PlayerDash");
+            playerAnim.SetTrigger("PlayerDash"); //Animation Trigger
+            AudioManager.Instance.playSound(2);  //Sound Trigger
         }
         else
         {
@@ -353,6 +368,9 @@ public class PlayerController : MonoBehaviour
     public void playerTeleportTrigger() //Used to trigger teleport at specific anim frame
     {
         StartCoroutine (Teleport());
+
+        //Sound Trigger
+        AudioManager.Instance.playSound(3);
     }
     private IEnumerator Teleport()
     {
@@ -453,4 +471,6 @@ public class PlayerController : MonoBehaviour
         lastMoveDirection = move;
     }
 
+
+    
 }

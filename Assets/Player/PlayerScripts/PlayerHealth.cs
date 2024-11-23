@@ -19,13 +19,18 @@ public class PlayerHealth : MonoBehaviour
 
     public void takeDamage(float damage)
     {
-        //Anim
+        //Anim and Sound
         playerAnim.SetTrigger("PlayerHit");
         //Damage Logic
         pHealth -= damage;
         GameManager.Instance.saveHealth(pHealth);
+        if (pHealth >= 0)
+        {
+            AudioManager.Instance.playSound(4);
+        }
         if (pHealth <= 0)
         {
+            AudioManager.Instance.playSound(5);
             Debug.Log("Player is Dead");
             //Anim
             playerAnim.SetTrigger("PlayerDeath");

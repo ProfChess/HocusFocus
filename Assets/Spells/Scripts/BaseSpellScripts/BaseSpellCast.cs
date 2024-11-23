@@ -25,6 +25,9 @@ public abstract class BaseSpellCast : MonoBehaviour
     public Animator playerAnim;
     public PlayerMana player;
 
+    //Sound
+    [SerializeField] protected int soundType; //0 = Fire, 1 = Ice, 2 = Thunder 
+
     public virtual void Cast()
     {
         if (casting)
@@ -49,6 +52,7 @@ public abstract class BaseSpellCast : MonoBehaviour
     protected virtual IEnumerator CastSpellRoutine()
     {
         casting = true;
+        AudioManager.Instance.playSound(6);
         yield return new WaitForSeconds(castTime);
 
         casting = false;
@@ -98,6 +102,7 @@ public abstract class BaseSpellCast : MonoBehaviour
 
     public virtual void spawnSpell()
     {
+        spellSound(soundType);
         lookingRight = GameManager.Instance.player.GetComponent<PlayerController>().getLookingRight();
         if (lookingRight)
         {
@@ -121,6 +126,26 @@ public abstract class BaseSpellCast : MonoBehaviour
         else if (lookingRight)
         {
             spellPrefab.transform.localScale = new Vector3(1, 1, 1);
+        }
+    }
+
+    //Sound Play
+    protected virtual void spellSound(int soundNum)
+    {
+        switch (soundNum)
+        {
+            case 0:
+                AudioManager.Instance.playSound(11);
+                break;
+            case 1:
+                AudioManager.Instance.playSound(12);
+                break;
+            case 2:
+                AudioManager.Instance.playSound(13);
+                break;
+            default: 
+                Debug.LogWarning("Incorrect Sound Number: " +  soundNum);
+                break;
         }
     }
 }

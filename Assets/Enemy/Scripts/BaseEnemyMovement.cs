@@ -41,7 +41,10 @@ public abstract class BaseEnemyMovement : MonoBehaviour
 
     protected virtual void Start()
     {
-        player = GameManager.Instance.player;
+        if (player == null)
+        {
+            player = GameManager.Instance.player;
+        }
         startLocation = transform;
     }
 
