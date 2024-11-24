@@ -45,6 +45,9 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource playerFireSpell;     //11
     [SerializeField] private AudioSource playerIceSpell;      //12
     [SerializeField] private AudioSource playerThunderSpell;  //13
+    [SerializeField] private AudioSource playerComboStart;    //15
+    [SerializeField] private AudioSource playerComboStop;     //16
+    [SerializeField] private AudioSource playerSpellSelect;   //17
     public void playSound(int soundIndex)
     {
         switch (soundIndex)
@@ -79,6 +82,14 @@ public class AudioManager : MonoBehaviour
                 playerIceSpell.Play(); break;
             case 13:
                 playerThunderSpell.Play(); break;
+            case 14:
+                enemyHit.Play(); break;
+            case 15:
+                playerComboStart.Play(); break;
+            case 16:
+                playerComboStop.Play(); break;
+            case 17:
+                playerSpellSelect.Play(); break;
             default:
                 Debug.LogWarning(soundIndex + " = Invalid sound index");
                 break;
@@ -118,6 +129,14 @@ public class AudioManager : MonoBehaviour
                 return playerIceSpell.isPlaying;
             case 13:
                 return playerThunderSpell.isPlaying;
+            case 14:
+                return enemyHit.isPlaying;
+            case 15:
+                return playerComboStart.isPlaying;
+            case 16:
+                return playerComboStop.isPlaying;
+            case 17:
+                return playerSpellSelect.isPlaying;
             default:
                 Debug.LogWarning(soundIndex + " = Invalid sound index");
                 return false;

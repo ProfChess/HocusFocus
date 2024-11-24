@@ -24,6 +24,9 @@ public class PlayerAttackScript : MonoBehaviour
     private float comboCount = 0f;
 
     private bool isCastingSpell = false;
+
+    //Sound
+    private bool comboFailedSound = true;
     private void Awake()
     {
         spellControls = new PlayerInput();
@@ -74,6 +77,12 @@ public class PlayerAttackScript : MonoBehaviour
         {
             comboCount = 0;
             comboStarted = false;
+
+            if (comboFailedSound == false)
+            {
+                AudioManager.Instance.playSound(16);
+                comboFailedSound = true;
+            }
         }
 
 
@@ -126,11 +135,14 @@ public class PlayerAttackScript : MonoBehaviour
             if(comboCount == 0)
             {
                 firstComboSpell = "Fire";
+                AudioManager.Instance.playSound(17);
                 comboCount++;
             }
             else if (comboCount == 1 && firstComboSpell != "Fire")
             {
                 secondComboSpell = "Fire";
+                AudioManager.Instance.playSound(17);
+                comboFailedSound = true;
                 comboCount++;
             }
         }
@@ -157,11 +169,14 @@ public class PlayerAttackScript : MonoBehaviour
             if (comboCount == 0)
             {
                 firstComboSpell = "Ice";
+                AudioManager.Instance.playSound(17);
                 comboCount++;
             }
             else if (comboCount == 1 && firstComboSpell != "Ice")
             {
                 secondComboSpell = "Ice";
+                AudioManager.Instance.playSound(17);
+                comboFailedSound = true;
                 comboCount++;
             }
         }
@@ -189,11 +204,14 @@ public class PlayerAttackScript : MonoBehaviour
             if (comboCount == 0)
             {
                 firstComboSpell = "Arcane";
+                AudioManager.Instance.playSound(17);
                 comboCount++;
             }
             else if (comboCount == 1 && firstComboSpell != "Arcane")
             {
                 secondComboSpell = "Arcane";
+                AudioManager.Instance.playSound(17);
+                comboFailedSound = true;
                 comboCount++;
             }
         }
@@ -213,6 +231,8 @@ public class PlayerAttackScript : MonoBehaviour
         if (comboStarted)
         {
             comboStarted = false;
+            comboFailedSound = true;
+            AudioManager.Instance.playSound(16);
             Debug.Log("Combo Canceled");
         }
         else if (!comboStarted)
@@ -220,6 +240,8 @@ public class PlayerAttackScript : MonoBehaviour
             if (playerController.onGround && playerController.moveDirection == Vector2.zero)
             {
                 comboStarted = true;
+                comboFailedSound = false;
+                AudioManager.Instance.playSound(15);
                 Debug.Log("Combo Started");
             }
         }

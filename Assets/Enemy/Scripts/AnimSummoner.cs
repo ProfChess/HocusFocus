@@ -12,16 +12,15 @@ public class AnimSummoner : MonoBehaviour
     void Start()
     {
         enemyHP = GetComponentInParent<EnemyHealthScript>();
-        enemyHP.onHealthChanged += enemyHPCheck;
     }
     public void enemyDeath()
     {
         enemyHP.dyingSucks();
     }
 
-    public void enemyHPCheck(float health)
+    public void enemyHPCheck()
     {
-        if (health <= 0)
+        if (enemyHP.getEnemyCurrentHealth() <= 0)
         {
             enemyAnim.SetTrigger("Death");
         }
@@ -40,8 +39,4 @@ public class AnimSummoner : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
-    {
-        enemyHP.onHealthChanged -= enemyHPCheck;
-    }
 }

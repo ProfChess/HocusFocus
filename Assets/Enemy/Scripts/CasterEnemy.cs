@@ -84,7 +84,6 @@ public class CasterEnemy : BaseEnemyMovement
         //Animation Trigger
         enemyAnim.SetTrigger("Attack");
 
-
         yield return new WaitForSeconds(enemyAttackCooldown); //attack cooldown
         isCasting = false;
     }
@@ -103,6 +102,7 @@ public class CasterEnemy : BaseEnemyMovement
 
     public void cultistSpellLogic()
     {
+        AudioManager.Instance.playSound(9);
         Vector3 castLocation = transform.position;
         spellPrefab.GetComponent<CasterEnemySpell>().setSpellDirection(getCastDirection());
         //Blasts box left/right that gradually gets bigger

@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 241cc299a3e75cc4b949dbc11921f8e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 1
+  enemyMaxHealth: 1
   enemyAnim: {fileID: 0}
 --- !u!50 &1971679023809056116
 Rigidbody2D:

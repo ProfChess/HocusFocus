@@ -27,20 +27,20 @@ public abstract class BaseItem : MonoBehaviour
         {
             if (collision.CompareTag("Player"))
             {
+                //Sound
+                AudioManager.Instance.playSound(10);
+                //Save
                 GameManager.Instance.itemCollected(itemName);
                 GameManager.Instance.AddItem(itemID);
                 Scene scene = SceneManager.GetActiveScene();
                 string sceneName = scene.name;
                 GameManager.Instance.saveSceneAndLocation(sceneName, location);
+                //Remove Item
                 gameObject.SetActive(false);
-                Invoke("destroyItem", 1);
+                
             }
         }
     }
 
-    protected virtual void destroyItem()
-    {
-        Destroy(gameObject);
-    }
 
 }

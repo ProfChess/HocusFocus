@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26da82281b2022244bc2a6e9e2943793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellDirection: {x: 1, y: 0}
+  spellDirection: {x: -1, y: 0}
   sr: {fileID: 7359800974107660571}
 --- !u!1 &5772038157931515468
 GameObject:
@@ -169,7 +169,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_Sprite: {fileID: 9146580734943654226, guid: 22edb9c1d6f2807409ea83b6f893b2c0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}

@@ -11,16 +11,15 @@ public class CasterEnemyAnim : MonoBehaviour
     private void Start()
     {
         enemyHP = GetComponentInParent<EnemyHealthScript>();
-        enemyHP.onHealthChanged += enemyHPCheck;
     }
     public void enemyDeath()
     {
         enemyHP.dyingSucks();
     }
 
-    public void enemyHPCheck(float health)
+    public void enemyHPCheck()
     {
-        if (health <= 0)
+        if (enemyHP.getEnemyCurrentHealth() <= 0)
         {
             enemyAnim.SetTrigger("Death");
         }

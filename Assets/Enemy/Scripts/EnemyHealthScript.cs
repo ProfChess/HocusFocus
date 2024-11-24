@@ -35,11 +35,16 @@ public class EnemyHealthScript : MonoBehaviour
     public void takeDamage(float damage)
     {
         enemyHealth -= damage * enemyDamageMod;
+        if (damage > 0f)
+        {
+            AudioManager.Instance.playSound(14);
+        }
+
         if (onHealthChanged != null)
         {
             onHealthChanged.Invoke(enemyHealth);
         }
-        if (enemyAnim)
+        else if (enemyAnim)
         {
             enemyAnim.SetTrigger("Hurt");
         }
@@ -59,6 +64,7 @@ public class EnemyHealthScript : MonoBehaviour
         StopCoroutine(DOT());
         if (gameObject.GetComponent<BaseEnemyMovement>() != null)
         {
+            AudioManager.Instance.playSound(7);
             gameObject.GetComponent<BaseEnemyMovement>().returnToStart();
         }
     }
