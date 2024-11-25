@@ -7,6 +7,7 @@ public class PoolManager : MonoBehaviour
     public ObjectPool fireballPool;
     public ObjectPool explosionPool;
     public ObjectPool lightningPool;
+    public ObjectPool movinglightningPool;
 
     //List of different pools and associated numbers 
     //0 = fireball, 1 = explosion, 2 = lightning
@@ -19,6 +20,8 @@ public class PoolManager : MonoBehaviour
                 return explosionPool.getObject();
             case 2:
                 return lightningPool.getObject();
+            case 3:
+                return movinglightningPool.getObject();
             default:
                 Debug.Log("No pool found for id:" + num);
                 return null;
@@ -39,6 +42,9 @@ public class PoolManager : MonoBehaviour
                 break;
             case 2:
                 lightningPool.returnObject(obj);
+                break;
+            case 3:
+                movinglightningPool.returnObject(obj); 
                 break;
             default:
                 Debug.Log("No pool found for id:" + num);

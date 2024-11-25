@@ -26,7 +26,10 @@ public class PlayerHealth : MonoBehaviour
         GameManager.Instance.saveHealth(pHealth);
         if (pHealth >= 0)
         {
-            AudioManager.Instance.playSound(4);
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.playSound(4);
+            }
         }
         if (pHealth <= 0)
         {

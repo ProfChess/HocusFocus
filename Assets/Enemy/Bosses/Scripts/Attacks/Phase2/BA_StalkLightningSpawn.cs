@@ -1,12 +1,12 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BA_StalkLightningSpawn : BaseAttackSpawn
 {
-    [SerializeField] private float strikeInterval = 1f;
-    [SerializeField] private float stalkDuration = 5f;
-    private bool strikeAgain = true;
+    //Variables
+    [SerializeField] private float strikeInterval = 1f; //How often lightning strikes
+    [SerializeField] private float stalkDuration = 5f;  //Amount of time of lightning
+    private bool strikeAgain = true;                    //Bool to repeat a strike
 
     public override void executeAttack(BossController boss)
     {
@@ -18,6 +18,7 @@ public class BA_StalkLightningSpawn : BaseAttackSpawn
         }
     }
 
+    //Coroutine for striking players location repeatably
     private IEnumerator repeatStrikRoutine()
     {
         for (int i = 0; i < stalkDuration; i++)
@@ -27,6 +28,7 @@ public class BA_StalkLightningSpawn : BaseAttackSpawn
         }
     }
 
+    //Spawn lightning strike at players location
     private void spawnStalkLightning()
     {
         GameObject strike = poolManager.getObjectFromPool(2);

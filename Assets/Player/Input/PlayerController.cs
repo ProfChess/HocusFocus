@@ -248,14 +248,18 @@ public class PlayerController : MonoBehaviour
         }
 
         //Sounds
-        if (onGround && moveDirection.magnitude > 0 && !AudioManager.Instance.checkSoundPlaying(0))
+        if (AudioManager.Instance != null)
         {
-            AudioManager.Instance.playSound(0);
+            if (onGround && moveDirection.magnitude > 0 && !AudioManager.Instance.checkSoundPlaying(0))
+            {
+                AudioManager.Instance.playSound(0);
+            }
+            else if (!onGround || moveDirection.magnitude == 0)
+            {
+                AudioManager.Instance.stopMovingSound();
+            }
         }
-        else if (!onGround || moveDirection.magnitude == 0)
-        {
-            AudioManager.Instance.stopMovingSound();
-        }
+        
     }
 
     //Movement
@@ -294,17 +298,26 @@ public class PlayerController : MonoBehaviour
         {
             isJumping = true;
             jumpHeld = true;
-            AudioManager.Instance.playSound(1);
+            playJumpSound();
         }
         if (context.performed && !onGround && playerDoubleJump && !doubleJumped && canDoubleJump) //performed mid air with double jump unlocked
         {
             doubleJumped = true;
             playerAnim.Play("PlayerJump", 0, 0f);
-            AudioManager.Instance.playSound(1);
+            playJumpSound();
         }
         if (context.canceled) //player stops holding jump
         {
             jumpHeld = false;
+        }
+    }
+
+    //Jump Sound
+    private void playJumpSound()
+    {
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.playSound(1);
         }
     }
 
@@ -319,7 +332,11 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(Dash());
             playerAnim.SetTrigger("PlayerDash"); //Animation Trigger
-            AudioManager.Instance.playSound(2);  //Sound Trigger
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.playSound(2);  //Sound Trigger
+            }
+            
         }
         else
         {
@@ -370,7 +387,10 @@ public class PlayerController : MonoBehaviour
         StartCoroutine (Teleport());
 
         //Sound Trigger
-        AudioManager.Instance.playSound(3);
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.playSound(3);
+        }
     }
     private IEnumerator Teleport()
     {
