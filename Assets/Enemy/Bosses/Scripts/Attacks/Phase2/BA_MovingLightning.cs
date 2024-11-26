@@ -43,6 +43,11 @@ public class BA_MovingLightning : BaseBossAttack
         poolManager.ReturnObjectToPool(3, gameObject);
     }
 
+    protected override void returnGameObject()
+    {
+        returnMovingLightning();
+    }
+
     //Get and Set for Movement trigger
     public bool getMoveBool()
     {

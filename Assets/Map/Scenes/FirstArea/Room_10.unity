@@ -1717,8 +1717,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d45761f45423ce74fbc49e7a95591605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: Room_10
-  spawnPointName: Null
+  sceneToLoad: Room_9
+  spawnPointName: BottomRightDoorSpawn
 --- !u!61 &961418025
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3495,7 +3495,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce378f69313ab1f4abd2b051a9fa06d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHP: {fileID: 8380164289681536969}
   enemyAnim: {fileID: 7939157849050956274}
   enemy: {fileID: 2197763872725708210}
 --- !u!114 &6031658145952346
@@ -3510,7 +3509,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce378f69313ab1f4abd2b051a9fa06d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHP: {fileID: 8380164288394922643}
   enemyAnim: {fileID: 7939157850331282600}
   enemy: {fileID: 2197763873880183016}
 --- !u!61 &126677603841875562
@@ -4552,7 +4550,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2458fa141d7d7fb45acbc85098f89d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHP: {fileID: 9046535427085507342}
   enemyAnim: {fileID: 4604002195002955264}
   enemy: {fileID: 3858444179444738716}
 --- !u!4 &6553868050357584708
@@ -4739,7 +4736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 241cc299a3e75cc4b949dbc11921f8e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 5
+  enemyMaxHealth: 5
   enemyAnim: {fileID: 7939157850331282600}
 --- !u!114 &8380164289681536969
 MonoBehaviour:
@@ -4753,7 +4750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 241cc299a3e75cc4b949dbc11921f8e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 5
+  enemyMaxHealth: 5
   enemyAnim: {fileID: 7939157849050956274}
 --- !u!4 &8727847326373190140
 Transform:
@@ -4869,7 +4866,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 241cc299a3e75cc4b949dbc11921f8e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 5
+  enemyMaxHealth: 5
   enemyAnim: {fileID: 4604002195002955264}
 --- !u!1 &9150551497156298285
 GameObject:

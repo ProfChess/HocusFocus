@@ -65,6 +65,7 @@ public class PlayerController : MonoBehaviour
     //Sounds
 
     //Animation/Visual Components
+    [Header("Animation")]
     public SpriteRenderer playerVisual;
     public Animator playerAnim;
 

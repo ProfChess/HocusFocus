@@ -2353,8 +2353,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d45761f45423ce74fbc49e7a95591605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: Room_11
-  spawnPointName: RightDoorSpawn
+  sceneToLoad: Room_9
+  spawnPointName: LeftDoorSpawn
 --- !u!61 &1561114067
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4132,7 +4132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 241cc299a3e75cc4b949dbc11921f8e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 1
+  enemyMaxHealth: 5
   enemyAnim: {fileID: 0}
 --- !u!114 &2819163952071586552
 MonoBehaviour:
@@ -4146,7 +4146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 241cc299a3e75cc4b949dbc11921f8e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 1
+  enemyMaxHealth: 5
   enemyAnim: {fileID: 0}
 --- !u!114 &2819163953332847983
 MonoBehaviour:
@@ -4160,7 +4160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 241cc299a3e75cc4b949dbc11921f8e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 1
+  enemyMaxHealth: 5
   enemyAnim: {fileID: 0}
 --- !u!1 &2921199356969349313
 GameObject:
@@ -6358,7 +6358,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2458fa141d7d7fb45acbc85098f89d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHP: {fileID: 9046535426888358915}
   enemyAnim: {fileID: 4604002194805805325}
   enemy: {fileID: 3858444179650375057}
 --- !u!4 &6803976137928951730
@@ -6664,7 +6663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 241cc299a3e75cc4b949dbc11921f8e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 5
+  enemyMaxHealth: 5
   enemyAnim: {fileID: 4604002194805805325}
 --- !u!1 &9150551495769310079
 GameObject:
