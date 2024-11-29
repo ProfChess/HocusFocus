@@ -13,7 +13,7 @@ public class BA_LStrikeFinish : BaseAttackSpawn
             if (Strike != null)
             {
                 float duration = Strike.GetComponent<BaseBossAttack>().getAttackSpeed();
-                Strike.GetComponent<BA_LightningStrike>().Initialize(poolManager, t.position, duration);
+                Strike.GetComponent<BA_LightningStrike>().Initialize(poolManager, t.position, duration, true);
             }
         }
     }

@@ -36,7 +36,7 @@ public class BA_StalkLightningSpawn : BaseAttackSpawn
         {
             float time = strike.GetComponent<BaseBossAttack>().getAttackSpeed();
             findPlayer();
-            strike.GetComponent<BA_LightningStrike>().Initialize(poolManager, playerLocation.position, time);
+            strike.GetComponent<BA_LightningStrike>().Initialize(poolManager, playerLocation.position, time, true);
         }
     }
 

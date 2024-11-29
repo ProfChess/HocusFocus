@@ -10,6 +10,9 @@ public class PlayerHealth : MonoBehaviour
     public float maxHealth = 10f;
     public Animator playerAnim;
 
+    //Iframes
+    private bool isInvincable = false;
+
     private void Start()
     {
         setMaxHealth();
@@ -19,29 +22,38 @@ public class PlayerHealth : MonoBehaviour
 
     public void takeDamage(float damage)
     {
-        //Anim and Sound
-        playerAnim.SetTrigger("PlayerHit");
-        //Damage Logic
-        pHealth -= damage;
-        GameManager.Instance.saveHealth(pHealth);
-        if (pHealth >= 0)
+        if (isInvincable)
         {
-            if (AudioManager.Instance != null)
+            return;
+        }
+        else
+        {
+            //Anim and Sound
+            playerAnim.SetTrigger("PlayerHit");
+            //Damage Logic
+            pHealth -= damage;
+            GameManager.Instance.saveHealth(pHealth);
+            if (pHealth >= 0)
             {
-                AudioManager.Instance.playSound(4);
+                if (AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.playSound(4);
+                }
             }
+            if (pHealth <= 0)
+            {
+                AudioManager.Instance.playSound(5);
+                Debug.Log("Player is Dead");
+                //Anim
+                playerAnim.SetTrigger("PlayerDeath");
+                GameManager.Instance.respawn = true;
+                //Death Logic 
+
+            }
+            UIChange();
+            StartCoroutine(IFrames());
         }
-        if (pHealth <= 0)
-        {
-            AudioManager.Instance.playSound(5);
-            Debug.Log("Player is Dead");
-            //Anim
-            playerAnim.SetTrigger("PlayerDeath");
-            GameManager.Instance.respawn = true;
-            //Death Logic 
-            
-        }
-        UIChange();
+
     }
 
     private void setMaxHealth()
@@ -72,4 +84,12 @@ public class PlayerHealth : MonoBehaviour
         UIManager.Instance.updateHealthBar(pHealth, maxHealth);
     }
 
+
+    //Iframes
+    private IEnumerator IFrames()
+    {
+        isInvincable = true;
+        yield return new WaitForSeconds(1f);
+        isInvincable = false;
+    }
 }

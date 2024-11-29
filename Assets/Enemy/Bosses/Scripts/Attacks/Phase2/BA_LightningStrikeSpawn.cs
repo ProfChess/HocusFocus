@@ -12,7 +12,7 @@ public class BA_LightningStrikeSpawn : BaseAttackSpawn
         if (lightning != null)
         {
             findPlayer();
-            lightning.GetComponent<BA_LightningStrike>().Initialize(poolManager, playerLocation.position, time);
+            lightning.GetComponent<BA_LightningStrike>().Initialize(poolManager, playerLocation.position, time, true);
         }
 
         //Extra Lightning
@@ -32,7 +32,7 @@ public class BA_LightningStrikeSpawn : BaseAttackSpawn
                     newSpawn = new Vector2(playerLocation.position.x - xdiff, playerLocation.position.y);
                 }
                 
-                ExtraLightning.GetComponent<BA_LightningStrike>().Initialize(poolManager, newSpawn, time);
+                ExtraLightning.GetComponent<BA_LightningStrike>().Initialize(poolManager, newSpawn, time, true);
             }
         }
 

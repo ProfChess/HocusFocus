@@ -10,20 +10,23 @@ public class BA_PatternLightningSpawn : BaseAttackSpawn
     //Variables
     private int spawnPattern;
     //SpawnPoints
-    private float xSpawn1 = 10;
+    private float xSpawn1 = 11;
     private float xSpawn2;
-    private float xSpawn3 = 4;
+    private float xSpawn3 = 5;
 
     //List of lightning
     private List<GameObject> Strikes;
+    [SerializeField] GameObject BGStrike;
 
     //Reference
     [SerializeField] SpriteRenderer BossVisual;
+    private BossController MainBoss;
+
     public override void executeAttack(BossController boss)
     {
-        Strikes = new List<GameObject>();
-        selectRandomSpawnPattern();
-
+        MainBoss = boss;
+        bossLeave();
+        StartCoroutine(LoopAttack());
     }
 
     //Selects random number, then changes location of middle stike according to number chosen
@@ -34,13 +37,13 @@ public class BA_PatternLightningSpawn : BaseAttackSpawn
         switch (spawnPattern)
         {
             case 1:
-                xSpawn2 = 7f;
+                xSpawn2 = 8f;
                 break;
             case 2:
-                xSpawn2 = 8.5f;
+                xSpawn2 = 9.5f;
                 break;
             case 3:
-                xSpawn2 = 5.5f;
+                xSpawn2 = 6.5f;
                 break;
             default:
                 Debug.LogWarning("Invalid Spawn Pattern: " +  spawnPattern);
@@ -98,17 +101,43 @@ public class BA_PatternLightningSpawn : BaseAttackSpawn
         if (moveDir == 0)
         {
             BossVisual.sortingOrder = -16;
-            gameObject.transform.position = bossPosition;
-            yield return new WaitForSeconds(1f);
+            MainBoss.transform.position = bossPosition;
+            yield return new WaitForSeconds(1f); //Travel delay
             BossVisual.sortingOrder = 0;
+            BGLightning();
+            yield return new WaitForSeconds(2f); //Short delay before striking (Background lightning appears here)
         }
         else if (moveDir == 1)
         {
             BossVisual.sortingOrder = -16;
-            gameObject.transform.position = spawnPosition;
+            MainBoss.transform.position = spawnPosition;
             yield return new WaitForSeconds(1f);
             BossVisual.sortingOrder = 0;
         }
 
+    }
+
+    //Attack 3 Times 
+    private IEnumerator LoopAttack()
+    {
+        yield return new WaitForSeconds(2f);
+        for (int i = 0; i < 3; i++)
+        {
+            Strikes = new List<GameObject>();
+            selectRandomSpawnPattern();
+            yield return new WaitForSeconds(duration / 3);
+        }
+        bossComeBack();
+    }
+
+
+    //BackGround Lightning 
+    private void BGLightning()
+    {
+        for (float i = 1; i < 6; i++)
+        {
+            GameObject BGgetstrike = poolManager.getObjectFromPool(2);
+            BGgetstrike.GetComponent<BA_LightningStrike>().Initialize(poolManager, new Vector2(3.5f + (i * 1.5f), -1), duration, false);
+        }
     }
 }

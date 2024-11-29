@@ -8,7 +8,7 @@ public class BA_LightningStrike : BaseBossAttack
     protected Vector2 location;       //Place to strike
     protected float timer;            //How long to last after strike
     protected bool stopAttack = false;//Controls when to return to pool
-
+    protected bool stopOnDamage;
     //References
     protected BoxCollider2D hitbox;
     protected SpriteRenderer sr;
@@ -19,18 +19,38 @@ public class BA_LightningStrike : BaseBossAttack
         sr = GetComponentInChildren<SpriteRenderer>();
     }
 
+    protected override void OnTriggerEnter2D(Collider2D col)
+    {
+
+    }
+
+    protected void OnTriggerStay2D(Collider2D col)
+    {
+        if (col != null)
+        {
+            if (col.CompareTag("Player"))
+            {
+                col.GetComponent<PlayerHealth>().takeDamage(attackDamage);
+                returnGameObject();
+            }
+        }
+    }
+
+
+
     private void Update()
     {
         if (stopAttack)
         {
             returnLightning(); //returns to pool
+
         }
         else
         {
 
         }
     }
-    public virtual void Initialize(PoolManager pm, Vector2 place, float duration)
+    public virtual void Initialize(PoolManager pm, Vector2 place, float duration, bool stopondamage)
     {
         //Reset Variables
         hitbox.enabled = false;
@@ -40,7 +60,7 @@ public class BA_LightningStrike : BaseBossAttack
         poolManager = pm;
         location = place;
         timer = duration;
-
+        stopOnDamage = stopondamage;
 
 
         lightningWarning(0);
@@ -66,8 +86,11 @@ public class BA_LightningStrike : BaseBossAttack
     //Specifics for returning to correct pool
     protected override void returnGameObject()
     {
-        hitbox.enabled = false;
-        returnLightning();
+        if (stopOnDamage)
+        {
+            hitbox.enabled = false;
+            returnLightning();
+        }
     }
 
     private void returnLightning()

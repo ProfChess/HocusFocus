@@ -2260,7 +2260,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2285,7 +2285,7 @@ Transform:
   m_GameObject: {fileID: 331910540}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1, z: -10}
+  m_LocalPosition: {x: -1.35, y: -0.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2305,10 +2305,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0, z: 0}
   followSpeed: 5
-  yMax: 0.1
-  yMin: -1.85
-  xMax: 3.25
-  xMin: -3.25
+  yMax: -0.5
+  yMin: -0.85
+  xMax: 1.35
+  xMin: -1.35
 --- !u!1 &361429963
 GameObject:
   m_ObjectHideFlags: 0
@@ -8770,12 +8770,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4de3875181e5b442b2b56d39c6cba3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 1
-  duration: 10
+  weight: 5
+  duration: 20
   prefab: {fileID: 7960642287706933716, guid: 92864f9d8a2b60d4dbccd18021fc2d49, type: 3}
-  bossPosition: {x: 0, y: 0}
-  spawnPosition: {x: 0, y: 0}
-  BossVisual: {fileID: 0}
+  bossPosition: {x: 9, y: 2}
+  spawnPosition: {x: 0, y: -2}
+  BGStrike: {fileID: 3009724606014404952, guid: 106c3a9a5f0655c4aa318c95878c0c4c, type: 3}
+  BossVisual: {fileID: 879767289}
 --- !u!1 &1814300290
 GameObject:
   m_ObjectHideFlags: 0
