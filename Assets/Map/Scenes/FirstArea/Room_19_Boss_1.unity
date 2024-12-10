@@ -1341,6 +1341,7 @@ GameObject:
   m_Component:
   - component: {fileID: 209350418}
   - component: {fileID: 209350420}
+  - component: {fileID: 209350422}
   - component: {fileID: 209350419}
   - component: {fileID: 209350421}
   m_Layer: 7
@@ -1415,6 +1416,21 @@ MonoBehaviour:
   - {fileID: 9196077635970497121}
   - {fileID: 9196077635901034074}
   - {fileID: 9196077636528228700}
+--- !u!114 &209350422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209350417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdd1939f4199c9c40a506bb0e2773bf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 3
+  duration: 3
+  prefab: {fileID: 4228487266374789831, guid: 7b1e402ff1a526348be68f12de7ab826, type: 3}
 --- !u!1 &232718287
 GameObject:
   m_ObjectHideFlags: 0
@@ -6715,6 +6731,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1317959779}
+  - component: {fileID: 1317959780}
+  - component: {fileID: 1317959781}
   m_Layer: 7
   m_Name: Phase3
   m_TagString: Untagged
@@ -6737,6 +6755,46 @@ Transform:
   m_Children: []
   m_Father: {fileID: 129038399}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1317959780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317959778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15f23cd625e8e084b99a41c565d6feb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 5
+  duration: 10
+  prefab: {fileID: 0}
+  FirstAttackList:
+  - {fileID: 209350422}
+  - {fileID: 209350419}
+  SecondAttackList:
+  - {fileID: 1794125819}
+  - {fileID: 1794125820}
+--- !u!114 &1317959781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317959778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4de3875181e5b442b2b56d39c6cba3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  duration: 24
+  prefab: {fileID: 7960642287706933716, guid: 92864f9d8a2b60d4dbccd18021fc2d49, type: 3}
+  bossPosition: {x: 9, y: 2}
+  spawnPosition: {x: 0, y: -2}
+  BGStrike: {fileID: 3009724606014404952, guid: 106c3a9a5f0655c4aa318c95878c0c4c, type: 3}
+  BossVisual: {fileID: 879767289}
 --- !u!1001 &1345610428
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8737,7 +8795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ff98395ddc24214786e6ceb9489f892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 1
+  weight: 3
   duration: 4
   prefab: {fileID: 3009724606014404952, guid: 106c3a9a5f0655c4aa318c95878c0c4c, type: 3}
   extraLightningNumber: 2
@@ -8753,7 +8811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7264433acb04244bceca120dd2f52b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 1
+  weight: 3
   duration: 7
   prefab: {fileID: 3009724606014404952, guid: 106c3a9a5f0655c4aa318c95878c0c4c, type: 3}
   strikeInterval: 1
@@ -8770,8 +8828,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4de3875181e5b442b2b56d39c6cba3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 5
-  duration: 20
+  weight: 1
+  duration: 24
   prefab: {fileID: 7960642287706933716, guid: 92864f9d8a2b60d4dbccd18021fc2d49, type: 3}
   bossPosition: {x: 9, y: 2}
   spawnPosition: {x: 0, y: -2}
@@ -8929,6 +8987,7 @@ MonoBehaviour:
   attackList:
   - {fileID: 209350420}
   - {fileID: 209350419}
+  - {fileID: 209350422}
   attackCooldown: 1
   endPhaseAttack: {fileID: 209350421}
 --- !u!114 &1870068057
@@ -8943,7 +9002,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0bc37774b0feac439fdb563c6d4dc6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackList: []
+  attackList:
+  - {fileID: 1317959780}
   attackCooldown: 0
 --- !u!114 &1870068058
 MonoBehaviour:

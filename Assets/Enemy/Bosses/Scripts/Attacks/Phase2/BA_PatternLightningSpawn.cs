@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BA_PatternLightningSpawn : BaseAttackSpawn
@@ -9,6 +10,7 @@ public class BA_PatternLightningSpawn : BaseAttackSpawn
     [SerializeField] Vector2 spawnPosition;
     //Variables
     private int spawnPattern;
+    private bool canCastAgain = true;
     //SpawnPoints
     private float xSpawn1 = 11;
     private float xSpawn2;
@@ -20,13 +22,28 @@ public class BA_PatternLightningSpawn : BaseAttackSpawn
 
     //Reference
     [SerializeField] SpriteRenderer BossVisual;
+    private BoxCollider2D hitbox;
     private BossController MainBoss;
 
     public override void executeAttack(BossController boss)
     {
-        MainBoss = boss;
-        bossLeave();
-        StartCoroutine(LoopAttack());
+        if (MainBoss == null || hitbox == null)
+        {
+            MainBoss = boss;
+            hitbox = MainBoss.GetComponent<BoxCollider2D>();
+        }
+
+        if (canCastAgain)
+        {
+            duration = 20f;
+            bossLeave();
+            StartCoroutine(LoopAttack());
+        }
+        else
+        {
+            duration = 0f;
+            return;
+        }
     }
 
     //Selects random number, then changes location of middle stike according to number chosen
@@ -98,8 +115,10 @@ public class BA_PatternLightningSpawn : BaseAttackSpawn
     //Disappears -> Moves boss -> reappears after time given
     private IEnumerator teleport(int moveDir)
     {
+        BossSwitchInvuln();
         if (moveDir == 0)
         {
+            canCastAgain = false;
             BossVisual.sortingOrder = -16;
             MainBoss.transform.position = bossPosition;
             yield return new WaitForSeconds(1f); //Travel delay
@@ -113,8 +132,18 @@ public class BA_PatternLightningSpawn : BaseAttackSpawn
             MainBoss.transform.position = spawnPosition;
             yield return new WaitForSeconds(1f);
             BossVisual.sortingOrder = 0;
+            canCastAgain = true;
         }
 
+    }
+
+    //Boss Invuln
+    private void BossSwitchInvuln()
+    {
+        if (hitbox != null)
+        {
+            hitbox.enabled = !hitbox.enabled;
+        }
     }
 
     //Attack 3 Times 
