@@ -4,51 +4,34 @@ using UnityEngine;
 
 public class PoolManager : MonoBehaviour
 {
-    public ObjectPool fireballPool;
-    public ObjectPool explosionPool;
-    public ObjectPool lightningPool;
-    public ObjectPool movinglightningPool;
+    public List<ObjectPool> pools;
 
-    //List of different pools and associated numbers 
-    //0 = fireball, 1 = explosion, 2 = lightning
-    public GameObject getObjectFromPool(int num) 
+    public GameObject getObjectFromPool(ObjectPool obj) 
     {
-        switch (num) { 
-            case 0:
-                return fireballPool.getObject();
-            case 1:
-                return explosionPool.getObject();
-            case 2:
-                return lightningPool.getObject();
-            case 3:
-                return movinglightningPool.getObject();
-            default:
-                Debug.Log("No pool found for id:" + num);
-                return null;
+        for (int i = 0; i < pools.Count; i++)
+        {
+            if (pools[i] == obj)
+            {
+                return obj.getObject();
+            }
         }
+        Debug.Log("Pool is not found");
+        return null;
 
     }
 
     //Returns object to correct pool based on number given
-    public void ReturnObjectToPool(int num,  GameObject obj)
+    public void ReturnObjectToPool(ObjectPool obj, GameObject self)
     {
-        switch (num)
+        for (int i = 0; i < pools.Count; i++)
         {
-            case 0:
-                fireballPool.returnObject(obj);
-                break;
-            case 1:
-                explosionPool.returnObject(obj);
-                break;
-            case 2:
-                lightningPool.returnObject(obj);
-                break;
-            case 3:
-                movinglightningPool.returnObject(obj); 
-                break;
-            default:
-                Debug.Log("No pool found for id:" + num);
-                break;
+            if (pools[i] == obj)
+            {
+                obj.returnObject(self);
+                return;
+            }
         }
+        Debug.Log("Pool is not found");
+        return;
     }
 }

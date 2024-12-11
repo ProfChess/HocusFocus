@@ -5,6 +5,7 @@ public abstract class BaseBossAttack : MonoBehaviour
 {
     [SerializeField] protected float attackDamage;
     [SerializeField] protected float attackSpeed;
+    [SerializeField] protected ObjectPool pool;
     protected PoolManager poolManager;
 
     //Damage Function
@@ -23,7 +24,7 @@ public abstract class BaseBossAttack : MonoBehaviour
     //Empty function for returning object to pool -> override this function to place object into correct pool
     protected virtual void returnGameObject()
     {
-
+        poolManager.ReturnObjectToPool(pool, gameObject);
     }
 
 
@@ -56,5 +57,6 @@ public abstract class BaseBossAttack : MonoBehaviour
     {
         return attackSpeed;
     }
+
 
 }

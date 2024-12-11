@@ -6,10 +6,10 @@ public class BA_ExplosionSpawn : BaseAttackSpawn
 {
     public override void executeAttack(BossController boss)
     {
-        GameObject explosion = poolManager.getObjectFromPool(1);
+        GameObject explosion = GetPoolManager();
         if (explosion != null)
         {
-            explosion.GetComponent<BA_Explosion>().Initialize(Random.Range(2, 4), poolManager, getPlayer());
+            explosion.GetComponent<BA_Explosion>().Initialize(Random.Range(2, 4), poolManager, getPlayer(), GetObjectPool());
         }
     }
 }

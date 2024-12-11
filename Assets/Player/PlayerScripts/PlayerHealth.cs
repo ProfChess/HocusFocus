@@ -78,6 +78,16 @@ public class PlayerHealth : MonoBehaviour
         pHealth = amount;
     }
 
+    public void restoreHealth(int amount)
+    {
+        pHealth += amount;
+        if (pHealth > maxHealth)
+        {
+            pHealth = maxHealth;
+        }
+        UIChange();
+    }
+
     //Update UI 
     public void UIChange()
     {

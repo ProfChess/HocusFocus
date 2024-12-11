@@ -3,10 +3,11 @@ using UnityEngine;
 public class BA_FireBall : BaseBossAttack
 {
     private Vector2 moveDirection;
-    public void Initialize(Vector2 direction, PoolManager pm)
+    public void Initialize(Vector2 direction, PoolManager pm, ObjectPool objpool)
     {
         moveDirection = direction;
         poolManager = pm;
+        pool = objpool;
     }
 
     private void Update()
@@ -16,7 +17,7 @@ public class BA_FireBall : BaseBossAttack
            || transform.position.y > 4.25f 
            || transform.position.y < -6.25f)
         {
-            returnFireBall();
+            returnGameObject();
         }
         else
         {
@@ -24,16 +25,6 @@ public class BA_FireBall : BaseBossAttack
         }
     }
 
-    //Returns object to pool to be reused later
-    private void returnFireBall()
-    {
-        poolManager.ReturnObjectToPool(0, gameObject);
-    }
-
-    protected override void returnGameObject()
-    {
-        returnFireBall();
-    }
 
 
 }

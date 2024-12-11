@@ -31,12 +31,12 @@ public class BA_StalkLightningSpawn : BaseAttackSpawn
     //Spawn lightning strike at players location
     private void spawnStalkLightning()
     {
-        GameObject strike = poolManager.getObjectFromPool(2);
+        GameObject strike = GetPoolManager();
         if (strike != null)
         {
             float time = strike.GetComponent<BaseBossAttack>().getAttackSpeed();
             findPlayer();
-            strike.GetComponent<BA_LightningStrike>().Initialize(poolManager, playerLocation.position, time, true);
+            strike.GetComponent<BA_LightningStrike>().Initialize(poolManager, playerLocation.position, time, true, GetObjectPool());
         }
     }
 

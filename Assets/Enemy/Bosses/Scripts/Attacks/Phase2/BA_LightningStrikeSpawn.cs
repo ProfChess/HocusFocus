@@ -6,19 +6,19 @@ public class BA_LightningStrikeSpawn : BaseAttackSpawn
     public override void executeAttack(BossController boss)
     {
 
-        GameObject lightning = poolManager.getObjectFromPool(2);
+        GameObject lightning = GetPoolManager();
         float time = lightning.GetComponent<BaseBossAttack>().getAttackSpeed();
 
         if (lightning != null)
         {
             findPlayer();
-            lightning.GetComponent<BA_LightningStrike>().Initialize(poolManager, playerLocation.position, time, true);
+            lightning.GetComponent<BA_LightningStrike>().Initialize(poolManager, playerLocation.position, time, true, GetObjectPool());
         }
 
         //Extra Lightning
         for (int i = 0; i < extraLightningNumber; i++) //Create extra lightning strike and either spawn it behind or ahead by a random amount
         {
-            GameObject ExtraLightning = poolManager.getObjectFromPool(2);
+            GameObject ExtraLightning = GetPoolManager();
             if (ExtraLightning != null)
             {
                 float xdiff = Random.Range(3, 6);
@@ -32,7 +32,7 @@ public class BA_LightningStrikeSpawn : BaseAttackSpawn
                     newSpawn = new Vector2(playerLocation.position.x - xdiff, playerLocation.position.y);
                 }
                 
-                ExtraLightning.GetComponent<BA_LightningStrike>().Initialize(poolManager, newSpawn, time, true);
+                ExtraLightning.GetComponent<BA_LightningStrike>().Initialize(poolManager, newSpawn, time, true, GetObjectPool());
             }
         }
 

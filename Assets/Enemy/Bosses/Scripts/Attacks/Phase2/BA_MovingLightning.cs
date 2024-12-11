@@ -8,11 +8,12 @@ public class BA_MovingLightning : BaseBossAttack
     private Vector2 spawnLocation;   //Spawn of object
     private bool stopAttack = false; //Trigger to return object
     private bool startMoving = false;//Trigger to start moving 
-    public void Initialize(PoolManager pm, Vector2 spawn)
+    public void Initialize(PoolManager pm, Vector2 spawn, ObjectPool objpool)
     {
         stopAttack = false;
         startMoving = false;
         poolManager = pm;   
+        pool = objpool;
         spawnLocation = spawn;
 
         gameObject.transform.position = spawnLocation;
@@ -27,7 +28,7 @@ public class BA_MovingLightning : BaseBossAttack
         if(stopAttack)
         {
             startMoving = false;
-            returnMovingLightning();
+            returnGameObject();
         }
         else if (startMoving)
         {
@@ -36,17 +37,6 @@ public class BA_MovingLightning : BaseBossAttack
        
     }
 
-
-    //Return object to pool to reuse later
-    private void returnMovingLightning()
-    {
-        poolManager.ReturnObjectToPool(3, gameObject);
-    }
-
-    protected override void returnGameObject()
-    {
-        returnMovingLightning();
-    }
 
     //Get and Set for Movement trigger
     public bool getMoveBool()

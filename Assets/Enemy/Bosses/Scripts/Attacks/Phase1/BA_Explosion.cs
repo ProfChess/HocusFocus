@@ -12,10 +12,13 @@ public class BA_Explosion : BaseBossAttack
     //References
     private CircleCollider2D col;
     private SpriteRenderer sr;
-    public void Initialize(float time, PoolManager pm, GameObject pl) //initialize/reset all variables and start coroutine
+
+
+    public void Initialize(float time, PoolManager pm, GameObject pl, ObjectPool objectPool) //initialize/reset all variables and start coroutine
     {
         timer = time;
         poolManager = pm;
+        pool = objectPool;
         player = pl;
         endAttack = false;
         explosionWarning(0);
@@ -32,7 +35,7 @@ public class BA_Explosion : BaseBossAttack
     {
         if (endAttack)
         {
-            returnExplosion();
+            returnGameObject();
         }
     }
     private IEnumerator explodeDelay()
@@ -62,15 +65,7 @@ public class BA_Explosion : BaseBossAttack
         endAttack = true;
     }
 
-    private void returnExplosion()
-    {
-        poolManager.ReturnObjectToPool(1, gameObject);
-    }
 
-    protected override void returnGameObject()
-    {
-        returnExplosion();
-    }
 
     private void explosionWarning(int num)
     {

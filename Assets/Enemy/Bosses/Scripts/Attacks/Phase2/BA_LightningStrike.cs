@@ -42,7 +42,7 @@ public class BA_LightningStrike : BaseBossAttack
     {
         if (stopAttack)
         {
-            returnLightning(); //returns to pool
+            returnGameObject(); //returns to pool
 
         }
         else
@@ -50,7 +50,7 @@ public class BA_LightningStrike : BaseBossAttack
 
         }
     }
-    public virtual void Initialize(PoolManager pm, Vector2 place, float duration, bool stopondamage)
+    public virtual void Initialize(PoolManager pm, Vector2 place, float duration, bool stopondamage, ObjectPool objectPool)
     {
         //Reset Variables
         hitbox.enabled = false;
@@ -58,6 +58,7 @@ public class BA_LightningStrike : BaseBossAttack
 
         //Assign
         poolManager = pm;
+        pool = objectPool;
         location = place;
         timer = duration;
         stopOnDamage = stopondamage;
@@ -89,14 +90,10 @@ public class BA_LightningStrike : BaseBossAttack
         if (stopOnDamage)
         {
             hitbox.enabled = false;
-            returnLightning();
+            base.returnGameObject();
         }
     }
 
-    private void returnLightning()
-    {
-        poolManager.ReturnObjectToPool(2, gameObject);
-    }
 
     private void lightningWarning(int num)
     {

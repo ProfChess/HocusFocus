@@ -112,7 +112,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.sceneLoaded -= onSceneLoaded;
         StartCoroutine(FadeIn());
-
+        PickupManager.Instance.returnAllHealth();
         if (player == null)
         {
             player = GameObject.FindGameObjectWithTag("Player");

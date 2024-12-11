@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BA_LStrikeFinish : BaseAttackSpawn
@@ -9,11 +10,11 @@ public class BA_LStrikeFinish : BaseAttackSpawn
     {
         foreach (Transform t in platforms)
         {
-            GameObject Strike = poolManager.getObjectFromPool(2);
+            GameObject Strike = GetPoolManager();
             if (Strike != null)
             {
                 float duration = Strike.GetComponent<BaseBossAttack>().getAttackSpeed();
-                Strike.GetComponent<BA_LightningStrike>().Initialize(poolManager, t.position, duration, true);
+                Strike.GetComponent<BA_LightningStrike>().Initialize(poolManager, t.position, duration, true, GetObjectPool());
             }
         }
     }

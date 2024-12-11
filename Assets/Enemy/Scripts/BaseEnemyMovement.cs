@@ -28,6 +28,9 @@ public abstract class BaseEnemyMovement : MonoBehaviour
 
     public LayerMask playerLayer;
     private int visionLayerMask;
+
+    //Damage
+    [SerializeField] float CollisionDamage = 1f;
     public virtual void Initialize(float EnemyPatrolSpeed, float EnemyChaseSpeed, float EnemyAttackDamage, bool canSeePlayer, float EnemyDetectRange,
         float EnemyAttackRange)
     {
@@ -110,4 +113,15 @@ public abstract class BaseEnemyMovement : MonoBehaviour
     }
 
 
+    //Trigger Damage on Player
+    private void OnTriggerStay2D(Collider2D col)
+    {
+        if (col != null)
+        {
+            if (col.CompareTag("Player"))
+            {
+                col.GetComponent<PlayerHealth>().takeDamage(CollisionDamage);
+            }
+        }
+    }
 }

@@ -122,7 +122,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyPatrolSpeed: 0
   EnemyChaseSpeed: 0
-  EnemyAttackDamage: 0
   EnemyDetectRange: 0
   EnemyAttackRange: 0
   player: {fileID: 0}
@@ -132,6 +131,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
+  EnemyAttackDamage: 2
   spellPrefab: {fileID: 1165485554322184488, guid: 8c5eccbd324745b4c9129a55d4c22917, type: 3}
   enemyAnim: {fileID: 7939157849516036493}
 --- !u!114 &8380164288671000502

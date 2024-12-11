@@ -10,6 +10,7 @@ public abstract class BaseAttackSpawn : MonoBehaviour, IBossAttack
 
     //References
     [SerializeField] protected GameObject prefab;       //Prefab to use
+    [SerializeField] protected ObjectPool objPool;      //Pool to get/return objects from
     protected PoolManager poolManager;                  //Pool manager
     protected Transform playerLocation;                 //Player transform
     private void Start()
@@ -42,6 +43,17 @@ public abstract class BaseAttackSpawn : MonoBehaviour, IBossAttack
     {
         Vector2 dir = playerLocation.position - transform.position;
         return dir;
+    }
+
+    //Pool get
+    public ObjectPool GetObjectPool()
+    {
+        return objPool;
+    }
+
+    protected GameObject GetPoolManager()
+    {
+        return poolManager.getObjectFromPool(GetObjectPool());
     }
     public abstract void executeAttack(BossController boss);
 

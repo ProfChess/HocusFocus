@@ -18,7 +18,8 @@ public class BA_PatternLightningSpawn : BaseAttackSpawn
 
     //List of lightning
     private List<GameObject> Strikes;
-    [SerializeField] GameObject BGStrike;
+    [SerializeField] private GameObject BGStrike;
+    [SerializeField] private ObjectPool StrikePool;
 
     //Reference
     [SerializeField] SpriteRenderer BossVisual;
@@ -70,7 +71,7 @@ public class BA_PatternLightningSpawn : BaseAttackSpawn
         //Grab Objects
         for (int i = 0; i < 3; i++)
         {
-            GameObject strike = poolManager.getObjectFromPool(3);
+            GameObject strike = GetPoolManager();
             if (strike != null)
             {
                 Strikes.Add(strike);
@@ -90,13 +91,13 @@ public class BA_PatternLightningSpawn : BaseAttackSpawn
         switch (spawnNum)
         {
             case 0:
-                ML.Initialize(poolManager, new Vector2(xSpawn1, -1));
+                ML.Initialize(poolManager, new Vector2(xSpawn1, -1), GetObjectPool());
                 break;
             case 1:
-                ML.Initialize(poolManager, new Vector2(xSpawn2, -1));
+                ML.Initialize(poolManager, new Vector2(xSpawn2, -1), GetObjectPool());
                 break;
             case 2:
-                ML.Initialize(poolManager, new Vector2(xSpawn3, -1));
+                ML.Initialize(poolManager, new Vector2(xSpawn3, -1), GetObjectPool());
                 break;
         }
     }
@@ -165,8 +166,8 @@ public class BA_PatternLightningSpawn : BaseAttackSpawn
     {
         for (float i = 1; i < 6; i++)
         {
-            GameObject BGgetstrike = poolManager.getObjectFromPool(2);
-            BGgetstrike.GetComponent<BA_LightningStrike>().Initialize(poolManager, new Vector2(3.5f + (i * 1.5f), -1), duration, false);
+            GameObject BGgetstrike = poolManager.getObjectFromPool(StrikePool);
+            BGgetstrike.GetComponent<BA_LightningStrike>().Initialize(poolManager, new Vector2(3.5f + (i * 1.5f), -1), duration, false, StrikePool);
         }
     }
 }

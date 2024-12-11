@@ -1381,6 +1381,7 @@ MonoBehaviour:
   weight: 1
   duration: 1
   prefab: {fileID: 386822610903416987, guid: c59295ae5beb2c4489ab4124bda7d2b1, type: 3}
+  objPool: {fileID: 1939340470}
 --- !u!114 &209350420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1396,6 +1397,7 @@ MonoBehaviour:
   weight: 8
   duration: 1
   prefab: {fileID: 4228487266374789831, guid: 7b1e402ff1a526348be68f12de7ab826, type: 3}
+  objPool: {fileID: 377370082}
 --- !u!114 &209350421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1411,6 +1413,7 @@ MonoBehaviour:
   weight: 0
   duration: 2
   prefab: {fileID: 3009724606014404952, guid: 106c3a9a5f0655c4aa318c95878c0c4c, type: 3}
+  objPool: {fileID: 1988432238}
   platforms:
   - {fileID: 9196077636913141429}
   - {fileID: 9196077635970497121}
@@ -1431,6 +1434,7 @@ MonoBehaviour:
   weight: 3
   duration: 3
   prefab: {fileID: 4228487266374789831, guid: 7b1e402ff1a526348be68f12de7ab826, type: 3}
+  objPool: {fileID: 377370082}
 --- !u!1 &232718287
 GameObject:
   m_ObjectHideFlags: 0
@@ -2459,7 +2463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 4228487266374789831, guid: 7b1e402ff1a526348be68f12de7ab826, type: 3}
-  baseSize: 3
+  baseSize: 1
 --- !u!1 &389727199
 GameObject:
   m_ObjectHideFlags: 0
@@ -2844,10 +2848,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66a8f0b753c83d346b603b12cd7e45f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireballPool: {fileID: 377370082}
-  explosionPool: {fileID: 1939340470}
-  lightningPool: {fileID: 1988432238}
-  movinglightningPool: {fileID: 1737924949}
+  pools:
+  - {fileID: 377370082}
+  - {fileID: 1939340470}
+  - {fileID: 1988432238}
+  - {fileID: 1737924949}
 --- !u!1 &469558371
 GameObject:
   m_ObjectHideFlags: 0
@@ -6770,6 +6775,7 @@ MonoBehaviour:
   weight: 5
   duration: 10
   prefab: {fileID: 0}
+  objPool: {fileID: 0}
   FirstAttackList:
   - {fileID: 209350422}
   - {fileID: 209350419}
@@ -6791,9 +6797,11 @@ MonoBehaviour:
   weight: 1
   duration: 24
   prefab: {fileID: 7960642287706933716, guid: 92864f9d8a2b60d4dbccd18021fc2d49, type: 3}
+  objPool: {fileID: 1737924949}
   bossPosition: {x: 9, y: 2}
   spawnPosition: {x: 0, y: -2}
   BGStrike: {fileID: 3009724606014404952, guid: 106c3a9a5f0655c4aa318c95878c0c4c, type: 3}
+  StrikePool: {fileID: 1988432238}
   BossVisual: {fileID: 879767289}
 --- !u!1001 &1345610428
 PrefabInstance:
@@ -8798,6 +8806,7 @@ MonoBehaviour:
   weight: 3
   duration: 4
   prefab: {fileID: 3009724606014404952, guid: 106c3a9a5f0655c4aa318c95878c0c4c, type: 3}
+  objPool: {fileID: 1988432238}
   extraLightningNumber: 2
 --- !u!114 &1794125820
 MonoBehaviour:
@@ -8814,6 +8823,7 @@ MonoBehaviour:
   weight: 3
   duration: 7
   prefab: {fileID: 3009724606014404952, guid: 106c3a9a5f0655c4aa318c95878c0c4c, type: 3}
+  objPool: {fileID: 1988432238}
   strikeInterval: 1
   stalkDuration: 5
 --- !u!114 &1794125821
@@ -8828,12 +8838,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4de3875181e5b442b2b56d39c6cba3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 1
+  weight: 10
   duration: 24
   prefab: {fileID: 7960642287706933716, guid: 92864f9d8a2b60d4dbccd18021fc2d49, type: 3}
+  objPool: {fileID: 1737924949}
   bossPosition: {x: 9, y: 2}
   spawnPosition: {x: 0, y: -2}
   BGStrike: {fileID: 3009724606014404952, guid: 106c3a9a5f0655c4aa318c95878c0c4c, type: 3}
+  StrikePool: {fileID: 1988432238}
   BossVisual: {fileID: 879767289}
 --- !u!1 &1814300290
 GameObject:

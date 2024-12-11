@@ -8,12 +8,12 @@ public class BA_FireBallSpawn : BaseAttackSpawn
     //Spawn in fireball attack then get direction to start movement
     public override void executeAttack(BossController boss)
     {
-        GameObject fireball = poolManager.getObjectFromPool(0);
+        GameObject fireball = GetPoolManager();
         if (fireball != null)
         {
             fireball.transform.position = boss.transform.position;
             findPlayer();
-            fireball.GetComponent<BA_FireBall>().Initialize(getPlayerDirection(), poolManager); 
+            fireball.GetComponent<BA_FireBall>().Initialize(getPlayerDirection(), poolManager, GetObjectPool()); 
         }
     }
         

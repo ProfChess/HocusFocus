@@ -1,7 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyHealthScript : MonoBehaviour
@@ -18,6 +16,9 @@ public class EnemyHealthScript : MonoBehaviour
 
     //Anim
     public Animator enemyAnim;
+
+    //Pickups 
+    private float healthDropChance = 0.25f; //chance of dropping
 
     //Getter 
     public float getEnemyCurrentHealth()
@@ -61,6 +62,7 @@ public class EnemyHealthScript : MonoBehaviour
     public void dyingSucks()
     {
         gameObject.SetActive(false);
+        dropPickup();
         StopCoroutine(DOT());
         if (gameObject.GetComponent<BaseEnemyMovement>() != null)
         {
@@ -113,5 +115,17 @@ public class EnemyHealthScript : MonoBehaviour
     private void die()
     {
         Destroy(gameObject);
+    }
+
+
+    //Drop Pickup Chance
+    private void dropPickup()
+    {
+        float dropChance = UnityEngine.Random.value;
+        if (dropChance <= healthDropChance)
+        {
+            GameObject hpUp = PickupManager.Instance.spawnHealth();
+            hpUp.transform.position = gameObject.transform.position;
+        }
     }
 }
