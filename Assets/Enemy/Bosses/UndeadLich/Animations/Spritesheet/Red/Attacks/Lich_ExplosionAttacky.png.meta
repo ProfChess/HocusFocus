@@ -1,0 +1,857 @@
+fileFormatVersion: 2
+guid: 674ff6d3a077efa47b2b09560f0973c7
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 20
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Lich_ExplosionAttacky_0
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 402
+        width: 47
+        height: 72
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c56867e47fec9e4f92735020ebaa512
+      internalID: -455749046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lich_ExplosionAttacky_1
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 402
+        width: 54
+        height: 68
+      alignment: 9
+      pivot: {x: 0.45, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ff2f1c6a91883041bda3388d79311db
+      internalID: 805865366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lich_ExplosionAttacky_2
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 403
+        width: 59
+        height: 68
+      alignment: 9
+      pivot: {x: 0.39, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d9c71d9c2d6ce143af0e2776b9407ba
+      internalID: -1914635014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lich_ExplosionAttacky_3
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 404
+        width: 61
+        height: 69
+      alignment: 9
+      pivot: {x: 0.38, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c22b8b6d469c79647829f3f35e794947
+      internalID: -1878564970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lich_ExplosionAttacky_4
+      rect:
+        serializedVersion: 2
+        x: 769
+        y: 404
+        width: 55
+        height: 70
+      alignment: 9
+      pivot: {x: 0.45, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b82786ff3b0c7f42a2d54874f33819c
+      internalID: -1730808573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lich_ExplosionAttacky_5
+      rect:
+        serializedVersion: 2
+        x: 945
+        y: 404
+        width: 81
+        height: 71
+      alignment: 9
+      pivot: {x: 0.3, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25581232dabf55540bab16f71cf96a34
+      internalID: 1803932078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lich_ExplosionAttacky_6
+      rect:
+        serializedVersion: 2
+        x: 1121
+        y: 403
+        width: 91
+        height: 73
+      alignment: 9
+      pivot: {x: 0.255, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e941e453dae972249a8d6fcde00ed428
+      internalID: 353754048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lich_ExplosionAttacky_7
+      rect:
+        serializedVersion: 2
+        x: 1297
+        y: 403
+        width: 95
+        height: 74
+      alignment: 9
+      pivot: {x: 0.25, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 692f05c555bd5fd4ba9f5f58da7c2a31
+      internalID: 1465343673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lich_ExplosionAttacky_8
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 274
+        width: 98
+        height: 82
+      alignment: 9
+      pivot: {x: 0.24, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 531d41e2ad10b084c9a93cf1e38d7a75
+      internalID: 240838889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lich_ExplosionAttacky_9
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 274
+        width: 106
+        height: 87
+      alignment: 9
+      pivot: {x: 0.22, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 454c207972a05b14eb79830de502f552
+      internalID: 2124350011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lich_ExplosionAttacky_10
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 275
+        width: 107
+        height: 84
+      alignment: 9
+      pivot: {x: 0.215, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0c0c21adbbcaee4db1dbf83d0280f6b
+      internalID: -1327029667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lich_ExplosionAttacky_11
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 276
+        width: 109
+        height: 92
+      alignment: 9
+      pivot: {x: 0.22, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 163942df6f9e7e3469f333a94f67aecf
+      internalID: -1402814399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lich_ExplosionAttacky_12
+      rect:
+        serializedVersion: 2
+        x: 769
+        y: 276
+        width: 110
+        height: 97
+      alignment: 9
+      pivot: {x: 0.22, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0edb80ab589e9f148bbbff55c671c5da
+      internalID: 1685897001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lich_ExplosionAttacky_13
+      rect:
+        serializedVersion: 2
+        x: 945
+        y: 276
+        width: 111
+        height: 99
+      alignment: 9
+      pivot: {x: 0.22, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ca9225ff703a7944a082393ff4260a4
+      internalID: -751590999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lich_ExplosionAttacky_14
+      rect:
+        serializedVersion: 2
+        x: 1121
+        y: 275
+        width: 60
+        height: 104
+      alignment: 9
+      pivot: {x: 0.4, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d338becaa812af44c81ee2d8f1849080
+      internalID: -1908826848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lich_ExplosionAttacky_15
+      rect:
+        serializedVersion: 2
+        x: 1297
+        y: 275
+        width: 60
+        height: 107
+      alignment: 9
+      pivot: {x: 0.4, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 468df3bf4db91f546a9599d95ce2641e
+      internalID: -129373973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lich_ExplosionAttacky_16
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 146
+        width: 67
+        height: 109
+      alignment: 9
+      pivot: {x: 0.475, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e667792ee97f10440ae629e5cd16cc22
+      internalID: -260484364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lich_ExplosionAttacky_17
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 146
+        width: 76
+        height: 110
+      alignment: 9
+      pivot: {x: 0.535, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de8c7d494eb6d604ebf9d0dc2c0a9923
+      internalID: 224353545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lich_ExplosionAttacky_18
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 147
+        width: 81
+        height: 106
+      alignment: 9
+      pivot: {x: 0.55, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ad50127bb1d12044993528cb6a3750c
+      internalID: 597733039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lich_ExplosionAttacky_19
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 148
+        width: 84
+        height: 76
+      alignment: 9
+      pivot: {x: 0.575, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cfea08091fe7584fbf0ff5ee5d3b7ea
+      internalID: 1997182597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lich_ExplosionAttacky_20
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 148
+        width: 87
+        height: 77
+      alignment: 9
+      pivot: {x: 0.59, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39767be54398f3640824e6c8bd9940df
+      internalID: 1631280352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lich_ExplosionAttacky_21
+      rect:
+        serializedVersion: 2
+        x: 914
+        y: 148
+        width: 91
+        height: 76
+      alignment: 9
+      pivot: {x: 0.61, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f83e0321a23a4424f9ff75c3db2086a1
+      internalID: -1048839425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lich_ExplosionAttacky_22
+      rect:
+        serializedVersion: 2
+        x: 1089
+        y: 147
+        width: 92
+        height: 73
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed3bb987cc31719409c3ebc4bf9fdaff
+      internalID: -1945824879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lich_ExplosionAttacky_23
+      rect:
+        serializedVersion: 2
+        x: 1264
+        y: 147
+        width: 87
+        height: 74
+      alignment: 9
+      pivot: {x: 0.65, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03b5150ba0fdcb742b04cb437cc3b7c4
+      internalID: -2060584633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lich_ExplosionAttacky_24
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 18
+        width: 75
+        height: 72
+      alignment: 9
+      pivot: {x: 0.78, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95acfde46c4759348acebf395a7e4ebb
+      internalID: -2135341914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lich_ExplosionAttacky_25
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 18
+        width: 82
+        height: 68
+      alignment: 9
+      pivot: {x: 0.72, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28605760d71e9f44bae95744ff1e2399
+      internalID: 2062938287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lich_ExplosionAttacky_26
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 19
+        width: 53
+        height: 68
+      alignment: 9
+      pivot: {x: 0.43, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df44b1f967e63134aa2a64ec1f92d664
+      internalID: -1613862716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lich_ExplosionAttacky_27
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 20
+        width: 56
+        height: 69
+      alignment: 9
+      pivot: {x: 0.42, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f24a568765e8e5479d8260ec8c4f443
+      internalID: 1540483402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lich_ExplosionAttacky_28
+      rect:
+        serializedVersion: 2
+        x: 769
+        y: 20
+        width: 56
+        height: 70
+      alignment: 9
+      pivot: {x: 0.44, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3edfec1ee5695a84db96edc88a1bbd2e
+      internalID: -988552976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lich_ExplosionAttacky_29
+      rect:
+        serializedVersion: 2
+        x: 945
+        y: 20
+        width: 56
+        height: 71
+      alignment: 9
+      pivot: {x: 0.44, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba99ef04b25a69d48a9d5b880c9dac2d
+      internalID: -1482132436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lich_ExplosionAttacky_30
+      rect:
+        serializedVersion: 2
+        x: 1121
+        y: 19
+        width: 51
+        height: 73
+      alignment: 9
+      pivot: {x: 0.45, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 043ba823d00bba04a93212e5f84f6eda
+      internalID: -1551286696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lich_ExplosionAttacky_31
+      rect:
+        serializedVersion: 2
+        x: 1297
+        y: 19
+        width: 49
+        height: 74
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b75867e0045914459db503099d66b1d
+      internalID: -48678898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Lich_ExplosionAttacky_0: -455749046
+      Lich_ExplosionAttacky_1: 805865366
+      Lich_ExplosionAttacky_10: -1327029667
+      Lich_ExplosionAttacky_11: -1402814399
+      Lich_ExplosionAttacky_12: 1685897001
+      Lich_ExplosionAttacky_13: -751590999
+      Lich_ExplosionAttacky_14: -1908826848
+      Lich_ExplosionAttacky_15: -129373973
+      Lich_ExplosionAttacky_16: -260484364
+      Lich_ExplosionAttacky_17: 224353545
+      Lich_ExplosionAttacky_18: 597733039
+      Lich_ExplosionAttacky_19: 1997182597
+      Lich_ExplosionAttacky_2: -1914635014
+      Lich_ExplosionAttacky_20: 1631280352
+      Lich_ExplosionAttacky_21: -1048839425
+      Lich_ExplosionAttacky_22: -1945824879
+      Lich_ExplosionAttacky_23: -2060584633
+      Lich_ExplosionAttacky_24: -2135341914
+      Lich_ExplosionAttacky_25: 2062938287
+      Lich_ExplosionAttacky_26: -1613862716
+      Lich_ExplosionAttacky_27: 1540483402
+      Lich_ExplosionAttacky_28: -988552976
+      Lich_ExplosionAttacky_29: -1482132436
+      Lich_ExplosionAttacky_3: -1878564970
+      Lich_ExplosionAttacky_30: -1551286696
+      Lich_ExplosionAttacky_31: -48678898
+      Lich_ExplosionAttacky_4: -1730808573
+      Lich_ExplosionAttacky_5: 1803932078
+      Lich_ExplosionAttacky_6: 353754048
+      Lich_ExplosionAttacky_7: 1465343673
+      Lich_ExplosionAttacky_8: 240838889
+      Lich_ExplosionAttacky_9: 2124350011
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

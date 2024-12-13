@@ -1382,6 +1382,8 @@ MonoBehaviour:
   duration: 1
   prefab: {fileID: 386822610903416987, guid: c59295ae5beb2c4489ab4124bda7d2b1, type: 3}
   objPool: {fileID: 1939340470}
+  spellCastAnim: {fileID: 7400000, guid: 05189355a53eca94c8bf5cb3c3b33d49, type: 2}
+  AttackFrameTarget: 11
 --- !u!114 &209350420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1394,10 +1396,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2137b3a679690514296a0d48c5549f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 8
+  weight: 6
   duration: 1
   prefab: {fileID: 4228487266374789831, guid: 7b1e402ff1a526348be68f12de7ab826, type: 3}
   objPool: {fileID: 377370082}
+  spellCastAnim: {fileID: 7400000, guid: 90f9bdd22f0fddf4386a619a2158f303, type: 2}
+  AttackFrameTarget: 13
 --- !u!114 &209350421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1414,6 +1418,8 @@ MonoBehaviour:
   duration: 2
   prefab: {fileID: 3009724606014404952, guid: 106c3a9a5f0655c4aa318c95878c0c4c, type: 3}
   objPool: {fileID: 1988432238}
+  spellCastAnim: {fileID: 7400000, guid: 8e0a30494fcbff64fa4e13fecc19f0c3, type: 2}
+  AttackFrameTarget: 13
   platforms:
   - {fileID: 9196077636913141429}
   - {fileID: 9196077635970497121}
@@ -1431,10 +1437,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd1939f4199c9c40a506bb0e2773bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 3
+  weight: 1
   duration: 3
   prefab: {fileID: 4228487266374789831, guid: 7b1e402ff1a526348be68f12de7ab826, type: 3}
   objPool: {fileID: 377370082}
+  spellCastAnim: {fileID: 7400000, guid: 41dd163547388184984f7d24948b24dc, type: 2}
+  AttackFrameTarget: 14
 --- !u!1 &232718287
 GameObject:
   m_ObjectHideFlags: 0
@@ -4814,6 +4822,7 @@ GameObject:
   m_Component:
   - component: {fileID: 879767288}
   - component: {fileID: 879767289}
+  - component: {fileID: 879767290}
   m_Layer: 7
   m_Name: BossVisual
   m_TagString: Untagged
@@ -4831,7 +4840,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1680516701}
@@ -4876,9 +4885,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0.38679248, g: 0, b: 0, a: 1}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: -327621627, guid: 4753a88ab0f14fb4d9e4bd6f2502e9bc, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4888,6 +4897,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &879767290
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879767287}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0f36bf869b3bc4a439b598d9f9ca5011, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &887046334
 GameObject:
   m_ObjectHideFlags: 0
@@ -6776,6 +6806,8 @@ MonoBehaviour:
   duration: 10
   prefab: {fileID: 0}
   objPool: {fileID: 0}
+  spellCastAnim: {fileID: 7400000, guid: da17ec78612d3784fafa0c028a82e67b, type: 2}
+  AttackFrameTarget: 12
   FirstAttackList:
   - {fileID: 209350422}
   - {fileID: 209350419}
@@ -6794,10 +6826,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4de3875181e5b442b2b56d39c6cba3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 1
+  weight: 0
   duration: 24
   prefab: {fileID: 7960642287706933716, guid: 92864f9d8a2b60d4dbccd18021fc2d49, type: 3}
   objPool: {fileID: 1737924949}
+  spellCastAnim: {fileID: 7400000, guid: 4a42279f408b76f4086453135ef2db39, type: 2}
+  AttackFrameTarget: 0
   bossPosition: {x: 9, y: 2}
   spawnPosition: {x: 0, y: -2}
   BGStrike: {fileID: 3009724606014404952, guid: 106c3a9a5f0655c4aa318c95878c0c4c, type: 3}
@@ -8438,7 +8472,7 @@ Transform:
   m_GameObject: {fileID: 1680516700}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2, z: 0}
+  m_LocalPosition: {x: 0, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8479,7 +8513,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.15, y: 1.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -8490,7 +8524,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 0.5, y: 2.7}
   m_EdgeRadius: 0
 --- !u!114 &1680516703
 MonoBehaviour:
@@ -8521,6 +8555,7 @@ MonoBehaviour:
   phase1: {fileID: 1870068056}
   phase2: {fileID: 1870068058}
   phase3: {fileID: 1870068057}
+  BossAnimator: {fileID: 879767290}
 --- !u!50 &1680516705
 Rigidbody2D:
   serializedVersion: 4
@@ -8547,7 +8582,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &1713434482
 GameObject:
   m_ObjectHideFlags: 0
@@ -8804,9 +8839,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 3
-  duration: 4
+  duration: 3
   prefab: {fileID: 3009724606014404952, guid: 106c3a9a5f0655c4aa318c95878c0c4c, type: 3}
   objPool: {fileID: 1988432238}
+  spellCastAnim: {fileID: 7400000, guid: 0ee09ff1108897e47a8fbe352cf1d56c, type: 2}
+  AttackFrameTarget: 13
   extraLightningNumber: 2
 --- !u!114 &1794125820
 MonoBehaviour:
@@ -8821,9 +8858,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 3
-  duration: 7
+  duration: 8
   prefab: {fileID: 3009724606014404952, guid: 106c3a9a5f0655c4aa318c95878c0c4c, type: 3}
   objPool: {fileID: 1988432238}
+  spellCastAnim: {fileID: 7400000, guid: ff7998d10c8a9d04e82538489822cc6d, type: 2}
+  AttackFrameTarget: 16
   strikeInterval: 1
   stalkDuration: 5
 --- !u!114 &1794125821
@@ -8838,10 +8877,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4de3875181e5b442b2b56d39c6cba3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 10
+  weight: 1
   duration: 24
   prefab: {fileID: 7960642287706933716, guid: 92864f9d8a2b60d4dbccd18021fc2d49, type: 3}
   objPool: {fileID: 1737924949}
+  spellCastAnim: {fileID: 7400000, guid: 4a42279f408b76f4086453135ef2db39, type: 2}
+  AttackFrameTarget: 0
   bossPosition: {x: 9, y: 2}
   spawnPosition: {x: 0, y: -2}
   BGStrike: {fileID: 3009724606014404952, guid: 106c3a9a5f0655c4aa318c95878c0c4c, type: 3}
