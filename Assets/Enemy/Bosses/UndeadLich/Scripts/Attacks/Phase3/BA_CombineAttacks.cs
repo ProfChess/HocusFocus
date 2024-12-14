@@ -6,12 +6,10 @@ public class BA_CombineAttacks : BaseAttackSpawn
     [SerializeField] List<BaseAttackSpawn> FirstAttackList;
     [SerializeField] List<BaseAttackSpawn> SecondAttackList;
 
-    private BossController SavedBoss;
     //Called from phase 3 script 
     public override void executeAttack(BossController boss)
     {
         base.executeAttack(boss);
-        SavedBoss = boss;
     }
 
     //Returns an attack from a given attack list 

@@ -81,9 +81,11 @@ public class PlayerHealth : MonoBehaviour
     public void restoreHealth(int amount)
     {
         pHealth += amount;
+        GameManager.Instance.saveHealth(pHealth);
         if (pHealth > maxHealth)
         {
             pHealth = maxHealth;
+            GameManager.Instance.saveHealth(pHealth);
         }
         UIChange();
     }

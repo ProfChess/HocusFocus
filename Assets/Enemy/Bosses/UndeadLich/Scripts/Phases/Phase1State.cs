@@ -6,7 +6,10 @@ public class Phase1State : BaseState, IBossPhase
     public void EnterPhase(BossController boss)     //Enters phase 
     {
         Debug.Log("Phase 1");
-        attackCooldown = 0f;
+        attackCooldown = 5f;
+
+        //Trigger Starting/Spawning Animation
+        GetComponentInParent<BoxCollider2D>().enabled = true; //Activate after animation completes
     }
     public void UpdatePhase(BossController boss)    //For whatever needs to be updated each frame in each phase
     {

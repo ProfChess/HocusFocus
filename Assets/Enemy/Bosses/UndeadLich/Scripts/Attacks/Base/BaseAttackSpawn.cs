@@ -17,13 +17,15 @@ public abstract class BaseAttackSpawn : MonoBehaviour, IBossAttack
 
     //Animation
     [SerializeField] protected AnimationClip spellCastAnim;
-    private Animator AnimControl;
+    protected Animator AnimControl;
     [SerializeField] private int AttackFrameTarget;
     private float animationFrameRate;
     private bool attackTriggered = false;
+
+
     private void Start()
     {
-        poolManager = FindObjectOfType<PoolManager>();
+        poolManager = GameObject.FindGameObjectWithTag("BossPoolManager").GetComponent<PoolManager>();
         AnimControl = FindObjectOfType<BossController>().GetComponentInChildren<Animator>();
         //Anim
         if (spellCastAnim != null )

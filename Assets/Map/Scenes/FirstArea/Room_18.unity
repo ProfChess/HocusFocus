@@ -5035,7 +5035,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d45761f45423ce74fbc49e7a95591605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: Room_4
+  sceneToLoad: Room_19_Boss_1
   spawnPointName: LeftDoorSpawn
 --- !u!61 &1558363008
 BoxCollider2D:
@@ -7502,7 +7502,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 3825675544357178897}
   enemyAnim: {fileID: 3145550351552670076}
-  enemyHP: {fileID: 8142559307069901923}
 --- !u!114 &435823458514937573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7527,6 +7526,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
+  CollisionDamage: 1
   spellPrefab: {fileID: 1165485554322184488, guid: 8c5eccbd324745b4c9129a55d4c22917, type: 3}
   enemyAnim: {fileID: 8548346360791812773}
 --- !u!50 &543890803683958128
@@ -7860,6 +7860,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
+  CollisionDamage: 1
 --- !u!1 &1352055895149099237
 GameObject:
   m_ObjectHideFlags: 0
@@ -8034,7 +8035,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce378f69313ab1f4abd2b051a9fa06d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHP: {fileID: 7836279553154727070}
   enemyAnim: {fileID: 8548346360791812773}
   enemy: {fileID: 435823458514937573}
 --- !u!1 &1813735940844490239
@@ -8459,6 +8459,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
+  CollisionDamage: 1
   leftPatrolPoint: {fileID: 5859828605965848382}
   rightPatrolPoint: {fileID: 6235378873351167313}
   enemyAnim: {fileID: 3145550351552670076}
@@ -8530,7 +8531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 241cc299a3e75cc4b949dbc11921f8e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 1
+  enemyMaxHealth: 5
   enemyAnim: {fileID: 0}
 --- !u!1 &4310171650778779567
 GameObject:
@@ -9924,6 +9925,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
+  CollisionDamage: 1
 --- !u!1 &6927218359766254308
 GameObject:
   m_ObjectHideFlags: 0
@@ -10125,7 +10127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 241cc299a3e75cc4b949dbc11921f8e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 5
+  enemyMaxHealth: 5
   enemyAnim: {fileID: 8548346360791812773}
 --- !u!4 &8024530848897805456
 Transform:
@@ -10199,7 +10201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 241cc299a3e75cc4b949dbc11921f8e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 20
+  enemyMaxHealth: 5
   enemyAnim: {fileID: 3145550351552670076}
 --- !u!95 &8188143248683757486
 Animator:
@@ -10234,7 +10236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 241cc299a3e75cc4b949dbc11921f8e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 1
+  enemyMaxHealth: 5
   enemyAnim: {fileID: 0}
 --- !u!95 &8548346360791812773
 Animator:

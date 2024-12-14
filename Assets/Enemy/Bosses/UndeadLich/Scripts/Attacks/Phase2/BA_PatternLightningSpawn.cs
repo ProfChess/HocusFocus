@@ -121,19 +121,26 @@ public class BA_PatternLightningSpawn : BaseAttackSpawn
         if (moveDir == 0)
         {
             canCastAgain = false;
+            yield return new WaitForSeconds(1f);
             BossVisual.sortingOrder = -16;
+            AnimControl.speed = 0;
             MainBoss.transform.position = bossPosition;
             yield return new WaitForSeconds(1f); //Travel delay
             BossVisual.sortingOrder = 0;
+            AnimControl.speed = 1f;
             BGLightning();
             yield return new WaitForSeconds(2f); //Short delay before striking (Background lightning appears here)
         }
         else if (moveDir == 1)
         {
             BossVisual.sortingOrder = -16;
+            AnimControl.speed = 0;
             MainBoss.transform.position = spawnPosition;
             yield return new WaitForSeconds(1f);
             BossVisual.sortingOrder = 0;
+            AnimControl.speed = 1f;
+            AnimControl.SetTrigger("EndLoopCast");
+            yield return new WaitForSeconds(1f);
             canCastAgain = true;
         }
 

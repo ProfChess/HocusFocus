@@ -31,15 +31,29 @@ public class BossController : MonoBehaviour
     //Animation
     [SerializeField] private Animator BossAnimator;
     private SpriteRenderer SR;
+    private bool canFlipX = true;
+
+    //Collision
+    [SerializeField] private BoxCollider2D hitbox;
+    private Vector2 originalOffset;
 
     private void Start()
     {
+        if (hitbox != null)
+        {
+            originalOffset = hitbox.offset;
+            hitbox.enabled = false;
+        }
         healthScript = GetComponent<EnemyHealthScript>();
         healthScript.onHealthChanged += onHealthChanged;
 
         maxHP = healthScript.enemyMaxHealth;
 
         SR = GetComponentInChildren<SpriteRenderer>();
+
+    }
+    public void BeginFight()
+    {
         bossPhaseLabel = TrackBossPhase.Phase1; //Starting Phase
         curPhase = phase1;
         curPhase.EnterPhase(this);
@@ -52,14 +66,25 @@ public class BossController : MonoBehaviour
             curPhase.UpdatePhase(this); //Updates the phase each frame
         }
 
-        if (GameManager.Instance.player.transform.position.x > gameObject.transform.position.x)
+        if (canFlipX)
         {
-            SR.flipX = false;
+            if (GameManager.Instance.player.transform.position.x > gameObject.transform.position.x)
+            {
+                SR.flipX = false;
+                HitboxFlip();
+            }
+            else if (GameManager.Instance.player.transform.position.x < gameObject.transform.position.x)
+            {
+                SR.flipX = true;
+                HitboxFlip();
+            }
         }
-        else if (GameManager.Instance.player.transform.position.x < gameObject.transform.position.x)
-        {
-            SR.flipX = true;
-        }
+
+    }
+
+    public void setCanFlipX(bool x)
+    {
+        canFlipX = x;
     }
 
     void OnDestroy()
@@ -112,4 +137,15 @@ public class BossController : MonoBehaviour
         }
     }
 
+    //Get Ref for SR
+    public bool getSpriteRendererFlip()
+    {
+        return SR.flipX;
+    }
+
+    //Flip Box Collider
+    private void HitboxFlip()
+    {
+        hitbox.offset = new Vector2(originalOffset.x * (getSpriteRendererFlip() ? 1 : -1), originalOffset.y);
+    }
 }

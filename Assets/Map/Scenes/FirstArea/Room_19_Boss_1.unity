@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 9459134}
   - component: {fileID: 9459135}
   m_Layer: 0
-  m_Name: Tree7 (1)
+  m_Name: DoorSprite4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1141,7 +1141,7 @@ GameObject:
   - component: {fileID: 182511027}
   - component: {fileID: 182511028}
   m_Layer: 0
-  m_Name: Tree8
+  m_Name: DoorSprite1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1363,7 +1363,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 349176845}
+  - {fileID: 2001665312}
   m_Father: {fileID: 129038399}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &209350419
@@ -1378,7 +1380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9398e092bc2e0f428ce9faa956651a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 1
+  weight: 2
   duration: 1
   prefab: {fileID: 386822610903416987, guid: c59295ae5beb2c4489ab4124bda7d2b1, type: 3}
   objPool: {fileID: 1939340470}
@@ -1396,12 +1398,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2137b3a679690514296a0d48c5549f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 6
+  weight: 8
   duration: 1
   prefab: {fileID: 4228487266374789831, guid: 7b1e402ff1a526348be68f12de7ab826, type: 3}
   objPool: {fileID: 377370082}
   spellCastAnim: {fileID: 7400000, guid: 90f9bdd22f0fddf4386a619a2158f303, type: 2}
   AttackFrameTarget: 13
+  SpellLeftSpawn: {fileID: 349176844}
+  SpellRightSpawn: {fileID: 2001665311}
 --- !u!114 &209350421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1437,12 +1441,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd1939f4199c9c40a506bb0e2773bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 1
+  weight: 3
   duration: 3
   prefab: {fileID: 4228487266374789831, guid: 7b1e402ff1a526348be68f12de7ab826, type: 3}
   objPool: {fileID: 377370082}
   spellCastAnim: {fileID: 7400000, guid: 41dd163547388184984f7d24948b24dc, type: 2}
   AttackFrameTarget: 14
+  SpellLeftSpawn: {fileID: 349176844}
+  SpellRightSpawn: {fileID: 2001665311}
 --- !u!1 &232718287
 GameObject:
   m_ObjectHideFlags: 0
@@ -1527,6 +1533,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &234013360
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 234013361}
+  m_Layer: 0
+  m_Name: StartTriggerLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &234013361
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234013360}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.69, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 821605691}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &248173514
 GameObject:
   m_ObjectHideFlags: 0
@@ -2337,6 +2374,37 @@ MonoBehaviour:
   yMin: -0.85
   xMax: 1.35
   xMin: -1.35
+--- !u!1 &349176844
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 349176845}
+  m_Layer: 7
+  m_Name: SpellLeftSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &349176845
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349176844}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.85, y: 1.65, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 209350418}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &361429963
 GameObject:
   m_ObjectHideFlags: 0
@@ -2820,7 +2888,7 @@ GameObject:
   - component: {fileID: 448900223}
   m_Layer: 0
   m_Name: ObjectPoolManager
-  m_TagString: Untagged
+  m_TagString: BossPoolManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4653,6 +4721,60 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &821605689
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 821605691}
+  - component: {fileID: 821605690}
+  m_Layer: 0
+  m_Name: BossFightManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &821605690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 821605689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d84223686f5d4de4b9aa5fbec1a6f7f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startLocation: {fileID: 234013361}
+  DoorBox: {fileID: 1575906585}
+  DoorVisual: {fileID: 140469486}
+  DoorTrees:
+  - {fileID: 182511028}
+  - {fileID: 1278635152}
+  - {fileID: 1646152570}
+  - {fileID: 9459135}
+  - {fileID: 1284591676}
+--- !u!4 &821605691
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 821605689}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 234013361}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &871676461
 GameObject:
   m_ObjectHideFlags: 0
@@ -4888,7 +5010,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_Sprite: {fileID: -327621627, guid: 4753a88ab0f14fb4d9e4bd6f2502e9bc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -6152,6 +6274,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1225971023
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1225971024}
+  m_Layer: 0
+  m_Name: LeftDoorSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1225971024
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225971023}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.76, y: -0.97, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1948701676}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1237276243
 GameObject:
   m_ObjectHideFlags: 0
@@ -6403,7 +6556,7 @@ GameObject:
   - component: {fileID: 1278635151}
   - component: {fileID: 1278635152}
   m_Layer: 0
-  m_Name: Tree8 (1)
+  m_Name: DoorSprite2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6600,7 +6753,7 @@ GameObject:
   - component: {fileID: 1284591675}
   - component: {fileID: 1284591676}
   m_Layer: 0
-  m_Name: Tree7 (2)
+  m_Name: DoorSprite5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6803,16 +6956,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 5
-  duration: 10
+  duration: 6
   prefab: {fileID: 0}
   objPool: {fileID: 0}
-  spellCastAnim: {fileID: 7400000, guid: da17ec78612d3784fafa0c028a82e67b, type: 2}
+  spellCastAnim: {fileID: 7400000, guid: 4a42279f408b76f4086453135ef2db39, type: 2}
   AttackFrameTarget: 12
   FirstAttackList:
   - {fileID: 209350422}
   - {fileID: 209350419}
   SecondAttackList:
-  - {fileID: 1794125819}
+  - {fileID: 1794125820}
   - {fileID: 1794125820}
 --- !u!114 &1317959781
 MonoBehaviour:
@@ -6830,10 +6983,10 @@ MonoBehaviour:
   duration: 24
   prefab: {fileID: 7960642287706933716, guid: 92864f9d8a2b60d4dbccd18021fc2d49, type: 3}
   objPool: {fileID: 1737924949}
-  spellCastAnim: {fileID: 7400000, guid: 4a42279f408b76f4086453135ef2db39, type: 2}
+  spellCastAnim: {fileID: 7400000, guid: da17ec78612d3784fafa0c028a82e67b, type: 2}
   AttackFrameTarget: 0
-  bossPosition: {x: 9, y: 2}
-  spawnPosition: {x: 0, y: -2}
+  bossPosition: {x: 9, y: 0.75}
+  spawnPosition: {x: 0, y: -3}
   BGStrike: {fileID: 3009724606014404952, guid: 106c3a9a5f0655c4aa318c95878c0c4c, type: 3}
   StrikePool: {fileID: 1988432238}
   BossVisual: {fileID: 879767289}
@@ -8286,7 +8439,7 @@ GameObject:
   - component: {fileID: 1646152569}
   - component: {fileID: 1646152570}
   m_Layer: 0
-  m_Name: Tree7
+  m_Name: DoorSprite3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8513,7 +8666,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.15, y: 1.5}
+  m_Offset: {x: 0.15, y: 1.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -8556,6 +8709,7 @@ MonoBehaviour:
   phase2: {fileID: 1870068058}
   phase3: {fileID: 1870068057}
   BossAnimator: {fileID: 879767290}
+  hitbox: {fileID: 1680516702}
 --- !u!50 &1680516705
 Rigidbody2D:
   serializedVersion: 4
@@ -8881,10 +9035,10 @@ MonoBehaviour:
   duration: 24
   prefab: {fileID: 7960642287706933716, guid: 92864f9d8a2b60d4dbccd18021fc2d49, type: 3}
   objPool: {fileID: 1737924949}
-  spellCastAnim: {fileID: 7400000, guid: 4a42279f408b76f4086453135ef2db39, type: 2}
-  AttackFrameTarget: 0
-  bossPosition: {x: 9, y: 2}
-  spawnPosition: {x: 0, y: -2}
+  spellCastAnim: {fileID: 7400000, guid: da17ec78612d3784fafa0c028a82e67b, type: 2}
+  AttackFrameTarget: 6
+  bossPosition: {x: 9, y: 0.75}
+  spawnPosition: {x: 0, y: -3}
   BGStrike: {fileID: 3009724606014404952, guid: 106c3a9a5f0655c4aa318c95878c0c4c, type: 3}
   StrikePool: {fileID: 1988432238}
   BossVisual: {fileID: 879767289}
@@ -9921,6 +10075,99 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 386822610903416987, guid: c59295ae5beb2c4489ab4124bda7d2b1, type: 3}
   baseSize: 3
+--- !u!1 &1948701675
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1948701676}
+  - component: {fileID: 1948701678}
+  - component: {fileID: 1948701677}
+  m_Layer: 0
+  m_Name: LeftDoor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1948701676
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948701675}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -13.39, y: -5.17, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1225971024}
+  m_Father: {fileID: 1997481058}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1948701677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948701675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d45761f45423ce74fbc49e7a95591605, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneToLoad: Room_18
+  spawnPointName: RightDoorSpawn
+--- !u!61 &1948701678
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948701675}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.5167401}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2, y: 4.03348}
+  m_EdgeRadius: 0
 --- !u!1 &1984527706
 GameObject:
   m_ObjectHideFlags: 0
@@ -10095,6 +10342,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 3009724606014404952, guid: 106c3a9a5f0655c4aa318c95878c0c4c, type: 3}
   baseSize: 6
+--- !u!1 &1997481057
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1997481058}
+  m_Layer: 0
+  m_Name: AllDoors
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1997481058
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997481057}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1948701676}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1997882988
 GameObject:
   m_ObjectHideFlags: 0
@@ -10126,6 +10405,37 @@ Transform:
   m_Children:
   - {fileID: 1280890301}
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2001665311
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001665312}
+  m_Layer: 7
+  m_Name: SpellRightSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001665312
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001665311}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.85, y: 1.65, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 209350418}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2003162009
 GameObject:
@@ -12064,3 +12374,5 @@ SceneRoots:
   - {fileID: 1246037960}
   - {fileID: 183039056}
   - {fileID: 1345610428}
+  - {fileID: 821605691}
+  - {fileID: 1997481058}

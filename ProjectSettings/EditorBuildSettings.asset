@@ -68,4 +68,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Map/Scenes/FirstArea/Room_18.unity
     guid: fd5aa96c2c2ef824b985ceeabf3c05f2
+  - enabled: 1
+    path: Assets/Map/Scenes/FirstArea/Room_19_Boss_1.unity
+    guid: 41a4bfb4730a61542bc7dcddfa350b79
   m_configObjects: {}

@@ -16,7 +16,11 @@ public class ItemAnim : MonoBehaviour
     private void Update()
     {
         float yChange = Mathf.Sin(Time.time * animSpeed) * animHeight;
-
         transform.position = location + new Vector2(0f, yChange);
+    }
+
+    public void resetLocation()
+    {
+        location = transform.position;
     }
 }

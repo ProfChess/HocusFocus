@@ -5,7 +5,7 @@ public abstract class BaseBossAttack : MonoBehaviour
 {
     [SerializeField] protected float attackDamage;
     [SerializeField] protected float attackSpeed;
-    [SerializeField] protected ObjectPool pool;
+    protected ObjectPool pool;
     protected PoolManager poolManager;
 
     //Damage Function

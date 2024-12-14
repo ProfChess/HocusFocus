@@ -8,15 +8,30 @@ public class BA_StalkLightningSpawn : BaseAttackSpawn
     [SerializeField] private float stalkDuration = 5f;  //Amount of time of lightning
     private bool strikeAgain = true;                    //Bool to repeat a strike
 
+    private BossController SavedBoss;
+
     public override void executeAttack(BossController boss)
     {
-        strikeAgain = true;
-        if (strikeAgain)
+        SavedBoss = boss;
+        base.executeAttack(SavedBoss);
+    }
+
+    public override void SpawnBossAttack()
+    {
+        if (SavedBoss == null)
         {
-            StartCoroutine(repeatStrikRoutine());
-            base.executeAttack(boss);
-            strikeAgain = false;
+            SavedBoss = FindObjectOfType<BossController>();
         }
+        if (SavedBoss != null)
+        {
+            strikeAgain = true;
+            if (strikeAgain)
+            {
+                StartCoroutine(repeatStrikRoutine());
+                strikeAgain = false;
+            }
+        }
+
     }
 
     //Coroutine for striking players location repeatably

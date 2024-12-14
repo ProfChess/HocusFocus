@@ -18,7 +18,7 @@ public class EnemyHealthScript : MonoBehaviour
     public Animator enemyAnim;
 
     //Pickups 
-    private float healthDropChance = 0.25f; //chance of dropping
+    private float healthDropChance = 1f; //chance of dropping
 
     //Getter 
     public float getEnemyCurrentHealth()
@@ -126,6 +126,7 @@ public class EnemyHealthScript : MonoBehaviour
         {
             GameObject hpUp = PickupManager.Instance.spawnHealth();
             hpUp.transform.position = gameObject.transform.position;
+            hpUp.GetComponentInChildren<ItemAnim>().resetLocation();
         }
     }
 }
