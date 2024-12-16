@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -50,6 +51,10 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource playerSpellSelect;   //17
     public void playSound(int soundIndex)
     {
+        if (Time.deltaTime == 0f)
+        {
+            return;
+        }
         switch (soundIndex)
         {
             case 0:

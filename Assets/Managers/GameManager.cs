@@ -58,8 +58,9 @@ public class GameManager : MonoBehaviour
                 dashFound = false,
                 jumpFound = false,
                 teleFound = false,
+                fastTravelPoints = GetComponent<FastTravelManager>().FastTravel,
             };
-            //loadProgress(); //Loads all saved variables to game manager
+            loadProgress(); //Loads all saved variables to game manager
         }
 
         else
@@ -72,7 +73,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        //player.transform.position = saveData.spawnLocation;
+        player.transform.position = saveData.spawnLocation;
         StartCoroutine(FadeIn());
         loadPlayerStart();
     }
@@ -215,6 +216,7 @@ public class GameManager : MonoBehaviour
     {
         sceneDeath = sceneName;
         respawnLocation = location;
+        GetComponent<FastTravelManager>().UnlockSaveLocation(sceneName);
     }
     private void respawnLogic()
     {
@@ -310,6 +312,7 @@ public class GameManager : MonoBehaviour
         saveData.spawnLocation = respawnLocation;
         saveData.HpUpgrades = healthUpgrades;
         saveData.ManaUpgrades = manaUpgrades;
+        saveData.fastTravelPoints = GetComponent<FastTravelManager>().FastTravel;
         SaveManager.SaveGame(saveData);
     }
 
@@ -323,6 +326,7 @@ public class GameManager : MonoBehaviour
         jumpUpgrade = saveData.jumpFound;
         teleportUpgrade = saveData.teleFound;
         itemsCollected = saveData.playerItems;
+        GetComponent<FastTravelManager>().FastTravel = saveData.fastTravelPoints;
         SceneManager.LoadScene(sceneDeath);
     }
 

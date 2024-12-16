@@ -17,6 +17,7 @@ public class MeleeEnemy : BaseEnemyMovement
     //Anim
     public Animator enemyAnim;
     public SpriteRenderer enemyVisual;
+    private Vector2 enemyHitBoxOffset;
     private EnemyHealthScript HPScript;
 
     //Player Location
@@ -34,6 +35,7 @@ public class MeleeEnemy : BaseEnemyMovement
     {
         base.Start();
         HPScript = GetComponent<EnemyHealthScript>();
+        enemyHitBoxOffset = GetComponent<BoxCollider2D>().offset;
     }
 
     protected override void FixedUpdate()
@@ -132,10 +134,20 @@ public class MeleeEnemy : BaseEnemyMovement
         if (moveDir == Vector2.right)
         {
             enemyVisual.flipX = true;
+            if (GetComponent<BoxCollider2D>().offset.x == enemyHitBoxOffset.x)
+            {
+                GetComponent<BoxCollider2D>().offset = new Vector2(enemyHitBoxOffset.x * -1, enemyHitBoxOffset.y);
+            }
+            
         }
         else
         {
             enemyVisual.flipX = false;
+            if (GetComponent<BoxCollider2D>().offset.x == enemyHitBoxOffset.x * -1)
+            {
+                GetComponent<BoxCollider2D>().offset = new Vector2(enemyHitBoxOffset.x, enemyHitBoxOffset.y);
+            }
+            
         }
     }
 

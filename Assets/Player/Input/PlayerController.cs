@@ -62,12 +62,13 @@ public class PlayerController : MonoBehaviour
     private bool dashed = false;
 
 
-    //Sounds
-
     //Animation/Visual Components
     [Header("Animation")]
     public SpriteRenderer playerVisual;
     public Animator playerAnim;
+
+    //Menu
+    private bool isPaused = false;
 
     private void OnEnable()
     {
@@ -86,6 +87,9 @@ public class PlayerController : MonoBehaviour
         inputActions.Player.LookUp.canceled += OnLookUp;
         inputActions.Player.LookDown.performed += OnLookDown;
         inputActions.Player.LookDown.canceled += OnLookDown;
+
+        //Menus
+        inputActions.Player.PauseGame.performed += OnPause;
     }
 
     private void OnDisable()
@@ -103,6 +107,9 @@ public class PlayerController : MonoBehaviour
         inputActions.Player.LookUp.canceled -= OnLookUp;
         inputActions.Player.LookDown.performed -= OnLookDown;
         inputActions.Player.LookDown.canceled -= OnLookDown;
+
+        //Menus
+        inputActions.Player.PauseGame.performed -= OnPause;
         inputActions.Disable();
 
     }
@@ -211,6 +218,10 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (Time.deltaTime == 0f)
+        {
+            return;
+        }
         //Collision Detection for Teleport 
         if (teleportHide)
         {
@@ -267,6 +278,10 @@ public class PlayerController : MonoBehaviour
     //Left/Right
     public void OnMove(InputAction.CallbackContext context)
     {
+        if (Time.deltaTime == 0)
+        {
+            return;
+        }
         moveDirection = new Vector2 (context.ReadValue<float>(), 0f);
         if (moveDirection != Vector2.zero) //Records last moved direction for dash and teleport
         {
@@ -295,6 +310,10 @@ public class PlayerController : MonoBehaviour
     //Jump
     public void OnJump(InputAction.CallbackContext context)
     {
+        if (Time.deltaTime == 0)
+        {
+            return;
+        }
         if (context.performed && onGround) //Performed when grounded
         {
             isJumping = true;
@@ -326,6 +345,10 @@ public class PlayerController : MonoBehaviour
     //Dash
     public void OnDash(InputAction.CallbackContext context)
     {
+        if (Time.deltaTime == 0)
+        {
+            return;
+        }
         //Dash must be unlocked
         //Not currently dashing
         //Dash not on cooldown
@@ -371,6 +394,10 @@ public class PlayerController : MonoBehaviour
     //Teleport
     public void OnTeleport(InputAction.CallbackContext context)
     {
+        if (Time.deltaTime == 0)
+        {
+            return;
+        }
         //Teleport must be unlocked
         //Not currently teleporting
         //teleport not on cooldown
@@ -492,6 +519,19 @@ public class PlayerController : MonoBehaviour
         lastMoveDirection = move;
     }
 
+    //ESC Button
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        if (context.performed && !isPaused)
+        {
+            UIManager.Instance.pauseGame();
+            isPaused = true;
+        }
+        else if (context.performed && isPaused)
+        {
+            UIManager.Instance.UnpauseGame();
+            isPaused = false;
+        }
+    }
 
-    
 }

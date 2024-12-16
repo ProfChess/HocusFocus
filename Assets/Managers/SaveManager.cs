@@ -6,14 +6,15 @@ using UnityEngine;
 [System.Serializable]
 public class SaveData
 {
-    public string startingScene;    //Most recent save point
-    public Vector2 spawnLocation;   //Where to start in scene
-    public float HpUpgrades;          //Amount of Hp upgrade books found
-    public float ManaUpgrades;        //Amound of mana upgrade books found
-    public bool dashFound;          //T/F if player found dash
-    public bool jumpFound;          //T/F if player found jump
-    public bool teleFound;          //T/F if player found tele
-    public List<string> playerItems;//List of items player has collected
+    public string startingScene;                    //Most recent save point
+    public Vector2 spawnLocation;                   //Where to start in scene
+    public float HpUpgrades;                        //Amount of Hp upgrade books found
+    public float ManaUpgrades;                      //Amound of mana upgrade books found
+    public bool dashFound;                          //T/F if player found dash
+    public bool jumpFound;                          //T/F if player found jump
+    public bool teleFound;                          //T/F if player found tele
+    public List<string> playerItems;                //List of items player has collected
+    public List<FastTravelPoint> fastTravelPoints;  //List of Travel Points
 }
 
 
@@ -35,6 +36,7 @@ public static class SaveManager
             string json = File.ReadAllText(_SaveFilePath);
             SaveData data = JsonUtility.FromJson<SaveData>(json);
             Debug.Log("Game Loaded");
+            Debug.Log(_SaveFilePath);
             return data;
         }
 
