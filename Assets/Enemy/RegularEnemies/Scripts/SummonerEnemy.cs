@@ -39,6 +39,7 @@ public class SummonerEnemy : BaseEnemyMovement
     protected void Awake()
     {
         Initialize(2, 4, 0, false, 10, 4);
+
     }
 
     protected override void Start()
@@ -50,9 +51,10 @@ public class SummonerEnemy : BaseEnemyMovement
     protected void Update()
     {
         //Player gets too close -> summoner will run away
-        run = Vector3.Distance(transform.position, player.transform.position) <= EnemyAttackRange;
-
-        
+        if (player != null)
+        {
+            run = Vector3.Distance(transform.position, player.transform.position) <= EnemyAttackRange;
+        }
 
         if (canWonder && !canSeePlayer || enemyBlind)
         {

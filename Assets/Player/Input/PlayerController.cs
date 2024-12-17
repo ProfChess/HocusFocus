@@ -122,9 +122,11 @@ public class PlayerController : MonoBehaviour
         playerLayer = LayerMask.NameToLayer("Player");
         pDashLayer = LayerMask.NameToLayer("PlayerDashLayer");
         pTeleportLayer = LayerMask.NameToLayer("PlayerTeleportLayer");
+        
     }
     private void Start()
     {
+        GameManager.Instance.player = gameObject;
         if (GameManager.Instance.respawn)
         {
             transform.position = GameManager.Instance.respawnLocation;
@@ -135,6 +137,11 @@ public class PlayerController : MonoBehaviour
         playerDash = GameManager.Instance.getDashBool();
         playerDoubleJump = GameManager.Instance.getJumpBool();
         playerTeleport = GameManager.Instance.getTeleportBool();
+    }
+
+    public void travelPlace()
+    {
+        transform.position = GameManager.Instance.TempFastTravelLocation;
     }
 
     //Physics Calculations

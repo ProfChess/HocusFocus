@@ -97,6 +97,6 @@ public class BA_LightningStrike : BaseBossAttack
 
     private void lightningWarning(int num)
     {
-        boomComing(num, Color.green, Color.red, sr);
+        boomComing(num, Color.white, Color.white, sr);
     }
 }

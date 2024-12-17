@@ -34,13 +34,15 @@ public class GameManager : MonoBehaviour
     public string sceneDeath = "StartingRoom";
     public Vector2 respawnLocation = new Vector2(7.75f, -0.75f);
     public bool respawn = false;
+    public bool FastTraveling = false;
+    public Vector2 TempFastTravelLocation;
 
     //Item Storage
     private List<string> itemsCollected;
 
     //Saving Between Sessions
     private SaveData saveData;
-    
+    private FastTravelManager fastTravelManager;
     private void Awake()
     {
         if (Instance == null)
@@ -48,19 +50,20 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
             itemsCollected = new List<string>();
-            saveData = SaveManager.LoadGame() ?? new SaveData
-            {
-                startingScene = "StartingRoom",
-                spawnLocation = new Vector2(7.75f, -0.75f),
-                HpUpgrades = 0,
-                ManaUpgrades = 0,
-                playerItems = itemsCollected,
-                dashFound = false,
-                jumpFound = false,
-                teleFound = false,
-                fastTravelPoints = GetComponent<FastTravelManager>().FastTravel,
-            };
-            loadProgress(); //Loads all saved variables to game manager
+            fastTravelManager = GetComponent<FastTravelManager>();
+            //saveData = SaveManager.LoadGame() ?? new SaveData
+            //{
+            //    startingScene = "StartingRoom",
+            //    spawnLocation = new Vector2(7.75f, -0.75f),
+            //    HpUpgrades = 0,
+            //    ManaUpgrades = 0,
+            //    playerItems = itemsCollected,
+            //    dashFound = false,
+            //    jumpFound = false,
+            //    teleFound = false,
+            //    fastTravelPoints = fastTravelManager.FastTravel,
+            //};
+            //loadProgress(); //Loads all saved variables to game manager
         }
 
         else
@@ -73,7 +76,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        player.transform.position = saveData.spawnLocation;
+        //player.transform.position = saveData.spawnLocation;
         StartCoroutine(FadeIn());
         loadPlayerStart();
     }
@@ -119,19 +122,29 @@ public class GameManager : MonoBehaviour
             player = GameObject.FindGameObjectWithTag("Player");
         }
 
-        if (player != null && !string.IsNullOrEmpty(currentSpawnPoint))
+        if (FastTraveling == false)
         {
-            GameObject spawnPoint = GameObject.Find(currentSpawnPoint);
-            if (spawnPoint != null)
+            if (player != null && !string.IsNullOrEmpty(currentSpawnPoint))
             {
-                player.transform.position = spawnPoint.transform.position;
-                if (currentSpawnDirection == "Right") //If spawnPointname starts with 'Right' (meaning we are entering from the right) -> flip to the left
+                GameObject spawnPoint = GameObject.Find(currentSpawnPoint);
+                if (spawnPoint != null)
                 {
-                    player.GetComponentInChildren<SpriteRenderer>().flipX = true;
-                    player.GetComponent<PlayerController>().setMoveDirection(Vector2.left);
+                    player.transform.position = spawnPoint.transform.position;
+                    if (currentSpawnDirection == "Right") //If spawnPointname starts with 'Right' (meaning we are entering from the right) -> flip to the left
+                    {
+                        player.GetComponentInChildren<SpriteRenderer>().flipX = true;
+                        player.GetComponent<PlayerController>().setMoveDirection(Vector2.left);
+                    }
                 }
             }
         }
+        if (FastTraveling)
+        {
+            player.GetComponent<PlayerController>().travelPlace();
+        }
+        FastTraveling = false;
+
+
     }
 
     //End of Game
@@ -312,7 +325,7 @@ public class GameManager : MonoBehaviour
         saveData.spawnLocation = respawnLocation;
         saveData.HpUpgrades = healthUpgrades;
         saveData.ManaUpgrades = manaUpgrades;
-        saveData.fastTravelPoints = GetComponent<FastTravelManager>().FastTravel;
+        saveData.fastTravelPoints = fastTravelManager.FastTravel;
         SaveManager.SaveGame(saveData);
     }
 
@@ -326,7 +339,7 @@ public class GameManager : MonoBehaviour
         jumpUpgrade = saveData.jumpFound;
         teleportUpgrade = saveData.teleFound;
         itemsCollected = saveData.playerItems;
-        GetComponent<FastTravelManager>().FastTravel = saveData.fastTravelPoints;
+        fastTravelManager.FastTravel = saveData.fastTravelPoints;
         SceneManager.LoadScene(sceneDeath);
     }
 
@@ -338,7 +351,13 @@ public class GameManager : MonoBehaviour
     //Quit Game
     private void OnApplicationQuit()
     {
-        saveProgress();
+        //saveProgress();
     }
 
+    public void fastTravel(string name)
+    {
+        FastTraveling = true;
+        TempFastTravelLocation = fastTravelManager.getLocation(name);
+        saveSceneAndLocation(name, TempFastTravelLocation);
+    }
 }

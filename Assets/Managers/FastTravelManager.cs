@@ -43,5 +43,22 @@ public class FastTravelManager : MonoBehaviour
         }
         return false;
     }
+    
+    public Vector2 getLocation(string name)
+    {
+        for(int i = 0; i < FastTravel.Count; i++)
+        {
+            if (FastTravel[i].SceneName == name)
+            {
+                return FastTravel[i].SaveLocation;
+            }
+            else
+            {
+
+            }
+        }
+        return Vector2.zero;
+
+    }
 
 }
