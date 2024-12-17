@@ -23,12 +23,14 @@ public class BA_FireBallSpawn : BaseAttackSpawn
 
     public override void SpawnBossAttack()
     {
+        
         GameObject fireball = GetPoolManager();
         if (fireball != null)
         {
             fireball.transform.position = SpellLocation;
             findPlayer();
-            fireball.GetComponent<BA_FireBall>().Initialize(getPlayerDirection(), poolManager, GetObjectPool());
+            Vector2 spawnDir = (playerLocation.position - fireball.transform.position).normalized;
+            fireball.GetComponent<BA_FireBall>().Initialize(spawnDir, poolManager, GetObjectPool());
         }
     }
 
