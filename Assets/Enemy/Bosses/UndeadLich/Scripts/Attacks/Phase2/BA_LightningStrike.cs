@@ -78,6 +78,7 @@ public class BA_LightningStrike : BaseBossAttack
         yield return new WaitForSeconds(delayTime);
 
         //Turn to damage color -> collision on -> stay for desired time -> flag to return to pool
+        AudioManager.Instance.playBossSound("Lightning");
         lightningWarning(2);
         hitbox.enabled = true;
         yield return new WaitForSeconds(timer);

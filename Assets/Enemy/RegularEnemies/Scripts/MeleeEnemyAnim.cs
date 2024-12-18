@@ -15,7 +15,7 @@ public class MeleeEnemyAnim : MonoBehaviour
     public void callAttack()
     {
         enemy.enemyAttackNumbers();
-        AudioManager.Instance.playSound(8);
+        AudioManager.Instance.playEnemySound("Swing");
     }
 
     public void enemyDeath()

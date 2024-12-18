@@ -10,6 +10,7 @@ public class BA_CombineAttacks : BaseAttackSpawn
     public override void executeAttack(BossController boss)
     {
         base.executeAttack(boss);
+        AudioManager.Instance.playBossSound("Combine");
     }
 
     //Returns an attack from a given attack list 

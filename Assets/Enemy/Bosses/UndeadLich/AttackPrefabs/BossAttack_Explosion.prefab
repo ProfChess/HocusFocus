@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1056796343198804933}
   m_Layer: 13
   m_Name: BossAttack_Explosion
-  m_TagString: Untagged
+  m_TagString: BossAttackFire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

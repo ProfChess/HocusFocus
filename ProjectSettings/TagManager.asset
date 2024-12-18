@@ -9,6 +9,9 @@ TagManager:
   - PatrolPoint
   - Pickup
   - BossPoolManager
+  - MenuUI
+  - BossAttackFire
+  - BossAttackLightning
   layers:
   - Default
   - TransparentFX

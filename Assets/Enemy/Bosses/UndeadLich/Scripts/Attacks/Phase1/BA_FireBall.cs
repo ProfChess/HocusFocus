@@ -14,6 +14,7 @@ public class BA_FireBall : BaseBossAttack
         float angle = Mathf.Atan2(moveDirection.normalized.y, moveDirection.normalized.x) * Mathf.Rad2Deg;
         angle = angle + 180;
         attackVisual.transform.rotation = Quaternion.Euler(0, 0, angle);
+        AudioManager.Instance.playBossSound("Fire");
     }
 
     private void Update()

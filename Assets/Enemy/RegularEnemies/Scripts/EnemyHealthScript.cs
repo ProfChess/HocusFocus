@@ -18,7 +18,7 @@ public class EnemyHealthScript : MonoBehaviour
     public Animator enemyAnim;
 
     //Pickups 
-    private float healthDropChance = 1f; //chance of dropping
+    private float healthDropChance = 0.2f; //chance of dropping
 
     //Getter 
     public float getEnemyCurrentHealth()
@@ -38,7 +38,7 @@ public class EnemyHealthScript : MonoBehaviour
         enemyHealth -= damage * enemyDamageMod;
         if (damage > 0f)
         {
-            AudioManager.Instance.playSound(14);
+            AudioManager.Instance.playEnemySound("Hit");
         }
 
         if (onHealthChanged != null)
@@ -66,7 +66,7 @@ public class EnemyHealthScript : MonoBehaviour
         StopCoroutine(DOT());
         if (gameObject.GetComponent<BaseEnemyMovement>() != null)
         {
-            AudioManager.Instance.playSound(7);
+            AudioManager.Instance.playEnemySound("Death");
             gameObject.GetComponent<BaseEnemyMovement>().returnToStart();
         }
     }

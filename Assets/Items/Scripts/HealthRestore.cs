@@ -22,6 +22,7 @@ public class HealthRestore : MonoBehaviour
     {
         //Add Sound Effect
         PickupManager.Instance.returnHealth(gameObject);
+        AudioManager.Instance.playItemSound("Collectable");
     }
 
     

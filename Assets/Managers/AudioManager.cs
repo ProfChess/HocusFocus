@@ -1,8 +1,13 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
+[System.Serializable]
+public class SoundFX
+{
+    public string SoundName;
+    public AudioSource SoundSource;
+}
 public class AudioManager : MonoBehaviour
 {
 
@@ -23,138 +28,154 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+
+
     //Sound Effects
+    //List
+    [SerializeField] public List<SoundFX> PlayerSoundList;
+    [SerializeField] public List<SoundFX> EnemySoundList;
+    [SerializeField] public List<SoundFX> ItemSoundList;
+    [SerializeField] public List<SoundFX> SpellSoundList;
+    [SerializeField] public List<SoundFX> BossSoundList;
+
+
     //Player
-    [SerializeField] private AudioSource playerMove;          //0
-    [SerializeField] private AudioSource playerJump;          //1
-    [SerializeField] private AudioSource playerDash;          //2
-    [SerializeField] private AudioSource playerTeleport;      //3
-    [SerializeField] private AudioSource playerHit;           //4
-    [SerializeField] private AudioSource playerDeath;         //5
-    [SerializeField] private AudioSource playerCast;          //6
+    [Header("Player")]
+    [SerializeField] private AudioSource playerMove;          
 
-    //Enemy
-    [SerializeField] private AudioSource enemyDeath;          //7
-    [SerializeField] private AudioSource enemySwing;          //8
-    [SerializeField] private AudioSource enemyCast;           //9
-    [SerializeField] private AudioSource enemyHit;            //14
+    //Music
+    [Header("Music")]
+    [SerializeField] private AudioSource MainMenuMusic;
+    [SerializeField] private AudioSource BGM;
+    [SerializeField] private AudioSource BossMusic;
 
-    //Items
-    [SerializeField] private AudioSource itemCollect;         //10
+    //UI 
+    [SerializeField] private AudioSource ButtonSound;
 
-    //Spells
-    [SerializeField] private AudioSource playerFireSpell;     //11
-    [SerializeField] private AudioSource playerIceSpell;      //12
-    [SerializeField] private AudioSource playerThunderSpell;  //13
-    [SerializeField] private AudioSource playerComboStart;    //15
-    [SerializeField] private AudioSource playerComboStop;     //16
-    [SerializeField] private AudioSource playerSpellSelect;   //17
-    public void playSound(int soundIndex)
+    public bool checkSoundPlaying()
     {
-        if (Time.deltaTime == 0f)
-        {
-            return;
-        }
-        switch (soundIndex)
-        {
-            case 0:
-                playerMove.PlayDelayed(0.1f);
-                playerMove.loop = true;
-                break;
-            case 1:
-                playerJump.Play(); break;
-            case 2: 
-                playerDash.Play(); break;
-            case 3:
-                playerTeleport.Play(); break;
-            case 4:
-                playerHit.Play(); break;
-            case 5:
-                playerDeath.Play(); break;
-            case 6:
-                playerCast.Play(); break;
-            case 7:
-                enemyDeath.Play(); break;
-            case 8: 
-                enemySwing.Play(); break;
-            case 9:
-                enemyCast.Play(); break;
-            case 10:
-                itemCollect.Play(); break;
-            case 11:
-                playerFireSpell.Play(); break;
-            case 12:
-                playerIceSpell.Play(); break;
-            case 13:
-                playerThunderSpell.Play(); break;
-            case 14:
-                enemyHit.Play(); break;
-            case 15:
-                playerComboStart.Play(); break;
-            case 16:
-                playerComboStop.Play(); break;
-            case 17:
-                playerSpellSelect.Play(); break;
-            default:
-                Debug.LogWarning(soundIndex + " = Invalid sound index");
-                break;
-
-        }
-    }
-
-    public bool checkSoundPlaying(int soundIndex)
-    {
-        switch (soundIndex)
-        {
-            case 0:
-                return playerMove.isPlaying;
-            case 1:
-                return playerJump.isPlaying;
-            case 2:
-                return playerDash.isPlaying;
-            case 3:
-                return playerTeleport.isPlaying;         
-            case 4:
-                return playerHit.isPlaying;
-            case 5:
-                return playerDeath.isPlaying;
-            case 6:
-                return playerCast.isPlaying;
-            case 7:
-                return enemyDeath.isPlaying;
-            case 8:
-                return enemySwing.isPlaying;
-            case 9:
-                return enemyCast.isPlaying;
-            case 10:
-                return itemCollect.isPlaying;
-            case 11:
-                return playerFireSpell.isPlaying;
-            case 12:
-                return playerIceSpell.isPlaying;
-            case 13:
-                return playerThunderSpell.isPlaying;
-            case 14:
-                return enemyHit.isPlaying;
-            case 15:
-                return playerComboStart.isPlaying;
-            case 16:
-                return playerComboStop.isPlaying;
-            case 17:
-                return playerSpellSelect.isPlaying;
-            default:
-                Debug.LogWarning(soundIndex + " = Invalid sound index");
-                return false;
-
-        }
+        return playerMove.isPlaying;
     }
 
     public void stopMovingSound()
     {
         playerMove.loop = false;
     }
+    public void startMovingSound()
+    {
+        playerMove.loop = true;
+        playerMove.Play();
+    }
 
+    public void changeMusic(int MusicIndex)
+    {
+        stopAllMusic();
+        switch (MusicIndex)
+        {
+            case 0: //Main Menu
+                MainMenuMusic.Play(); break;
+            case 1: //Background
+                BGM.Play(); break;
+            case 2: //Boss Fight Music
+                BossMusic.Play(); break;    
+            default:
+                Debug.Log("Music Not Found");
+                break;
+        }
+    }
 
+    private void stopAllMusic()
+    {
+        MainMenuMusic.Stop();
+        BGM.Stop();
+        BossMusic.Stop();
+    }
+
+    private void Update()
+    {
+        if (MainMenuMusic != null && BGM != null && BossMusic != null) 
+        {
+            Scene curScene = SceneManager.GetActiveScene();
+            if (curScene.name == "Menus")
+            {
+                if (!MainMenuMusic.isPlaying)
+                {
+                    changeMusic(0);
+                }
+            }
+            else if (curScene.name == "Room_19_Boss_1")
+            {
+                if (!BossMusic.isPlaying)
+                {
+                    changeMusic(2);
+                }
+            }
+            else
+            {
+                if (!BGM.isPlaying)
+                {
+                    changeMusic(1);
+                }
+            }
+        }
+    }
+
+    public AudioSource getButtonSound()
+    {
+        return ButtonSound;
+    }
+
+    public void playPlayerSound(string name)
+    {
+        for (int i = 0; i < PlayerSoundList.Count; i++)
+        {
+            if (PlayerSoundList[i].SoundName == name)
+            {
+                PlayerSoundList[i].SoundSource.Play();
+            }
+        }
+    }
+    public void playEnemySound(string name)
+    {
+        for (int i = 0; i < EnemySoundList.Count; i++)
+        {
+            if (EnemySoundList[i].SoundName == name)
+            {
+                EnemySoundList[i].SoundSource.Play();
+            }
+        }
+    }
+    public void playItemSound(string name)
+    {
+        for (int i = 0; i < ItemSoundList.Count; i++)
+        {
+            if (ItemSoundList[i].SoundName == name)
+            {
+                ItemSoundList[i].SoundSource.Play();
+            }
+        }
+    }
+    public void playSpellSound(string name)
+    {
+        for (int i = 0; i < SpellSoundList.Count; i++)
+        {
+            if (SpellSoundList[i].SoundName == name)
+            {
+                SpellSoundList[i].SoundSource.Play();
+            }
+        }
+    }
+
+    public void playBossSound(string name)
+    {
+        for (int i = 0; i < BossSoundList.Count; i++)
+        {
+            if (BossSoundList[i].SoundName == name)
+            {
+                BossSoundList[i].SoundSource.Play();
+            }
+        }
+    }
 
 
 

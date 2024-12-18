@@ -102,7 +102,7 @@ public class CasterEnemy : BaseEnemyMovement
 
     public void cultistSpellLogic()
     {
-        AudioManager.Instance.playSound(9);
+        AudioManager.Instance.playEnemySound("Cast");
         Vector3 castLocation = transform.position;
         spellPrefab.GetComponent<CasterEnemySpell>().setSpellDirection(getCastDirection());
         //Blasts box left/right that gradually gets bigger

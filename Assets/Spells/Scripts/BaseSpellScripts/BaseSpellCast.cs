@@ -52,7 +52,7 @@ public abstract class BaseSpellCast : MonoBehaviour
     protected virtual IEnumerator CastSpellRoutine()
     {
         casting = true;
-        AudioManager.Instance.playSound(6);
+        AudioManager.Instance.playPlayerSound("Cast");
         yield return new WaitForSeconds(castTime);
 
         casting = false;
@@ -135,13 +135,13 @@ public abstract class BaseSpellCast : MonoBehaviour
         switch (soundNum)
         {
             case 0:
-                AudioManager.Instance.playSound(11);
+                AudioManager.Instance.playSpellSound("Fire");
                 break;
             case 1:
-                AudioManager.Instance.playSound(12);
+                AudioManager.Instance.playSpellSound("Ice");
                 break;
             case 2:
-                AudioManager.Instance.playSound(13);
+                AudioManager.Instance.playPlayerSound("Thunder");
                 break;
             default: 
                 Debug.LogWarning("Incorrect Sound Number: " +  soundNum);

@@ -269,9 +269,9 @@ public class PlayerController : MonoBehaviour
         //Sounds
         if (AudioManager.Instance != null)
         {
-            if (onGround && moveDirection.magnitude > 0 && !AudioManager.Instance.checkSoundPlaying(0))
+            if (onGround && moveDirection.magnitude > 0 && !AudioManager.Instance.checkSoundPlaying())
             {
-                AudioManager.Instance.playSound(0);
+                AudioManager.Instance.startMovingSound();
             }
             else if (!onGround || moveDirection.magnitude == 0)
             {
@@ -344,7 +344,7 @@ public class PlayerController : MonoBehaviour
     {
         if (AudioManager.Instance != null)
         {
-            AudioManager.Instance.playSound(1);
+            AudioManager.Instance.playPlayerSound("Jump");
         }
     }
 
@@ -365,7 +365,7 @@ public class PlayerController : MonoBehaviour
             playerAnim.SetTrigger("PlayerDash"); //Animation Trigger
             if (AudioManager.Instance != null)
             {
-                AudioManager.Instance.playSound(2);  //Sound Trigger
+                AudioManager.Instance.playPlayerSound("Dash");  //Sound Trigger
             }
             
         }
@@ -424,7 +424,7 @@ public class PlayerController : MonoBehaviour
         //Sound Trigger
         if (AudioManager.Instance != null)
         {
-            AudioManager.Instance.playSound(3);
+            AudioManager.Instance.playPlayerSound("Teleport");
         }
     }
     private IEnumerator Teleport()

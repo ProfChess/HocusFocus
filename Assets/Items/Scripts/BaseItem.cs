@@ -28,7 +28,7 @@ public abstract class BaseItem : MonoBehaviour
             if (collision.CompareTag("Player"))
             {
                 //Sound
-                AudioManager.Instance.playSound(10);
+                AudioManager.Instance.playItemSound("Item");
                 //Save
                 GameManager.Instance.itemCollected(itemName);
                 GameManager.Instance.AddItem(itemID);

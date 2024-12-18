@@ -37,12 +37,12 @@ public class PlayerHealth : MonoBehaviour
             {
                 if (AudioManager.Instance != null)
                 {
-                    AudioManager.Instance.playSound(4);
+                    AudioManager.Instance.playPlayerSound("Hit");
                 }
             }
             if (pHealth <= 0)
             {
-                AudioManager.Instance.playSound(5);
+                AudioManager.Instance.playPlayerSound("Death");
                 Debug.Log("Player is Dead");
                 //Anim
                 playerAnim.SetTrigger("PlayerDeath");

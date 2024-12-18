@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     //Scene Change
     public Image blackFade;
     private float fadeDuration = 0.5f;
+    private bool gameOver = false;
 
     //CheckPoints and Saving
     //Stats
@@ -359,5 +360,17 @@ public class GameManager : MonoBehaviour
         FastTraveling = true;
         TempFastTravelLocation = fastTravelManager.getLocation(name);
         saveSceneAndLocation(name, TempFastTravelLocation);
+    }
+
+    public void FinishGame()
+    {
+        Time.timeScale = 0f;
+        SceneManager.LoadScene("Menus");
+        gameOver = true;
+    }
+
+    public bool getGameOver()
+    {
+        return gameOver;
     }
 }

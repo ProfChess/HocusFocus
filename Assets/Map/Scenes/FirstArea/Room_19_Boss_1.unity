@@ -4949,6 +4949,7 @@ GameObject:
   - component: {fileID: 879767288}
   - component: {fileID: 879767289}
   - component: {fileID: 879767290}
+  - component: {fileID: 879767291}
   m_Layer: 7
   m_Name: BossVisual
   m_TagString: Untagged
@@ -5044,6 +5045,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &879767291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879767287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eca08a351fcfa6a4f847ffdc402d1976, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &887046334
 GameObject:
   m_ObjectHideFlags: 0
@@ -6451,7 +6464,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1246037959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6464,24 +6477,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2249e9db18a7e42439bdb45df31c1ab5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerSoundList: []
+  EnemySoundList: []
+  ItemSoundList: []
+  SpellSoundList: []
+  BossSoundList: []
   playerMove: {fileID: 1884312756}
-  playerJump: {fileID: 1884312755}
-  playerDash: {fileID: 1884312754}
-  playerTeleport: {fileID: 1884312753}
-  playerHit: {fileID: 1884312752}
-  playerDeath: {fileID: 1884312751}
-  playerCast: {fileID: 1884312750}
-  enemyDeath: {fileID: 306776601}
-  enemySwing: {fileID: 306776600}
-  enemyCast: {fileID: 306776599}
-  enemyHit: {fileID: 306776598}
-  itemCollect: {fileID: 21811943}
-  playerFireSpell: {fileID: 1140790373}
-  playerIceSpell: {fileID: 1140790372}
-  playerThunderSpell: {fileID: 1140790371}
-  playerComboStart: {fileID: 1140790370}
-  playerComboStop: {fileID: 1140790369}
-  playerSpellSelect: {fileID: 1140790367}
+  MainMenuMusic: {fileID: 0}
+  BGM: {fileID: 0}
+  BossMusic: {fileID: 0}
+  ButtonSound: {fileID: 0}
 --- !u!4 &1246037960
 Transform:
   m_ObjectHideFlags: 0

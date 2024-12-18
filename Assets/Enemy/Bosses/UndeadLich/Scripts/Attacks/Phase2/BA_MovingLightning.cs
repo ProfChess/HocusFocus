@@ -17,6 +17,7 @@ public class BA_MovingLightning : BaseBossAttack
         spawnLocation = spawn;
 
         gameObject.transform.position = spawnLocation;
+        AudioManager.Instance.playBossSound("Lightning");
     }
 
     private void Update()

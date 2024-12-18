@@ -80,7 +80,7 @@ public class PlayerAttackScript : MonoBehaviour
 
             if (comboFailedSound == false)
             {
-                AudioManager.Instance.playSound(16);
+                AudioManager.Instance.playSpellSound("ComboStop");
                 comboFailedSound = true;
             }
         }
@@ -135,13 +135,13 @@ public class PlayerAttackScript : MonoBehaviour
             if(comboCount == 0)
             {
                 firstComboSpell = "Fire";
-                AudioManager.Instance.playSound(17);
+                AudioManager.Instance.playSpellSound("SpellSelect");
                 comboCount++;
             }
             else if (comboCount == 1 && firstComboSpell != "Fire")
             {
                 secondComboSpell = "Fire";
-                AudioManager.Instance.playSound(17);
+                AudioManager.Instance.playSpellSound("SpellSelect");
                 comboFailedSound = true;
                 comboCount++;
             }
@@ -169,13 +169,13 @@ public class PlayerAttackScript : MonoBehaviour
             if (comboCount == 0)
             {
                 firstComboSpell = "Ice";
-                AudioManager.Instance.playSound(17);
+                AudioManager.Instance.playSpellSound("SpellSelect");
                 comboCount++;
             }
             else if (comboCount == 1 && firstComboSpell != "Ice")
             {
                 secondComboSpell = "Ice";
-                AudioManager.Instance.playSound(17);
+                AudioManager.Instance.playSpellSound("SpellSelect");
                 comboFailedSound = true;
                 comboCount++;
             }
@@ -204,13 +204,13 @@ public class PlayerAttackScript : MonoBehaviour
             if (comboCount == 0)
             {
                 firstComboSpell = "Arcane";
-                AudioManager.Instance.playSound(17);
+                AudioManager.Instance.playSpellSound("SpellSelect");
                 comboCount++;
             }
             else if (comboCount == 1 && firstComboSpell != "Arcane")
             {
                 secondComboSpell = "Arcane";
-                AudioManager.Instance.playSound(17);
+                AudioManager.Instance.playSpellSound("SpellSelect");
                 comboFailedSound = true;
                 comboCount++;
             }
@@ -232,7 +232,7 @@ public class PlayerAttackScript : MonoBehaviour
         {
             comboStarted = false;
             comboFailedSound = true;
-            AudioManager.Instance.playSound(16);
+            AudioManager.Instance.playSpellSound("ComboStop");
             Debug.Log("Combo Canceled");
         }
         else if (!comboStarted)
@@ -241,7 +241,7 @@ public class PlayerAttackScript : MonoBehaviour
             {
                 comboStarted = true;
                 comboFailedSound = false;
-                AudioManager.Instance.playSound(15);
+                AudioManager.Instance.playSpellSound("ComboStart");
                 Debug.Log("Combo Started");
             }
         }

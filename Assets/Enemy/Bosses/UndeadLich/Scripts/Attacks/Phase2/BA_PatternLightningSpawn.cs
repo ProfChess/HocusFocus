@@ -121,6 +121,7 @@ public class BA_PatternLightningSpawn : BaseAttackSpawn
         if (moveDir == 0)
         {
             canCastAgain = false;
+            AudioManager.Instance.playBossSound("Teleport");
             yield return new WaitForSeconds(1f);
             BossVisual.sortingOrder = -16;
             AnimControl.speed = 0;
@@ -138,6 +139,7 @@ public class BA_PatternLightningSpawn : BaseAttackSpawn
             MainBoss.transform.position = spawnPosition;
             yield return new WaitForSeconds(1f);
             BossVisual.sortingOrder = 0;
+            AudioManager.Instance.playBossSound("Teleport");
             AnimControl.speed = 1f;
             AnimControl.SetTrigger("EndLoopCast");
             yield return new WaitForSeconds(1f);
