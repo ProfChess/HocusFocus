@@ -7,7 +7,7 @@ public class ExplosionAnim : MonoBehaviour
     public void ouch()
     {
         GetComponentInParent<BA_Explosion>().turnCollider();
-        AudioManager.Instance.playBossSound("Fire");
+        AudioManager.Instance.playBossSound("Explosion");
     }
     public void goAway()
     {
