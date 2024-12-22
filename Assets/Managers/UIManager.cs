@@ -137,10 +137,12 @@ public class UIManager : MonoBehaviour
     public void QuitGame()
     {
         playUISound();
+        GameManager.Instance.saveOnExit();
         GameManager.Instance.FadingOutTransition();
         UnpauseGame();
         Invoke("WrapMenuLoad", 1f);
         PauseMenu.SetActive(false);
+        playerUI.SetActive(false);
     }
     private void WrapMenuLoad()
     {

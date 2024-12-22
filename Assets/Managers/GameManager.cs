@@ -52,18 +52,15 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             itemsCollected = new List<string>();
             fastTravelManager = GetComponent<FastTravelManager>();
-            saveData = SaveManager.LoadGame() ?? new SaveData
+            if (SaveManager.LoadGame() != null)
             {
-                startingScene = "StartingRoom",
-                spawnLocation = new Vector2(7.75f, -0.75f),
-                HpUpgrades = 0,
-                ManaUpgrades = 0,
-                playerItems = itemsCollected,
-                dashFound = false,
-                jumpFound = false,
-                teleFound = false,
-                fastTravelPoints = fastTravelManager.FastTravel,
-            };
+                saveData = SaveManager.LoadGame();
+            }
+            else
+            {
+                createNewSave();
+            }
+         
         }
 
         else
@@ -73,9 +70,24 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private void Start()
+    private void createNewSave()
     {
-        
+        saveData = new SaveData
+        {
+            startingScene = "StartingRoom",
+            spawnLocation = new Vector2(7.75f, -0.75f),
+            HpUpgrades = 0,
+            ManaUpgrades = 0,
+            playerItems = itemsCollected,
+            dashFound = false,
+            jumpFound = false,
+            teleFound = false,
+            fastTravelPoints = fastTravelManager.FastTravel,
+        };
+    }
+    public void deleteSaveCreateNew()
+    {
+        createNewSave();
     }
 
     public void SetSpawnPoint(string spawnPoint)
@@ -345,7 +357,10 @@ public class GameManager : MonoBehaviour
         saveData.fastTravelPoints = fastTravelManager.FastTravel;
         SaveManager.SaveGame(saveData);
     }
-
+    public void saveOnExit()
+    {
+        saveProgress();
+    }
     public void loadProgress()
     {
         sceneDeath = saveData.startingScene;

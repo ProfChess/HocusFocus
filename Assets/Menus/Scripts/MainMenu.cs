@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject StartMenu;
     [SerializeField] private GameObject SoundMenu;
     [SerializeField] private GameObject EndMenu;
+    [SerializeField] private GameObject ConfirmMenu;
 
     //Buttons
     [SerializeField] private GameObject NewGameButton;
@@ -18,7 +19,7 @@ public class MainMenu : MonoBehaviour
 
     //UI
     [SerializeField] private GameObject playerUI;
-
+    
     //Start
     public void startButton()
     {
@@ -32,6 +33,12 @@ public class MainMenu : MonoBehaviour
     {
         GameManager.Instance.loadProgress();
     }
+
+    public void newGame()
+    {
+        GameManager.Instance.deleteSaveCreateNew();
+        startButton();
+    }
     public void exitGame()
     {
         playButtonSound();
@@ -39,13 +46,31 @@ public class MainMenu : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
     }
 
-    public void goSoundMenu()
+    //Open + Close confirm menu
+    public void goConfirmMenu()
+    {
+        playButtonSound();
+        if (SaveManager.SaveExists())
+        {
+            ConfirmMenu.SetActive(true);
+        }
+        else
+        {
+            newGame();
+        }
+    }
+    public void exitConfirmMenu()
+    {
+        playButtonSound();
+        ConfirmMenu.SetActive(false);
+    }
+    public void goSoundMenu() //Open Sound Menu
     {
         playButtonSound();
         changeMenu(SoundMenu);
     }
 
-    public void goStartMenu()
+    public void goStartMenu() //Open Start Menu
     {
         playButtonSound();
         changeMenu(StartMenu);
@@ -115,12 +140,10 @@ public class MainMenu : MonoBehaviour
 
             }
         }
-        bool iscontinue = SaveManager.SaveExists();
-        ContinueButton.gameObject.SetActive(iscontinue);
-        NewGameButton.gameObject.SetActive(!iscontinue);
+        ContinueButton.gameObject.SetActive(SaveManager.SaveExists());
     }
 
-    private void saveSoundSettings()
+    private void saveSoundSettings() //Saves Sound settings to playerprefs file
     {
         AudioSliderScript SliderCode = GetComponent<AudioSliderScript>();
         float musicVol = SliderCode.getMusicVolume();

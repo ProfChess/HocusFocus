@@ -564,7 +564,7 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -585,7 +585,7 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -593,6 +593,90 @@ TextureImporter:
       bones: []
       spriteID: 6cd516b9510bbb241b40d2052805ad29
       internalID: -387508460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YesButton1
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 80
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92a89b6bbba16ed43a991970b3a405de
+      internalID: -1373133622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoButton1
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 64
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 705e9e8ef7f7be14f9ca094ae683a0f8
+      internalID: -635541343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YesButton2
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 80
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a11daf7c1e6bf1458aa3eef61c97d48
+      internalID: -1936827250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoButton2
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 64
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b3e7ee88b44e0249b499b316cacc1d9
+      internalID: -1651224250
       vertices: []
       indices: 
       edges: []
@@ -622,6 +706,8 @@ TextureImporter:
       MenuButton2: 1817173717
       NewGameButton1: -1281686904
       NewGameButton2: 1250510656
+      NoButton1: -635541343
+      NoButton2: -1651224250
       QuitButton1: -999727595
       QuitButton2: -139973482
       ResumeButton1: -1521974517
@@ -630,6 +716,8 @@ TextureImporter:
       SettingsButton2: 979602202
       StartButton1: -2023431736
       StartButton2: 1824526418
+      YesButton1: -1373133622
+      YesButton2: -1936827250
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
