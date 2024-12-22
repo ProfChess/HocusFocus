@@ -14,4 +14,17 @@ public class ManaUpgrade : BaseItem
 
         }
     }
+    protected override void removeUITask()
+    {
+        UIManager.Instance.OptionalTask2.SetActive(false);
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+        if (GameManager.Instance.isCollected(itemID))
+        {
+            UIManager.Instance.OptionalTask2.SetActive(false);
+        }
+    }
 }

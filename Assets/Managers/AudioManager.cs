@@ -75,9 +75,10 @@ public class AudioManager : MonoBehaviour
             case 0: //Main Menu
                 MainMenuMusic.Play(); break;
             case 1: //Background
-                BGM.Play(); break;
+                BGM.Play(); 
+                UIManager.Instance.activateUI(); break;
             case 2: //Boss Fight Music
-                BossMusic.Play(); break;    
+                BossMusic.Play(); UIManager.Instance.activateUI(); break;    
             default:
                 Debug.Log("Music Not Found");
                 break;

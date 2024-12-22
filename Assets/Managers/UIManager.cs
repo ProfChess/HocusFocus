@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -26,6 +27,30 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void loadUITasks()
+    {
+        if (GameManager.Instance.isCollected("HealthUpgrade01"))
+        {
+            OptionalTask1.SetActive(false);
+        }
+        if (GameManager.Instance.isCollected("ManaUpgrade01"))
+        {
+            OptionalTask2.SetActive(false);
+        }
+        if (GameManager.Instance.isCollected("DashUpgrade"))
+        {
+            Task1.SetActive(false);
+        }
+        if (GameManager.Instance.isCollected("JumpUpgrade"))
+        {
+            Task2.SetActive(false);
+        }
+        if (GameManager.Instance.isCollected("TeleportUpgrade"))
+        {
+            Task3.SetActive(false);
+        }
+    }
+
     //Player UI
     public void updateHealthBar(float currentHealth, float maxHealth) //Changes Healthbar to match current health
     {
@@ -45,19 +70,45 @@ public class UIManager : MonoBehaviour
     //Sound
     private void playUISound()
     {
-        //AudioManager.Instance.playSound(18);
+        AudioManager.Instance.getButtonSound().Play();
     }
 
     //Pause Menu
+    [Header("Pause Menu")]
     [SerializeField] private GameObject PauseMenu;
+
+    //Fast Travel
+    [Header("Fast Travel")]
     [SerializeField] private GameObject FastTravelMenu;
     [SerializeField] private FastTravelManager FTManager;
     [SerializeField] private List<GameObject> TravelButtons;
+
+    //UI
+    [Header("UI")]
+    [SerializeField] private GameObject playerUI;
+    [SerializeField] private GameObject HowToPlayMenu;
+
+    //Objectives
+    [Header("Objective List")]
+    public GameObject Task1;
+    public GameObject Task2;
+    public GameObject Task3;
+    public GameObject Task4;
+    [Header("Optional")]
+    public GameObject OptionalTask1;
+    public GameObject OptionalTask2;
+    public void activateUI()
+    {
+        playerUI.SetActive(true);
+    }
+
+
     public void pauseGame()
     {
         playUISound();
         PauseMenu.SetActive(true);
         FastTravelMenu.SetActive(false);
+        HowToPlayMenu.SetActive(false);
         Time.timeScale = 0f;
     }
     public void UnpauseGame()
@@ -86,8 +137,14 @@ public class UIManager : MonoBehaviour
     public void QuitGame()
     {
         playUISound();
-        SceneManager.LoadScene("Menus");
+        GameManager.Instance.FadingOutTransition();
+        UnpauseGame();
+        Invoke("WrapMenuLoad", 1f);
         PauseMenu.SetActive(false);
+    }
+    private void WrapMenuLoad()
+    {
+        SceneManager.LoadScene("Menus");
     }
 
     //Fast Travel Menu
@@ -101,4 +158,11 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
+    //How To Play Menu
+    public void openControlMenu()
+    {
+        playUISound();
+        HowToPlayMenu.SetActive(true);
+        PauseMenu.SetActive(false);
+    }
 }

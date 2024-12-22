@@ -12,6 +12,7 @@ TagManager:
   - MenuUI
   - BossAttackFire
   - BossAttackLightning
+  - SceneChange
   layers:
   - Default
   - TransparentFX

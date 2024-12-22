@@ -13,14 +13,25 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject EndMenu;
 
     //Buttons
+    [SerializeField] private GameObject NewGameButton;
+    [SerializeField] private GameObject ContinueButton;
+
+    //UI
+    [SerializeField] private GameObject playerUI;
+
     //Start
     public void startButton()
     {
         playButtonSound();
         Time.timeScale = 1f;
-        SceneManager.LoadScene("StartingRoom");
+        GameManager.Instance.FadingOutTransition();
+        Invoke("beginGame", 1f);
+        
     }
-
+    private void beginGame()
+    {
+        GameManager.Instance.loadProgress();
+    }
     public void exitGame()
     {
         playButtonSound();
@@ -38,6 +49,12 @@ public class MainMenu : MonoBehaviour
     {
         playButtonSound();
         changeMenu(StartMenu);
+    }
+
+    public void backFromSound()
+    {
+        saveSoundSettings();
+        goStartMenu();
     }
 
     public void goEndMenu()
@@ -87,6 +104,9 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
+        GameManager.Instance.FadeToColor();
+        GameManager.Instance.respawn = true;
+        playerUI.SetActive(false);
         if (GameManager.Instance != null)
         {
             if (GameManager.Instance.getGameOver())
@@ -95,5 +115,18 @@ public class MainMenu : MonoBehaviour
 
             }
         }
+        bool iscontinue = SaveManager.SaveExists();
+        ContinueButton.gameObject.SetActive(iscontinue);
+        NewGameButton.gameObject.SetActive(!iscontinue);
+    }
+
+    private void saveSoundSettings()
+    {
+        AudioSliderScript SliderCode = GetComponent<AudioSliderScript>();
+        float musicVol = SliderCode.getMusicVolume();
+        float sfxVol = SliderCode.getSFXVolume();
+        PlayerPrefs.SetFloat("MusicVolume", musicVol);
+        PlayerPrefs.SetFloat("SFXVolume", sfxVol);
+        PlayerPrefs.Save();
     }
 }

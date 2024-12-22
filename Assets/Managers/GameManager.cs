@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     //Save Locations
     public string sceneDeath = "StartingRoom";
     public Vector2 respawnLocation = new Vector2(7.75f, -0.75f);
-    public bool respawn = false;
+    public bool respawn;
     public bool FastTraveling = false;
     public Vector2 TempFastTravelLocation;
 
@@ -52,19 +52,18 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             itemsCollected = new List<string>();
             fastTravelManager = GetComponent<FastTravelManager>();
-            //saveData = SaveManager.LoadGame() ?? new SaveData
-            //{
-            //    startingScene = "StartingRoom",
-            //    spawnLocation = new Vector2(7.75f, -0.75f),
-            //    HpUpgrades = 0,
-            //    ManaUpgrades = 0,
-            //    playerItems = itemsCollected,
-            //    dashFound = false,
-            //    jumpFound = false,
-            //    teleFound = false,
-            //    fastTravelPoints = fastTravelManager.FastTravel,
-            //};
-            //loadProgress(); //Loads all saved variables to game manager
+            saveData = SaveManager.LoadGame() ?? new SaveData
+            {
+                startingScene = "StartingRoom",
+                spawnLocation = new Vector2(7.75f, -0.75f),
+                HpUpgrades = 0,
+                ManaUpgrades = 0,
+                playerItems = itemsCollected,
+                dashFound = false,
+                jumpFound = false,
+                teleFound = false,
+                fastTravelPoints = fastTravelManager.FastTravel,
+            };
         }
 
         else
@@ -76,10 +75,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        //player.transform.position = saveData.spawnLocation;
-        StartCoroutine(FadeIn());
-        loadPlayerStart();
+        
     }
 
     public void SetSpawnPoint(string spawnPoint)
@@ -175,6 +171,10 @@ public class GameManager : MonoBehaviour
 
         SetAlpha(0f);
     }
+    public void FadeToColor()
+    {
+        StartCoroutine(FadeIn());
+    }
 
     private IEnumerator FadeOutAndLoad(string sceneName)
     {
@@ -190,6 +190,24 @@ public class GameManager : MonoBehaviour
         SetAlpha(1f);
         SceneManager.sceneLoaded += onSceneLoaded;
         SceneManager.LoadScene(sceneName);
+    }
+
+    private IEnumerator JustFadeOut() //Fade to black without loading scene
+    {
+        float timePassed = 0f;
+        while (timePassed < fadeDuration)
+        {
+            timePassed += Time.deltaTime;
+            float alphaValue = Mathf.Clamp01(timePassed / fadeDuration);
+            SetAlpha(alphaValue);
+            yield return null;
+        }
+
+        SetAlpha(1f);
+    }
+    public void FadingOutTransition()
+    {
+        StartCoroutine(JustFadeOut());
     }
 
     private void SetAlpha(float alphaValue)
@@ -217,12 +235,10 @@ public class GameManager : MonoBehaviour
     {
         savedMana = mana;
     }
-    private void loadPlayerStart()
+    public void loadPlayerStart()
     {
         savedHealth = 10 + (healthUpgrades * 10);
         savedMana = 20 + (manaUpgrades * 10);
-        player.GetComponent<PlayerHealth>().pickupHealth();
-        player.GetComponent<PlayerMana>().pickupMana();
     }
 
     //Save Scene/Location For respawning after death
@@ -330,7 +346,7 @@ public class GameManager : MonoBehaviour
         SaveManager.SaveGame(saveData);
     }
 
-    private void loadProgress()
+    public void loadProgress()
     {
         sceneDeath = saveData.startingScene;
         respawnLocation = saveData.spawnLocation;
@@ -342,6 +358,9 @@ public class GameManager : MonoBehaviour
         itemsCollected = saveData.playerItems;
         fastTravelManager.FastTravel = saveData.fastTravelPoints;
         SceneManager.LoadScene(sceneDeath);
+        loadPlayerStart();
+        UIManager.Instance.loadUITasks();
+        Invoke("FadeToColor", 1f);
     }
 
     //Starting Place
@@ -352,7 +371,7 @@ public class GameManager : MonoBehaviour
     //Quit Game
     private void OnApplicationQuit()
     {
-        //saveProgress();
+        saveProgress();
     }
 
     public void fastTravel(string name)

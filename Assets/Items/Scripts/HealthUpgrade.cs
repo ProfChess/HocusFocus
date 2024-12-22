@@ -10,8 +10,21 @@ public class HealthUpgrade : BaseItem
         if (collision.CompareTag("Player"))
         {
             PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
-            playerHealth.pickupHealth();
             GameManager.Instance.savedHealth = playerHealth.getHealth();
+            playerHealth.pickupHealth();
+        }
+    }
+    protected override void removeUITask()
+    {
+        UIManager.Instance.OptionalTask1.SetActive(false);
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+        if (GameManager.Instance.isCollected(itemID))
+        {
+            UIManager.Instance.OptionalTask1.SetActive(false);
         }
     }
 }

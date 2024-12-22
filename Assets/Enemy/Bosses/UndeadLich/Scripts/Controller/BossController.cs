@@ -76,6 +76,8 @@ public class BossController : MonoBehaviour
             }
         }
 
+        
+
     }
 
     public void setCanFlipX(bool x)
@@ -108,6 +110,7 @@ public class BossController : MonoBehaviour
             {
                 //Death Anim
                 BossAnimator.SetTrigger("DeathTrigger");
+                UIManager.Instance.Task4.SetActive(false);
             }
             else
             {

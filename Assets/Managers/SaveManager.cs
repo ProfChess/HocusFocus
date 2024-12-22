@@ -47,5 +47,10 @@ public static class SaveManager
         }
     }
 
+    public static bool SaveExists()
+    {
+        return File.Exists(_SaveFilePath);
+    }
+
 
 }

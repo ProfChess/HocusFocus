@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private int playerLayer;
     private int pDashLayer;
     private int pTeleportLayer;
+    private GameManager GM;
 
     [Header("Player Movement/Stats")]
     //Left/Right
@@ -126,22 +127,28 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
-        GameManager.Instance.player = gameObject;
-        if (GameManager.Instance.respawn)
+        GM = GameManager.Instance;
+        GM.player = gameObject;
+        if (GM.respawn)
         {
-            transform.position = GameManager.Instance.respawnLocation;
-            GameManager.Instance.savedHealth = gameObject.GetComponent<PlayerHealth>().maxHealth;
+            transform.position = GM.respawnLocation;
             gameObject.GetComponent<PlayerHealth>().pickupHealth();
+            GM.savedHealth = gameObject.GetComponent<PlayerHealth>().maxHealth;
+            GM.respawn = false;
         }
         revealSize = new Vector2(0.72f, 1.33f);
-        playerDash = GameManager.Instance.getDashBool();
-        playerDoubleJump = GameManager.Instance.getJumpBool();
-        playerTeleport = GameManager.Instance.getTeleportBool();
+        playerDash = GM.getDashBool();
+        playerDoubleJump = GM.getJumpBool();
+        playerTeleport = GM.getTeleportBool();
     }
 
     public void travelPlace()
     {
         transform.position = GameManager.Instance.TempFastTravelLocation;
+    }
+    public void startLocation(Vector2 spawn)
+    {
+        transform.position = spawn;
     }
 
     //Physics Calculations

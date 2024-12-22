@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -12,6 +10,8 @@ public class AudioSliderScript : MonoBehaviour
 
     private void Start()
     {
+        musicSlider.value = PlayerPrefs.GetFloat("MusicVolume", 0.25f);
+        sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume", 0.25f);
         SetMusicVolume();
         SetSFXVolume();
     }
@@ -26,5 +26,14 @@ public class AudioSliderScript : MonoBehaviour
     {
         float volume = sfxSlider.value;
         Mixer.SetFloat("SFXVol", Mathf.Log10(volume) * 20);
+    }
+
+    public float getMusicVolume()
+    {
+        return musicSlider.value;
+    }
+    public float getSFXVolume()
+    {
+        return sfxSlider.value;
     }
 }

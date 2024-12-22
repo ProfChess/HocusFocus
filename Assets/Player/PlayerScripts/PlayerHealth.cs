@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public float pHealth = 10f;
+    public float pHealth;
     public float maxHealth = 10f;
     public Animator playerAnim;
 
@@ -65,6 +65,8 @@ public class PlayerHealth : MonoBehaviour
     {
         setMaxHealth();
         pHealth = maxHealth;
+        Debug.Log("MAXHP: " + maxHealth);
+        Debug.Log("Current Health: " + pHealth);
         UIChange();
     }
 

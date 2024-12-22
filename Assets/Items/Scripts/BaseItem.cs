@@ -36,10 +36,16 @@ public abstract class BaseItem : MonoBehaviour
                 string sceneName = scene.name;
                 GameManager.Instance.saveSceneAndLocation(sceneName, location);
                 //Remove Item
+                removeUITask();
                 gameObject.SetActive(false);
                 
             }
         }
+    }
+
+    protected virtual void removeUITask()
+    {
+
     }
 
 
