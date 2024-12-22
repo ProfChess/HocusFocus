@@ -145,6 +145,8 @@ public class PlayerController : MonoBehaviour
     public void travelPlace()
     {
         transform.position = GameManager.Instance.TempFastTravelLocation;
+        gameObject.GetComponent<PlayerHealth>().pickupHealth();
+        GameManager.Instance.savedHealth = gameObject.GetComponent<PlayerHealth>().maxHealth;
     }
     public void startLocation(Vector2 spawn)
     {
