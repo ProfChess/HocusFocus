@@ -119,7 +119,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2458fa141d7d7fb45acbc85098f89d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHP: {fileID: 9046535427415083913}
   enemyAnim: {fileID: 4604002194264295047}
   enemy: {fileID: 3858444180175010331}
 --- !u!1 &2036953132430803618
@@ -224,7 +223,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.037427902, y: -0.25263834}
+  m_Offset: {x: 0, y: -0.2}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -235,7 +234,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0748558, y: 1.8046999}
+  m_Size: {x: 0.7, y: 1.5}
   m_EdgeRadius: 0
 --- !u!50 &2401750500500237799
 Rigidbody2D:
@@ -288,6 +287,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
+  CollisionDamage: 2
   leftLeash: {fileID: 7108176749588544235}
   rightLeash: {fileID: 1916433451464623752}
   flyingEnemyPrefab: {fileID: 2628649059382396539, guid: 45fa6d27fd4855e429f0b69925ae449b, type: 3}
@@ -295,7 +295,6 @@ MonoBehaviour:
   wonderMinDistance: 2
   wonderMaxDistance: 4
   enemyAnim: {fileID: 4604002194264295047}
-  runSummmonAnim: 0
 --- !u!114 &9046535427415083913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,7 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 241cc299a3e75cc4b949dbc11921f8e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 5
+  enemyMaxHealth: 8
   enemyAnim: {fileID: 4604002194264295047}
 --- !u!1 &7322659777794622627
 GameObject:

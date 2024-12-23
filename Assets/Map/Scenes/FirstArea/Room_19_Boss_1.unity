@@ -1252,6 +1252,14 @@ MonoBehaviour:
   FastTravelMenu: {fileID: 0}
   FTManager: {fileID: 0}
   TravelButtons: []
+  playerUI: {fileID: 0}
+  HowToPlayMenu: {fileID: 0}
+  Task1: {fileID: 0}
+  Task2: {fileID: 0}
+  Task3: {fileID: 0}
+  Task4: {fileID: 0}
+  OptionalTask1: {fileID: 0}
+  OptionalTask2: {fileID: 0}
 --- !u!114 &183039053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1402,7 +1410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2137b3a679690514296a0d48c5549f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 8
+  weight: 6
   duration: 1
   prefab: {fileID: 4228487266374789831, guid: 7b1e402ff1a526348be68f12de7ab826, type: 3}
   objPool: {fileID: 377370082}
@@ -7066,7 +7074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4de3875181e5b442b2b56d39c6cba3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 0
+  weight: 1
   duration: 24
   prefab: {fileID: 7960642287706933716, guid: 92864f9d8a2b60d4dbccd18021fc2d49, type: 3}
   objPool: {fileID: 1737924949}
@@ -8780,7 +8788,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 241cc299a3e75cc4b949dbc11921f8e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyMaxHealth: 10
+  enemyMaxHealth: 100
   enemyAnim: {fileID: 0}
 --- !u!114 &1680516704
 MonoBehaviour:
@@ -9100,7 +9108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7264433acb04244bceca120dd2f52b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 3
+  weight: 2
   duration: 8
   prefab: {fileID: 3009724606014404952, guid: 106c3a9a5f0655c4aa318c95878c0c4c, type: 3}
   objPool: {fileID: 1988432238}

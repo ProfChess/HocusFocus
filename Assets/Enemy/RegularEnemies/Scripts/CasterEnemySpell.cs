@@ -5,7 +5,7 @@ using UnityEngine;
 public class CasterEnemySpell : MonoBehaviour
 {
     //Spell Stats
-    private float spellDamage = 2f;
+    private float spellDamage = 3f;
     private float spellSpeed = 5f;
     private float spellLength = 10f;
     private float xSpawn;

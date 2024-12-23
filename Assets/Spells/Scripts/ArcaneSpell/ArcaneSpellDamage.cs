@@ -19,7 +19,7 @@ public class ArcaneSpellDamage : BaseSpellDamage
     private bool bolt2played = false;
     protected void Awake()
     {
-        spellDamage = 2f;
+        spellDamage = 3f;
         spellSpeed = 0f;
         spellLength = 3f;
         col = GetComponent<BoxCollider2D>();

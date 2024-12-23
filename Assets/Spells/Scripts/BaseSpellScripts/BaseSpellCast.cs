@@ -6,10 +6,8 @@ using UnityEngine;
 public abstract class BaseSpellCast : MonoBehaviour
 {
     // Spell Casting Stats
-    public float cooldownTime;
     public float castTime;
     public bool casting;
-    protected float cooldownTimer;
     protected bool lookingRight = true;
 
     public GameObject spellPrefab;
@@ -34,11 +32,6 @@ public abstract class BaseSpellCast : MonoBehaviour
         {
             return;
         }
-        if (cooldownTimer > 0)
-        {
-            Debug.Log("Spell on Cooldown");
-            return;
-        }
         else if (player.returnCurrentMana() < manaCost)
         {
             Debug.Log("Not Enough Mana");
@@ -56,16 +49,8 @@ public abstract class BaseSpellCast : MonoBehaviour
         yield return new WaitForSeconds(castTime);
 
         casting = false;
-        cooldownTimer = cooldownTime;
     }
 
-    protected virtual void Update()
-    {
-        if (cooldownTimer > 0f)
-        {
-            cooldownTimer -= Time.deltaTime;
-        }
-    }
 
     protected virtual void Start()
     {

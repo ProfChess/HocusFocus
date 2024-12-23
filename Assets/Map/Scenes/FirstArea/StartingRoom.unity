@@ -3647,6 +3647,12 @@ MonoBehaviour:
   - {fileID: 338814054}
   playerUI: {fileID: 0}
   HowToPlayMenu: {fileID: 0}
+  Task1: {fileID: 0}
+  Task2: {fileID: 0}
+  Task3: {fileID: 0}
+  Task4: {fileID: 0}
+  OptionalTask1: {fileID: 0}
+  OptionalTask2: {fileID: 0}
 --- !u!1 &1031652808
 GameObject:
   m_ObjectHideFlags: 0

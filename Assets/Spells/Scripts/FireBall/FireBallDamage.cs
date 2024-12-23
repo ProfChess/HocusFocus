@@ -12,7 +12,7 @@ public class FireBallDamage : BaseSpellDamage
         xSpawn = gameObject.transform.position.x;
         spellLength = 10f;
         spellSpeed = 10f;
-        spellDamage = 5f;
+        spellDamage = 2f;
         areaIncrease = 1.75f;
         col = GetComponent<BoxCollider2D>();
         spellHit = false;

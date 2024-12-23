@@ -7,7 +7,7 @@ public class IceSpellDamage : BaseSpellDamage
     protected void Awake()
     {
         xSpawn = gameObject.transform.position.x;
-        spellDamage = 2f;
+        spellDamage = 1f;
         spellSpeed = 20f;
         spellLength = 10f;
         col = GetComponent<BoxCollider2D>();

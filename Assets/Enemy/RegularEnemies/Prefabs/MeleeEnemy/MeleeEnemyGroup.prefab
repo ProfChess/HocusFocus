@@ -291,7 +291,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
-  CollisionDamage: 1
+  CollisionDamage: 2
   leftPatrolPoint: {fileID: 1269675689584569277}
   rightPatrolPoint: {fileID: 1604412102669580754}
   enemyAnim: {fileID: 7740488342344666623}
@@ -308,7 +308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 241cc299a3e75cc4b949dbc11921f8e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyMaxHealth: 5
+  enemyMaxHealth: 15
   enemyAnim: {fileID: 7740488342344666623}
 --- !u!50 &6295271814260801759
 Rigidbody2D:

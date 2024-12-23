@@ -7,8 +7,8 @@ public class ArcaneIceDamage : BaseSpellDamage
 {
     public LayerMask enemyLayer;
     private float spellCooldown;
-    private float dotDamage = 2f;
-    private float dotDuration = 4f;
+    private float dotDamage = 1f;
+    private float dotDuration = 5f;
     private float dotInterval = 1f;
     protected void Awake()
     {

@@ -233,14 +233,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e8a033cfb13c3641aeb8910f7e560a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownTime: 0.25
   castTime: 0.4
   casting: 0
   spellPrefab: {fileID: 6216688724626356879, guid: b577a4e9846107540aad793bdb8f925b, type: 3}
   rightSpellSpawn: {fileID: 1042008692738672578}
   leftSpellSpawn: {fileID: 6352206687587204674}
   direction: {x: 0, y: 0}
-  manaCost: 1
+  manaCost: 5
   playerAnim: {fileID: 6318073296587202217}
   player: {fileID: 6123800979285560759}
   soundType: 0
@@ -256,14 +255,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e745d632ff7a094481293bd950aff08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownTime: 0.1
   castTime: 0.2
   casting: 0
   spellPrefab: {fileID: 8520802366858434131, guid: e119adb335f33e14c9001be8c374a865, type: 3}
   rightSpellSpawn: {fileID: 1042008692738672578}
   leftSpellSpawn: {fileID: 6352206687587204674}
   direction: {x: 0, y: 0}
-  manaCost: 1
+  manaCost: 2
   playerAnim: {fileID: 6318073296587202217}
   player: {fileID: 0}
   soundType: 1
@@ -279,14 +277,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0f7273d3d9e1234e8cc964ccd78da32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownTime: 0.4
   castTime: 0.8
   casting: 0
   spellPrefab: {fileID: 2342955644684660059, guid: 39c1c9d1ce0e71749942dadcc82e435e, type: 3}
   rightSpellSpawn: {fileID: 1042008692738672578}
   leftSpellSpawn: {fileID: 6352206687587204674}
   direction: {x: 0, y: 0}
-  manaCost: 3
+  manaCost: 7
   playerAnim: {fileID: 6318073296587202217}
   player: {fileID: 0}
   soundType: 2
@@ -302,14 +299,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4133b09e5d9fdd4a824c3db94c2885e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownTime: 3
   castTime: 0.4
   casting: 0
   spellPrefab: {fileID: 8167724216180319409, guid: 5b8616581c106c146916be686b10b774, type: 3}
   rightSpellSpawn: {fileID: 1042008692738672578}
   leftSpellSpawn: {fileID: 6352206687587204674}
   direction: {x: 0, y: 0}
-  manaCost: 5
+  manaCost: 3
   playerAnim: {fileID: 6318073296587202217}
   player: {fileID: 0}
   soundType: 0
@@ -325,14 +321,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e2a7a82c1d3de74fb6fa84f939b5f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownTime: 4
   castTime: 0.8
   casting: 0
   spellPrefab: {fileID: 8384808933466695075, guid: 6994961d207b4754889cd52c8c2456da, type: 3}
   rightSpellSpawn: {fileID: 1042008692738672578}
   leftSpellSpawn: {fileID: 6352206687587204674}
   direction: {x: 0, y: 0}
-  manaCost: 10
+  manaCost: 12
   playerAnim: {fileID: 6318073296587202217}
   player: {fileID: 0}
   soundType: 2
@@ -348,14 +343,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e2afd2d6d0fa064fad5484fba594d19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownTime: 0
   castTime: 0.4
   casting: 0
   spellPrefab: {fileID: 2110706126932779493, guid: a04afd5f592857b4aa53a5f65a3b400c, type: 3}
   rightSpellSpawn: {fileID: 1042008692738672578}
   leftSpellSpawn: {fileID: 6352206687587204674}
   direction: {x: 0, y: 0}
-  manaCost: 5
+  manaCost: 9
   playerAnim: {fileID: 6318073296587202217}
   player: {fileID: 0}
   soundType: 1

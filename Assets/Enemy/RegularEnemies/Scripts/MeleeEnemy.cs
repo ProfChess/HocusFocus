@@ -28,7 +28,7 @@ public class MeleeEnemy : BaseEnemyMovement
 
     protected void Awake()
     {
-        Initialize(2, 4, 2, false, 5, 1);
+        Initialize(2, 4, 4, false, 5, 1);
     }
 
     protected override void Start()

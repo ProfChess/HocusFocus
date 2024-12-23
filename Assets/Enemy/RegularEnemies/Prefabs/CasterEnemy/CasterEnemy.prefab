@@ -68,7 +68,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.17}
+  m_Offset: {x: 0, y: -0.25}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -79,7 +79,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.75}
+  m_Size: {x: 0.5, y: 1.6}
   m_EdgeRadius: 0
 --- !u!50 &8981389585333832975
 Rigidbody2D:
@@ -122,6 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyPatrolSpeed: 0
   EnemyChaseSpeed: 0
+  EnemyAttackDamage: 2
   EnemyDetectRange: 0
   EnemyAttackRange: 0
   player: {fileID: 0}
@@ -131,7 +132,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
-  EnemyAttackDamage: 2
+  CollisionDamage: 2
   spellPrefab: {fileID: 1165485554322184488, guid: 8c5eccbd324745b4c9129a55d4c22917, type: 3}
   enemyAnim: {fileID: 7939157849516036493}
 --- !u!114 &8380164288671000502
