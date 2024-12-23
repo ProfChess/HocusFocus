@@ -10,8 +10,9 @@ public class HealthUpgrade : BaseItem
         if (collision.CompareTag("Player"))
         {
             PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
-            GameManager.Instance.savedHealth = playerHealth.getHealth();
             playerHealth.pickupHealth();
+            GameManager.Instance.savedHealth = playerHealth.getHealth();
+            
         }
     }
     protected override void removeUITask()

@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private int pDashLayer;
     private int pTeleportLayer;
     private GameManager GM;
+    private PlayerHealth playerHealth;
 
     [Header("Player Movement/Stats")]
     //Left/Right
@@ -123,10 +124,12 @@ public class PlayerController : MonoBehaviour
         playerLayer = LayerMask.NameToLayer("Player");
         pDashLayer = LayerMask.NameToLayer("PlayerDashLayer");
         pTeleportLayer = LayerMask.NameToLayer("PlayerTeleportLayer");
+        playerHealth = GetComponent<PlayerHealth>();
         
     }
     private void Start()
     {
+        inputActions.Enable();
         GM = GameManager.Instance;
         GM.player = gameObject;
         if (GM.respawn)
@@ -234,6 +237,10 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (playerHealth.playerIsDead)
+        {
+            inputActions.Disable();
+        }
         if (Time.deltaTime == 0f)
         {
             return;

@@ -1,7 +1,4 @@
 using System.Collections;
-using System.Linq;
-using Unity.Properties;
-using UnityEditor.Animations;
 using UnityEngine;
 
 public class BA_Explosion : BaseBossAttack

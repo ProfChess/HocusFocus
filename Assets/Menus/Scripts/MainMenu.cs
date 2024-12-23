@@ -43,7 +43,7 @@ public class MainMenu : MonoBehaviour
     {
         playButtonSound();
         Application.Quit();
-        UnityEditor.EditorApplication.isPlaying = false;
+        //UnityEditor.EditorApplication.isPlaying = false;
     }
 
     //Open + Close confirm menu

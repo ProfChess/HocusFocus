@@ -1,5 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]
@@ -18,9 +18,17 @@ public class SceneTransition : MonoBehaviour
         else if (collision.CompareTag("Player"))
         {
             //Fade In
-            GameManager.Instance.respawn = false;
-            GameManager.Instance.SetSpawnPoint(spawnPointName);
-            GameManager.Instance.FadeToBlack(sceneToLoad);
+            if (collision.GetComponent<PlayerHealth>().playerIsDead == true)
+            {
+                return;
+            }
+            else
+            {
+                GameManager.Instance.respawn = false;
+                GameManager.Instance.SetSpawnPoint(spawnPointName);
+                GameManager.Instance.FadeToBlack(sceneToLoad);
+            }
+
         }
     }
 }

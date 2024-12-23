@@ -263,16 +263,6 @@ public class GameManager : MonoBehaviour
     private void respawnLogic()
     {
         SceneManager.LoadScene(sceneDeath);
-        
-        if (player == null)
-        {
-            player = Instantiate(playerPrefab, respawnLocation, Quaternion.identity);
-        }
-        else
-        {
-            Destroy(player);
-            player = Instantiate(playerPrefab, respawnLocation, Quaternion.identity);
-        }
         Time.timeScale = 1;
     }
 

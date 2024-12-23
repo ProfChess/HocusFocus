@@ -9,12 +9,14 @@ public class PlayerHealth : MonoBehaviour
     public float pHealth;
     public float maxHealth = 10f;
     public Animator playerAnim;
+    public bool playerIsDead;
 
     //Iframes
     private bool isInvincable = false;
 
     private void Start()
     {
+        playerIsDead = false;
         setMaxHealth();
         pHealth = GameManager.Instance.savedHealth;
         UIChange();     //Changes UI to match health %
@@ -40,13 +42,13 @@ public class PlayerHealth : MonoBehaviour
                     AudioManager.Instance.playPlayerSound("Hit");
                 }
             }
-            if (pHealth <= 0)
+            if (pHealth <= 0 && !playerIsDead)
             {
                 AudioManager.Instance.playPlayerSound("Death");
-                Debug.Log("Player is Dead");
                 //Anim
                 playerAnim.SetTrigger("PlayerDeath");
                 GameManager.Instance.respawn = true;
+                playerIsDead=true;
                 //Death Logic 
 
             }
@@ -65,8 +67,6 @@ public class PlayerHealth : MonoBehaviour
     {
         setMaxHealth();
         pHealth = maxHealth;
-        Debug.Log("MAXHP: " + maxHealth);
-        Debug.Log("Current Health: " + pHealth);
         UIChange();
     }
 
