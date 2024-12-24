@@ -59,7 +59,7 @@ MonoBehaviour:
   groundDetectBox: {x: 0.72, y: 0.1}
   playerDashSpeed: 10
   playerTeleportSpeed: 30
-  revealSize: {x: 0.72, y: 1.33}
+  revealSize: {x: 0.7, y: 1.33}
   lookingRight: 1
   playerDash: 0
   playerDoubleJump: 0
@@ -99,6 +99,7 @@ MonoBehaviour:
   pHealth: 10
   maxHealth: 10
   playerAnim: {fileID: 6318073296587202217}
+  playerIsDead: 0
 --- !u!114 &6123800979285560759
 MonoBehaviour:
   m_ObjectHideFlags: 0

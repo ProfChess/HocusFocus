@@ -6,7 +6,7 @@ public class FireArcaneDamage : BaseSpellDamage
 
     protected void Awake()
     {
-        spellDamage = 8f;
+        spellDamage = 12f;
         col = GetComponent<BoxCollider2D>();
         col.enabled = false;
     }

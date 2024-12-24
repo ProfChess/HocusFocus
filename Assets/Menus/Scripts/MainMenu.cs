@@ -137,7 +137,6 @@ public class MainMenu : MonoBehaviour
             if (GameManager.Instance.getGameOver())
             {
                 changeMenu(EndMenu.gameObject);
-
             }
         }
         ContinueButton.gameObject.SetActive(SaveManager.SaveExists());

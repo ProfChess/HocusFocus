@@ -139,7 +139,7 @@ public class PlayerController : MonoBehaviour
             GM.savedHealth = gameObject.GetComponent<PlayerHealth>().maxHealth;
             GM.respawn = false;
         }
-        revealSize = new Vector2(0.72f, 1.33f);
+        revealSize = new Vector2(0.7f, 1.33f);
         playerDash = GM.getDashBool();
         playerDoubleJump = GM.getJumpBool();
         playerTeleport = GM.getTeleportBool();

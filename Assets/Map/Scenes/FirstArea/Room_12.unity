@@ -766,9 +766,9 @@ GameObject:
   m_Component:
   - component: {fileID: 372552564}
   - component: {fileID: 372552565}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall4
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -3377,7 +3377,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1732382651}
   - component: {fileID: 1732382652}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sprites_55 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1,7 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+
 
 public class MeleeEnemy : BaseEnemyMovement
 {
@@ -17,8 +16,10 @@ public class MeleeEnemy : BaseEnemyMovement
     //Anim
     public Animator enemyAnim;
     public SpriteRenderer enemyVisual;
-    private Vector2 enemyHitBoxOffset;
+    public Vector2 enemyHitBoxOffset;
+    private BoxCollider2D enemyHitBox;
     private EnemyHealthScript HPScript;
+    public bool previousFlipX;
 
     //Player Location
     private Vector2 playerPos;
@@ -35,7 +36,9 @@ public class MeleeEnemy : BaseEnemyMovement
     {
         base.Start();
         HPScript = GetComponent<EnemyHealthScript>();
+        enemyHitBox = GetComponent<BoxCollider2D>();
         enemyHitBoxOffset = GetComponent<BoxCollider2D>().offset;
+        previousFlipX = enemyVisual.flipX;
     }
 
     protected override void FixedUpdate()
@@ -64,12 +67,17 @@ public class MeleeEnemy : BaseEnemyMovement
         {
             engageState();
         }
-        else if (!attacking)
+        else if (!attacking || enemyBlind)
         {
             patrolState();
         }
 
-
+        //Flip Collider
+        if (enemyVisual.flipX != previousFlipX)
+        {
+            flipBoxOffset();
+            previousFlipX = enemyVisual.flipX;
+        }
 
         //Patrol Direction
         if (transform.position.x >= rightPatrolPoint.position.x)
@@ -131,24 +139,20 @@ public class MeleeEnemy : BaseEnemyMovement
         enemyAnim.SetBool("EnemyPatrol", true);
         enemyAnim.SetBool("EnemyChase", false);
 
-        if (moveDir == Vector2.right)
+        if (moveDir == Vector2.right && enemyVisual.flipX != true)
         {
             enemyVisual.flipX = true;
-            if (GetComponent<BoxCollider2D>().offset.x == enemyHitBoxOffset.x)
-            {
-                GetComponent<BoxCollider2D>().offset = new Vector2(enemyHitBoxOffset.x * -1, enemyHitBoxOffset.y);
-            }
-            
         }
-        else
+        else if (moveDir == Vector2.left && enemyVisual.flipX != false)
         {
             enemyVisual.flipX = false;
-            if (GetComponent<BoxCollider2D>().offset.x == enemyHitBoxOffset.x * -1)
-            {
-                GetComponent<BoxCollider2D>().offset = new Vector2(enemyHitBoxOffset.x, enemyHitBoxOffset.y);
-            }
-            
         }
+    }
+    private void flipBoxOffset()
+    {
+        Vector2 newOffset = enemyHitBox.offset;
+        newOffset.x = enemyHitBox.offset.x * -1;
+        enemyHitBox.offset = newOffset;
     }
 
     protected void engageState()
@@ -157,13 +161,19 @@ public class MeleeEnemy : BaseEnemyMovement
             transform.position.x <= rightPatrolPoint.transform.position.x)
         {
             transform.Translate(Vector2.right * EnemyChaseSpeed * Time.deltaTime);
-            enemyVisual.flipX = true;
+            if (enemyVisual.flipX != true)
+            {
+                enemyVisual.flipX = true;
+            }
         }
         if (player.transform.position.x < transform.position.x &&
             transform.position.x >= leftPatrolPoint.transform.position.x)
         {
             transform.Translate(Vector2.left * EnemyChaseSpeed * Time.deltaTime);
-            enemyVisual.flipX = false;
+            if(enemyVisual.flipX != false)
+            {
+                enemyVisual.flipX = false;
+            }
         }
         //Animation
         enemyAnim.SetBool("EnemyPatrol", false);

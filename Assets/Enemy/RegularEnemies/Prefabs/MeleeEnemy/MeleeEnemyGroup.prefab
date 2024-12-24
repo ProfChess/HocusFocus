@@ -296,6 +296,7 @@ MonoBehaviour:
   rightPatrolPoint: {fileID: 1604412102669580754}
   enemyAnim: {fileID: 7740488342344666623}
   enemyVisual: {fileID: 7817980744487290112}
+  enemyHitBoxOffset: {x: 0, y: 0}
 --- !u!114 &3588435204950501600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,7 +309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 241cc299a3e75cc4b949dbc11921f8e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyMaxHealth: 15
+  enemyMaxHealth: 12
   enemyAnim: {fileID: 7740488342344666623}
 --- !u!50 &6295271814260801759
 Rigidbody2D:

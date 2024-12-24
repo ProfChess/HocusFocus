@@ -388,11 +388,15 @@ public class GameManager : MonoBehaviour
 
     public void FinishGame()
     {
-        Time.timeScale = 0f;
-        SceneManager.LoadScene("Menus");
+        StartCoroutine(JustFadeOut());
+        Invoke("menuWrapper", 1f);
         gameOver = true;
     }
-
+    private void menuWrapper()
+    {
+        UIManager.Instance.deactivateUI();
+        SceneManager.LoadScene("Menus");
+    }
     public bool getGameOver()
     {
         return gameOver;

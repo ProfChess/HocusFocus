@@ -101,7 +101,10 @@ public class UIManager : MonoBehaviour
     {
         playerUI.SetActive(true);
     }
-
+    public void deactivateUI()
+    {
+        playerUI.SetActive(false);
+    }
 
     public void pauseGame()
     {

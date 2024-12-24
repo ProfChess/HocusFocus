@@ -5961,7 +5961,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1245625073}
   m_Layer: 0
-  m_Name: LeftTopDoorSpawn
+  m_Name: TopDoorSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

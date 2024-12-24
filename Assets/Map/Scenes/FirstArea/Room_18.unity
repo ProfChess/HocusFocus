@@ -5727,6 +5727,10 @@ PrefabInstance:
       propertyPath: m_FlipX
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1693451661883353806, guid: f220d66d16c2ccd409dd602066f10c4e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2548074211578434695, guid: f220d66d16c2ccd409dd602066f10c4e, type: 3}
       propertyPath: m_Name
       value: CasterEnemy

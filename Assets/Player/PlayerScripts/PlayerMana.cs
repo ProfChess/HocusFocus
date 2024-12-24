@@ -7,7 +7,7 @@ public class PlayerMana : MonoBehaviour
 {
     public float maxMana = 20f;
     private float pMana = 20f;
-    private float manaRegenRate = 4;
+    private float manaRegenRate = 3;
 
 
     private void Start()
