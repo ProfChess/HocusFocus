@@ -18,7 +18,7 @@ public class EnemyHealthScript : MonoBehaviour
     public Animator enemyAnim;
 
     //Pickups 
-    private float healthDropChance = 0.2f; //chance of dropping
+    private float healthDropChance = 0f; //chance of dropping
 
     //Getter 
     public float getEnemyCurrentHealth()
